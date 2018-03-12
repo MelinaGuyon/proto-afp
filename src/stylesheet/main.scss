@@ -1,0 +1,76 @@
+@font-face {
+  font-family: "gilroy-medium";
+  src: url('../fonts/Gilroy-Medium.otf');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "gilroy-semibold";
+  src: url('../fonts/Gilroy-Semibold.otf');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "overpass-bold";
+  src: url('../fonts/Overpass-Bold.ttf');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "overpass-light";
+  src: url('../fonts/Overpass-Light.ttf');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "overpass-regular";
+  src: url('../fonts/Overpass-Regular.ttf');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "overpass-semibold";
+  src: url('../fonts/Overpass-SemiBold.ttf');
+  font-style: normal;
+}
+
+
+html, body {
+  margin: 0;
+  top:0;
+  bottom:0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  font-family: helvetica, arial;
+  background: black;
+  font-size: 62.5%;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container, canvas{
+  position: absolute;
+}
+
+
+@media screen and (max-width: 1580px) {
+  html, body { font-size: 55%; }
+}
+
+@media screen and (max-height: 1020px) {
+  html, body { font-size: 55%; }
+}
+
+@media screen and (max-width: 1100px) {
+  html, body { font-size: 50%; }
+}
+
+@media screen and (max-height: 750px) {
+  html, body { font-size: 50%; }
+}
