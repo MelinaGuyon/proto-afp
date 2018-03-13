@@ -1,10 +1,7 @@
 import anime from 'animejs'
 import Inrtia from 'inrtia'
 import raf from 'raf'
-import { Lethargy } from 'lethargy'
-import { throttle } from 'lodash'
-
-const lethargy = new Lethargy()
+import { debounce } from 'lodash'
 
 class Camera {
     constructor(options) {
@@ -58,18 +55,13 @@ class Camera {
 			])
 
 			raf.add(this.updateInertia)
-		}
-		
-		handleScroll = (event) => {
-			if(lethargy.check(event) !== false) this.onRealScroll(event)
-		}
+    }
 
-		onRealScroll = throttle((event) => {
-			console.log('scroll')
-			const evolution = event.deltaY < 0 ? 0.08 : -0.08
+		handleScroll = (event) => {
+			const evolution = event.deltaY < 0 ? 0.025 : -0.025
 			const end = Math.max(Math.min(this.cameraObj.state + evolution, 0.89), 0.01)
 			this.animeSpline(this.cameraObj.state, end)
-		}, 200, {leading: true, trailing: false})
+		}
 
 		handleMouseMove = (event) => {
 			const vect = new THREE.Vector2()
@@ -93,12 +85,11 @@ class Camera {
 		}
 
 		animeSpline(start, end) {
-			anime.remove(this.cameraObj)
 			this.anime = anime({
 				targets: this.cameraObj,
 				state: [start, end],
 				duration: 800,
-				easing: 'easeOutSine',
+				easing: 'easeOutCirc',
 				update: this.updateCameraPos
 			})
 		}
@@ -107,7 +98,7 @@ class Camera {
 			const state = this.cameraObj.state
 			const point = this.spline.getPoint(state)
 
-			this.camera.position.copy(point)
+			this.camera.position.set(point.x, point.y, point.z)
 			this.camera.lookAt(this.spline.getPoint(this.cameraObj.state + 0.01))
 
 			this.lookAtRotation = this.camera.rotation.clone()
@@ -117,7 +108,7 @@ class Camera {
 		}
 
 		updateInertia = () => {
-			if (!this.inrtia.x.stopped || !this.inrtia.y.stopped) {
+			if (!this.inrtia.x.stopped && !this.inrtia.y.stopped) {
 				this.inrtia.y.update()
 				this.inrtia.x.update()
 				this.updateRotation()
