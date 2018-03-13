@@ -1,6 +1,6 @@
 class Ambiance {
     constructor(options) {
-      STORAGE.AmbianceClass = this
+      Storage.AmbianceClass = this
       this.light1
       this.light2
       this.light3
@@ -29,7 +29,7 @@ class Ambiance {
       this.light1.shadow.mapSize.height = SHADOW_MAP_HEIGHT
       this.light1.shadow.camera.far = 10000
 
-      STORAGE.scene.add(this.light1)
+      Storage.scene.add(this.light1)
 
       this.light2 = new THREE.PointLight(0xffffff, 0.04, 0, 2)
 
@@ -39,7 +39,7 @@ class Ambiance {
       this.light2.shadow.mapSize.height = SHADOW_MAP_HEIGHT
       this.light2.shadow.camera.far = 10000
 
-      STORAGE.scene.add(this.light2)
+      Storage.scene.add(this.light2)
 
       this.light3 = new THREE.PointLight(0xffffff, 0.06, 0, 2)
 
@@ -49,20 +49,20 @@ class Ambiance {
       this.light3.shadow.mapSize.height = SHADOW_MAP_HEIGHT
       this.light3.shadow.camera.far = 10000
 
-      STORAGE.scene.add(this.light3)
+      Storage.scene.add(this.light3)
 
       this.lightAmb = new THREE.AmbientLight(0xffffff, 0.56)
-      STORAGE.scene.add(this.lightAmb)
+      Storage.scene.add(this.lightAmb)
 
       this.spotLight1 = new THREE.SpotLight( 0xffffff, 0, 1000, 0.5, 0.9 );
       this.spotLight1.position.set( 180, 600, -250 );
       this.spotLight1.rotation.y = Math.PI / 5
-      STORAGE.scene.add( this.spotLight1 );
+      Storage.scene.add( this.spotLight1 );
 
       this.spotLight2 = new THREE.SpotLight( 0xe82857, 0, 1000, 0.5, 0.9 );
       this.spotLight2.position.set( -180, 600, -250 );
       this.spotLight2.rotation.y = - Math.PI / 5
-      STORAGE.scene.add( this.spotLight2 );
+      Storage.scene.add( this.spotLight2 );
     }
 
     createBackground() {
@@ -97,8 +97,8 @@ class Ambiance {
           const cube = new THREE.Mesh(geometry, material)
           cube.position.y = h - 15
 
-          STORAGE.background = cube
-          STORAGE.scene.add(cube)
+          Storage.background = cube
+          Storage.scene.add(cube)
         })
       })
     }
@@ -111,7 +111,7 @@ class Ambiance {
       fakeShadow.material.opacity = 0.05
       fakeShadow.position.y = h - 12
       fakeShadow.receiveShadow = true
-      STORAGE.scene.add( fakeShadow )
+      Storage.scene.add( fakeShadow )
     }
 
 }

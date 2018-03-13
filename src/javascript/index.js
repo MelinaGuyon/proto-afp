@@ -11,7 +11,7 @@ import Ambiance from './classes/Ambiance.js'
 import Box from './classes/Box.js'
 
 
-window.STORAGE = {}
+window.Storage = {}
 initCanvas()
 
 function initCanvas() {
@@ -23,6 +23,6 @@ function initCanvas() {
 }
 
 function render() {
-	STORAGE.RendererClass.render()
+	Storage.RendererClass.render()
 	requestAnimationFrame(render)
 }

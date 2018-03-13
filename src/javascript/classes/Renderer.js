@@ -4,7 +4,7 @@ import TweenLite from 'gsap'
 class Renderer {
 
     constructor(options) {
-      STORAGE.RendererClass = this
+      Storage.RendererClass = this
       this.container = document.getElementById( 'container' )
       this.renderer = new THREE.WebGLRenderer(window.innerWidth, window.innerHeight)
       this.renderer.setPixelRatio(window.devicePixelRatio)
@@ -13,7 +13,7 @@ class Renderer {
       this.renderer.shadowMap.enabled = true
       this.renderer.shadowMap.type = THREE.PCFSoftShadowMap
       this.container.appendChild( this.renderer.domElement )
-      STORAGE.renderer = this.renderer
+      Storage.renderer = this.renderer
 
       this.initScene()
       this.bind()
@@ -25,15 +25,17 @@ class Renderer {
 
     initScene() {
       this.scene = new THREE.Scene()
-      STORAGE.scene = this.scene
+      Storage.scene = this.scene
     }
-
+    
     onWindowResize() {
-      STORAGE.renderer.setSize(window.innerWidth, window.innerHeight)
+      Storage.camera.aspect = window.innerWidth / window.innerHeight
+      Storage.camera.updateProjectionMatrix()
+      Storage.renderer.setSize(window.innerWidth, window.innerHeight)
 		}
 		
     render() {
-      this.renderer.render(this.scene, STORAGE.camera)
+      this.renderer.render(this.scene, Storage.camera)
     }
 }
 

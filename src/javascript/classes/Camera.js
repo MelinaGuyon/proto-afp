@@ -1,15 +1,15 @@
 import anime from 'animejs'
-import raf from 'raf'
 import { debounce } from 'lodash'
 
 class Renderer {
-
     constructor(options) {
-			STORAGE.CameraClass = this
+			Storage.CameraClass = this
 
 			this.cameraObj = {
 				state: 0
 			}
+			this.angleX = 0
+			this.angleY = 0
 
 			this.initCamera()
 			this.updateCamera()
@@ -17,43 +17,55 @@ class Renderer {
     }
 
     bind() {
-			window.addEventListener( 'resize', this.onWindowResize, false )
-			window.addEventListener( 'mousewheel', debounce(this.handleScroll, 10) , false )
-    }
-
-    initScene() {
-      this.scene = new THREE.Scene()
-      STORAGE.scene = this.scene
+			window.addEventListener('mousewheel', this.handleScroll, false)
+			window.addEventListener('mousemove', this.handleMouseMove, false)
+		}
+		
+		unbind() {
+			window.removeEventListener('mousewheel', this.handleScroll, false)
+			window.removeEventListener('mousemove', this.handleMouseMove, false)
     }
 
     initCamera() {
       this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 50000);
-			STORAGE.camera = this.camera
-			STORAGE.camera.position.x = 0
-			STORAGE.camera.position.y = 400
-      STORAGE.camera.position.z = 1500	
-			
+			Storage.camera = this.camera
+			Storage.camera.position.set(0, 400, 1500)
+						
 			this.spline = new THREE.SplineCurve3([
 				new THREE.Vector3(500,  400, 1500),
 				new THREE.Vector3( 700, 600, 0),
 				new THREE.Vector3( -200, 400, 0),
-				new THREE.Vector3( -500,  700, 700)
+				new THREE.Vector3( -800,  700, 1400),
+				new THREE.Vector3( -650,  680, 1300)
 			])
-
-			this._needsUpdate = true
-			raf.add(this.tick)
     }
-
-    onWindowResize() {
-      STORAGE.camera.aspect = window.innerWidth / window.innerHeight
-      STORAGE.camera.updateProjectionMatrix()
-      STORAGE.renderer.setSize(window.innerWidth, window.innerHeight)
-		}
 
 		handleScroll = (event) => {
 			const evolution = event.deltaY < 0 ? 0.025 : -0.025
-			const end = Math.max(Math.min(this.cameraObj.state + evolution, 0.99), 0)
+			const end = Math.max(Math.min(this.cameraObj.state + evolution, 0.89), 0.01)
 			this.animeSpline(this.cameraObj.state, end)
+		}
+
+		handleMouseMove = (event) => {
+			const vect = new THREE.Vector2()
+
+			const X = (window.innerWidth - event.clientX) / window.innerWidth
+			const angleX = X - .5
+			const Y = (window.innerHeight - event.clientY) / window.innerHeight
+			const angleY = Y - .5 
+
+			vect.x = angleX * Math.PI * .5
+			vect.y = angleY * Math.PI * .5
+
+			this.headRotation = vect
+			this.updateRotation()
+		}
+
+		updateRotation () {
+			this.camera.rotation.copy(this.lookAtRotation)
+			if (!this.headRotation) return
+			this.camera.rotation.x += this.headRotation.y
+			this.camera.rotation.y += this.headRotation.x
 		}
 
 		animeSpline(start, end) {
@@ -62,27 +74,21 @@ class Renderer {
 				state: [start, end],
 				duration: 800,
 				easing: 'easeOutCirc',
-				update: () => (this._needsUpdate = true)
+				update: this.updateCamera
 			})
 		}
 
-		updateCamera() {
+		updateCamera = () => {
 			const state = this.cameraObj.state
 			const point = this.spline.getPoint(state)
 
-			const x = point.x
-			const y = point.y
-			const z = point.z
+			this.camera.position.set(point.x, point.y, point.z)
+			this.camera.lookAt(this.spline.getPoint(this.cameraObj.state + 0.01))
 
-			this.camera.position.set(x, y, z)
-			this.camera.lookAt(this.spline.getPoint(this.cameraObj.state + 0.01));
-			// this.camera.lookAt(this.spline.getTangent(this.cameraObj.state + 0.01));
-		}
-		
-		tick = () => {
-			if (!this._needsUpdate) return
-			this.updateCamera()
-			this._needsUpdate = false
+			this.lookAtRotation = this.camera.rotation.clone()
+			this.lookAtRotation.reorder('YXZ')
+
+			this.updateRotation()
 		}
 }
 

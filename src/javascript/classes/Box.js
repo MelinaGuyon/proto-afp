@@ -4,7 +4,7 @@ const MTLLoader = require('three-mtl-loader')
 class Box {
 
     constructor(options) {
-      STORAGE.BoxClass = this
+      Storage.BoxClass = this
 
       this.mtlLoader = new MTLLoader()
       this.objLoader = new THREE.OBJLoader()
@@ -35,8 +35,8 @@ class Box {
             child.material.shininess = 100
           }
         })
-        STORAGE.box = object
-        STORAGE.scene.add( object )
+        Storage.box = object
+        Storage.scene.add( object )
       } )
 
       that.objLoader.load( 'assets/scenes/box/closed-box_couvercle.obj', function ( object ) {
@@ -59,9 +59,9 @@ class Box {
           }
         })
 
-        STORAGE.boxCouvercle = object
+        Storage.boxCouvercle = object
         that.object = object
-        STORAGE.scene.add( object )
+        Storage.scene.add( object )
       })
 
       that.objLoader.load( 'assets/scenes/box/manivelle.obj', function ( object ) {
@@ -85,9 +85,8 @@ class Box {
             child.material.shininess = 50
           }
         })
-        STORAGE.boxManivelle = object
-				STORAGE.scene.add( object )
-				console.log(STORAGE)
+        Storage.boxManivelle = object
+				Storage.scene.add( object )
       })
     }
 
