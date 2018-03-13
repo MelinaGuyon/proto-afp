@@ -12,8 +12,8 @@ class Camera {
 
 			this.initObjects()
 			this.initCamera()
-			this.updateCameraPos()
-      this.bind()
+			// this.updateCameraPos()
+      // this.bind()
     }
 
     bind() {

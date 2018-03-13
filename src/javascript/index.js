@@ -7,6 +7,7 @@ const MTLLoader = require('three-mtl-loader')
 
 import Renderer from './classes/Renderer.js'
 import Camera from './classes/Camera.js'
+import CursorLight from './classes/CursorLight.js'
 import Ambiance from './classes/Ambiance.js'
 import Box from './classes/Box.js'
 
@@ -19,6 +20,7 @@ function initCanvas() {
 	new Renderer()
 	new Box()
 	new Ambiance()
+	new CursorLight()
  	render()
 }
 

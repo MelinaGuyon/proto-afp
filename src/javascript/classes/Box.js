@@ -21,6 +21,7 @@ class Box {
 
       that.objLoader.load( 'assets/scenes/box/closed-box_base.obj', function ( object ) {
         object.rotation.y = Math.PI
+        object.position.z = -300
         object.name = 'base_boite'
 
         let material = new THREE.MeshPhongMaterial({
@@ -40,7 +41,7 @@ class Box {
       } )
 
       that.objLoader.load( 'assets/scenes/box/closed-box_couvercle.obj', function ( object ) {
-        object.position.z = -285
+        object.position.z = -285 - 300
         object.position.y = 170
         object.rotation.y = Math.PI
         object.name = 'couvercle_boite'
@@ -70,7 +71,7 @@ class Box {
 
         object.position.x = 270
         object.position.y = 100
-        object.position.z = -100
+        object.position.z = -100 - 300
 
         let material = new THREE.MeshPhongMaterial({
           color : 0x303848,
