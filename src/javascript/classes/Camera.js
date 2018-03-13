@@ -1,18 +1,15 @@
 import anime from 'animejs'
+import Inrtia from 'inrtia'
+import raf from 'raf'
 import { debounce } from 'lodash'
 
-class Renderer {
+class Camera {
     constructor(options) {
 			Storage.CameraClass = this
 
-			this.cameraObj = {
-				state: 0
-			}
-			this.angleX = 0
-			this.angleY = 0
-
+			this.initObjects()
 			this.initCamera()
-			this.updateCamera()
+			this.updateCameraPos()
       this.bind()
     }
 
@@ -24,7 +21,25 @@ class Renderer {
 		unbind() {
 			window.removeEventListener('mousewheel', this.handleScroll, false)
 			window.removeEventListener('mousemove', this.handleMouseMove, false)
-    }
+			raf.remove(this.updateInertia)
+		}
+		
+		initObjects() {
+			this.cameraObj = {
+				state: 0
+			}
+			const inrtiaOptions = {
+				value: 0,
+				friction: 10,
+				precision: 5,
+				perfectStop: true,
+				interpolation: 'linear'
+			}
+			this.inrtia = {
+				x: new Inrtia(inrtiaOptions),
+				y: new Inrtia(inrtiaOptions)
+			}
+		}
 
     initCamera() {
       this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 50000);
@@ -38,6 +53,8 @@ class Renderer {
 				new THREE.Vector3( -800,  700, 1400),
 				new THREE.Vector3( -650,  680, 1300)
 			])
+
+			raf.add(this.updateInertia)
     }
 
 		handleScroll = (event) => {
@@ -57,15 +74,14 @@ class Renderer {
 			vect.x = angleX * Math.PI * .5
 			vect.y = angleY * Math.PI * .5
 
-			this.headRotation = vect
-			this.updateRotation()
+			this.inrtia.x.to(vect.x)
+			this.inrtia.y.to(vect.y)
 		}
 
 		updateRotation () {
 			this.camera.rotation.copy(this.lookAtRotation)
-			if (!this.headRotation) return
-			this.camera.rotation.x += this.headRotation.y
-			this.camera.rotation.y += this.headRotation.x
+			this.camera.rotation.x += this.inrtia.y.value
+			this.camera.rotation.y += this.inrtia.x.value
 		}
 
 		animeSpline(start, end) {
@@ -74,11 +90,11 @@ class Renderer {
 				state: [start, end],
 				duration: 800,
 				easing: 'easeOutCirc',
-				update: this.updateCamera
+				update: this.updateCameraPos
 			})
 		}
 
-		updateCamera = () => {
+		updateCameraPos = () => {
 			const state = this.cameraObj.state
 			const point = this.spline.getPoint(state)
 
@@ -90,6 +106,14 @@ class Renderer {
 
 			this.updateRotation()
 		}
+
+		updateInertia = () => {
+			if (!this.inrtia.x.stopped && !this.inrtia.y.stopped) {
+				this.inrtia.y.update()
+				this.inrtia.x.update()
+				this.updateRotation()
+			}
+		}
 }
 
-export default Renderer
+export default Camera
