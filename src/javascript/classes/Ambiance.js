@@ -71,6 +71,7 @@ class Ambiance {
         that.fragment_loader.load('glsl/BackgroundFragment.frag', function (fragmentGround) {
           const h = 8000;
           const geometry = new THREE.SphereGeometry(h, 32, 32)
+          // geometry.scale( - 1, 1, 1 )
 
           that.backgroundUniforms = THREE.UniformsUtils.merge([
             THREE.ShaderLib.lambert.uniforms,
@@ -89,11 +90,26 @@ class Ambiance {
             uniforms: that.backgroundUniforms,
             vertexShader: vertexGround,
             fragmentShader: fragmentGround,
-            side: THREE.BackSide,
             lights: true,
             fog: true
           } )
 
+          // invert normals
+          for ( var i = 0; i < geometry.faces.length; i ++ ) {
+            var face = geometry.faces[ i ];
+            var temp = face.a;
+            face.a = face.c;
+            face.c = temp;
+          }
+          geometry.computeFaceNormals();
+          geometry.computeVertexNormals();
+          var faceVertexUvs = geometry.faceVertexUvs[ 0 ];
+          for ( var i = 0; i < faceVertexUvs.length; i ++ ) {
+            var temp = faceVertexUvs[ i ][ 0 ];
+            faceVertexUvs[ i ][ 0 ] = faceVertexUvs[ i ][ 2 ];
+            faceVertexUvs[ i ][ 2 ] = temp;
+          }
+      
           const cube = new THREE.Mesh(geometry, material)
           cube.position.y = h - 15
 
