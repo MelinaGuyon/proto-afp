@@ -3,6 +3,11 @@ import Inrtia from 'inrtia'
 import raf from 'raf'
 import { debounce, sort } from 'lodash'
 
+import ShaderLoader from '../helpers/ShaderLoader'
+
+const vertexSphere_url = 'glsl/PetitBiscuitVertexSphere.vert'
+const fragmentSphere_url = 'glsl/PetitBiscuitFragmentSphere.frag'
+
 class CursorLight {
     constructor(options) {
 			Storage.CursorLightClass = this
@@ -10,12 +15,12 @@ class CursorLight {
 			this.raycaster = new THREE.Raycaster()
 			this.mouse = new THREE.Vector2()
 
+			this.loadSphereShaders()
 			this.initLight()
-			this.initShpere()
 			this.initInertia()
       this.bind()
-    }
-
+		}
+		
     bind() {
 			window.addEventListener('mousemove', this.handleMouseMove, false)
 		}
@@ -23,6 +28,13 @@ class CursorLight {
 		unbind() {
 			window.removeEventListener('mousemove', this.handleMouseMove, false)
 			raf.remove(this.updateInertia)
+		}
+
+		loadSphereShaders() {
+			ShaderLoader.loadFiles([vertexSphere_url, fragmentSphere_url])
+				.then((response) => {
+					this.initSphere(response)
+				})
 		}
 
 		initInertia() {
@@ -47,14 +59,39 @@ class CursorLight {
 			this.light.position.set(200, 200, 800)
 			Storage.scene.add(this.light)
 		}
-		
-		initShpere() {
-			const geometry = new THREE.SphereGeometry(5, 32, 32)
-			const material = new THREE.MeshBasicMaterial({color: 0xffff00})
+
+		initSphere = (texts) => {
+			const vertexSphere = texts[0], fragmentSphere = texts[1]
+
+			this.lightSphereUnif = THREE.UniformsUtils.merge([
+        THREE.ShaderLib.lambert.uniforms,
+        { specular: { value: new THREE.Color(0x1b1b1b) } },
+        { emissive: { value: new THREE.Color(0x777777) } },
+        { shininess : { value: 30 } },
+        { hue : { value: 1 } },
+        { u_time: { type: "f", value: 1.0 } },
+        { u_resolution: { type: "v2", value: new THREE.Vector2(1024, 768) } },
+        { u_mouse: { type: "v2", value: new THREE.Vector2() } },
+        { u_color1: { value: new THREE.Color(0xff0) } },
+        { u_color2: { value: new THREE.Color(0xedf1f7) } }
+			])
+
+			const geometry = new THREE.SphereBufferGeometry( 10, 32, 32 )
+			const material = new THREE.ShaderMaterial( {
+				uniforms: Object.assign({u_frequency:{ type: "f", value: 0.07 }}, this.lightSphereUnif),
+				vertexShader: vertexSphere,
+				fragmentShader: fragmentSphere,
+				side: THREE.DoubleSide,
+				lights: true,
+				fog: true
+			} )
+
 			this.sphere = new THREE.Mesh(geometry, material)
 			Storage.scene.add(this.sphere)
-		}
 
+			raf.add(this.animate)
+		}
+		
 		handleMouseMove = (event) => {
 			this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1
 			this.mouse.y = - (event.clientY / window.innerHeight) * 2 + 1
@@ -93,6 +130,7 @@ class CursorLight {
 			this.light.position.y = this.inrtia.y.value
 			this.light.position.z = this.inrtia.z.value
 
+			if (!this.sphere) return
 			this.sphere.position.x = this.inrtia.x.value
 			this.sphere.position.y = this.inrtia.y.value
 			this.sphere.position.z = this.inrtia.z.value
@@ -105,6 +143,10 @@ class CursorLight {
 				this.inrtia.z.update()
 				this.updatePosition()
 			}
+		}
+
+		animate = () => {
+			this.lightSphereUnif.u_time.value += .2
 		}
 }
 

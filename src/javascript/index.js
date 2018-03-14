@@ -5,6 +5,8 @@ const OBJLoader = require('three-obj-loader')
 OBJLoader(THREE)
 const MTLLoader = require('three-mtl-loader')
 
+import raf from 'raf'
+
 import Renderer from './classes/Renderer.js'
 import Camera from './classes/Camera.js'
 import CursorLight from './classes/CursorLight.js'
@@ -21,10 +23,10 @@ function initCanvas() {
 	new Box()
 	new Ambiance()
 	new CursorLight()
- 	render()
+	
+	raf.add(render)
 }
 
 function render() {
 	Storage.RendererClass.render()
-	requestAnimationFrame(render)
 }
