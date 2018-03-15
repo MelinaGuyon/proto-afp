@@ -23,10 +23,19 @@ uniform float u_time;
 uniform float u_amplitude;
 uniform float u_frequency;
 
+uniform vec3 u_viewVector;
+uniform float u_c;
+uniform float u_p;
+
+varying float v_intensity;
+
 float scalarMove;
 vec3 newPos;
 varying vec3 vPosition;
 varying vec2 vUv;
+
+varying vec3 vNormal;
+
 
 
 
@@ -97,19 +106,14 @@ float cnoise(vec3 P){
   return 2.2 * n_xyz;
 }
 
-
-
-void applyBubbleEffect() {
-
-  scalarMove = 15. * cnoise(0.022 * position + u_time / 3. * u_frequency);
+void applyGlow() {
+  scalarMove = 2. * cnoise(0.18 * position + u_time / 3. * u_frequency);
 
   newPos = position + normal * scalarMove;
-
   vPosition = newPos;
-  vUv = uv;
 
-  gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(newPos, 1.);
-
+  vNormal = normalize( normalMatrix * normal );	
+  gl_Position = projectionMatrix * modelViewMatrix * vec4( vPosition, 1. );
 }
 
 void main() {
@@ -134,7 +138,7 @@ void main() {
 	#include <shadowmap_vertex>
 	#include <fog_vertex>
 
-  applyBubbleEffect();
+  applyGlow();
 
 }
 

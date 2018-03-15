@@ -1,6 +1,4 @@
 const THREE = require('three')
-const OrbitControls = require('three-orbit-controls-loader')
-OrbitControls(THREE)
 const OBJLoader = require('three-obj-loader')
 OBJLoader(THREE)
 const MTLLoader = require('three-mtl-loader')
@@ -23,7 +21,7 @@ function initCanvas() {
 	new Box()
 	new Ambiance()
 	new CursorLight()
-	
+
 	raf.add(render)
 }
 

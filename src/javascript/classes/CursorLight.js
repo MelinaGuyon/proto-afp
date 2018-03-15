@@ -67,26 +67,25 @@ class CursorLight {
         THREE.ShaderLib.lambert.uniforms,
         { specular: { value: new THREE.Color(0x1b1b1b) } },
         { emissive: { value: new THREE.Color(0x777777) } },
-        { shininess : { value: 30 } },
-        { hue : { value: 1 } },
         { u_time: { type: "f", value: 1.0 } },
         { u_resolution: { type: "v2", value: new THREE.Vector2(1024, 768) } },
-        { u_mouse: { type: "v2", value: new THREE.Vector2() } },
-        { u_color1: { value: new THREE.Color(0xff0) } },
-        { u_color2: { value: new THREE.Color(0xedf1f7) } }
+				{ u_glowColor: { value: new THREE.Color(0xff0) } }
 			])
 
-			const geometry = new THREE.SphereBufferGeometry( 10, 32, 32 )
+			const geometry = new THREE.SphereBufferGeometry( 20, 32, 32 )
 			const material = new THREE.ShaderMaterial( {
-				uniforms: Object.assign({u_frequency:{ type: "f", value: 0.07 }}, this.lightSphereUnif),
+				uniforms: Object.assign({u_frequency:{ type: "f", value: 0.31 }}, this.lightSphereUnif),
 				vertexShader: vertexSphere,
 				fragmentShader: fragmentSphere,
-				side: THREE.DoubleSide,
+				side: THREE.BackSide,
+				transparent: true,
+				blending: THREE.AdditiveBlending,
 				lights: true,
 				fog: true
 			} )
 
 			this.sphere = new THREE.Mesh(geometry, material)
+			this.sphere.visible = true
 			Storage.scene.add(this.sphere)
 
 			raf.add(this.animate)

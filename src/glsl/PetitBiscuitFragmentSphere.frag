@@ -26,11 +26,20 @@ varying vec3 vLightFront;
 #include <logdepthbuf_pars_fragment>
 #include <clipping_planes_pars_fragment>
 
-uniform vec3 u_color1;
-uniform vec3 u_color2;
+uniform vec3 u_color;
+uniform vec3 u_glowColor;
+varying float v_intensity;
 
 varying vec2 vUv;
 varying vec3 vPosition;
+
+varying vec3 vNormal;
+
+void applyGlow(vec4 diffuseColor) {
+	float intensity = pow( 0.06 - dot( vNormal, vec3( 0.0, 0.0, 1.0 ) ), 4.0 ); 
+	vec3 glow = u_glowColor;
+  gl_FragColor = vec4( glow, diffuseColor.a ) * intensity;
+}
 
 void main() {
 	#include <clipping_planes_fragment>
@@ -56,7 +65,9 @@ void main() {
 	#include <aomap_fragment>
 	vec3 outgoingLight = reflectedLight.directDiffuse + reflectedLight.indirectDiffuse + totalEmissiveRadiance;
 	#include <envmap_fragment>
-	gl_FragColor = vec4( mix(u_color1, u_color2, ( (vPosition.y * 2. / 80.) - (vPosition.z / 40. ) - (vPosition.x * 3. / 70.) )   ) * outgoingLight, diffuseColor.a );
+
+	applyGlow(diffuseColor);
+
 	#include <tonemapping_fragment>
 	#include <encodings_fragment>
 	#include <fog_fragment>
