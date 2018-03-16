@@ -26,6 +26,7 @@ class Renderer {
     initScene() {
       this.scene = new THREE.Scene()
       Storage.scene = this.scene
+      Storage.scene.add(Storage.camera)
     }
     
     onWindowResize() {

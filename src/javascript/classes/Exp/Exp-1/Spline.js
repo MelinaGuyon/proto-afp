@@ -12,7 +12,6 @@ class Spline {
 			this.spline = options.spline
 
 			this.initObjects()
-			this.updateCameraPos()
       this.bind()
     }
 
@@ -29,13 +28,26 @@ class Spline {
 				state: 0
 			}
 		}
-		
+
+		placeCameraAtFirstPoint = () => {
+			const point = this.spline.points[0]
+
+			anime({
+				targets: Storage.camera.position,
+				x: point.x,
+				y: point.y,
+				z: point.z,
+				duration: 800,
+				easing: 'easeInOutQuad'
+			})
+		}
+ 		
 		handleScroll = (event) => {
 			if(lethargy.check(event) !== false) this.onRealScroll(event)
 		}
 
 		onRealScroll = throttle((event) => {
-			const evolution = event.deltaY < 0 ? 0.08 : -0.08
+			const evolution = event.deltaY < 0 ? 0.12 : -0.12
 			const end = Math.max(Math.min(this.cameraObj.state + evolution, 0.89), 0.01)
 			this.animeSpline(this.cameraObj.state, end)
 		}, 200, {leading: true, trailing: false})
@@ -45,7 +57,7 @@ class Spline {
 			this.anime = anime({
 				targets: this.cameraObj,
 				state: [start, end],
-				duration: 800,
+				duration: 1800,
 				easing: 'easeOutSine',
 				update: this.updateCameraPos
 			})

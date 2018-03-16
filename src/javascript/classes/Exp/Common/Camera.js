@@ -11,6 +11,7 @@ class Camera {
 			Storage.CameraClass = this
 
 			this.lookAround = options.lookAround
+			this.movmentRange = options.movementRange
 
 			this.initInertia()
 			this.initCamera()
@@ -43,9 +44,13 @@ class Camera {
     initCamera() {
       this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 50000);
 			Storage.camera = this.camera
-			Storage.camera.position.set(0, 400, 1500)
+			Storage.camera.position.set(0, 400, 3200)
 						
 			this.lookAround && raf.add(this.updateInertia)
+		}
+
+		updateMovementRange = (number, wait = 0) => {
+			setTimeout(() => {this.movmentRange = number}, wait )
 		}
 
 		handleMouseMove = (event) => {
@@ -56,8 +61,8 @@ class Camera {
 			const Y = (window.innerHeight - event.clientY) / window.innerHeight
 			const angleY = Y - .5 
 
-			vect.x = angleX * Math.PI * .5
-			vect.y = angleY * Math.PI * .5
+			vect.x = angleX * Math.PI * this.movmentRange
+			vect.y = angleY * Math.PI * this.movmentRange
 
 			this.inrtia.x.to(vect.x)
 			this.inrtia.y.to(vect.y)
@@ -79,7 +84,8 @@ class Camera {
 			if (!this.inrtia.x.stopped || !this.inrtia.y.stopped) {
 				this.inrtia.y.update()
 				this.inrtia.x.update()
-				Storage.SplineClass ? this.updateWithSpline() : this.update()
+				Storage.SplineClass && Storage.SplineClass.lookAtRotation ? 
+					this.updateWithSpline() : this.update()
 			}
 		}
 }

@@ -1,5 +1,6 @@
 import Renderer from '../Common/Renderer.js'
 import Camera from '../Common/Camera.js'
+import HiddingPanel from '../Common/HiddingPanel.js'
 
 import CursorLight from './CursorLight.js'
 import Ambiance from './Ambiance.js'
@@ -16,10 +17,11 @@ class Experience1 {
     }
 
     initPreview() {
-			new Camera({ lookAround: true })
+			new Camera({ lookAround: true, movementRange: .05 })
 			new Renderer({ container: this.container })
 			new Box()
 			new Ambiance()
+			new HiddingPanel()
 		}
 
 		init() {
@@ -32,6 +34,9 @@ class Experience1 {
 					new THREE.Vector3( -650,  680, 1300)
 				])
 			})
+			Storage.SplineClass.placeCameraAtFirstPoint()
+			Storage.HiddingPanelClass.hidePanel()
+			Storage.CameraClass.updateMovementRange(.5, 1000)
 		}
 }
 
