@@ -57,7 +57,7 @@ class CursorLight {
     initLight() {
       this.light = new THREE.PointLight(0xff0, 1, 10000, 2)
 			this.light.position.set(200, 200, 800)
-			Storage.RendererClasses.exp1.scene.add(this.light)
+			Storage.RendererClasses.exp2.scene.add(this.light)
 		}
 
 		initSphere = (texts) => {
@@ -86,7 +86,7 @@ class CursorLight {
 
 			this.sphere = new THREE.Mesh(geometry, material)
 			this.sphere.visible = true
-			Storage.RendererClasses.exp1.scene.add(this.sphere)
+			Storage.RendererClasses.exp2.scene.add(this.sphere)
 
 			raf.add(this.animate)
 		}
@@ -103,9 +103,9 @@ class CursorLight {
 			const pos = Storage.CameraClasses.exp1.camera.position.clone().add(dir.multiplyScalar(distance))
 
 			// Check intersections and ajust position with normals 
-			this.raycaster.setFromCamera( this.mouse, Storage.CameraClasses.exp1.camera)
+			this.raycaster.setFromCamera( this.mouse, Storage.CameraClasses.exp2.camera)
 			let intersects
-			if (Storage.box) intersects = this.raycaster.intersectObjects([Storage.box.children[0], Storage.backgroundExp1, Storage.boxCouvercle.children[0]], true)
+			if (Storage.box) intersects = this.raycaster.intersectObjects([Storage.box.children[0], Storage.backgroundExp2, Storage.boxCouvercle.children[0]], true)
 
 			if (intersects && intersects.length > 0) {
 				const { point, face } = intersects[0]

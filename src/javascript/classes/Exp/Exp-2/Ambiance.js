@@ -18,7 +18,7 @@ class Ambiance {
     }
 
     createLight() {
-      this.light1 = new THREE.PointLight(0xffffff, 0.09, 0, 2)
+      this.light1 = new THREE.PointLight(0x8fffe7, 0.40, 0, 2)
       this.light1.position.set(500, 1800, 800)
       this.light1.rotation.set(0, Math.PI, Math.PI)
 
@@ -29,9 +29,9 @@ class Ambiance {
       this.light1.shadow.mapSize.height = SHADOW_MAP_HEIGHT
       this.light1.shadow.camera.far = 10000
 
-      Storage.RendererClasses.exp1.scene.add(this.light1)
+      Storage.RendererClasses.exp2.scene.add(this.light1)
 
-      this.light2 = new THREE.PointLight(0xffffff, 0.04, 0, 2)
+      this.light2 = new THREE.PointLight(0xffffff, 0.32, 0, 2)
 
       this.light2.position.set(0, 1000, 0)
       this.light2.rotation.set(0, Math.PI, Math.PI)
@@ -39,9 +39,9 @@ class Ambiance {
       this.light2.shadow.mapSize.height = SHADOW_MAP_HEIGHT
       this.light2.shadow.camera.far = 10000
 
-      Storage.RendererClasses.exp1.scene.add(this.light2)
+      Storage.RendererClasses.exp2.scene.add(this.light2)
 
-      this.light3 = new THREE.PointLight(0xffffff, 0.06, 0, 2)
+      this.light3 = new THREE.PointLight(0xccfaff, 0.25, 0, 2)
 
       this.light3.position.set(-1300, 1000, 0)
       this.light3.rotation.set(0, Math.PI, Math.PI)
@@ -49,20 +49,20 @@ class Ambiance {
       this.light3.shadow.mapSize.height = SHADOW_MAP_HEIGHT
       this.light3.shadow.camera.far = 10000
 
-      Storage.RendererClasses.exp1.scene.add(this.light3)
+      Storage.RendererClasses.exp2.scene.add(this.light3)
 
-      this.lightAmb = new THREE.AmbientLight(0xffffff, 0.56)
-      Storage.RendererClasses.exp1.scene.add(this.lightAmb)
+      this.lightAmb = new THREE.AmbientLight(0xffffff, 0.20)
+      Storage.RendererClasses.exp2.scene.add(this.lightAmb)
 
       this.spotLight1 = new THREE.SpotLight( 0xffffff, 0, 1000, 0.5, 0.9 );
       this.spotLight1.position.set( 180, 600, -250 );
       this.spotLight1.rotation.y = Math.PI / 5
-      Storage.RendererClasses.exp1.scene.add( this.spotLight1 );
+      Storage.RendererClasses.exp2.scene.add( this.spotLight1 );
 
       this.spotLight2 = new THREE.SpotLight( 0xe82857, 0, 1000, 0.5, 0.9 );
       this.spotLight2.position.set( -180, 600, -250 );
       this.spotLight2.rotation.y = - Math.PI / 5
-      Storage.RendererClasses.exp1.scene.add( this.spotLight2 );
+      Storage.RendererClasses.exp2.scene.add( this.spotLight2 );
     }
 
     createBackground() {
@@ -81,8 +81,8 @@ class Ambiance {
             { u_time: { type: "f", value: 1.0 } },
             { u_resolution: { type: "v2", value: new THREE.Vector2(1024, 768) } },
             { u_mouse: { type: "v2", value: new THREE.Vector2() } },
-            { u_color1: { value: new THREE.Color(0x303848) } },
-            { u_color2: { value: new THREE.Color(0x2a3040) } }
+            { u_color1: { value: new THREE.Color(0x9b202d) } },
+            { u_color2: { value: new THREE.Color(0x19050a) } }
           ]);
 
           let material = new THREE.ShaderMaterial( {
@@ -112,8 +112,8 @@ class Ambiance {
           const cube = new THREE.Mesh(geometry, material)
           cube.position.y = h - 15
 
-          Storage.backgroundExp1 = cube
-          Storage.RendererClasses.exp1.scene.add(cube)
+          Storage.backgroundExp2 = cube
+          Storage.RendererClasses.exp2.scene.add(cube)
         })
       })
     }
@@ -126,7 +126,7 @@ class Ambiance {
       fakeShadow.material.opacity = 0.05
       fakeShadow.position.y = h - 12
       fakeShadow.receiveShadow = true
-      Storage.RendererClasses.exp1.scene.add( fakeShadow )
+      Storage.RendererClasses.exp2.scene.add( fakeShadow )
     }
 
 }

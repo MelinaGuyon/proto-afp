@@ -8,8 +8,9 @@ const lethargy = new Lethargy()
 
 class Camera {
     constructor(options) {
-			Storage.CameraClass = this
+			Storage.CameraClasses[options.name] = this
 
+			this.name = name
 			this.lookAround = options.lookAround
 			this.movmentRange = options.movementRange
 
@@ -43,8 +44,7 @@ class Camera {
 
     initCamera() {
       this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 50000);
-			Storage.camera = this.camera
-			Storage.camera.position.set(0, 400, 3200)
+			this.camera.position.set(0, 400, 3200)
 						
 			this.lookAround && raf.add(this.updateInertia)
 		}

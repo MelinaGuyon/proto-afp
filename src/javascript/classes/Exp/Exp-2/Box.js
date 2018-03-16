@@ -25,7 +25,7 @@ class Box {
         object.name = 'base_boite'
 
         let material = new THREE.MeshPhongMaterial({
-          color : 0x303848,
+          color : 0x9b202d,
           side: THREE.DoubleSide
         })
         object.traverse( function ( child ) {
@@ -37,7 +37,7 @@ class Box {
           }
         })
         Storage.box = object
-        Storage.RendererClasses.exp1.scene.add( object )
+        Storage.RendererClasses.exp2.scene.add( object )
       } )
 
       that.objLoader.load( 'assets/scenes/box/closed-box_couvercle.obj', function ( object ) {
@@ -47,7 +47,7 @@ class Box {
         object.name = 'couvercle_boite'
 
         let material = new THREE.MeshPhongMaterial({
-          color : 0x303848,
+          color : 0x9b202d,
           side: THREE.DoubleSide
         })
 
@@ -62,7 +62,7 @@ class Box {
 
         Storage.boxCouvercle = object
         that.object = object
-        Storage.RendererClasses.exp1.scene.add( object )
+        Storage.RendererClasses.exp2.scene.add( object )
       })
 
       that.objLoader.load( 'assets/scenes/box/manivelle.obj', function ( object ) {
@@ -74,7 +74,7 @@ class Box {
         object.position.z = -100 - 300
 
         let material = new THREE.MeshPhongMaterial({
-          color : 0x303848,
+          color : 0x9b202d,
           side: THREE.DoubleSide
         })
 
@@ -87,7 +87,7 @@ class Box {
           }
         })
         Storage.boxManivelle = object
-				Storage.RendererClasses.exp1.scene.add( object )
+				Storage.RendererClasses.exp2.scene.add( object )
       })
     }
 

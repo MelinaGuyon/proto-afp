@@ -33,7 +33,7 @@ class Spline {
 			const point = this.spline.points[0]
 
 			anime({
-				targets: Storage.CameraClasses.exp1.camera.position,
+				targets: Storage.CameraClasses.exp2.camera.position,
 				x: point.x,
 				y: point.y,
 				z: point.z,
@@ -67,13 +67,13 @@ class Spline {
 			const state = this.cameraObj.state
 			const point = this.spline.getPoint(state)
 
-			Storage.CameraClasses.exp1.camera.position.copy(point)
-			Storage.CameraClasses.exp1.camera.lookAt(this.spline.getPoint(this.cameraObj.state + 0.01))
+			Storage.CameraClasses.exp2.camera.position.copy(point)
+			Storage.CameraClasses.exp2.camera.lookAt(this.spline.getPoint(this.cameraObj.state + 0.01))
 
-			this.lookAtRotation = Storage.CameraClasses.exp1.camera.rotation.clone()
+			this.lookAtRotation = Storage.CameraClasses.exp2.camera.rotation.clone()
 			this.lookAtRotation.reorder('YXZ')
 
-			Storage.CameraClasses.exp1.updateWithSpline()
+			Storage.CameraClasses.exp2.updateWithSpline()
 		}
 }
 

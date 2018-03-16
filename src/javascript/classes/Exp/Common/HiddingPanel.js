@@ -2,7 +2,8 @@ import anime from 'animejs'
 
 class HiddingPanel {
   constructor(options) {
-    Storage.HiddingPanelClass = this
+    Storage.HiddingPanelClasses[options.name] = this
+    this.name = options.name
 
     this.createHiddingPanel()
   }
@@ -15,23 +16,23 @@ class HiddingPanel {
     this.panel.position.z = -150
     this.panel.rotation.z = Math.PI / 4
 
-    Storage.camera.add(this.panel)
+    Storage.CameraClasses[this.name].camera.add(this.panel)
   }
 
   hidePanel = () => {
     anime({
       targets: this.panel.position,
       z: 600,
-      duration: 2200,
+      duration: 3000,
       easing: 'easeInOutQuad',
-      complete: () => Storage.camera.remove(this.panel)
+      complete: () => Storage.CameraClasses[Storage.expName].camera.remove(this.panel)
     })
     anime({
       targets: this.panel.rotation,
       z:  Math.PI / 1.5,
-      duration: 1400,
+      duration: 1900,
       easing: 'easeInOutQuad',
-      complete: () => Storage.camera.remove(this.panel)
+      complete: () => Storage.CameraClasses[Storage.expName].camera.remove(this.panel)
     })
   }
 }

@@ -7,21 +7,21 @@ import Ambiance from './Ambiance.js'
 import Spline from './Spline.js'
 import Box from './Box.js'
 
-class Experience1 {
+class Experience2 {
     constructor(options) {
-			Storage.Experience1Class = this
+			Storage.Experience2Class = this
 
-			this.container = document.querySelector('#container-exp1')
+			this.container = document.querySelector('#container-exp2')
 
 			this.initPreview()
     }
 
     initPreview() {
-			new Camera({ name: 'exp1', lookAround: true, movementRange: .05,  })
-			new Renderer({ container: this.container, name: 'exp1' })
+			new Camera({ name: 'exp2', lookAround: true, movementRange: .05 })
+			new Renderer({ container: this.container, name: 'exp2' })
 			new Box()
 			new Ambiance()
-			new HiddingPanel({ name: 'exp1' })
+			new HiddingPanel({ name: 'exp2' })
 		}
 
 		init() {
@@ -35,9 +35,9 @@ class Experience1 {
 				])
 			})
 			Storage.SplineClass.placeCameraAtFirstPoint()
-			Storage.HiddingPanelClasses.exp1.hidePanel()
-			Storage.CameraClasses.exp1.updateMovementRange(.5, 1900)
+			Storage.HiddingPanelClasses.exp2.hidePanel()
+			Storage.CameraClasses.exp2.updateMovementRange(.5, 1900)
 		}
 }
 
-export default Experience1
+export default Experience2

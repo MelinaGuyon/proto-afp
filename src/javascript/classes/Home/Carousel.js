@@ -39,6 +39,7 @@ class Carousel {
 			const update = event.deltaY < 0 ? -1 : 1
 			this.index = Math.max(Math.min(this.index + update, this.numberItems - 1), 0)
 			this.animeCarousel()
+			Storage.expName = 'exp' + (this.index + 1)
 		}, 500, {leading: true, trailing: false})
 
 		animeCarousel = () => {
@@ -54,6 +55,7 @@ class Carousel {
 
 		handleClick = (event) => {
 			if (this.index == 0) Storage.Experience1Class.init()
+			if (this.index == 1) Storage.Experience2Class.init()
 			this.unbind()
 		}
 }

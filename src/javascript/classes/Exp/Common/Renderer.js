@@ -4,8 +4,10 @@ import TweenLite from 'gsap'
 class Renderer {
 
     constructor(options) {
-      Storage.RendererClass = this
+      Storage.RendererClasses[options.name] = this
+      this.name = options.name
       this.container = options.container
+
       this.renderer = new THREE.WebGLRenderer(window.innerWidth, window.innerHeight)
       this.renderer.setPixelRatio(window.devicePixelRatio)
       this.renderer.setSize( window.innerWidth, window.innerHeight )
@@ -13,7 +15,8 @@ class Renderer {
       this.renderer.shadowMap.enabled = true
       this.renderer.shadowMap.type = THREE.PCFSoftShadowMap
       this.container.appendChild( this.renderer.domElement )
-      Storage.renderer = this.renderer
+
+      // this.renderer.setViewport( -100, 0, window.innerWidth , window.innerHeight )
 
       this.initScene()
       this.bind()
@@ -25,18 +28,18 @@ class Renderer {
 
     initScene() {
       this.scene = new THREE.Scene()
-      Storage.scene = this.scene
-      Storage.scene.add(Storage.camera)
+      this.scene.add(Storage.CameraClasses[this.name].camera)
     }
     
     onWindowResize() {
-      Storage.camera.aspect = window.innerWidth / window.innerHeight
-      Storage.camera.updateProjectionMatrix()
+      Storage.CameraClasses[Storage.expName].camera.aspect = window.innerWidth / window.innerHeight
+      Storage.CameraClasses[Storage.expName].camera.updateProjectionMatrix()
       Storage.renderer.setSize(window.innerWidth, window.innerHeight)
 		}
 		
     render() {
-      this.renderer.render(this.scene, Storage.camera)
+      this.renderer.render(this.scene, Storage.CameraClasses[Storage.expName].camera)
+      // this.renderer.render(this.scene2, Storage.CameraClasses[Storage.expName].camera)
     }
 }
 
