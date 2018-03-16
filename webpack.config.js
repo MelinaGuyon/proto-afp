@@ -42,6 +42,7 @@ let config = {
         THREE: "three"
     }),
     new ExtractTextPlugin('stylesheet/main.css'),
+    new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
     contentBase: path.join(__dirname, 'src')

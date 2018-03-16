@@ -5,22 +5,15 @@ const MTLLoader = require('three-mtl-loader')
 
 import raf from 'raf'
 
-import Renderer from './classes/Renderer.js'
-import Camera from './classes/Camera.js'
-import CursorLight from './classes/CursorLight.js'
-import Ambiance from './classes/Ambiance.js'
-import Box from './classes/Box.js'
-
+import Home from './classes/Home/index.js'
+import Experience1 from './classes/Exp/Exp-1/index.js'
 
 window.Storage = {}
 initCanvas()
 
 function initCanvas() {
-	new Camera()
-	new Renderer()
-	new Box()
-	new Ambiance()
-	new CursorLight()
+	new Home()
+	new Experience1()
 
 	raf.add(render)
 }

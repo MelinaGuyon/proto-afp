@@ -3,7 +3,7 @@ import Inrtia from 'inrtia'
 import raf from 'raf'
 import { debounce, sort } from 'lodash'
 
-import ShaderLoader from '../helpers/ShaderLoader'
+import ShaderLoader from '../../../helpers/ShaderLoader'
 
 const vertexSphere_url = 'glsl/PetitBiscuitVertexSphere.vert'
 const fragmentSphere_url = 'glsl/PetitBiscuitFragmentSphere.frag'
@@ -73,7 +73,7 @@ class CursorLight {
 			])
 
 			const geometry = new THREE.SphereBufferGeometry( 20, 32, 32 )
-			const material = new THREE.ShaderMaterial( {
+			const material = new THREE.ShaderMaterial({
 				uniforms: Object.assign({u_frequency:{ type: "f", value: 0.31 }}, this.lightSphereUnif),
 				vertexShader: vertexSphere,
 				fragmentShader: fragmentSphere,
@@ -82,7 +82,7 @@ class CursorLight {
 				blending: THREE.AdditiveBlending,
 				lights: true,
 				fog: true
-			} )
+			})
 
 			this.sphere = new THREE.Mesh(geometry, material)
 			this.sphere.visible = true

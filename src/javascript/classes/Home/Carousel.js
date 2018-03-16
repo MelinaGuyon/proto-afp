@@ -1,0 +1,61 @@
+import anime from 'animejs'
+import { Lethargy } from 'lethargy'
+import { throttle } from 'lodash'
+
+const lethargy = new Lethargy()
+
+class Carousel {
+    constructor(el, options) {
+			Storage.HomeCarouselClass = this
+
+			this.numberItems = el.children.length
+			this.index = options.index
+			this.carousel = el
+
+			this.resizeWrapper()
+			this.bind()
+    }
+
+    bind() {
+			window.addEventListener('mousewheel', this.handleScroll, false)
+			window.addEventListener('click', this.handleClick, false)
+			window.addEventListener('resize', this.resizeWrapper, false)
+		}
+		
+		unbind() {
+			window.removeEventListener('click', this.handleClick, false)
+			window.removeEventListener('mousewheel', this.handleScroll, false)
+		}
+
+		resizeWrapper = () => {
+			this.carousel.style.width = window.innerWidth * this.numberItems + 'px'
+		}
+		
+		handleScroll = (event) => {
+			if(lethargy.check(event) !== false) this.onRealScroll(event)
+		}
+
+		onRealScroll = throttle((event) => {
+			const update = event.deltaY < 0 ? -1 : 1
+			this.index = Math.max(Math.min(this.index + update, this.numberItems - 1), 0)
+			this.animeCarousel()
+		}, 500, {leading: true, trailing: false})
+
+		animeCarousel = () => {
+			anime.remove(this.carousel)
+			this.anime = anime({
+				targets: this.carousel,
+				translateX: -window.innerWidth * this.index,
+				duration: 500,
+				easing: 'easeOutQuad',
+				update: this.updateCameraPos
+			})
+		}
+
+		handleClick = (event) => {
+			if (this.index == 0) Storage.Experience1Class.init()
+			this.unbind()
+		}
+}
+
+export default Carousel

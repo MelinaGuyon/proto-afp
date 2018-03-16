@@ -5,7 +5,7 @@ class Renderer {
 
     constructor(options) {
       Storage.RendererClass = this
-      this.container = document.getElementById( 'container' )
+      this.container = options.container
       this.renderer = new THREE.WebGLRenderer(window.innerWidth, window.innerHeight)
       this.renderer.setPixelRatio(window.devicePixelRatio)
       this.renderer.setSize( window.innerWidth, window.innerHeight )
@@ -20,7 +20,7 @@ class Renderer {
     }
 
     bind() {
-      window.addEventListener( 'resize', this.onWindowResize, false )
+      window.addEventListener('resize', this.onWindowResize, false)
     }
 
     initScene() {
