@@ -36,7 +36,7 @@ class Box {
             child.material.shininess = 100
           }
         })
-        Storage.box = object
+        Storage.box1 = object
         Storage.RendererClasses.exp1.scene.add( object )
       } )
 
@@ -60,7 +60,7 @@ class Box {
           }
         })
 
-        Storage.boxCouvercle = object
+        Storage.box1Couvercle = object
         that.object = object
         Storage.RendererClasses.exp1.scene.add( object )
       })
@@ -86,7 +86,7 @@ class Box {
             child.material.shininess = 50
           }
         })
-        Storage.boxManivelle = object
+        Storage.box1Manivelle = object
 				Storage.RendererClasses.exp1.scene.add( object )
       })
     }

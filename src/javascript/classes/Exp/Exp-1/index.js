@@ -36,7 +36,10 @@ class Experience1 {
 			})
 			Storage.SplineClass.placeCameraAtFirstPoint()
 			Storage.HiddingPanelClasses.exp1.hidePanel()
-			Storage.CameraClasses.exp1.updateMovementRange(.5, 1900)
+			// Storage.CameraClasses.exp1.updateMovementRange(.5, 1900)
+
+      Storage.CameraClasses.exp1.updateMovementRange(0, 1900)
+      new CursorLight()
 		}
 }
 

@@ -20,11 +20,11 @@ class CursorLight {
 			this.initInertia()
       this.bind()
 		}
-		
+
     bind() {
 			window.addEventListener('mousemove', this.handleMouseMove, false)
 		}
-		
+
 		unbind() {
 			window.removeEventListener('mousemove', this.handleMouseMove, false)
 			raf.remove(this.updateInertia)
@@ -53,7 +53,7 @@ class CursorLight {
 
 			raf.add(this.updateInertia)
 		}
-		
+
     initLight() {
       this.light = new THREE.PointLight(0xff0, 1, 10000, 2)
 			this.light.position.set(200, 200, 800)
@@ -90,7 +90,7 @@ class CursorLight {
 
 			raf.add(this.animate)
 		}
-		
+
 		handleMouseMove = (event) => {
 			this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1
 			this.mouse.y = - (event.clientY / window.innerHeight) * 2 + 1
@@ -102,10 +102,10 @@ class CursorLight {
 			const distance = - Storage.CameraClasses.exp1.camera.position.z / dir.z
 			const pos = Storage.CameraClasses.exp1.camera.position.clone().add(dir.multiplyScalar(distance))
 
-			// Check intersections and ajust position with normals 
+			// Check intersections and ajust position with normals
 			this.raycaster.setFromCamera( this.mouse, Storage.CameraClasses.exp2.camera)
 			let intersects
-			if (Storage.box) intersects = this.raycaster.intersectObjects([Storage.box.children[0], Storage.backgroundExp2, Storage.boxCouvercle.children[0]], true)
+			if (Storage.box2) intersects = this.raycaster.intersectObjects([Storage.box2.children[0], Storage.backgroundExp2, Storage.box2Couvercle.children[0]], true)
 
 			if (intersects && intersects.length > 0) {
 				const { point, face } = intersects[0]
