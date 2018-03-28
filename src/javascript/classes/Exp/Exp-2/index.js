@@ -2,7 +2,6 @@ import Scene from '../Common/Scene.js'
 import Camera from '../Common/Camera.js'
 import HiddingPanel from '../Common/HiddingPanel.js'
 
-import CursorLight from './CursorLight.js'
 import Ambiance from './Ambiance.js'
 import Spline from './Spline.js'
 import Box from './Box.js'

@@ -24,18 +24,23 @@ class Renderer {
     }
 
     updateCanvasPos(startX, startY, width, heigth) {
-      this.renderer.setViewport( startX, startY, width, heigth )
+      // this.renderer.setViewport( startX, startY, width, heigth )
     }
 
-    onWindowResize() {
+    onWindowResize = () => {
       Storage.CameraClasses[Storage.expName].camera.aspect = window.innerWidth / window.innerHeight
       Storage.CameraClasses[Storage.expName].camera.updateProjectionMatrix()
-      Storage.renderer.setSize(window.innerWidth, window.innerHeight)
+      this.renderer.setSize(window.innerWidth, window.innerHeight)
 		}
 
     render() {
-      if (Storage.SceneClasses['exp1'] && Storage.CameraClasses['exp1'])
-        this.renderer.render(Storage.SceneClasses['exp1'].scene, Storage.CameraClasses['exp1'].camera)
+      if (Storage.SceneClasses['exp2'] && Storage.CameraClasses['exp2'] && Storage.SceneClasses['exp1'] && Storage.CameraClasses['exp1'])
+        this.renderer.render(
+          Storage.SceneClasses[Storage.expName].scene, Storage.CameraClasses[Storage.expName].camera
+        )
+        // this.renderer.render(
+        //   Storage.SceneClasses['exp2'].scene, Storage.CameraClasses['exp2'].camera
+        // )
     }
 }
 

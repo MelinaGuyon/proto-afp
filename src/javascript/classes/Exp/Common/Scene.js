@@ -12,8 +12,6 @@ class Scene {
 
     initScene() {
       this.scene = new THREE.Scene()
-
-      console.log(this.scene)
       this.scene.add(Storage.CameraClasses[this.name].camera)
     }
 

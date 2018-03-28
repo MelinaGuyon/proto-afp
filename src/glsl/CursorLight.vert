@@ -4,7 +4,6 @@ varying vec3 vLightFront;
 #ifdef DOUBLE_SIDED
 	varying vec3 vLightBack;
 #endif
-
 #include <common>
 #include <uv_pars_vertex>
 #include <uv2_pars_vertex>
@@ -21,13 +20,12 @@ varying vec3 vLightFront;
 
 
 uniform float u_time;
-uniform float u_amplitude;
-uniform float u_frequence;
-uniform float u_soundLevel;
+uniform float u_frequency;
+
+varying vec3 vNormal;
 
 float scalarMove;
 vec3 newPos;
-
 
 
 //	Classic Perlin 3D Noise
@@ -97,37 +95,14 @@ float cnoise(vec3 P){
   return 2.2 * n_xyz;
 }
 
+void applyGlow() {
+  scalarMove = 2. * cnoise(0.18 * position + u_time / 3. * u_frequency);
 
+  newPos = position + normal * scalarMove;
 
-void applyWave() {
-
-  float scale = smoothstep(1., .8, abs(uv.x * 2. - 1.));
-
-  vec3 pp = vec3( position.x, 0., 0. );
-	vec3 test = vec3(position.y * u_soundLevel, 0., 0.);
-
-  scalarMove = scale * u_amplitude * cnoise(u_frequence * pp + u_time * .15 );
-
-  newPos = position + normal.y * scalarMove * vec3(0.,1.,  0.) + normal.z * scalarMove * vec3(0.,1.,  0.);
-
-  if (position.y < 0.) {
-    newPos = position + normal.y * scalarMove * vec3(0.,-1.,  0.) + normal.z * scalarMove * vec3(0.,1.,  0.);
-  }
-  if (position.z == -7.) {
-    newPos = position + normal.y * scalarMove * vec3(0.,-1.,  0.) + normal.z * scalarMove * vec3(0.,-1.,  0.);
-  }
-  if (position.y == 3. && position.z == -7.) {
-    newPos = position + normal.y * scalarMove * vec3(0.,1.,  0.) + normal.z * scalarMove * vec3(0.,-1.,  0.);
-  }
-
-  if (newPos.y < 0. ) {
-    newPos.y += abs(newPos.y) * 2.;
-  }
-
-  gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(newPos.x, newPos.y, newPos.z, 1.);
-
+  vNormal = normalize( normalMatrix * normal );
+  gl_Position = projectionMatrix * modelViewMatrix * vec4( newPos, 1. );
 }
-
 
 void main() {
 
@@ -151,6 +126,6 @@ void main() {
 	#include <shadowmap_vertex>
 	#include <fog_vertex>
 
-  applyWave();
+  applyGlow();
 
 }

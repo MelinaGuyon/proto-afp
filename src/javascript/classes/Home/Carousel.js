@@ -8,7 +8,8 @@ class Carousel {
     constructor(el, options) {
 			Storage.HomeCarouselClass = this
 
-			this.numberItems = el.children.length
+			// this.numberItems = el.children.length
+      this.numberItems = 2
 			this.index = options.index
 			this.carousel = el
 
@@ -39,9 +40,12 @@ class Carousel {
 			const update = event.deltaY < 0 ? -1 : 1
 			this.index = Math.max(Math.min(this.index + update, this.numberItems - 1), 0)
 			// this.animeCarousel()
-			Storage.expName = 'exp' + (this.index + 1)
 
-      this.animeCanvas()
+			Storage.expName = 'exp' + (this.index + 1)
+      console.log(Storage.expName)
+
+      // this.animeCanvas()
+
 		}, 500, {leading: true, trailing: false})
 
 		animeCarousel = () => {
@@ -55,13 +59,12 @@ class Carousel {
 		}
 
     animeCanvas = () => {
-      console.log('test')
       Storage.RendererClass.updateCanvasPos(-window.innerWidth * this.index, 0, window.innerWidth, window.innerHeight)
     }
 
 		handleClick = (event) => {
 			if (this.index == 0) Storage.Experience1Class.init()
-			// if (this.index == 1) Storage.Experience2Class.init()
+			if (this.index == 1) Storage.Experience2Class.init()
 			this.unbind()
 		}
 }

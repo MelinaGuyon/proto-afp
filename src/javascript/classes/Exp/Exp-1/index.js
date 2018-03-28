@@ -19,6 +19,7 @@ class Experience1 {
 			new Box()
 			new Ambiance()
 			new HiddingPanel({ name: 'exp1' })
+      this.light = new CursorLight({ intensity: 0, sphereVisible: false })
 		}
 
 		init() {
@@ -31,12 +32,13 @@ class Experience1 {
 					new THREE.Vector3( -650,  680, 1300)
 				])
 			})
+      
 			Storage.SplineClass.placeCameraAtFirstPoint()
 			Storage.HiddingPanelClasses.exp1.hidePanel()
-			// Storage.CameraClasses.exp1.updateMovementRange(.5, 1900)
-
       Storage.CameraClasses.exp1.updateMovementRange(0, 1900)
-      new CursorLight()
+
+      this.light.updateSphereVisibility(true)
+      this.light.updateLightIntensity(1)
 		}
 }
 
