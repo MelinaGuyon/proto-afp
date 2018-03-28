@@ -1,0 +1,51 @@
+{
+  "name": "starter",
+  "version": "0.2.0",
+  "config": {
+    "port": "8080"
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-dev-server --hot --history-api-fallback --open",
+    "copy": "mkdir ./build & cp ./src/*.php ./build & cp -r ./src/assets ./build/assets & cp -r ./src/fonts ./build/fonts & cp -r ./src/vendors ./build/vendors & cp -r ./src/glsl ./build/glsl",
+    "build": "npm run copy & cross-env NODE_ENV=production webpack -p"
+  },
+  "dependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-plugin-transform-runtime": "^6.1.2",
+    "babel-preset-es2015": "^6.22.0",
+    "cross-env": "^5.1.1",
+    "css-loader": "^0.26.2",
+    "extract-text-webpack-plugin": "^2.0.0-beta.5",
+    "gsap": "^1.19.1",
+    "node-sass": "^4.5.0",
+    "sass-loader": "^6.0.2",
+    "spotify-web-api-js": "^0.22.1",
+    "style-loader": "^0.13.2",
+    "three": "^0.87.1",
+    "three-mtl-loader": "^1.0.1",
+    "three-obj-loader": "^1.1.3",
+    "three-orbit-controls-loader": "^1.0.1",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  },
+  "paths": {},
+  "devDependencies": {
+    "animejs": "^2.2.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "connect-history-api-fallback": "^1.5.0",
+    "gateway": "^1.0.0",
+    "gsap": "^1.19.1",
+    "image-webpack-loader": "^3.3.0",
+    "inrtia": "^0.1.5",
+    "lethargy": "^1.0.4",
+    "raf": "github:pqml/raf",
+    "spotify-web-api-js": "^0.22.1",
+    "three-effectcomposer-es6": "0.0.4",
+    "three-subdivision-modifier": "^1.0.5",
+    "uglify-js": "^2.8.22",
+    "uglifyjs-webpack-plugin": "^1.1.2",
+    "wagner": "^0.6.4"
+  }
+}

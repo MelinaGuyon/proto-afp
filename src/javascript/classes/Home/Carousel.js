@@ -21,7 +21,7 @@ class Carousel {
 			window.addEventListener('click', this.handleClick, false)
 			window.addEventListener('resize', this.resizeWrapper, false)
 		}
-		
+
 		unbind() {
 			window.removeEventListener('click', this.handleClick, false)
 			window.removeEventListener('mousewheel', this.handleScroll, false)
@@ -30,7 +30,7 @@ class Carousel {
 		resizeWrapper = () => {
 			this.carousel.style.width = window.innerWidth * this.numberItems + 'px'
 		}
-		
+
 		handleScroll = (event) => {
 			if(lethargy.check(event) !== false) this.onRealScroll(event)
 		}
@@ -38,8 +38,10 @@ class Carousel {
 		onRealScroll = throttle((event) => {
 			const update = event.deltaY < 0 ? -1 : 1
 			this.index = Math.max(Math.min(this.index + update, this.numberItems - 1), 0)
-			this.animeCarousel()
+			// this.animeCarousel()
 			Storage.expName = 'exp' + (this.index + 1)
+
+      this.animeCanvas()
 		}, 500, {leading: true, trailing: false})
 
 		animeCarousel = () => {
@@ -48,14 +50,18 @@ class Carousel {
 				targets: this.carousel,
 				translateX: -window.innerWidth * this.index,
 				duration: 500,
-				easing: 'easeOutQuad',
-				update: this.updateCameraPos
+				easing: 'easeOutQuad'
 			})
 		}
 
+    animeCanvas = () => {
+      console.log('test')
+      Storage.RendererClass.updateCanvasPos(-window.innerWidth * this.index, 0, window.innerWidth, window.innerHeight)
+    }
+
 		handleClick = (event) => {
 			if (this.index == 0) Storage.Experience1Class.init()
-			if (this.index == 1) Storage.Experience2Class.init()
+			// if (this.index == 1) Storage.Experience2Class.init()
 			this.unbind()
 		}
 }

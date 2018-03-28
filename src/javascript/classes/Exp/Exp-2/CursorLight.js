@@ -57,7 +57,7 @@ class CursorLight {
     initLight() {
       this.light = new THREE.PointLight(0xff0, 1, 10000, 2)
 			this.light.position.set(200, 200, 800)
-			Storage.RendererClasses.exp2.scene.add(this.light)
+			Storage.SceneClasses[Storage.expName].scene.add(this.light)
 		}
 
 		initSphere = (texts) => {
@@ -86,7 +86,7 @@ class CursorLight {
 
 			this.sphere = new THREE.Mesh(geometry, material)
 			this.sphere.visible = true
-			Storage.RendererClasses.exp2.scene.add(this.sphere)
+			Storage.SceneClasses[Storage.expName].scene.add(this.sphere)
 
 			raf.add(this.animate)
 		}
