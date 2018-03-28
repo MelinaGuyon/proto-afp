@@ -12,7 +12,6 @@ import Experience2 from './classes/Exp/Exp-2/index.js'
 window.Storage = {}
 Storage.CameraClasses = {}
 Storage.SceneClasses = {}
-Storage.HiddingPanelClasses = {}
 
 Storage.expName = 'exp1'
 

@@ -9,7 +9,7 @@ class Spline {
     constructor(options) {
 			Storage.SplineClass = this
 
-			this.spline = options.spline
+			this.state = options
 
 			this.initObjects()
       this.bind()
@@ -21,6 +21,7 @@ class Spline {
 
 		unbind() {
 			window.removeEventListener('mousewheel', this.handleScroll, {passive: true})
+      Storage.SplineClass = null
 		}
 
 		initObjects() {
@@ -30,10 +31,10 @@ class Spline {
 		}
 
 		placeCameraAtFirstPoint = () => {
-			const point = this.spline.points[0]
+			const point = this.state.spline.points[0]
 
 			anime({
-				targets: Storage.CameraClasses[Storage.expName].camera.position,
+				targets: this.state.relatedCamera.camera.position,
 				x: point.x,
 				y: point.y,
 				z: point.z,
@@ -65,15 +66,15 @@ class Spline {
 
 		updateCameraPos = () => {
 			const state = this.cameraObj.state
-			const point = this.spline.getPoint(state)
+			const point = this.state.spline.getPoint(state)
 
-			Storage.CameraClasses[Storage.expName].camera.position.copy(point)
-			Storage.CameraClasses[Storage.expName].camera.lookAt(this.spline.getPoint(this.cameraObj.state + 0.01))
+			this.state.relatedCamera.camera.position.copy(point)
+			this.state.relatedCamera.camera.lookAt(this.state.spline.getPoint(this.cameraObj.state + 0.01))
 
-			this.lookAtRotation = Storage.CameraClasses[Storage.expName].camera.rotation.clone()
+			this.lookAtRotation = this.state.relatedCamera.camera.rotation.clone()
 			this.lookAtRotation.reorder('YXZ')
 
-			Storage.CameraClasses[Storage.expName].updateWithSpline()
+			this.state.relatedCamera.updateWithSpline()
 		}
 }
 
