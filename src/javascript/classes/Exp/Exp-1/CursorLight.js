@@ -5,12 +5,14 @@ import { debounce, sort } from 'lodash'
 
 import ShaderLoader from '../../../helpers/ShaderLoader'
 
-const vertexSphere_url = 'glsl/PetitBiscuitVertexSphere.vert'
-const fragmentSphere_url = 'glsl/PetitBiscuitFragmentSphere.frag'
+const vertex_url = 'glsl/CursorLight.vert'
+const fragment_url = 'glsl/CursorLight.frag'
 
 class CursorLight {
     constructor(options) {
 			Storage.CursorLightClass = this
+
+      this.state = options
 
 			this.raycaster = new THREE.Raycaster()
 			this.mouse = new THREE.Vector2()
@@ -28,12 +30,14 @@ class CursorLight {
 		unbind() {
 			window.removeEventListener('mousemove', this.handleMouseMove, false)
 			raf.remove(this.updateInertia)
+      raf.remove(this.animate)
 		}
 
 		loadSphereShaders() {
-			ShaderLoader.loadFiles([vertexSphere_url, fragmentSphere_url])
+			ShaderLoader.loadFiles([vertex_url, fragment_url])
 				.then((response) => {
 					this.initSphere(response)
+          console.log(response)
 				})
 		}
 
@@ -55,13 +59,14 @@ class CursorLight {
 		}
 
     initLight() {
-      this.light = new THREE.PointLight(0xff0, 1, 10000, 2)
+      this.light = new THREE.PointLight(0xff0, this.state.intensity, 10000, 2)
 			this.light.position.set(200, 200, 800)
-			Storage.RendererClasses.exp1.scene.add(this.light)
+			Storage.SceneClasses.exp1.scene.add(this.light)
 		}
 
 		initSphere = (texts) => {
-			const vertexSphere = texts[0], fragmentSphere = texts[1]
+			const vertexSphere = texts[0]
+      const fragmentSphere = texts[1]
 
 			this.lightSphereUnif = THREE.UniformsUtils.merge([
         THREE.ShaderLib.lambert.uniforms,
@@ -81,15 +86,24 @@ class CursorLight {
 				transparent: true,
 				blending: THREE.AdditiveBlending,
 				lights: true,
-				fog: true
+				fog: true,
+        alpha: 0
 			})
 
 			this.sphere = new THREE.Mesh(geometry, material)
-			this.sphere.visible = true
-			Storage.RendererClasses.exp1.scene.add(this.sphere)
+      this.sphere.visible = this.state.sphereVisible
+			Storage.SceneClasses.exp1.scene.add(this.sphere)
 
 			raf.add(this.animate)
 		}
+
+    updateSphereVisibility = (bool) => {
+      this.sphere.visible = bool
+    }
+
+    updateLightIntensity = (value) => {
+      this.light.intensity = value
+    }
 
 		handleMouseMove = (event) => {
 			this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1
@@ -145,7 +159,7 @@ class CursorLight {
 		}
 
 		animate = () => {
-			this.lightSphereUnif.u_time.value += .2
+			if(this.lightSphereUnif) this.lightSphereUnif.u_time.value += .2
 		}
 }
 

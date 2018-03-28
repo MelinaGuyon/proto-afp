@@ -1,8 +1,7 @@
-import Renderer from '../Common/Renderer.js'
+import Scene from '../Common/Scene.js'
 import Camera from '../Common/Camera.js'
 import HiddingPanel from '../Common/HiddingPanel.js'
 
-import CursorLight from './CursorLight.js'
 import Ambiance from './Ambiance.js'
 import Spline from './Spline.js'
 import Box from './Box.js'
@@ -18,7 +17,7 @@ class Experience2 {
 
     initPreview() {
 			new Camera({ name: 'exp2', lookAround: true, movementRange: .05 })
-			new Renderer({ container: this.container, name: 'exp2' })
+      new Scene({ name: 'exp2'  })
 			new Box()
 			new Ambiance()
 			new HiddingPanel({ name: 'exp2' })

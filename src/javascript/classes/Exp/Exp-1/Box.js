@@ -37,7 +37,7 @@ class Box {
           }
         })
         Storage.box1 = object
-        Storage.RendererClasses.exp1.scene.add( object )
+        Storage.SceneClasses.exp1.scene.add( object )
       } )
 
       that.objLoader.load( 'assets/scenes/box/closed-box_couvercle.obj', function ( object ) {
@@ -62,7 +62,7 @@ class Box {
 
         Storage.box1Couvercle = object
         that.object = object
-        Storage.RendererClasses.exp1.scene.add( object )
+        Storage.SceneClasses.exp1.scene.add( object )
       })
 
       that.objLoader.load( 'assets/scenes/box/manivelle.obj', function ( object ) {
@@ -87,7 +87,7 @@ class Box {
           }
         })
         Storage.box1Manivelle = object
-				Storage.RendererClasses.exp1.scene.add( object )
+				Storage.SceneClasses.exp1.scene.add( object )
       })
     }
 

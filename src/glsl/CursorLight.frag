@@ -30,13 +30,10 @@ uniform vec3 u_color;
 uniform vec3 u_glowColor;
 varying float v_intensity;
 
-varying vec2 vUv;
-varying vec3 vPosition;
-
 varying vec3 vNormal;
 
 void applyGlow(vec4 diffuseColor) {
-	float intensity = pow( 0.06 - dot( vNormal, vec3( 0.0, 0.0, 1.0 ) ), 4.0 ); 
+	float intensity = pow( 0.06 - dot( vNormal, vec3( 0.0, 0.0, 1.0 ) ), 4.0 );
 	vec3 glow = u_glowColor;
   gl_FragColor = vec4( glow, diffuseColor.a ) * intensity;
 }

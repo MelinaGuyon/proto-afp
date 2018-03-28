@@ -27,10 +27,6 @@ uniform float u_frequency;
 float scalarMove;
 vec3 newPos;
 varying vec2 vUv;
-varying vec3 vPosition;
-
-
-
 
 void main() {
 
@@ -53,9 +49,6 @@ void main() {
 	#include <lights_lambert_vertex>
 	#include <shadowmap_vertex>
 	#include <fog_vertex>
-
-  vPosition = position;
+	
   vUv = uv;
 }
-
-

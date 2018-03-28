@@ -10,8 +10,8 @@ import Experience1 from './classes/Exp/Exp-1/index.js'
 import Experience2 from './classes/Exp/Exp-2/index.js'
 
 window.Storage = {}
-Storage.RendererClasses = {}
 Storage.CameraClasses = {}
+Storage.SceneClasses = {}
 Storage.HiddingPanelClasses = {}
 
 Storage.expName = 'exp1'
@@ -27,5 +27,5 @@ function initCanvas() {
 }
 
 function render() {
-	if(Storage.HomeCarouselClass && Storage.RendererClasses[Storage.expName])	Storage.RendererClasses[Storage.expName].render()
+	if(Storage.HomeCarouselClass && Storage.RendererClass)	Storage.RendererClass.render()
 }
