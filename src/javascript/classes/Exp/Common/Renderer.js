@@ -23,10 +23,6 @@ class Renderer {
       window.addEventListener('resize', this.onWindowResize, false)
     }
 
-    updateCanvasPos(startX, startY, width, heigth) {
-      this.renderer.setViewport( startX, startY, width, heigth )
-    }
-
     onWindowResize = () => {
       Storage.CameraClasses[Storage.expName].camera.aspect = window.innerWidth / window.innerHeight
       Storage.CameraClasses[Storage.expName].camera.updateProjectionMatrix()

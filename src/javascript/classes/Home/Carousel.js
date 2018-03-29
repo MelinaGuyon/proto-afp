@@ -40,15 +40,8 @@ class Carousel {
 		  this.index = Math.max(Math.min(this.index + update, this.numberItems - 1), 0)
 
 			Storage.expName = 'exp' + (this.index + 1)
-      console.log(Storage.expName)
-
-      // this.animeCanvas()
 
 		}, 500, {leading: true, trailing: false})
-
-    animeCanvas = () => {
-      Storage.RendererClass.updateCanvasPos(-window.innerWidth * this.index, 0, window.innerWidth, window.innerHeight)
-    }
 
 		handleClick = (event) => {
 			if (this.index == 0) Storage.Experience1Class.init()
