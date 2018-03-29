@@ -1,6 +1,6 @@
 import Camera from '../Common/Camera.js'
 import Scene from '../Common/Scene.js'
-import HiddingPanel from '../Common/HiddingPanel.js'
+import CanvasPanel from '../Common/CanvasPanel.js'
 import Spline from '../Common/Spline.js'
 
 import Sphere from '../Common/Sphere.js'
@@ -19,12 +19,13 @@ class Experience1 {
       this.scene = new Scene({ name: 'exp1'  })
 
 			this.ambiance = new Ambiance()
-			this.panel = new HiddingPanel({ relatedCamera: this.camera.camera })
       this.sphere = new Sphere({ relatedScene: this.scene.scene,  color: 0x303848 })
       this.light = new CursorLight({ sceneIndex: 1, relatedCamera: this.camera.camera, intensity: 0, sphereVisible: false, intersects: [this.sphere, this.ambiance] })
 		}
 
 		init = () => {
+      Storage.CanvasPanelClass.hidePanel()
+
 			this.spline = new Spline({
 				spline: new THREE.SplineCurve3([
 					new THREE.Vector3(0, 400, 1500),
@@ -38,7 +39,6 @@ class Experience1 {
 			})
 
 			this.spline.placeCameraAtFirstPoint()
-			this.panel.hidePanel()
       this.camera.updateMovementRange(0, 1900)
 
       this.light.updateSphereVisibility(true)

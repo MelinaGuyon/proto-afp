@@ -1,7 +1,7 @@
 import Carousel from './Carousel.js'
 import Renderer from '../Exp/Common/Renderer.js'
 import TransitionPanel from '../Exp/Common/TransitionPanel.js'
-
+import CanvasPanel from '../Exp/Common/CanvasPanel.js'
 
 class Home {
     constructor(options) {
@@ -17,6 +17,7 @@ class Home {
 			new Carousel(this.carousel, { index: 0 })
       new Renderer({ container: this.canvasContainer })
       new TransitionPanel()
+      new CanvasPanel()
 		}
 }
 
