@@ -21,7 +21,7 @@ class Experience1 {
 			this.ambiance = new Ambiance()
 			this.panel = new HiddingPanel({ relatedCamera: this.camera.camera })
       this.sphere = new Sphere({ relatedScene: this.scene.scene,  color: 0x303848 })
-      this.light = new CursorLight({ sceneIndex: 1, intensity: 0, sphereVisible: false, intersects: [this.sphere, this.ambiance] })
+      this.light = new CursorLight({ sceneIndex: 1, relatedCamera: this.camera.camera, intensity: 0, sphereVisible: false, intersects: [this.sphere, this.ambiance] })
 		}
 
 		init = () => {

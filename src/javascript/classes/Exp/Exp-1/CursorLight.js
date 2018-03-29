@@ -120,16 +120,16 @@ class CursorLight {
 
 			// Transform mouse position value into canvas values
 			const vector = new THREE.Vector3(this.mouse.x, this.mouse.y, 0)
-			vector.unproject(Storage.CameraClasses.exp1.camera)
-			const dir = vector.sub(Storage.CameraClasses.exp1.camera.position).normalize()
-			const distance = - Storage.CameraClasses.exp1.camera.position.z / dir.z
-			const pos = Storage.CameraClasses.exp1.camera.position.clone().add(dir.multiplyScalar(distance))
+			vector.unproject(this.state.relatedCamera)
+			const dir = vector.sub(this.state.relatedCamera.position).normalize()
+			const distance = - this.state.relatedCamera.position.z / dir.z
+			const pos = this.state.relatedCamera.position.clone().add(dir.multiplyScalar(distance))
 
 			// Check intersections and ajust position with normals
       this.table = this.makeRecasterTable()
       if (!this.table.every(this.isNotUndifed)) return
 
-      this.raycaster.setFromCamera( this.mouse, Storage.CameraClasses.exp1.camera)
+      this.raycaster.setFromCamera( this.mouse, this.state.relatedCamera)
 			let intersects = this.raycaster.intersectObjects(this.table, false)
 
 			if (intersects && intersects.length > 0) {

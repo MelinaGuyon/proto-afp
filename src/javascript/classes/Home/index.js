@@ -12,7 +12,7 @@ class Home {
     }
 
     init() {
-			new Carousel(this.carousel, { index: 0})
+			new Carousel(this.carousel, { index: 0 })
       new Renderer({ container: this.canvasContainer })
 		}
 }
