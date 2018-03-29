@@ -2,6 +2,7 @@ import anime from 'animejs'
 import { Lethargy } from 'lethargy'
 import { throttle } from 'lodash'
 
+
 const lethargy = new Lethargy()
 
 class Carousel {
@@ -39,22 +40,27 @@ class Carousel {
 			const update = event.deltaY < 0 ? -1 : 1
 			this.index = Math.max(Math.min(this.index + update, this.numberItems - 1), 0)
 
-			Storage.expName = 'exp' + (this.index + 1)
-      console.log(Storage.expName)
+	
+      		update > 0 ? Storage.TransitionPanel.avanceCarousel(this.updateExpName) : Storage.TransitionPanel.reculeCarrousel(this.updateExpName)
 
       // this.animeCanvas()
 
-		}, 500, {leading: true, trailing: false})
+		}, 1400, {leading: true, trailing: false})
 
     animeCanvas = () => {
       Storage.RendererClass.updateCanvasPos(-window.innerWidth * this.index, 0, window.innerWidth, window.innerHeight)
     }
 
-		handleClick = (event) => {
-			if (this.index == 0) Storage.Experience1Class.init()
-			if (this.index == 1) Storage.Experience2Class.init()
-			this.unbind()
-		}
+	handleClick = (event) => {
+		if (this.index == 0) Storage.Experience1Class.init()
+		if (this.index == 1) Storage.Experience2Class.init()
+		this.unbind()
+	}
+
+	updateExpName = () => {
+		Storage.expName = 'exp' + (this.index + 1)
+      	console.log(Storage.expName)
+     }
 }
 
 export default Carousel
