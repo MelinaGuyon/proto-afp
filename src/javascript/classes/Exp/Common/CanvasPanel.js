@@ -13,7 +13,9 @@ class CanvasPanel {
       rotate: '-140deg',
       duration: 3000,
       easing: 'easeInOutQuad',
-      complete: () => { this.panel.display = 'none' }
+      complete: () => {
+        this.panel.style.display = 'none'
+      }
     })
   }
 }
