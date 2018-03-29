@@ -26,6 +26,7 @@ class Experience2 {
 			this.spline = new Spline({
 				spline: new THREE.SplineCurve3([
 					new THREE.Vector3(0, 400, 1500),
+          new THREE.Vector3(0, 400, 800),
 					new THREE.Vector3( 700, 600, 0),
 					new THREE.Vector3( -200, 400, 0),
 					new THREE.Vector3( -800,  700, 1400),

@@ -14,11 +14,11 @@ class Scene {
       this.scene = new THREE.Scene()
       this.scene.add(Storage.CameraClasses[this.name].camera)
 
-      if (this.name === 'exp2') {
-        this.scene.position.set(900, 0, -8000)
-        this.scene.updateMatrixWorld()
-        console.log(this.scene)
-      }
+      // if (this.name === 'exp2') {
+      //   this.scene.position.set(900, 0, -8000)
+      //   this.scene.updateMatrixWorld()
+      //   console.log(this.scene)
+      // }
     }
 
 }
