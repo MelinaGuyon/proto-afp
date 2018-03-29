@@ -24,7 +24,7 @@ class Renderer {
     }
 
     updateCanvasPos(startX, startY, width, heigth) {
-      // this.renderer.setViewport( startX, startY, width, heigth )
+      this.renderer.setViewport( startX, startY, width, heigth )
     }
 
     onWindowResize = () => {
@@ -38,9 +38,6 @@ class Renderer {
         this.renderer.render(
           Storage.SceneClasses[Storage.expName].scene, Storage.CameraClasses[Storage.expName].camera
         )
-        // this.renderer.render(
-        //   Storage.SceneClasses['exp2'].scene, Storage.CameraClasses['exp2'].camera
-        // )
     }
 }
 

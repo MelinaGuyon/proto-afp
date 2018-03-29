@@ -26,5 +26,5 @@ function initCanvas() {
 }
 
 function render() {
-	if(Storage.HomeCarouselClass && Storage.RendererClass)	Storage.RendererClass.render()
+	if (Storage.HomeCarouselClass && Storage.RendererClass)	Storage.RendererClass.render()
 }

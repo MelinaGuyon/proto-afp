@@ -3,8 +3,9 @@ import Camera from '../Common/Camera.js'
 import HiddingPanel from '../Common/HiddingPanel.js'
 import Spline from '../Common/Spline.js'
 
+import Sphere from '../Common/Sphere.js'
+
 import Ambiance from './Ambiance.js'
-import Box from './Box.js'
 
 class Experience2 {
     constructor(options) {
@@ -15,9 +16,10 @@ class Experience2 {
     initPreview = () => {
       this.camera = new Camera({ name: 'exp2', lookAround: true, movementRange: .05  })
       this.scene = new Scene({ name: 'exp2'  })
-			this.box = new Box()
+
 			this.ambiance = new Ambiance()
 			this.panel = new HiddingPanel({ relatedCamera: this.camera.camera })
+      this.sphere = new Sphere({ relatedScene: this.scene.scene, color: 0x9b202d })
 		}
 
 		init = () => {

@@ -8,7 +8,6 @@ class Carousel {
     constructor(el, options) {
 			Storage.HomeCarouselClass = this
 
-			// this.numberItems = el.children.length
       this.numberItems = 2
 			this.index = options.index
 			this.carousel = el
@@ -39,7 +38,6 @@ class Carousel {
 		onRealScroll = throttle((event) => {
 			const update = event.deltaY < 0 ? -1 : 1
 			this.index = Math.max(Math.min(this.index + update, this.numberItems - 1), 0)
-			// this.animeCarousel()
 
 			Storage.expName = 'exp' + (this.index + 1)
       console.log(Storage.expName)
@@ -47,16 +45,6 @@ class Carousel {
       // this.animeCanvas()
 
 		}, 500, {leading: true, trailing: false})
-
-		animeCarousel = () => {
-			anime.remove(this.carousel)
-			this.anime = anime({
-				targets: this.carousel,
-				translateX: -window.innerWidth * this.index,
-				duration: 500,
-				easing: 'easeOutQuad'
-			})
-		}
 
     animeCanvas = () => {
       Storage.RendererClass.updateCanvasPos(-window.innerWidth * this.index, 0, window.innerWidth, window.innerHeight)

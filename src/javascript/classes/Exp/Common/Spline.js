@@ -16,11 +16,11 @@ class Spline {
     }
 
     bind() {
-			window.addEventListener('mousewheel', this.handleScroll, {passive: true})
+			window.addEventListener('mousewheel', this.handleScroll, { passive: true })
 		}
 
 		unbind() {
-			window.removeEventListener('mousewheel', this.handleScroll, {passive: true})
+			window.removeEventListener('mousewheel', this.handleScroll, { passive: true })
       Storage.SplineClass = null
 		}
 
@@ -44,7 +44,7 @@ class Spline {
 		}
 
 		handleScroll = (event) => {
-			if(lethargy.check(event) !== false) this.onRealScroll(event)
+			if (lethargy.check(event) !== false) this.onRealScroll(event)
 		}
 
 		onRealScroll = throttle((event) => {

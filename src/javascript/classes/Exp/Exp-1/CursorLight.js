@@ -37,7 +37,6 @@ class CursorLight {
 			ShaderLoader.loadFiles([vertex_url, fragment_url])
 				.then((response) => {
 					this.initSphere(response)
-          console.log(response)
 				})
 		}
 
@@ -105,6 +104,16 @@ class CursorLight {
       this.light.intensity = value
     }
 
+    makeRecasterTable = () => {
+      let table = []
+      if (this.state.sceneIndex === 1) table.push(this.state.intersects[0].sphere, this.state.intersects[1].background)
+      return table
+    }
+
+    isNotUndifed = (el) => {
+      return el !== undefined
+    }
+
 		handleMouseMove = (event) => {
 			this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1
 			this.mouse.y = - (event.clientY / window.innerHeight) * 2 + 1
@@ -117,9 +126,11 @@ class CursorLight {
 			const pos = Storage.CameraClasses.exp1.camera.position.clone().add(dir.multiplyScalar(distance))
 
 			// Check intersections and ajust position with normals
-			this.raycaster.setFromCamera( this.mouse, Storage.CameraClasses.exp1.camera)
-			let intersects
-			if (Storage.box1) intersects = this.raycaster.intersectObjects([Storage.box1.children[0], Storage.backgroundExp1, Storage.box1Couvercle.children[0]], true)
+      this.table = this.makeRecasterTable()
+      if (!this.table.every(this.isNotUndifed)) return
+
+      this.raycaster.setFromCamera( this.mouse, Storage.CameraClasses.exp1.camera)
+			let intersects = this.raycaster.intersectObjects(this.table, false)
 
 			if (intersects && intersects.length > 0) {
 				const { point, face } = intersects[0]

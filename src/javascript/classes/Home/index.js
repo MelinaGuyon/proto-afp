@@ -6,8 +6,7 @@ class Home {
 			Storage.HomeClass = this
 
 			this.carousel = document.querySelector('.home__carousel')
-
-      this.canvasContainer = document.querySelector('#container-exp1')
+      this.canvasContainer = this.carousel.querySelector('#container')
 
 			this.init()
     }

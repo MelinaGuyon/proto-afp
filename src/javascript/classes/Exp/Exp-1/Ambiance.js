@@ -63,7 +63,7 @@ class Ambiance {
       Storage.SceneClasses.exp1.scene.add( this.spotLight2 );
     }
 
-    createBackground() {
+    createBackground = () => {
       let that = this
       this.vertex_loader.load('glsl/BackgroundVertex.vert', function (vertexGround) {
         that.fragment_loader.load('glsl/BackgroundFragment.frag', function (fragmentGround) {
@@ -110,7 +110,7 @@ class Ambiance {
           const cube = new THREE.Mesh(geometry, material)
           cube.position.y = h - 15
 
-          Storage.backgroundExp1 = cube
+          that.background = cube
           Storage.SceneClasses.exp1.scene.add(cube)
         })
       })
