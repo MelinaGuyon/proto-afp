@@ -12,15 +12,15 @@ class TransitionPanel {
     anime({
       targets: this.transitionPanel,
       translateX: "-100%",
-      duration: 700,
-      easing: 'easeInOutQuad',
+      duration: 600,
+      easing: 'easeInQuad',
       complete: () => {
         cb()
         anime({
           targets: this.transitionPanel,
           translateX: "-200%",
-          duration: 700,
-          easing: 'easeInOutQuad',
+          duration: 800,
+          easing: 'easeOutQuad',
         })
       }
     })
@@ -30,15 +30,15 @@ class TransitionPanel {
     anime({
       targets: this.transitionPanel,
       translateX: "-100%",
-      duration: 700,
-      easing: 'easeInOutQuad',
+      duration: 600,
+      easing: 'easeInQuad',
       complete: () => {
         cb()
         anime({
           targets: this.transitionPanel,
           translateX: "0%",
-          duration: 700,
-          easing: 'easeInOutQuad',
+          duration: 800,
+          easing: 'easeOutQuad',
         })
       }
     })

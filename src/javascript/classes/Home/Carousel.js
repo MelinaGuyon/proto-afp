@@ -38,8 +38,10 @@ class Carousel {
 
 		onRealScroll = throttle((event) => {
 			const update = event.deltaY < 0 ? -1 : 1
+      const oldIndex = this.index
 		  this.index = Math.max(Math.min(this.index + update, this.numberItems - 1), 0)
 
+      if (oldIndex === this.index) return
       update > 0 ? Storage.TransitionPanel.avanceCarousel(this.updateExpName) : Storage.TransitionPanel.reculeCarrousel(this.updateExpName)
 
 		}, 1400, {leading: true, trailing: false})
