@@ -22,7 +22,7 @@ class Ambiance {
 
       let SHADOW_MAP_WIDTH = 1024, SHADOW_MAP_HEIGHT = 1024
 
-      this.light1.castShadow = true
+      //this.light1.castShadow = true
       this.light1.shadow.mapSize.width = SHADOW_MAP_WIDTH
       this.light1.shadow.mapSize.height = SHADOW_MAP_HEIGHT
       this.light1.shadow.camera.far = 10000
