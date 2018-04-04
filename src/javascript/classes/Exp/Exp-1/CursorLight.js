@@ -59,7 +59,8 @@ class CursorLight {
 
     initLight() {
       this.light = new THREE.PointLight(0xff0, this.state.intensity, 10000, 2)
-			this.light.position.set(200, 200, 800)
+			this.light.position.set(200, 200, 500)
+			this.light.castShadow = true
 			Storage.SceneClasses.exp1.scene.add(this.light)
 		}
 
