@@ -3,6 +3,8 @@ import raf from 'raf'
 import { Lethargy } from 'lethargy'
 import { throttle } from 'lodash'
 
+import SplineTimeManager from './SplineTimeManager.js'
+
 const lethargy = new Lethargy()
 
 class Spline {
@@ -10,6 +12,7 @@ class Spline {
 			Storage.SplineClass = this
 
 			this.state = options
+      this.timeManager = new SplineTimeManager({ spline: this.state.spline })
 
 			this.initObjects()
       this.bind()
@@ -49,8 +52,9 @@ class Spline {
 
 		onRealScroll = throttle((event) => {
 			const evolution = event.deltaY < 0 ? this.state.step : -this.state.step
-			const end = Math.max(Math.min(this.cameraObj.state + evolution, 0.89), 0.01)
+			const end = Math.max(Math.min(this.cameraObj.state + evolution, 0.98), 0.01)
 			this.animeSpline(this.cameraObj.state, end)
+      this.timeManager.check(this.cameraObj.state, this.state.index)
 		}, 200, {leading: true, trailing: false})
 
 		animeSpline(start, end) {

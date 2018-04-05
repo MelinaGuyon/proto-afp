@@ -27,7 +27,6 @@ class Chapitre2 {
     this.displayChapterObjects()
     this.initLight()
     return new Promise((resolve, reject) => {
-      console.log('test 1')
       setTimeout(() => { resolve() }, 500)
     })
   }

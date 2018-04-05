@@ -8,6 +8,7 @@ import Sphere from '../Common/Sphere.js'
 
 import Ambiance from './Ambiance.js'
 import ChaptersContainer from './ChaptersContainer.js'
+import BetweenChapters from './BetweenChapters.js'
 
 import datas from '../../../datas/Experience1.js'
 
@@ -25,42 +26,37 @@ class Experience1 {
 			this.ambiance = new Ambiance()
       this.spherePreview = new Sphere({ relatedScene: this.scene.scene,  color: 0x303848, posZ: 2000 })
 
+      // here to load things without affect animations
       this.chaptersContainer = new ChaptersContainer()
       this.chapter2 = new Chapitre2({
         relatedBox: this.chaptersContainer.chapterBoxes[1],
         relatedCamera: this.camera.camera,
-        lightOpt: new Array(this.ambiance)
+        lightOpt: [this.ambiance]
       })
 		}
 
 		init = () => {
       Storage.CanvasPanelClass.hidePanel()
       this.placeOnSpline({
-  				spline: new THREE.SplineCurve3(datas.splines.enter),
+  				spline: new THREE.CatmullRomCurve3(datas.splines.enter),
           relatedCamera: this.camera,
-          step: .30
+          step: .30,
+          index: 0,
+          cbEnd: this.goToChapterOne
   			},
         .5
       )
 
-      setTimeout(() => {
-        console.log('chapter 1')
-        this.goToChapterOne()
-      }, 4000)
-      setTimeout(() => {
-        console.log('chapter 2')
-        this.chapter2.init().then(() => {
-          console.log('test')
-          this.goToChapterTwo()
-        })
-      }, 8000)
+      this.betweenChapters = new BetweenChapters()
 		}
 
     goToChapterOne = () => {
       this.placeOnSpline({
-  				spline: new THREE.SplineCurve3(datas.splines.chapter1),
+  				spline: new THREE.CatmullRomCurve3(datas.splines.chapter1),
           relatedCamera: this.camera,
-          step: .30
+          step: .30,
+          index: 1,
+          cbEnd: () => { this.chapter2.init().then(this.goToChapterTwo) }
   			},
         .5
       )
@@ -68,9 +64,10 @@ class Experience1 {
 
     goToChapterTwo = () => {
       this.placeOnSpline({
-  				spline: new THREE.SplineCurve3(datas.splines.chapter2),
+  				spline: new THREE.CatmullRomCurve3(datas.splines.chapter2),
           relatedCamera: this.camera,
-          step: .30
+          step: .30,
+          index: 2
   			},
         .5
       )
