@@ -18,12 +18,13 @@ class Chapitre2 {
 	loadChapter = () => {
     this.loader = new ObjectsLoader()
     this.loader.load().then((response) => {
+      console.log("RESPONSE", response)
       this.modelsGroup = response
     })
 	}
 
   init = () => {
-    new TextWriting({ exp: 'exp1', chap: 'chap1'})
+    new TextWriting({ exp: 'exp1', chap: 'chap2'})
     this.displayChapterObjects()
     this.initLight()
     return new Promise((resolve, reject) => {

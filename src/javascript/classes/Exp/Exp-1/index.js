@@ -11,6 +11,7 @@ import ChaptersContainer from './ChaptersContainer.js'
 
 import datas from '../../../datas/Experience1.js'
 
+import Chapitre1 from './Chap-1/index.js'
 import Chapitre2 from './Chap-2/index.js'
 
 class Experience1 {
@@ -26,6 +27,11 @@ class Experience1 {
       this.spherePreview = new Sphere({ relatedScene: this.scene.scene,  color: 0x303848, posZ: 2000 })
 
       this.chaptersContainer = new ChaptersContainer()
+      this.chapter1 = new Chapitre1({
+        relatedBox: this.chaptersContainer.chapterBoxes[0],
+        relatedCamera: this.camera.camera,
+        lightOpt: new Array(this.ambiance)
+      })
       this.chapter2 = new Chapitre2({
         relatedBox: this.chaptersContainer.chapterBoxes[1],
         relatedCamera: this.camera.camera,
