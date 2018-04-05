@@ -75,6 +75,7 @@ class Camera {
 		}
 
 		updateWithSpline () {
+      if (!Storage.SplineClass.lookAtRotation) return
 			this.camera.rotation.copy(Storage.SplineClass.lookAtRotation)
 			this.camera.rotation.x += this.inrtia.y.value
 			this.camera.rotation.y += this.inrtia.x.value

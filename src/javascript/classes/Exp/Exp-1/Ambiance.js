@@ -68,7 +68,7 @@ class Ambiance {
       this.vertex_loader.load('glsl/BackgroundVertex.vert', function (vertexGround) {
         that.fragment_loader.load('glsl/BackgroundFragment.frag', function (fragmentGround) {
           const h = 18000;
-          const geometry = new THREE.SphereGeometry(h, 32, 32)
+          const geometry = new THREE.BoxGeometry(h, h, h)
 
           that.backgroundUniforms = THREE.UniformsUtils.merge([
             THREE.ShaderLib.lambert.uniforms,
@@ -88,7 +88,8 @@ class Ambiance {
             vertexShader: vertexGround,
             fragmentShader: fragmentGround,
             lights: true,
-            fog: true
+            fog: true,
+            side: THREE.DoubleSide
           } )
 
           // invert normals
@@ -108,7 +109,7 @@ class Ambiance {
           }
 
           const cube = new THREE.Mesh(geometry, material)
-          cube.position.y = h - 15
+          cube.position.y = h / 2 - 30
 
           that.background = cube
           Storage.SceneClasses.exp1.scene.add(cube)
@@ -116,6 +117,7 @@ class Ambiance {
       })
     }
 
+    // to have shadow with low opacity
     createFakeShadow() {
       const h = 8000;
       let geometry = new THREE.SphereGeometry(h, 32, 32)

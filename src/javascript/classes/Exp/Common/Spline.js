@@ -16,12 +16,11 @@ class Spline {
     }
 
     bind() {
-			window.addEventListener('mousewheel', this.handleScroll, { passive: true })
+			window.addEventListener('mousewheel', this.handleScroll)
 		}
 
 		unbind() {
-			window.removeEventListener('mousewheel', this.handleScroll, { passive: true })
-      Storage.SplineClass = null
+			window.removeEventListener('mousewheel', this.handleScroll)
 		}
 
 		initObjects() {
@@ -31,15 +30,16 @@ class Spline {
 		}
 
 		placeCameraAtFirstPoint = () => {
+      this.unbind()
 			const point = this.state.spline.points[0]
-
 			anime({
 				targets: this.state.relatedCamera.camera.position,
 				x: point.x,
 				y: point.y,
 				z: point.z,
 				duration: 2000,
-				easing: 'easeInOutQuad'
+				easing: 'easeInOutQuad',
+        complete: () => { this.bind() }
 			})
 		}
 
@@ -48,7 +48,7 @@ class Spline {
 		}
 
 		onRealScroll = throttle((event) => {
-			const evolution = event.deltaY < 0 ? 0.12 : -0.12
+			const evolution = event.deltaY < 0 ? this.state.step : -this.state.step
 			const end = Math.max(Math.min(this.cameraObj.state + evolution, 0.89), 0.01)
 			this.animeSpline(this.cameraObj.state, end)
 		}, 200, {leading: true, trailing: false})

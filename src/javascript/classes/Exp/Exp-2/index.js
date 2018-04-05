@@ -32,7 +32,8 @@ class Experience2 {
 					new THREE.Vector3( -800,  700, 1400),
 					new THREE.Vector3( -650,  680, 1300)
 				]),
-        relatedCamera: this.camera
+        relatedCamera: this.camera,
+        step: .12
 			})
 			this.spline.placeCameraAtFirstPoint()
 			this.camera.updateMovementRange(.5, 1900)

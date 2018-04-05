@@ -34,6 +34,7 @@ class Shpere {
 
       this.sphere =  new THREE.Mesh(geometry, material)
       this.sphere.position.y = 160
+      this.sphere.position.z = this.state.posZ || 0
 
       this.state.relatedScene.add(this.sphere)
     }

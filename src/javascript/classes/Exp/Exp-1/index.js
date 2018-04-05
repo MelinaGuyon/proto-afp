@@ -7,6 +7,9 @@ import Sphere from '../Common/Sphere.js'
 
 import CursorLight from './CursorLight.js'
 import Ambiance from './Ambiance.js'
+import Chapters from './Chapters.js'
+
+import datas from '../../../datas/Experience1.js'
 
 import Chapitre1 from './Chap-1/index.js'
 
@@ -17,39 +20,70 @@ class Experience1 {
     }
 
     initPreview = () => {
-		this.camera = new Camera({ name: 'exp1', lookAround: true, movementRange: .05  })
-      	this.scene = new Scene({ name: 'exp1'  })
+			this.camera = new Camera({ name: 'exp1', lookAround: true, movementRange: .05  })
+      this.scene = new Scene({ name: 'exp1'  })
 
-		this.ambiance = new Ambiance()
-	    this.sphere = new Sphere({ relatedScene: this.scene.scene,  color: 0x303848 })
-	    this.light = new CursorLight({ sceneIndex: 1, relatedCamera: this.camera.camera, intensity: 0, sphereVisible: false, intersects: [this.sphere, this.ambiance] })
-	}
+			this.ambiance = new Ambiance()
+      this.spherePreview = new Sphere({ relatedScene: this.scene.scene,  color: 0x303848, posZ: 2000 })
+      this.light = new CursorLight({ sceneIndex: 1, relatedCamera: this.camera.camera, intensity: 0, sphereVisible: false, intersects: [this.spherePreview, this.ambiance] })
+		}
 
-	init = () => {
-	    Storage.CanvasPanelClass.hidePanel()
+		init = () => {
+      Storage.CanvasPanelClass.hidePanel()
+      this.chapters = new Chapters()
+      this.placeOnSpline({
+  				spline: new THREE.SplineCurve3(datas.splines.enter),
+          relatedCamera: this.camera,
+          step: .30
+  			},
+        .5
+      )
 
-		this.spline = new Spline({
-			spline: new THREE.SplineCurve3([
-				new THREE.Vector3(0, 400, 1500),
-          		new THREE.Vector3(0, 400, 800),
-				new THREE.Vector3( 700, 600, 0),
-				new THREE.Vector3( -200, 400, 0),
-				new THREE.Vector3( -800,  700, 1400),
-				new THREE.Vector3( -650,  680, 1300)
-			]),
-        	relatedCamera: this.camera
-		})
-
-		this.spline.placeCameraAtFirstPoint()
-	    this.camera.updateMovementRange(0, 1900)
-
-	    this.light.updateSphereVisibility(true)
-	    this.light.updateLightIntensity(1)
+      setTimeout(() => {
+        console.log('chapter 1')
+        this.initChapterOne()
+      }, 15000)
+      setTimeout(() => {
+        console.log('chapter 2')
+        this.initChapterTwo()
+      }, 30000)
 
 
-      	new Chapitre1()
-		
-	}
+      this.initLight()
+      new Chapitre1()
+		}
+
+    initChapterOne = () => {
+      this.placeOnSpline({
+  				spline: new THREE.SplineCurve3(datas.splines.chapter1),
+          relatedCamera: this.camera,
+          step: .30
+  			},
+        .5
+      )
+    }
+
+    initChapterTwo = () => {
+      this.placeOnSpline({
+  				spline: new THREE.SplineCurve3(datas.splines.chapter2),
+          relatedCamera: this.camera,
+          step: .30
+  			},
+        .5
+      )
+    }
+
+    initLight = () => {
+      this.light.updateSphereVisibility(true)
+      this.light.updateLightIntensity(1)
+    }
+
+    placeOnSpline = (opt, mvmt) => {
+      if (this.spline) this.spline.unbind()
+      this.spline = new Spline(opt)
+			this.spline.placeCameraAtFirstPoint()
+      this.camera.updateMovementRange(mvmt, 1900)
+    }
 }
 
 export default Experience1
