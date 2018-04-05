@@ -1,8 +1,8 @@
 const MTLLoader = require('three-mtl-loader')
 
-
 class ObjectsLoader {
   constructor(options) {
+  	Storage.Chapitre1Class = this
   	this.mtlLoader = new MTLLoader()
   	this.objLoader = new THREE.OBJLoader()
   	this.textureLoader = new THREE.TextureLoader()
@@ -65,10 +65,12 @@ class ObjectsLoader {
 
             that.group.add(object)
             resolve()
-          })
+
         })
       })
-    }
+    })
+
+  }
 
     loadMlleKArtist = () => {
       return new Promise((resolve, reject) => {

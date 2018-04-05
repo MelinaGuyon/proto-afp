@@ -49,9 +49,7 @@ html, body {
   font-size: 62.5%;
 }
 
-p {
-  margin: 0;
-}
+p { margin: 0; }
 
 * {
   -webkit-font-smoothing: antialiased;
@@ -69,60 +67,24 @@ p {
   left: 100%;
 }
 
-/*.test_typedjs {
-  background-color: white;
-  display: block;
-  color: black;
-  font-size: 34px;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-}
-
-.typed-cursor {
-    opacity: 1;
-    -webkit-animation: blink 0.7s infinite;
-    -moz-animation: blink 0.7s infinite;
-    animation: blink 0.7s infinite;
-}
+.test_typedjs { color: white; font-size: 16px; position: absolute; width: 350px; bottom: 5%; right: 0; }
+.test_typedjs_2 { bottom: 10%; }
+.typed-cursor { opacity: 1; -webkit-animation: blink 0.7s infinite; -moz-animation: blink 0.7s infinite; animation: blink 0.7s infinite; }
 
 @keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {  opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
 }
-
 @-webkit-keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
 }
-
 @-moz-keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
-.test_typedjs_2 {
-  top: 10%;
-}*/
+
