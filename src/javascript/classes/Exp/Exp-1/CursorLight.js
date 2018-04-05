@@ -65,10 +65,10 @@ class CursorLight {
 		}
 
 		initSphere = (texts) => {
-			const vertexSphere = texts[0]
-      const fragmentSphere = texts[1]
+		const vertexSphere = texts[0]
+      	const fragmentSphere = texts[1]
 
-			this.lightSphereUnif = THREE.UniformsUtils.merge([
+		this.lightSphereUnif = THREE.UniformsUtils.merge([
         THREE.ShaderLib.lambert.uniforms,
         { specular: { value: new THREE.Color(0x1b1b1b) } },
         { emissive: { value: new THREE.Color(0x777777) } },

@@ -4,8 +4,10 @@ OBJLoader(THREE)
 const MTLLoader = require('three-mtl-loader')
 
 import raf from 'raf'
+import Typed from 'typed.js'
 
 import Home from './classes/Home/index.js'
+import TextWriting from './classes/Exp/Common/TextWriting.js'
 import Experience1 from './classes/Exp/Exp-1/index.js'
 import Experience2 from './classes/Exp/Exp-2/index.js'
 
@@ -19,6 +21,7 @@ initCanvas()
 
 function initCanvas() {
 	new Home()
+	//new TextWriting()
 	new Experience1()
 	new Experience2()
 
