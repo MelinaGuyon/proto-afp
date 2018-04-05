@@ -6,9 +6,8 @@ import TextWriting from '../Common/TextWriting.js'
 
 import Sphere from '../Common/Sphere.js'
 
-import CursorLight from './CursorLight.js'
 import Ambiance from './Ambiance.js'
-import Chapters from './Chapters.js'
+import ChaptersContainer from './ChaptersContainer.js'
 
 import datas from '../../../datas/Experience1.js'
 
@@ -23,15 +22,19 @@ class Experience1 {
     initPreview = () => {
 			this.camera = new Camera({ name: 'exp1', lookAround: true, movementRange: .05  })
       this.scene = new Scene({ name: 'exp1'  })
-
 			this.ambiance = new Ambiance()
       this.spherePreview = new Sphere({ relatedScene: this.scene.scene,  color: 0x303848, posZ: 2000 })
-      this.light = new CursorLight({ sceneIndex: 1, relatedCamera: this.camera.camera, intensity: 0, sphereVisible: false, intersects: [this.spherePreview, this.ambiance] })
+
+      this.chaptersContainer = new ChaptersContainer()
+      this.chapter2 = new Chapitre2({
+        relatedBox: this.chaptersContainer.chapterBoxes[1],
+        relatedCamera: this.camera.camera,
+        lightOpt: [this.spherePreview, this.ambiance]
+      })
 		}
 
 		init = () => {
       Storage.CanvasPanelClass.hidePanel()
-      this.chapters = new Chapters()
       this.placeOnSpline({
   				spline: new THREE.SplineCurve3(datas.splines.enter),
           relatedCamera: this.camera,
@@ -44,23 +47,16 @@ class Experience1 {
 
       setTimeout(() => {
         console.log('chapter 1')
-        // this.initChapterOne()
-      }, 15000)
+        this.goToChapterOne()
+      }, 4000)
       setTimeout(() => {
         console.log('chapter 2')
-        this.initChapterTwo()
+        this.chapter2.init()
+        this.goToChapterTwo()
       }, 8000)
-
-      new Chapitre2({ relatedBox: this.chapters.chapterBoxes[1] })
-      this.initLight()
 		}
 
-    initLight = () => {
-      this.light.updateSphereVisibility(true)
-      this.light.updateLightIntensity(1)
-    }
-
-    initChapterOne = () => {
+    goToChapterOne = () => {
       this.placeOnSpline({
   				spline: new THREE.SplineCurve3(datas.splines.chapter1),
           relatedCamera: this.camera,
@@ -70,7 +66,7 @@ class Experience1 {
       )
     }
 
-    initChapterTwo = () => {
+    goToChapterTwo = () => {
       this.placeOnSpline({
   				spline: new THREE.SplineCurve3(datas.splines.chapter2),
           relatedCamera: this.camera,

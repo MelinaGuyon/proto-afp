@@ -1,4 +1,4 @@
-class Chapters {
+class ChaptersContainer {
     constructor(options) {
 
       this.chapterBoxes = []
@@ -36,4 +36,4 @@ class Chapters {
 		}
 }
 
-export default Chapters
+export default ChaptersContainer

@@ -3,7 +3,7 @@ import Inrtia from 'inrtia'
 import raf from 'raf'
 import { debounce, sort } from 'lodash'
 
-import ShaderLoader from '../../../helpers/ShaderLoader'
+import ShaderLoader from '../../../../helpers/ShaderLoader'
 
 const vertex_url = 'glsl/CursorLight.vert'
 const fragment_url = 'glsl/CursorLight.frag'
