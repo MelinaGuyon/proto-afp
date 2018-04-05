@@ -5,7 +5,7 @@
     "port": "8080"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --hot --history-api-fallback --open",
+    "start": "node_modules/.bin/webpack-dev-server.cmd --content-base app",
     "copy": "mkdir ./build & cp ./src/*.php ./build & cp -r ./src/assets ./build/assets & cp -r ./src/fonts ./build/fonts & cp -r ./src/vendors ./build/vendors & cp -r ./src/glsl ./build/glsl",
     "build": "npm run copy & cross-env NODE_ENV=production webpack -p"
   },
