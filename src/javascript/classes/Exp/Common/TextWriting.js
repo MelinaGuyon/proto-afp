@@ -1,7 +1,9 @@
+import Typed from 'typed.js'
+
 class TextWriting {
     constructor(options) {
 		Storage.TextWriting = this
-   
+
 		this.init()
     }
 

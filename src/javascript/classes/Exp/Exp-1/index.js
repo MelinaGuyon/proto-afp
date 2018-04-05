@@ -2,6 +2,7 @@ import Camera from '../Common/Camera.js'
 import Scene from '../Common/Scene.js'
 import CanvasPanel from '../Common/CanvasPanel.js'
 import Spline from '../Common/Spline.js'
+import TextWriting from '../Common/TextWriting.js'
 
 import Sphere from '../Common/Sphere.js'
 
@@ -11,7 +12,7 @@ import Chapters from './Chapters.js'
 
 import datas from '../../../datas/Experience1.js'
 
-import Chapitre1 from './Chap-1/index.js'
+import Chapitre2 from './Chap-2/index.js'
 
 class Experience1 {
     constructor(options) {
@@ -39,19 +40,25 @@ class Experience1 {
         .5
       )
 
+      // this.text = new TextWriting()
+
       setTimeout(() => {
         console.log('chapter 1')
-        this.initChapterOne()
+        // this.initChapterOne()
       }, 15000)
       setTimeout(() => {
         console.log('chapter 2')
         this.initChapterTwo()
-      }, 30000)
+      }, 8000)
 
-
+      new Chapitre2({ relatedBox: this.chapters.chapterBoxes[1] })
       this.initLight()
-      new Chapitre1()
 		}
+
+    initLight = () => {
+      this.light.updateSphereVisibility(true)
+      this.light.updateLightIntensity(1)
+    }
 
     initChapterOne = () => {
       this.placeOnSpline({
@@ -71,11 +78,6 @@ class Experience1 {
   			},
         .5
       )
-    }
-
-    initLight = () => {
-      this.light.updateSphereVisibility(true)
-      this.light.updateLightIntensity(1)
     }
 
     placeOnSpline = (opt, mvmt) => {
