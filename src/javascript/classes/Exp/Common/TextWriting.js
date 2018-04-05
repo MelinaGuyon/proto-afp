@@ -14,7 +14,7 @@ class TextWriting {
 
 	init = (exp, chap) => {
 
-		if (exp === "exp1" && chap === "chap1") {
+		if (exp === "exp1" && chap === "chap2") {
 			this.options1 = {
 			  strings: ["J'ai fui mon pays à 16 ans.", "Je lui étais jusqu'alors toujours resté fidèle."],
 			  typeSpeed: 50,

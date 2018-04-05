@@ -12,6 +12,7 @@ import BetweenChapters from './BetweenChapters.js'
 
 import datas from '../../../datas/Experience1.js'
 
+import Chapitre1 from './Chap-1/index.js'
 import Chapitre2 from './Chap-2/index.js'
 
 class Experience1 {
@@ -28,6 +29,11 @@ class Experience1 {
 
       // here to load things without affect animations
       this.chaptersContainer = new ChaptersContainer()
+      this.chapter1 = new Chapitre1({
+        relatedBox: this.chaptersContainer.chapterBoxes[0],
+        relatedCamera: this.camera.camera,
+        lightOpt: new Array(this.ambiance)
+      })
       this.chapter2 = new Chapitre2({
         relatedBox: this.chaptersContainer.chapterBoxes[1],
         relatedCamera: this.camera.camera,
