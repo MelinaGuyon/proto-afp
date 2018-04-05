@@ -1,17 +1,17 @@
+import TextWriting from '../../Common/TextWriting.js'
 const MTLLoader = require('three-mtl-loader')
 
-
 class Chapitre1 {
-    constructor(options) {
-		Storage.Chapitre1Class = this
-      	this.mtlLoader = new MTLLoader()
-      	this.objLoader = new THREE.OBJLoader()
-      	this.textureLoader = new THREE.TextureLoader()
-      	this.mtlLoader.manager = new THREE.LoadingManager()
+  constructor(options) {
+  	Storage.Chapitre1Class = this
+  	this.mtlLoader = new MTLLoader()
+  	this.objLoader = new THREE.OBJLoader()
+  	this.textureLoader = new THREE.TextureLoader()
+  	this.mtlLoader.manager = new THREE.LoadingManager()
 
-		this.modelsTab = []
-		this.init()
-    }
+  	this.modelsTab = []
+  	this.init()
+  }
 
 	init = () => {
 
@@ -25,6 +25,7 @@ class Chapitre1 {
 		}).catch((error)=> { console.warn(error) })
 		}).catch((error)=> { console.warn(error) })
 
+    new TextWriting({ exp: 'exp1', chap: 'chap1'})
 	}
 
 	addWall = () => {
@@ -42,68 +43,65 @@ class Chapitre1 {
 	}
 
 	loadOrelsanArtist = () => {
-      return new Promise((resolve, reject) => {
-        let that = this
-        this.mtlLoader.load('assets/persos/orelsan/model_orelsan.mtl', function(matl) {
-          matl.preload()
-          that.objLoader.setMaterials( matl )
+    return new Promise((resolve, reject) => {
+      let that = this
+      this.mtlLoader.load('assets/persos/orelsan/model_orelsan.mtl', function(matl) {
+        matl.preload()
+        that.objLoader.setMaterials( matl )
 
-          that.objLoader.load( 'assets/persos/orelsan/model_orelsan.obj', function ( object ) {
-          	console.log("object", object)
-            object.position.y = 0
-            object.scale.x = 2
-            object.scale.y = 2
-            object.scale.z = 2
+        that.objLoader.load( 'assets/persos/orelsan/model_orelsan.obj', function ( object ) {
+        	console.log("object", object)
+          object.position.y = 0
+          object.scale.x = 2
+          object.scale.y = 2
+          object.scale.z = 2
 
-            object.traverse(function(o) {
-              if (o.type === 'Mesh') {
-                o.castShadow = false
-              }
-            })
-
-            that.modelsTab.push(object)
-            resolve()
+          object.traverse(function(o) {
+            if (o.type === 'Mesh') {
+              o.castShadow = false
+            }
           })
+
+          that.modelsTab.push(object)
+          resolve()
         })
       })
-    }
+    })
+  }
 
-    loadMlleKArtist = () => {
-      return new Promise((resolve, reject) => {
-        let that = this
- 
-          let matl = new THREE.ShadowMaterial()
-          matl.opacity = 0
+  loadMlleKArtist = () => {
+    return new Promise((resolve, reject) => {
+      let that = this
 
-          that.objLoader.load( 'assets/persos/mademoiselle-k/MademoiselleK_Guitar_Playing.obj', function ( object ) {
-          	console.log("object", object)
-            object.scale.x = 4
-            object.scale.y = 4
-            object.scale.z = 4
+      let matl = new THREE.ShadowMaterial()
+      matl.opacity = 0
 
-            object.traverse(function(o) {
-              if (o.type === 'Mesh') {
-                o.castShadow = true
-                o.receiveShadow = true
-                o.material = matl
-              }
-            })
+      that.objLoader.load( 'assets/persos/mademoiselle-k/MademoiselleK_Guitar_Playing.obj', function ( object ) {
+        object.scale.x = 4
+        object.scale.y = 4
+        object.scale.z = 4
 
-            that.modelsTab.push(object)
-            resolve()
-          })
-  
+        object.traverse(function(o) {
+          if (o.type === 'Mesh') {
+            o.castShadow = true
+            o.receiveShadow = true
+            o.material = matl
+          }
+        })
+
+        that.modelsTab.push(object)
+        resolve()
       })
-    }
+    })
+  }
 
+  displayOrelsan = () => {
+    Storage.SceneClasses.exp1.scene.add(this.modelsTab[0])
+  }
 
-    displayOrelsan = () => {
-      Storage.SceneClasses.exp1.scene.add(this.modelsTab[0])
-    }
-
-    displayMlleKArtist = () => {
-      Storage.SceneClasses.exp1.scene.add(this.modelsTab[1])
-    }
+  displayMlleKArtist = () => {
+    Storage.SceneClasses.exp1.scene.add(this.modelsTab[1])
+  }
 }
 
 export default Chapitre1
