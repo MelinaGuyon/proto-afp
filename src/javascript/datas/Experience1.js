@@ -17,8 +17,8 @@ const splines = {
 }
 
 const keyPoints = {
-	enter: [.4, .7],
-	chapter1: [],
+	enter: [.2, .6],
+	chapter1: [.5],
 	chapter2: []
 }
 

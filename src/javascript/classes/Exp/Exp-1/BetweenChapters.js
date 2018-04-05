@@ -7,13 +7,25 @@ class BetweenChapters {
 
     initFcTable = () => {
       this.table = [
-        [ new Function('', 'return "je lance carte" '), new Function('', 'return "je lance frontiere" ') ],
-        []
+        [ this.launchMap, this.launchFrontier ],
+        [ this.launchSound ]
       ]
     }
 
     updateScene = (index, step) => {
-      console.log(this.table[index][step - 1]())
+      this.table[index][step - 1]()
+    }
+
+    launchMap = () => {
+      console.log('je lance la carte')
+    }
+
+    launchFrontier = () => {
+      console.log('je lance la frontère colorée')
+    }
+
+    launchSound = () => {
+      console.log('je lance propagande sonore')
     }
 }
 
