@@ -2,7 +2,6 @@ const MTLLoader = require('three-mtl-loader')
 
 class ObjectsLoader {
   constructor(options) {
-  	Storage.Chapitre1Class = this
   	this.mtlLoader = new MTLLoader()
   	this.objLoader = new THREE.OBJLoader()
   	this.textureLoader = new THREE.TextureLoader()
@@ -33,7 +32,7 @@ class ObjectsLoader {
 
 	addWall = () => {
 		let geometry = new THREE.PlaneGeometry( 1500, 1500, 32 )
-		let material = new THREE.MeshStandardMaterial( { color: 0xf0f6f } )
+		let material = new THREE.MeshStandardMaterial( { color: 0xf0f6f, side: THREE.BackSide } )
 		let plane = new THREE.Mesh( geometry, material )
 
 		plane.position.z = -100
@@ -41,6 +40,22 @@ class ObjectsLoader {
 
 		plane.castShadow = true
 		plane.receiveShadow = true
+
+    // invert normals
+    for ( var i = 0; i < geometry.faces.length; i ++ ) {
+      var face = geometry.faces[ i ]
+      var temp = face.a
+      face.a = face.c
+      face.c = temp
+    }
+    geometry.computeFaceNormals()
+    geometry.computeVertexNormals()
+    var faceVertexUvs = geometry.faceVertexUvs[ 0 ]
+    for ( var i = 0; i < faceVertexUvs.length; i ++ ) {
+      var temp = faceVertexUvs[ i ][ 0 ]
+      faceVertexUvs[ i ][ 0 ] = faceVertexUvs[ i ][ 2 ]
+      faceVertexUvs[ i ][ 2 ] = temp
+    }
 
     this.group.add(plane)
 	}

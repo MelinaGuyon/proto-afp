@@ -29,7 +29,7 @@ class Experience1 {
       this.chapter2 = new Chapitre2({
         relatedBox: this.chaptersContainer.chapterBoxes[1],
         relatedCamera: this.camera.camera,
-        lightOpt: [this.spherePreview, this.ambiance]
+        lightOpt: new Array(this.ambiance)
       })
 		}
 
@@ -43,16 +43,16 @@ class Experience1 {
         .5
       )
 
-      // this.text = new TextWriting()
-
       setTimeout(() => {
         console.log('chapter 1')
         this.goToChapterOne()
       }, 4000)
       setTimeout(() => {
         console.log('chapter 2')
-        this.chapter2.init()
-        this.goToChapterTwo()
+        this.chapter2.init().then(() => {
+          console.log('test')
+          this.goToChapterTwo()
+        })
       }, 8000)
 		}
 

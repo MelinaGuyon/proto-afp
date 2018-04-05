@@ -23,29 +23,34 @@ class Chapitre2 {
 	}
 
   init = () => {
-    this.displayChapterObjects()
     new TextWriting({ exp: 'exp1', chap: 'chap1'})
+    this.displayChapterObjects()
+    this.initLight()
+    return new Promise((resolve, reject) => {
+      console.log('test 1')
+      setTimeout(() => { resolve() }, 500)
+    })
   }
 
   initLight = () => {
+    this.state.lightOpt.push(this.modelsGroup.children[0])
     this.light = new CursorLight({
       sceneIndex: 1,
       relatedCamera: this.state.relatedCamera,
-      intensity: 1,
-      sphereVisible: true,
-      intersects: this.state.lightOpt })
+      intensity: 0,
+      sphereVisible: false,
+      castingShadow: false,
+      intersects: this.state.lightOpt
+    })
+    setTimeout(() => {
+      this.light.updateCastingShadow(true)
+      this.light.updateSphereVisibility(true)
+      this.light.updateLightIntensity(1)
+    }, 4000)
   }
 
   displayChapterObjects = () => {
     this.state.relatedBox.add(this.modelsGroup)
-  }
-
-  displayOrelsan = () => {
-    this.state.relatedBox.add(this.modelsTab[0])
-  }
-
-  displayMlleKArtist = () => {
-    this.state.relatedBox.add(this.modelsTab[1])
   }
 }
 

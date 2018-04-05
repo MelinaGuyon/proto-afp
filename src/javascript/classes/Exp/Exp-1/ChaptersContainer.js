@@ -22,7 +22,7 @@ class ChaptersContainer {
 		init = () => {
       this.positions.forEach((el, index) => {
         const geometry = new THREE.BoxGeometry(this.sizes[0][0], this.sizes[0][1], this.sizes[0][2])
-        const material = new THREE.MeshLambertMaterial({ color: this.colors[index], side: THREE.BackSide, opacity: 0.5 })
+        const material = new THREE.MeshLambertMaterial({ color: this.colors[index], side: THREE.BackSide})
         const cube = new THREE.Mesh(geometry, material)
 
         cube.position.set(el[0], el[1], el[2])

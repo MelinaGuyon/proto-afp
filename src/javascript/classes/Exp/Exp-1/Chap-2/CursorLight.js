@@ -58,17 +58,17 @@ class CursorLight {
 		}
 
     initLight() {
-      this.light = new THREE.PointLight(0xff0, this.state.intensity, 10000, 2)
+      this.light = new THREE.PointLight(0xff0, this.state.intensity, 640, 2)
 			this.light.position.set(200, 200, 500)
-			this.light.castShadow = true
+			this.light.castShadow = this.state.castingShadow
 			Storage.SceneClasses.exp1.scene.add(this.light)
 		}
 
 		initSphere = (texts) => {
-		const vertexSphere = texts[0]
-      	const fragmentSphere = texts[1]
+  		const vertexSphere = texts[0]
+      const fragmentSphere = texts[1]
 
-		this.lightSphereUnif = THREE.UniformsUtils.merge([
+  		this.lightSphereUnif = THREE.UniformsUtils.merge([
         THREE.ShaderLib.lambert.uniforms,
         { specular: { value: new THREE.Color(0x1b1b1b) } },
         { emissive: { value: new THREE.Color(0x777777) } },
@@ -105,9 +105,15 @@ class CursorLight {
       this.light.intensity = value
     }
 
+    updateCastingShadow = (bool) => {
+      this.light.castShadow = bool
+    }
+
     makeRecasterTable = () => {
       let table = []
-      if (this.state.sceneIndex === 1) table.push(this.state.intersects[0].sphere, this.state.intersects[1].background)
+      if (this.state.sceneIndex === 1) {
+        table.push(this.state.intersects[0].background, this.state.intersects[1])
+      }
       return table
     }
 
@@ -135,10 +141,10 @@ class CursorLight {
 
 			if (intersects && intersects.length > 0) {
 				const { point, face } = intersects[0]
-				const offset = -300
+        let offset = -300
 				pos.x = point.x + offset * face.normal.x
 				pos.y = point.y + -offset * face.normal.y
-				pos.z = point.z + (offset - 500) * face.normal.z
+				pos.z = point.z + (offset - 100) * face.normal.z
 				this.inrtia.x.to(pos.x)
 				this.inrtia.y.to(pos.y)
 				this.inrtia.z.to(pos.z)
