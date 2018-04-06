@@ -17,7 +17,7 @@ class ObjectsLoader {
 	}
 
 	addVideo = () => {
-		let geometry = new THREE.PlaneGeometry( 1500, 1500, 32 )
+		let geometry = new THREE.PlaneGeometry( 3000, 1500, 32 )
 
 	    let video = document.getElementById( 'video' )
 	    let texture = new THREE.VideoTexture( video )
@@ -29,6 +29,8 @@ class ObjectsLoader {
 	    let material = new THREE.MeshStandardMaterial( parameters )
 
 		let plane = new THREE.Mesh( geometry, material )
+
+		plane.name = "video"
 
 		plane.position.z = -100
     	plane.position.y = 790
