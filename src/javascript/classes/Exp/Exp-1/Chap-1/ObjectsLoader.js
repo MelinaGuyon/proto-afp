@@ -1,30 +1,29 @@
 class ObjectsLoader {
 	constructor(options) {
-		Storage.Exp1Chap1ObjLoader = this
-		this.video = 0
-	    this.init()
+/*		this.video = 0
+*/	    this.init()
 	}
 
 	init = () => {
 	    this.group = new THREE.Group()
-	    this.videoGroup = new THREE.Group()
-
+/*	    this.videoGroup = new THREE.Group()
+*/
 	    this.group.position.y = -790
 	    this.group.position.z = -300
 
-	   	this.videoGroup.position.y = -790
-	    this.videoGroup.position.z = -300
+/*	   	this.videoGroup.position.y = -790
+	    this.videoGroup.position.z = -300*/
 	}
 
 	load = () => {
-		this.loadVideo()
-		return new Promise((resolve, reject) => {
-			//resolve(this.group)
-			resolve(this.videoGroup)
+/*		this.loadVideo()
+*/		return new Promise((resolve, reject) => {
+			resolve(this.group)
+			//resolve(this.videoGroup)
 		})
 	}
 
-	loadVideo = () => {
+/*	loadVideo = () => {
 		let geometry = new THREE.PlaneGeometry( window.innerWidth, window.innerWidth/1.8, 32 )
 
 	    this.video = document.getElementById( 'video' )
@@ -46,7 +45,7 @@ class ObjectsLoader {
 		plane.position.y = 790
 
 		this.videoGroup.add(plane)
-	}
+	}*/
 
 }
 
