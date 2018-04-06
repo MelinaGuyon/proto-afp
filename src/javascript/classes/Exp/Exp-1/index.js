@@ -32,7 +32,7 @@ class Experience1 {
       this.chapter1 = new Chapitre1({
         relatedBox: this.chaptersContainer.chapterBoxes[0],
         relatedCamera: this.camera.camera,
-        lightOpt: new Array(this.ambiance)
+        lightOpt: [this.ambiance]
       })
       this.chapter2 = new Chapitre2({
         relatedBox: this.chaptersContainer.chapterBoxes[1],
@@ -48,7 +48,7 @@ class Experience1 {
           relatedCamera: this.camera,
           step: .30,
           index: 0,
-          cbEnd: this.goToChapterOne
+          cbEnd: () => { this.chapter1.init().then(this.goToChapterOne) }
   			},
         .5
       )

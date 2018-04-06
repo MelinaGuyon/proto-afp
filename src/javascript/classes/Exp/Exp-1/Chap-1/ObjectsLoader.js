@@ -10,24 +10,30 @@ class ObjectsLoader {
   }
 
 	load = () => {
-		this.addWall()
+		this.addVideo()
 		return new Promise((resolve, reject) => {
     		resolve(this.group)
     	})
 	}
 
-	addWall = () => {
+	addVideo = () => {
 		let geometry = new THREE.PlaneGeometry( 1500, 1500, 32 )
-		let material = new THREE.MeshStandardMaterial( { color: 0xf0f6f, side: THREE.BackSide } )
+
+	    let video = document.getElementById( 'video' )
+	    let texture = new THREE.VideoTexture( video )
+	    texture.minFilter = THREE.LinearFilter
+	    texture.magFilter = THREE.LinearFilter
+	    texture.format = THREE.RGBFormat
+
+	    let parameters = { map: texture }
+	    let material = new THREE.MeshStandardMaterial( parameters )
+
 		let plane = new THREE.Mesh( geometry, material )
 
 		plane.position.z = -100
     	plane.position.y = 790
 
-		plane.castShadow = true
-		plane.receiveShadow = true
-
-    this.group.add(plane)
+    	this.group.add(plane)
 	}
 
 }

@@ -19,8 +19,10 @@ class Chapitre1 {
 	}
 
   init = () => {
-    //new TextWriting({ exp: 'exp1', chap: 'chap1'})
     this.displayChapterObjects()
+    return new Promise((resolve, reject) => {
+      setTimeout(() => { resolve() }, 500)
+    })
   }
 
   displayChapterObjects = () => {
