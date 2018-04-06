@@ -36,18 +36,30 @@ class Chapitre1 {
   }
 
   displayVideo = () => {
-    this.state.relatedBox.add(this.videosGroupe)
+    this.state.relatedCamera.add(this.videosGroupe)
+    Storage.Exp1Chap1ObjLoader.video.play()
+  }
+  deleteVideo = () => {
+    this.state.relatedCamera.remove(this.videosGroupe)
+    Storage.Exp1Chap1ObjLoader.video.pause()
   }
 
   bindConclu = () => {
-    document.addEventListener('mousedown', this.onClick, false )
+    document.addEventListener('mousedown', this.onMouseDown, false )
+    document.addEventListener('mouseup', this.onMouseUp, false )
   }
 
-  onClick = () => {
+  onMouseDown = () => {
     if ( this.clicked === false ) {
-      console.log("click")
       this.displayVideo()
       this.clicked = true
+    }
+  }
+
+  onMouseUp = () => {
+    if ( this.clicked === true ) {
+      this.deleteVideo()
+      this.clicked = false
     }
   }
 }
