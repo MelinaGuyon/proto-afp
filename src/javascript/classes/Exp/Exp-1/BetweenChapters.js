@@ -8,7 +8,7 @@ class BetweenChapters {
     initFcTable = () => {
       this.table = [
         [ this.launchMap, this.launchFrontier ],
-        [],
+        [ this.launchConclusion ],
         [ this.launchSound ],
         []
       ]
@@ -24,6 +24,11 @@ class BetweenChapters {
 
     launchFrontier = () => {
       console.log('je lance la frontère colorée')
+    }
+
+    launchConclusion = () => {
+      console.log('je lance conclu chapitre 1')
+      Storage.Chapitre1Class.bindConclu()
     }
 
     launchSound = () => {
