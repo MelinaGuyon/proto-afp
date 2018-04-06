@@ -57,23 +57,38 @@ class Experience1 {
 		}
 
     goToChapterOne = () => {
+      console.log("entre dans chapitre 1")
       this.placeOnSpline({
   				spline: new THREE.CatmullRomCurve3(datas.splines.chapter1),
           relatedCamera: this.camera,
           step: .30,
           index: 1,
-          cbEnd: () => { this.chapter2.init().then(this.goToChapterTwo) }
+          cbEnd: () => { this.betweenChaptersOneTwo() }
   			},
         .5
       )
     }
 
+    betweenChaptersOneTwo = () => {
+      console.log("entre chap 1 et 2")
+      this.placeOnSpline({
+          spline: new THREE.CatmullRomCurve3(datas.splines.betweenChaptersOneTwo),
+          relatedCamera: this.camera,
+          step: .30,
+          index: 2,
+          cbEnd: () => { this.chapter2.init().then(this.goToChapterTwo) }
+        },
+        .5
+      )
+    }
+
     goToChapterTwo = () => {
+      console.log("entre dans chapitre 2")
       this.placeOnSpline({
   				spline: new THREE.CatmullRomCurve3(datas.splines.chapter2),
           relatedCamera: this.camera,
           step: .30,
-          index: 2
+          index: 3
   			},
         .5
       )
