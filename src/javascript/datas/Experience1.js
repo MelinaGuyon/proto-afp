@@ -19,7 +19,7 @@ const splines = {
 
 const keyPoints = {
 	enter: [.2, .6],
-	chapter1: [],
+	chapter1: [.5],
 	betweenChaptersOneTwo: [.5],
 	chapter2: []
 }

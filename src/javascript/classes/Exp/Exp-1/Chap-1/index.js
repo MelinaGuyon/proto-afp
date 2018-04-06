@@ -25,7 +25,6 @@ class Chapitre1 {
 
   init = () => {
     //this.displayChapterObjects()
-    this.bind()
 
     return new Promise((resolve, reject) => {
       setTimeout(() => { resolve() }, 500)
@@ -40,8 +39,8 @@ class Chapitre1 {
     this.state.relatedBox.add(this.videosGroupe)
   }
 
-  bind = () => {
-    document.addEventListener( 'mousedown', this.onClick, false )
+  bindConclu = () => {
+    document.addEventListener('mousedown', this.onClick, false )
   }
 
   onClick = () => {

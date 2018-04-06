@@ -17,8 +17,8 @@ import Chapitre2 from './Chap-2/index.js'
 
 class Experience1 {
     constructor(options) {
-		Storage.Experience1Class = this
-		this.initPreview()
+  		Storage.Experience1Class = this
+  		this.initPreview()
     }
 
     initPreview = () => {
