@@ -14,17 +14,18 @@ class TextWriting {
 
 	init = (exp, chap) => {
 
+		console.log(exp, chap)
+
 		if (exp === "exp1" && chap === "chap2") {
 			this.options1 = {
-			  strings: ["J'ai fui mon pays à 16 ans.", "Je lui étais jusqu'alors toujours resté fidèle."],
+			  strings: ["...solide et protectrice.", "...exécute froidement ses citoyens."],
 			  typeSpeed: 50,
-			  loopCount: 1,
-			  startDelay: 4000,
+			  startDelay: 3000,
 			}
 
 			this.options2 = {
-			  strings: ["Je m'appelle Min-Ho, je suis nord-coréen."],
-			  typeSpeed: 50,
+			  strings: ["L'armée..."],
+			  typeSpeed: 30,
 			  loopCount: 1,
 			}
 		}
