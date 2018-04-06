@@ -1,5 +1,7 @@
 class ObjectsLoader {
 	constructor(options) {
+		Storage.Exp1Chap1ObjLoader = this
+		this.video = 0
 	    this.init()
 	}
 
@@ -23,10 +25,12 @@ class ObjectsLoader {
 	}
 
 	loadVideo = () => {
-		let geometry = new THREE.PlaneGeometry( 3000, 1500, 32 )
+		let geometry = new THREE.PlaneGeometry( window.innerWidth, window.innerWidth/1.8, 32 )
 
-	    let video = document.getElementById( 'video' )
-	    let texture = new THREE.VideoTexture( video )
+	    this.video = document.getElementById( 'video' )
+	    this.video.pause()
+
+	    let texture = new THREE.VideoTexture( this.video )
 	    texture.minFilter = THREE.LinearFilter
 	    texture.magFilter = THREE.LinearFilter
 	    texture.format = THREE.RGBFormat
