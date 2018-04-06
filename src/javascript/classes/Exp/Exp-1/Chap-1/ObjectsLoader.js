@@ -1,22 +1,28 @@
 class ObjectsLoader {
-  constructor(options) {
-    this.init()
-  }
-
-  init = () => {
-    this.group = new THREE.Group()
-    this.group.position.y = -790
-    this.group.position.z = -300
-  }
-
-	load = () => {
-		this.addVideo()
-		return new Promise((resolve, reject) => {
-    		resolve(this.group)
-    	})
+	constructor(options) {
+	    this.init()
 	}
 
-	addVideo = () => {
+	init = () => {
+	    this.group = new THREE.Group()
+	    this.videoGroup = new THREE.Group()
+
+	    this.group.position.y = -790
+	    this.group.position.z = -300
+
+	   	this.videoGroup.position.y = -790
+	    this.videoGroup.position.z = -300
+	}
+
+	load = () => {
+		this.loadVideo()
+		return new Promise((resolve, reject) => {
+			//resolve(this.group)
+			resolve(this.videoGroup)
+		})
+	}
+
+	loadVideo = () => {
 		let geometry = new THREE.PlaneGeometry( 3000, 1500, 32 )
 
 	    let video = document.getElementById( 'video' )
@@ -33,9 +39,9 @@ class ObjectsLoader {
 		plane.name = "video"
 
 		plane.position.z = -100
-    	plane.position.y = 790
+		plane.position.y = 790
 
-    	this.group.add(plane)
+		this.videoGroup.add(plane)
 	}
 
 }

@@ -8,7 +8,9 @@ class BetweenChapters {
     initFcTable = () => {
       this.table = [
         [ this.launchMap, this.launchFrontier ],
-        [ this.launchSound ]
+        [],
+        [ this.launchSound ],
+        []
       ]
     }
 
