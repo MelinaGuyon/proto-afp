@@ -1,3 +1,5 @@
+import TextWriting from '../Common/TextWriting.js'
+
 class BetweenChapters {
     constructor(options) {
       Storage.BetweenChaptersClass = this
@@ -20,10 +22,20 @@ class BetweenChapters {
 
     launchMap = () => {
       console.log('je lance la carte')
+      new TextWriting({
+        strings: ["L'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'arméel l'armée l'armée l'armée..."],
+        typeSpeed: 30,
+        loopCount: 1,
+      })
     }
 
     launchFrontier = () => {
       console.log('je lance la frontère colorée')
+      new TextWriting({
+        strings: ["L'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'arméel l'armée l'armée l'armée..."],
+        typeSpeed: 30,
+        loopCount: 1,
+      })
     }
 
     launchConclusionOne = () => {

@@ -1,9 +1,7 @@
 const MTLLoader = require('three-mtl-loader')
 
-import TextWriting from '../../Common/TextWriting.js'
 import ObjectsLoader from './ObjectsLoader'
 import CursorLight from './CursorLight.js'
-
 
 class Chapitre2 {
     constructor(options) {
@@ -24,7 +22,6 @@ class Chapitre2 {
 	}
 
   init = () => {
-    new TextWriting({ exp: 'exp1', chap: 'chap2'})
     this.displayChapterObjects()
     this.initLight()
     return new Promise((resolve, reject) => {
