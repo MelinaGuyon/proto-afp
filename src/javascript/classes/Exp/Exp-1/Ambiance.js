@@ -67,7 +67,7 @@ class Ambiance {
       let that = this
       this.vertex_loader.load('glsl/BackgroundVertex.vert', function (vertexGround) {
         that.fragment_loader.load('glsl/BackgroundFragment.frag', function (fragmentGround) {
-          const h = 18000;
+          const h = 35000;
           const geometry = new THREE.BoxGeometry(h, h, h)
 
           that.backgroundUniforms = THREE.UniformsUtils.merge([
