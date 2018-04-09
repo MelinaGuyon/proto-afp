@@ -31,11 +31,11 @@ class BetweenChapters {
 
     launchFrontier = () => {
       console.log('je lance la frontère colorée')
-      new TextWriting({
-        strings: ["L'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'arméel l'armée l'armée l'armée..."],
-        typeSpeed: 30,
-        loopCount: 1,
-      })
+      // new TextWriting({
+      //   strings: ["L'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'arméel l'armée l'armée l'armée..."],
+      //   typeSpeed: 30,
+      //   loopCount: 1,
+      // })
     }
 
     launchConclusionOne = () => {

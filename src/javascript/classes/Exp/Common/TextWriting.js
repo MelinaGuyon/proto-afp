@@ -21,7 +21,11 @@ class TextWriting {
 		document.querySelector('.infoContainer').appendChild(newDiv)
 		
 		let textWriting = new Typed(".textWriting", options)
-		document.querySelector('.textWriting').className = 'oldTextWriting'
+		document.querySelector('.textWriting').className = 'currentTextWriting'
+
+		// setTimeout(() => {
+  //       	console.log("options", options)
+  //     	}, options.typeSpeed)
 	}
 }
 
