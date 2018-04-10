@@ -5,16 +5,12 @@ class TextWriting {
 		Storage.TextWriting = this
 		this.options = options
 
+		this.infoContainerStyle = window.getComputedStyle(document.querySelector('.infoContainer'), null)
+
 		this.init(this.options)
     }
 
 	init = (options) => {
-
-		/*this.options = {
-		  strings: ["...solide et protectrice.", "...exécute froidement ses citoyens."],
-		  typeSpeed: 50,
-		  startDelay: 3000,
-		}*/
 
 		let newDiv = document.createElement('div')
 		newDiv.className = 'textWriting'
@@ -22,11 +18,16 @@ class TextWriting {
 		
 		let textWriting = new Typed(".textWriting", options)
 		document.querySelector('.textWriting').className = 'currentTextWriting'
-
-		// setTimeout(() => {
-  //       	console.log("options", options)
-  //     	}, options.typeSpeed)
 	}
+
+	onComplete = () => {
+		document.querySelector('.currentTextWriting').style.position = "relative"
+		//document.querySelector('.currentTextWriting').style.marginBottom = ""+this.infoContainerStyle.height+""
+		document.querySelector('.currentTextWriting').style.marginTop = "-112px"
+
+		document.querySelector('.currentTextWriting').className = "oldTextWriting"
+	}
+		
 }
 
 export default TextWriting
