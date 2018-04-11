@@ -1,3 +1,5 @@
+import anime from 'animejs'
+
 import Camera from '../Common/Camera.js'
 import Scene from '../Common/Scene.js'
 import CanvasPanel from '../Common/CanvasPanel.js'

@@ -23,19 +23,21 @@ class BetweenChapters {
     launchMap = () => {
       console.log('je lance la carte')
       new TextWriting({
-        strings: ["L'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'arméel l'armée l'armée l'armée..."],
+        strings: ["La “Dure Marche” : 3 millions de personnes sont décédées à cause de la famine sous le règne de Kim Sung Il, une période surnommé la “Dure Marche”."],
         typeSpeed: 30,
         loopCount: 1,
+        onComplete: function(self) { Storage.TextWriting.onComplete() }
       })
     }
 
     launchFrontier = () => {
       console.log('je lance la frontère colorée')
-      // new TextWriting({
-      //   strings: ["L'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'armée l'arméel l'armée l'armée l'armée..."],
-      //   typeSpeed: 30,
-      //   loopCount: 1,
-      // })
+      new TextWriting({
+        strings: ["Chaque Nord-Coréen recevait 5$ dollars par mois de la part du gouvernement. Un kilo de riz coûtant 3$, un habitant devait se contenter d’à peine deux kilo de riz pour survivre jusqu’à la fin du mois."],
+        typeSpeed: 30,
+        loopCount: 1,
+        onComplete: function(self) { Storage.TextWriting.onComplete() }
+      })
     }
 
     launchConclusionOne = () => {
@@ -45,6 +47,12 @@ class BetweenChapters {
 
     launchSound = () => {
       console.log('je lance propagande sonore')
+      new TextWriting({
+        strings: ["Avant 12 ans, il est interdit aux Nord-Coréens d’assister à une exécution publique; après 12 ans, cela devient obligatoire."],
+        typeSpeed: 30,
+        loopCount: 1,
+        onComplete: function(self) { Storage.TextWriting.onComplete() }
+      })
     }
 
     launchConclusionTwo = () => {
