@@ -26,7 +26,7 @@ class BetweenChapters {
         strings: ["La “Dure Marche” : 3 millions de personnes sont décédées à cause de la famine sous le règne de Kim Sung Il, une période surnommé la “Dure Marche”."],
         typeSpeed: 30,
         loopCount: 1,
-        onComplete: function(self) { Storage.TextWriting.onComplete() }
+        onComplete: function(self) { Storage.textStored === false ? Storage.TextWriting.storeInfo() : '' }
       })
     }
 
@@ -36,7 +36,7 @@ class BetweenChapters {
         strings: ["Chaque Nord-Coréen recevait 5$ dollars par mois de la part du gouvernement. Un kilo de riz coûtant 3$, un habitant devait se contenter d’à peine deux kilo de riz pour survivre jusqu’à la fin du mois."],
         typeSpeed: 30,
         loopCount: 1,
-        onComplete: function(self) { Storage.TextWriting.onComplete() }
+        onComplete: function(self) { Storage.textStored === false ? Storage.TextWriting.storeInfo() : '' }
       })
     }
 
@@ -51,7 +51,7 @@ class BetweenChapters {
         strings: ["Avant 12 ans, il est interdit aux Nord-Coréens d’assister à une exécution publique; après 12 ans, cela devient obligatoire."],
         typeSpeed: 30,
         loopCount: 1,
-        onComplete: function(self) { Storage.TextWriting.onComplete() }
+        onComplete: function(self) { Storage.TextWriting.storeInfo() }
       })
     }
 
