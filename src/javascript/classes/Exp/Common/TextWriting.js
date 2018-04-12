@@ -1,29 +1,43 @@
 import Typed from 'typed.js'
 import anime from 'animejs'
 
+// quand stockage du texte pendant écriture du suivant supprimer le delay de l'anim
+// fixer bug sur la valeur de textStored quand stockage de la deuxième info
+
 class TextWriting {
     constructor(options) {
 		Storage.TextWriting = this
 		this.options = options
-
-		this.completed = false
+		Storage.textStored = false
 
 		this.init(this.options)
     }
 
 	init = (options) => {
+		if ( Storage.currentlyWriting === true ) {
+			Storage.textStored = true
+
+			this.storeInfo()
+			this.writeInfo(options)
+		}
+
+		else {
+			this.writeInfo(options)
+		}
+	}
+
+	writeInfo = (options) => {
+		Storage.currentlyWriting = true
 
 		let newDiv = document.createElement('div')
 		newDiv.className = 'textWriting'
 		document.querySelector('.currentInfoContainer').appendChild(newDiv)
 		
-		let textWriting = new Typed(".textWriting", options)
+		this.textWriting = new Typed(".textWriting", options)
 		document.querySelector('.textWriting').className = 'currentTextWriting'
 	}
 
-	onComplete = () => {
-		this.completed = true
-
+	storeInfo = () => {
 		anime({
 	      targets: document.querySelector('.currentTextWriting'),
 	      translateX: "300px",
@@ -36,7 +50,11 @@ class TextWriting {
 		      	targets: document.querySelector('.currentTextWriting'),
 	    		translateX: "0px",
 	    		duration: 1000,
-	      		easing: 'easeInOutQuad'
+	      		easing: 'easeInOutQuad',
+	      		complete: () => { 
+	      			Storage.currentlyWriting = false
+	      			Storage.textStored = true 
+	      		}
 	    	})
 	    	document.querySelector('.currentTextWriting').className = "oldTextWriting"
 			document.querySelector('.oldInfoContainer').addEventListener('mouseover', this.oldInfoContainerOver)
