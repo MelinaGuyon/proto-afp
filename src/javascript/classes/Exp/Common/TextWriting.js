@@ -1,23 +1,33 @@
 import Typed from 'typed.js'
 import anime from 'animejs'
 
-// quand stockage du texte pendant écriture du suivant supprimer le delay de l'anim
-// fixer bug sur la valeur de textStored quand stockage de la deuxième info
 
 class TextWriting {
     constructor(options) {
 		Storage.TextWriting = this
 		this.options = options
-		Storage.textStored = false
+		this.id = options.id
 
 		this.init(this.options)
     }
 
 	init = (options) => {
-		if ( Storage.currentlyWriting === true ) {
-			Storage.textStored = true
+		document.querySelector('.oldInfoContainer').addEventListener('mouseover', this.oldInfoContainerOver)
 
-			this.storeInfo()
+		if ( Storage.currentlyWriting === true ) {
+			document.querySelector('.currentInfoContainer').removeChild(document.querySelector('.currentTextWriting'))
+
+			let previousId = this.id-1
+
+			let newDiv = document.createElement('div')
+			newDiv.innerHTML = Storage.textWriting.strings[0]
+			newDiv.id = '#currentTextWriting'+previousId+''
+			newDiv.className = 'oldTextWriting'
+
+	        document.querySelector('.oldInfoContainerText').appendChild(newDiv)
+
+	        Storage.textWriting.destroy()
+			
 			this.writeInfo(options)
 		}
 
@@ -33,31 +43,33 @@ class TextWriting {
 		newDiv.className = 'textWriting'
 		document.querySelector('.currentInfoContainer').appendChild(newDiv)
 		
-		this.textWriting = new Typed(".textWriting", options)
+		Storage.textWriting = new Typed(".textWriting", options)
+
+		this.currentTextWritingId = 'currentTextWriting'+this.id+''
+		document.querySelector('.textWriting').id = this.currentTextWritingId
 		document.querySelector('.textWriting').className = 'currentTextWriting'
 	}
 
 	storeInfo = () => {
 		anime({
-	      targets: document.querySelector('.currentTextWriting'),
+	      targets: document.querySelector('#'+this.currentTextWritingId+''),
 	      translateX: "300px",
 	      duration: 1000,
 	      easing: 'easeInOutQuad',
 	      delay: 1000,
 	      complete: () => {
-	        document.querySelector('.oldInfoContainerText').appendChild(document.querySelector('.currentTextWriting'))
-			anime({
-		      	targets: document.querySelector('.currentTextWriting'),
-	    		translateX: "0px",
-	    		duration: 1000,
-	      		easing: 'easeInOutQuad',
-	      		complete: () => { 
-	      			Storage.currentlyWriting = false
-	      			Storage.textStored = true 
-	      		}
-	    	})
-	    	document.querySelector('.currentTextWriting').className = "oldTextWriting"
-			document.querySelector('.oldInfoContainer').addEventListener('mouseover', this.oldInfoContainerOver)
+	      	document.querySelector('.currentInfoContainer').removeChild(document.querySelector('.currentTextWriting'))
+
+	        let id = this.id
+			let newDiv = document.createElement('div')
+			newDiv.innerHTML = Storage.textWriting.strings[0]
+			newDiv.id = '#currentTextWriting'+id+''
+			newDiv.className = "oldTextWriting"
+
+	        document.querySelector('.oldInfoContainerText').appendChild(newDiv)
+
+  			Storage.currentlyWriting = false
+  			Storage.textWriting.destroy()
 	      }
     	})
 	}
