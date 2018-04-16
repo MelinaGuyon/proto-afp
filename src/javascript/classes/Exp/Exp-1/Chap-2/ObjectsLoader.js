@@ -91,7 +91,7 @@ class ObjectsLoader {
       return new Promise((resolve, reject) => {
         let that = this
 
-          let matl = new THREE.ShadowMaterial()
+          let matl = new THREE.ShadowMaterial({ fog: false })
           matl.opacity = 0
 
           that.objLoader.load( 'assets/persos/mademoiselle-k/MademoiselleK_Guitar_Playing.obj', function ( object ) {

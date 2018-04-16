@@ -119,7 +119,7 @@ class Ambiance {
     createFakeShadow() {
       const h = 8000;
       let geometry = new THREE.SphereGeometry(h, 32, 32)
-      let material = new THREE.ShadowMaterial({side: THREE.DoubleSide})
+      let material = new THREE.ShadowMaterial({ side: THREE.DoubleSide, fog: false })
       let fakeShadow = new THREE.Mesh( geometry, material )
       fakeShadow.material.opacity = 0.05
       fakeShadow.position.y = h - 12
