@@ -1,5 +1,7 @@
 import TextWriting from '../Common/TextWriting.js'
 
+import datas from '../../../datas/Experience1.js'
+
 class BetweenChapters {
     constructor(options) {
       Storage.BetweenChaptersClass = this
@@ -9,9 +11,12 @@ class BetweenChapters {
 
     initFcTable = () => {
       this.table = [
-        [ this.launchMap, this.launchFrontier ],
+        [ this.launchText(0), this.launchText(1) ],
+
         [ this.launchConclusionOne, this.stopConclusion ],
-        [ this.launchSound ],
+
+        [ this.launchText(2) ],
+
         [ this.launchConclusionTwo, this.stopConclusion ]
       ]
     }
@@ -20,20 +25,9 @@ class BetweenChapters {
       this.table[index][step - 1]()
     }
 
-    launchMap = () => {
-      console.log('je lance la carte')
+    launchText = (index) => () => {
       Storage.TextWriting.writeInfo({
-        strings: ["La “Dure Marche” : 3 millions de personnes sont décédées à cause de la famine sous le règne de Kim Sung Il, une période surnommé la “Dure Marche”."],
-        typeSpeed: 30,
-        loopCount: 1,
-        onComplete: function(self) { Storage.TextWriting.hideTextPanel() }
-      })
-    }
-
-    launchFrontier = () => {
-      console.log('je lance la frontère colorée')
-      Storage.TextWriting.writeInfo({
-        strings: ["Chaque Nord-Coréen recevait 5$ dollars par mois de la part du gouvernement. Un kilo de riz coûtant 3$, un habitant devait se contenter d’à peine deux kilo de riz pour survivre jusqu’à la fin du mois."],
+        strings: [datas.textsPanel[index]],
         typeSpeed: 30,
         loopCount: 1,
         onComplete: function(self) { Storage.TextWriting.hideTextPanel() }
@@ -43,16 +37,6 @@ class BetweenChapters {
     launchConclusionOne = () => {
       console.log('je lance conclu chapitre 1')
       Storage.ChaptersConclusionClass.bindConclu()
-    }
-
-    launchSound = () => {
-      console.log('je lance propagande sonore')
-      Storage.TextWriting.writeInfo({
-        strings: ["Avant 12 ans, il est interdit aux Nord-Coréens d’assister à une exécution publique; après 12 ans, cela devient obligatoire."],
-        typeSpeed: 30,
-        loopCount: 1,
-        onComplete: function(self) { Storage.TextWriting.hideTextPanel() }
-      })
     }
 
     launchConclusionTwo = () => {

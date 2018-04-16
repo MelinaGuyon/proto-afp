@@ -24,7 +24,14 @@ const keyPoints = {
 	chapter2: [.5, .7]
 }
 
+const textsPanel =  [
+	'La “Dure Marche” : 3 millions de personnes sont décédées à cause de la famine sous le règne de Kim Sung Il, une période surnommé la “Dure Marche”.',
+	'Chaque Nord-Coréen recevait 5$ dollars par mois de la part du gouvernement. Un kilo de riz coûtant 3$, un habitant devait se contenter d’à peine deux kilo de riz pour survivre jusqu’à la fin du mois.',
+	'Avant 12 ans, il est interdit aux Nord-Coréens d’assister à une exécution publique; après 12 ans, cela devient obligatoire.'
+]
+
 export default {
   splines,
-	keyPoints
+	keyPoints,
+	textsPanel
 }
