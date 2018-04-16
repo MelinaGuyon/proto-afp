@@ -59,12 +59,13 @@ class Experience1 {
 
 		init = () => {
       Storage.CanvasPanelClass.hidePanel()
+      this.chapter1.init()
       this.placeOnSpline({
   				spline: new THREE.CatmullRomCurve3(datas.splines.enter),
           relatedCamera: this.camera,
           step: .30,
           index: 0,
-          cbEnd: () => { this.chapter1.init().then(this.goToChapterOne) }
+          cbEnd: () => { this.goToChapterOne() }
   			},
         .5
       )

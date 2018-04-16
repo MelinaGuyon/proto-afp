@@ -13,7 +13,7 @@ class ChaptersContainer {
         [0, 800, -13000]
       ]
       this.sizes = [
-        [3000, 1600, 4000],
+        [2000, 1600, 4000],
         [3000, 1600, 4000]
       ]
       this.colors = [0xfffff, 0xf0f6f]

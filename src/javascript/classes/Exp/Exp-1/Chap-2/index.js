@@ -8,7 +8,7 @@ class Chapitre2 {
 		Storage.Chapitre2Class = this
     this.state = options
 
-		this.modelsGroup
+    this.modelsGroup
 
 		this.loadChapter()
     }
