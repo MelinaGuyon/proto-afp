@@ -70,6 +70,7 @@ class Experience1 {
       )
 
       this.betweenChapters = new BetweenChapters()
+      this.textPanel = new TextWriting()
 		}
 
     goToChapterOne = () => {
