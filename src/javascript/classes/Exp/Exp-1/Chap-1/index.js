@@ -1,4 +1,5 @@
 import ObjectsLoader from './ObjectsLoader'
+import FrontalCity from './FrontalCity'
 
 class Chapitre1 {
     constructor(options) {
@@ -8,7 +9,7 @@ class Chapitre1 {
     this.modelsGroup
 
     this.raycaster = new THREE.Raycaster()
-    this.mouse = new THREE.Vector2()
+		this.mouse = new THREE.Vector2()
 
 		this.loadChapter()
     }
@@ -24,11 +25,8 @@ class Chapitre1 {
   init = () => {
     this.displayChapterObjects()
     this.bind()
-
-    // Pour l'instant pas besoin de promise
-    // return new Promise((resolve, reject) => {
-    //   setTimeout(() => { resolve() }, 500)
-    // })
+    
+    this.frontalCity = new FrontalCity({ objectsGroup: this.modelsGroup })
   }
 
   bind = () => {
@@ -44,13 +42,7 @@ class Chapitre1 {
     this.mouse.y = - (event.clientY / window.innerHeight) * 2 + 1
 
     this.raycaster.setFromCamera( this.mouse, this.state.relatedCamera)
-    const meshs = this.modelsGroup.children[0].children
-    let intersects = this.raycaster.intersectObjects(meshs, false)
-    if (intersects[0] && intersects[0].object) intersects[0].object.position.x += 10
-    // coordinate may change with new assets
-    // check for rotation and distance 
-    
-    console.log('tests')
+    this.frontalCity.checkRaycaster(this.raycaster)
   }
 
   displayChapterObjects = () => {
