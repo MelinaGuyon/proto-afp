@@ -30,8 +30,14 @@ const textsPanel =  [
 	'Avant 12 ans, il est interdit aux Nord-Coréens d’assister à une exécution publique; après 12 ans, cela devient obligatoire.'
 ]
 
+const chaptersTitle =  [
+	'l\'envers du décors'
+]
+
+
 export default {
   splines,
 	keyPoints,
-	textsPanel
+	textsPanel,
+	chaptersTitle
 }

@@ -1,4 +1,4 @@
-import TextWriting from '../Common/TextWriting.js'
+import TextWriting from '../../Interface/TextWriting.js'
 
 import datas from '../../../datas/Experience1.js'
 

@@ -1,9 +1,12 @@
 import anime from 'animejs'
 import { throttle } from 'lodash'
 
+import datas from '../../../../datas/Experience1.js'
+
 class FrontalCity {
 	constructor(options) {
 		this.state = options
+		this.nextStepLaunched = false
 	}
 
 	checkRaycaster = (raycaster) => {
@@ -12,8 +15,22 @@ class FrontalCity {
 		if (intersects[0] &&
 				intersects[0].object &&
 				intersects[0].distance < 2000 &&
-				intersects[0].object.name === 'Cube_10')
-			this.openAnimation(intersects[0].object)
+				intersects[0].object.name === 'Cube_10') {
+					this.openAnimation(intersects[0].object)
+					this.launchNextStep()
+				}
+	}
+
+	launchNextStep = () => {
+		if (this.nextStepLaunched) return
+		this.nextStepLaunched = true
+		setTimeout(() => {
+			Storage.Chapitre1Class.step++
+			Storage.Chapitre1Class.state.cbMiddle()
+		}, 2000)
+		setTimeout(() => {
+			Storage.InterfaceClass.title.animeTitle(datas.chaptersTitle[0])
+		}, 5000)
 	}
 
 	openAnimation = throttle((object) => {

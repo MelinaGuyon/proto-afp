@@ -1,4 +1,3 @@
-import anime from 'animejs'
 import Inrtia from 'inrtia'
 import raf from 'raf'
 import { Lethargy } from 'lethargy'

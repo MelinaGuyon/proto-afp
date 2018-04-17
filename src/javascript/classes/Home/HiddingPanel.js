@@ -1,8 +1,8 @@
 import anime from 'animejs'
 
-class CanvasPanel {
+class HiddingPanel {
   constructor(options) {
-    Storage.CanvasPanelClass = this
+    Storage.HiddingPanelClass = this
     this.panel = document.querySelector('.canvas-panel')
   }
 
@@ -20,4 +20,4 @@ class CanvasPanel {
   }
 }
 
-export default CanvasPanel
+export default HiddingPanel

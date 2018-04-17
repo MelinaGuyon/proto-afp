@@ -6,6 +6,7 @@ const MTLLoader = require('three-mtl-loader')
 import raf from 'raf'
 
 import Home from './classes/Home/index.js'
+import Interface from './classes/Interface/index.js'
 import Experience1 from './classes/Exp/Exp-1/index.js'
 import Experience2 from './classes/Exp/Exp-2/index.js'
 
@@ -19,6 +20,7 @@ initCanvas()
 
 function initCanvas() {
 	new Home()
+	new Interface()
 	new Experience1()
 	new Experience2()
 

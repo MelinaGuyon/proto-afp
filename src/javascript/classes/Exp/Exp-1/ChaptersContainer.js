@@ -31,9 +31,7 @@ class ChaptersContainer {
         this.chapterBoxes.push(cube)
         Storage.SceneClasses.exp1.scene.add(cube)
       })
-
-
-		}
+    }
 }
 
 export default ChaptersContainer

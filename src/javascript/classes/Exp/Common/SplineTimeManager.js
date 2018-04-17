@@ -18,6 +18,8 @@ class SplineTimeManager {
         return
       }
 
+      if (!datas.keyPoints[Object.keys(datas.keyPoints)[index]]) return
+
       let previousStep = this.step
       let newStep = 0
       datas.keyPoints[Object.keys(datas.keyPoints)[index]].forEach((value, index) => {

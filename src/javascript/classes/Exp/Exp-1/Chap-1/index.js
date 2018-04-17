@@ -9,7 +9,9 @@ class Chapitre1 {
     this.modelsGroup
 
     this.raycaster = new THREE.Raycaster()
-		this.mouse = new THREE.Vector2()
+    this.mouse = new THREE.Vector2()
+    
+    this.step = 0
 
 		this.loadChapter()
     }
@@ -40,9 +42,9 @@ class Chapitre1 {
   onMouseMove = (event) => {
     this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1
     this.mouse.y = - (event.clientY / window.innerHeight) * 2 + 1
+    this.raycaster.setFromCamera(this.mouse, this.state.relatedCamera)
 
-    this.raycaster.setFromCamera( this.mouse, this.state.relatedCamera)
-    this.frontalCity.checkRaycaster(this.raycaster)
+    if (this.step === 0) this.frontalCity.checkRaycaster(this.raycaster)
   }
 
   displayChapterObjects = () => {

@@ -21,7 +21,7 @@ class Experience2 {
 		}
 
 		init = () => {
-      Storage.CanvasPanelClass.hidePanel()
+      Storage.HiddingPanelClass.hidePanel()
 
 			this.spline = new Spline({
 				spline: new THREE.SplineCurve3([

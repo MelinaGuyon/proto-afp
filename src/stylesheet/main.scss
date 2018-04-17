@@ -1,37 +1,29 @@
 @font-face {
-  font-family: "gilroy-medium";
-  src: url('../fonts/Gilroy-Medium.otf');
+  font-family: "brown";
+  src: url('../assets/fonts/brownBold.otf');
   font-style: normal;
+  font-weight: bold;
 }
 
 @font-face {
-  font-family: "gilroy-semibold";
-  src: url('../fonts/Gilroy-Semibold.otf');
+  font-family: "brown";
+  src: url('../assets/fonts/brownLight.ttf');
   font-style: normal;
+  font-weight: normal;
 }
 
 @font-face {
-  font-family: "overpass-bold";
-  src: url('../fonts/Overpass-Bold.ttf');
+  font-family: "westeindeBold";
+  src: url('../assets/fonts/westeindeCaptionBold.otf');
   font-style: normal;
+  font-weight: bold;
 }
 
 @font-face {
-  font-family: "overpass-light";
-  src: url('../fonts/Overpass-Light.ttf');
+  font-family: "westeindeThin";
+  src: url('../assets/fonts/westeindeCaptionThin.otf');
   font-style: normal;
-}
-
-@font-face {
-  font-family: "overpass-regular";
-  src: url('../fonts/Overpass-Regular.ttf');
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "overpass-semibold";
-  src: url('../fonts/Overpass-SemiBold.ttf');
-  font-style: normal;
+  font-weight: light;
 }
 
 
@@ -47,6 +39,7 @@ html, body {
   font-family: helvetica, arial;
   background: black;
   font-size: 62.5%;
+  cursor: none;
 }
 
 p { margin: 0; }
@@ -56,62 +49,3 @@ p { margin: 0; }
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
 }
-
-.transition__panel {
-  display: block;
-  position: absolute;
-  background-color: black;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 100%;
-}
-
-.currentInfoContainer { text-align: justify; border-left: solid transparent 0.5px; font-size: 16px; position: absolute; width: 295px; height: 150px; bottom: 50px; right: 5px; overflow-y: scroll; }
-.currentInfoContainer::-webkit-scrollbar { display: none; }
-.currentTextWriting {
-  position: absolute;
-  bottom: 0;
-  background-color: white;
-  padding: 0;
-
-  &.has-padding {
-    padding: 5px;
-  }
-}
-
-.oldInfoContainer { font-size: 16px; color: white; border-left: solid white 0.5px; position: absolute; right: -240px; bottom: 200px; }
-
-.oldInfoContainerTitle { margin-right: 10px; color: black; background-color: white; float: left; width: 50px; height: 300px; bottom: 200px; right: 5px; text-align: center; padding-top: 60px; }
-.oldInfoContainerText {
-  text-align: justify;
-  width: 230px;
-  height: 300px;
-  bottom: 200px;
-  right: 5px;
-  overflow-y: scroll;
-  div {
-    margin-bottom: 10px;
-  }
-}
-.oldInfoContainerText::-webkit-scrollbar { display: none; }
-
-.typed-cursor { opacity: 0; /*-webkit-animation: blink 0.7s infinite; -moz-animation: blink 0.7s infinite; animation: blink 0.7s infinite;*/ }
-
-/*@keyframes blink {
-  0% {  opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
-}
-@-webkit-keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
-}
-@-moz-keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
-}*/
-
-

@@ -2,10 +2,7 @@ import anime from 'animejs'
 
 import Camera from '../Common/Camera.js'
 import Scene from '../Common/Scene.js'
-import CanvasPanel from '../Common/CanvasPanel.js'
 import Spline from '../Common/Spline.js'
-import TextWriting from '../Common/TextWriting.js'
-
 import Sphere from '../Common/Sphere.js'
 
 import Ambiance from './Ambiance.js'
@@ -31,13 +28,14 @@ class Experience1 {
 			this.ambiance = new Ambiance()
       this.spherePreview = new Sphere({ relatedScene: this.scene.scene,  color: 0x303848, posZ: 2000 })
 
-      // here to load things without affect animations
       this.chaptersContainer = new ChaptersContainer()
 
+      // here to load things without affect animations, because they load all on init
       this.chapter1 = new Chapitre1({
         relatedBox: this.chaptersContainer.chapterBoxes[0],
         relatedCamera: this.camera.camera,
-        lightOpt: [this.ambiance]
+        lightOpt: [this.ambiance],
+        cbMiddle: this.goToChapterOne
       })
       this.conclusion1 = new ChaptersConclusionClass({
         relatedCamera: this.camera.camera,
@@ -58,20 +56,18 @@ class Experience1 {
 		}
 
 		init = () => {
-      Storage.CanvasPanelClass.hidePanel()
+      Storage.HiddingPanelClass.hidePanel()
       this.chapter1.init()
       this.placeOnSpline({
   				spline: new THREE.CatmullRomCurve3(datas.splines.enter),
           relatedCamera: this.camera,
           step: .30,
-          index: 0,
-          cbEnd: () => { this.goToChapterOne() }
+          index: 0
   			},
         .5
       )
 
       this.betweenChapters = new BetweenChapters()
-      this.textPanel = new TextWriting()
 		}
 
     goToChapterOne = () => {
@@ -81,7 +77,7 @@ class Experience1 {
           relatedCamera: this.camera,
           step: .30,
           index: 1,
-          cbEnd: () => { this.betweenChaptersOneTwo() }
+          cbEnd: this.betweenChaptersOneTwo
   			},
         .5
       )
