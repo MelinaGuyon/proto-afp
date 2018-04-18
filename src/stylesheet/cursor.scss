@@ -6,6 +6,25 @@
   left: 0;
   pointer-events: none;
   z-index: 1000;
+  transition: width .3s ease-out, height .3s ease-out;
+
+  &.reveal {
+    width: 66px;
+    height: 66px;
+    
+    .ring .inner {
+      border: 1px solid rgba(255, 255, 255,0.45);
+    }
+  }
+
+  &.target {
+    width: 26px;
+    height: 26px;
+    
+    .ring .inner {
+      border: 1px solid rgba(57, 45, 197, 0.95);
+    }
+  }
 
   .dot {
     position: absolute;
@@ -44,6 +63,7 @@
       border: 1px solid rgba(150,150,150,0.25);
       transform: scaleX(16);
       border-radius: 50%;
+      transition: border .3s ease;
     }
   }
 }

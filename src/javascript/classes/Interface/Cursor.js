@@ -40,13 +40,15 @@ class Cursor {
   }
 
   handleMove = (event) => {
-    
-
     this.dot.style.left = (event.clientX - this.boundingDot.width / 2) + "px" 
     this.dot.style.top = (event.clientY - this.boundingDot.height / 2) + "px"
 
-    const x = event.clientX - 26
-    const y = event.clientY - 26
+    let val = 26
+    if (this.cursorContainer.classList.contains('reveal')) val = 33
+    else if (this.cursorContainer.classList.contains('target')) val = 13
+
+    const x = event.clientX - val
+    const y = event.clientY - val
     this.inrtia.x.to(x)
 		this.inrtia.y.to(y)
   }
@@ -58,6 +60,18 @@ class Cursor {
       this.ring.style.left = this.inrtia.x.value + "px" 
       this.ring.style.top = this.inrtia.y.value + "px"
     }
+  }
+
+  reveal = () => {
+    this.cursorContainer.classList.add('reveal')
+  }
+
+  target = () => {
+    this.cursorContainer.classList.add('target')
+  }
+
+  reset = () => {
+    this.cursorContainer.classList.remove('reveal', 'target')
   }
 }
 

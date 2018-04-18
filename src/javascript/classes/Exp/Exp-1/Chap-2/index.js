@@ -44,6 +44,9 @@ class Chapitre2 {
       this.light.updateSphereVisibility(true)
       this.light.updateLightIntensity(1)
     }, 4000)
+    setTimeout(() => {
+      Storage.InterfaceClass.cursor.target()
+    }, 4500)
   }
 
   displayChapterObjects = () => {

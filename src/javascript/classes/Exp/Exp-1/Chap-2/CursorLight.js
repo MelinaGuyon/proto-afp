@@ -98,7 +98,7 @@ class CursorLight {
 		}
 
     updateSphereVisibility = (bool) => {
-      this.sphere.visible = bool
+			this.sphere.visible = bool
     }
 
     updateLightIntensity = (value) => {

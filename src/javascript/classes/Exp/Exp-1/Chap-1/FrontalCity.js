@@ -19,6 +19,11 @@ class FrontalCity {
 					this.openAnimation(intersects[0].object)
 					this.launchNextStep()
 				}
+		else if (intersects[0]) {
+			Storage.InterfaceClass.cursor.reveal()
+		} else {
+			Storage.InterfaceClass.cursor.reset()
+		}
 	}
 
 	launchNextStep = () => {
@@ -27,6 +32,7 @@ class FrontalCity {
 		setTimeout(() => {
 			Storage.Chapitre1Class.step++
 			Storage.Chapitre1Class.state.cbMiddle()
+			Storage.InterfaceClass.cursor.reset()
 		}, 2000)
 		setTimeout(() => {
 			Storage.InterfaceClass.title.animeTitle(datas.chaptersTitle[0])
