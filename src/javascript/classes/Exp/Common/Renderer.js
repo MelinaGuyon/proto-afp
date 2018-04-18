@@ -27,14 +27,19 @@ class Renderer {
       Storage.CameraClasses[Storage.expName].camera.aspect = window.innerWidth / window.innerHeight
       Storage.CameraClasses[Storage.expName].camera.updateProjectionMatrix()
       this.renderer.setSize(window.innerWidth, window.innerHeight)
-		}
+    }
 
     render() {
-      if (Storage.SceneClasses['exp2'] && Storage.CameraClasses['exp2'] && Storage.SceneClasses['exp1'] && Storage.CameraClasses['exp1'])
-        this.renderer.render(
-          Storage.SceneClasses[Storage.expName].scene, Storage.CameraClasses[Storage.expName].camera
-        )
+      if (Storage.ComposerClass && Storage.ComposerClass.composerActive) {
+        Storage.ComposerClass.renderComposer()
+        return
+      }
+
+      if (Storage.SceneClasses['exp2'] && Storage.CameraClasses['exp2'] && Storage.SceneClasses['exp1'] && Storage.CameraClasses['exp1']) {
+        this.renderer.render(Storage.SceneClasses[Storage.expName].scene, Storage.CameraClasses[Storage.expName].camera)
+      }
     }
+
 }
 
 export default Renderer

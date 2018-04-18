@@ -25,12 +25,14 @@ class Experience1 {
     initPreview = () => {
 			this.camera = new Camera({ name: 'exp1', lookAround: true, movementRange: .05  })
       this.scene = new Scene({ name: 'exp1'  })
-			this.ambiance = new Ambiance()
+      this.ambiance = new Ambiance()
+      
       this.spherePreview = new Sphere({ relatedScene: this.scene.scene,  color: 0x303848, posZ: 2000 })
 
       this.chaptersContainer = new ChaptersContainer()
 
       // here to load things without affect animations, because they load all on init
+      // this may have to change
       this.chapter1 = new Chapitre1({
         relatedBox: this.chaptersContainer.chapterBoxes[0],
         relatedCamera: this.camera.camera,

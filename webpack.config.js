@@ -34,6 +34,14 @@ let config = {
       {
         test: /\.(png|jpg|gif|woff|woff2|fontsvg|eot|ttf|otf|svg)$/,
         loader: 'url-loader'
+      },
+      {
+        test: /\.(glsl|vs|fs|vert|frag)$/,
+        exclude: /node_modules/,
+        use: [
+          'raw-loader',
+          'glslify-loader'
+        ]
       }
     ]
   },
