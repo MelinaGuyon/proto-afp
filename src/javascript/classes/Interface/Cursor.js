@@ -45,8 +45,8 @@ class Cursor {
     this.dot.style.left = (event.clientX - this.boundingDot.width / 2) + "px" 
     this.dot.style.top = (event.clientY - this.boundingDot.height / 2) + "px"
 
-    const x = event.clientX - this.boundingRing.width / 2
-    const y = event.clientY - this.boundingRing.height / 2
+    const x = event.clientX - 26
+    const y = event.clientY - 26
     this.inrtia.x.to(x)
 		this.inrtia.y.to(y)
   }
