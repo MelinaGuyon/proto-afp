@@ -13,6 +13,11 @@ let config = {
     path: distPath,
     filename: 'javascript/bundle.js'
   },
+  resolve: {
+    alias: {
+      glsl: path.resolve(__dirname, 'src/glsl/')
+    }
+  },
   module: {
     rules: [
       {
