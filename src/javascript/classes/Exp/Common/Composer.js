@@ -1,5 +1,5 @@
 import EffectComposer, { RenderPass, ShaderPass, CopyShader } from 'three-effectcomposer-es6'
-import TweenLite from 'gsap'
+import anime from 'animejs'
 
 import '../../../../vendors/DisplacementShader'
 
@@ -9,8 +9,6 @@ class Composer {
       this.isActive = false
 
       this.initEffectComposer()
-
-      // setTimeout(() => { this.active(true) }, 2000)
     }
     
     initEffectComposer = () => {
@@ -32,8 +30,44 @@ class Composer {
       this.composer.render()
     }
 
-    active = (bool) => {
-      this.isActive = bool
+
+    // TODO BETTER,
+    activate = (bool) => {
+      this.isActive = true
+      anime.remove(this.composer.passes[1].uniforms.u_ratio)
+      anime({
+        targets: this.composer.passes[1].uniforms.u_ratio,
+        value: [0.05],
+        duration: 500,
+        easing: 'easeOutQuad',
+        complete: () => { 
+          anime({
+            targets: this.composer.passes[1].uniforms.u_ratio,
+            value: 0.,
+            duration: 500,
+            easing: 'easeOutQuad'
+          })
+        }
+      })
+    }
+
+    unactivate = () => {
+      anime.remove(this.composer.passes[1].uniforms.u_ratio)
+      anime({
+        targets: this.composer.passes[1].uniforms.u_ratio,
+        value: [0.05],
+        duration: 500,
+        easing: 'easeOutQuad',
+        complete: () => { 
+          anime({
+            targets: this.composer.passes[1].uniforms.u_ratio,
+            value: 0.,
+            duration: 500,
+            easing: 'easeOutQuad',
+            complete: () => { this.isActive = false }
+          })
+        }
+      })
     }
 }
 

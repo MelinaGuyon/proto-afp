@@ -16,11 +16,14 @@ class ConclusionLoader {
 	    this.conclusionGroup = new THREE.Group()
 
 	   	this.conclusionGroup.position.y = -790
-	    this.conclusionGroup.position.z = -300
+		this.conclusionGroup.position.z = -300
+		// this.conclusionGroup.position.z = -1000
+		// this.conclusionGroup.position.z = 0
 	}
 
 	load = () => {
-		this.loadShader("glsl/testVert.vert", "glsl/testFrag.frag")
+		// this.loadShader("glsl/testVert.vert", "glsl/testFrag.frag")
+		this.loadVideo()
 		return new Promise((resolve, reject) => {
 			resolve(this.conclusionGroup)
 		})
@@ -38,19 +41,17 @@ class ConclusionLoader {
 	    let texture = new THREE.VideoTexture( this.video )
 	    texture.minFilter = THREE.LinearFilter
 	    texture.magFilter = THREE.LinearFilter
-	    texture.format = THREE.RGBFormat
+		texture.format = THREE.RGBFormat
 
 	    let parameters = { map: texture }
-	    let material = new THREE.MeshStandardMaterial( parameters )
-
-	    // let material = new THREE.ShaderMaterial( {
-	    //     uniforms: Object.assign({u_amplitude:{ type: "f", value: 260. }, u_frequence:{ type: "f", value: 0.0055 } }, this.concluUniforms),
-	    //     vertexShader: vertex,
-	    //     fragmentShader: THREE.ShaderLib.lambert.fragmentShader
-	    // } )
+		let material = new THREE.MeshBasicMaterial( parameters )
+		material.needsUpdate = true
+		material.transparent = true
+		material.opacity = 0
 
 		let plane = new THREE.Mesh( geometry, material )
 
+		console.log(plane)
 		plane.name = "video"
 
 		plane.position.z = -100

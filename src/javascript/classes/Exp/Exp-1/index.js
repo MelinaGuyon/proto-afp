@@ -50,11 +50,7 @@ class Experience1 {
         relatedCamera: this.camera.camera,
         lightOpt: [this.ambiance]
       })
-      this.conclusion2 = new ChaptersConclusionClass({
-        relatedCamera: this.camera.camera,
-        media: "video",
-        url: "assets/video.mp4"
-      })
+
 		}
 
 		init = () => {
