@@ -35,10 +35,16 @@ const chaptersTitle =  [
 	'l\'envers du décors'
 ]
 
+const conclusions =  [
+	['assets/video.mp4', 'video'],
+	['assets/video2.mp4', 'video']
+]
+
 
 export default {
   splines,
 	keyPoints,
 	textsPanel,
-	chaptersTitle
+	chaptersTitle,
+	conclusions
 }

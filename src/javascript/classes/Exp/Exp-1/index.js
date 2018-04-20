@@ -39,12 +39,6 @@ class Experience1 {
         lightOpt: [this.ambiance],
         cbMiddle: this.goToChapterOne
       })
-      this.conclusion1 = new ChaptersConclusionClass({
-        relatedCamera: this.camera.camera,
-        media: "video",
-        url : "assets/video.mp4"
-      })
-
       this.chapter2 = new Chapitre2({
         relatedBox: this.chaptersContainer.chapterBoxes[1],
         relatedCamera: this.camera.camera,
@@ -66,6 +60,7 @@ class Experience1 {
       )
 
       this.betweenChapters = new BetweenChapters()
+      this.chaptersConclusion = new ChaptersConclusionClass({ relatedCamera: this.camera.camera })
 		}
 
     goToChapterOne = () => {
@@ -79,6 +74,7 @@ class Experience1 {
   			},
         .5
       )
+      this.chaptersConclusion.updateMedia('assets/video.mp4', 'video')
     }
 
     betweenChaptersOneTwo = () => {
@@ -104,6 +100,7 @@ class Experience1 {
   			},
         .5
       )
+      this.chaptersConclusion.updateMedia('assets/video2.mp4', 'video')
     }
 
     placeOnSpline = (opt, mvmt) => {

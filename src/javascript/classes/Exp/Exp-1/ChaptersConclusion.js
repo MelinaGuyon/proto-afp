@@ -1,57 +1,96 @@
-import ConclusionLoader from './ConclusionLoader'
 import anime from 'animejs'
 
 class ChaptersConclusion {
     constructor(options) {
 		Storage.ChaptersConclusionClass = this
     this.state = options
+    this.state.media = 'video'
 
 		this.conclusion
     this.clicked = false
 
-    this.loadConclusion()
-  }
-
-	loadConclusion = () => {
-    this.loader = new ConclusionLoader(this.state)
-    this.loader.load().then((response) => {
-      this.conclusion = response
-      this.init()
-    })
+    this.init()
   }
 
   init = () => {
+    const geometry = new THREE.PlaneGeometry( window.innerWidth, window.innerWidth/1.8, 32 )
+    const material = this.getMaterial()
+
+		this.conclusion = new THREE.Mesh( geometry, material )
+		this.conclusion.position.z = -600
+    this.conclusion.position.y = 0
+
     this.state.relatedCamera.add(this.conclusion)
   }
+
+  getMaterial = (url) => {
+    let material 
+
+    if (this.state.media == 'video') material = this.makeVideoTex(url)
+    else material = this.makePhotoTex(url)
+
+    return material
+  }
+
+  makeVideoTex = (url) => {
+    this.video = document.createElement( 'video' )
+    this.video.autoplay = false
+    this.video.loop = true
+    url ? this.video.src = url : ''
+
+    const texture = new THREE.VideoTexture( this.video )
+    texture.minFilter = THREE.LinearFilter
+    texture.magFilter = THREE.LinearFilter
+    texture.format = THREE.RGBFormat
+
+    const parameters = { map: texture }
+    const material = new THREE.MeshBasicMaterial( parameters )
+    material.needsUpdate = true
+    material.transparent = true
+    material.opacity = 0
+
+    return material
+  }
+
+  makePhotoTex = (url) => {
+    
+  }
   
-  updateVideo = () => {
-    // change video src
+  updateMedia = (url, type) => {
+    if (type !== this.state.media) {
+      // create new material with good texture 
+      this.state.media = type
+      this.conclusion.material = this.getMaterial(url)
+    } else {
+      // just update material src
+      this.conclusion.material.map.image.src = url  
+    }
   }
 
   playConclusion = () => {
-    anime.remove(this.conclusion.children[0].material)
+    anime.remove(this.conclusion.material)
     anime({
-      targets: this.conclusion.children[0].material,
+      targets: this.conclusion.material,
       opacity: 1,
       duration: 300,
       delay: 300,
       easing: 'easeOutQuad'
     })
-    this.state.media === "video" ? Storage.ConclusionLoader.video.play() : ''
+    this.state.media === "video" ? this.video.play() : ''
     Storage.ComposerClass.activate()
   }
 
 
   stopConclusion = () => {
-    anime.remove(this.conclusion.children[0].material)
+    anime.remove(this.conclusion.material)
     anime({
-      targets: this.conclusion.children[0].material,
+      targets: this.conclusion.material,
       opacity: 0,
       duration: 300,
       delay: 300,
       easing: 'easeOutQuad'
     })
-    this.state.media === "video" ? Storage.ConclusionLoader.video.pause() : ''
+    this.state.media === "video" ? this.video.pause() : ''
     Storage.ComposerClass.unactivate()
   }
 
