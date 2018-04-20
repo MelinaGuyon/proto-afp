@@ -9,6 +9,8 @@ class ChaptersConclusion {
 		this.conclusion
     this.clicked = false
 
+    this.bindConclu()
+
     this.init()
   }
 
@@ -58,7 +60,7 @@ class ChaptersConclusion {
   
   updateMedia = (url, type) => {
     if (type !== this.state.media) {
-      // create new material with good texture 
+      // create new material with good texture type
       this.state.media = type
       this.conclusion.material = this.getMaterial(url)
     } else {
@@ -68,29 +70,29 @@ class ChaptersConclusion {
   }
 
   playConclusion = () => {
-    anime.remove(this.conclusion.material)
-    anime({
-      targets: this.conclusion.material,
-      opacity: 1,
-      duration: 300,
-      delay: 300,
-      easing: 'easeOutQuad'
-    })
-    this.state.media === "video" ? this.video.play() : ''
+    // anime.remove(this.conclusion.material)
+    // anime({
+    //   targets: this.conclusion.material,
+    //   opacity: 1,
+    //   duration: 300,
+    //   delay: 300,
+    //   easing: 'easeOutQuad'
+    // })
+    // this.state.media === 'video' ? this.video.play() : ''
     Storage.ComposerClass.activate()
   }
 
 
   stopConclusion = () => {
-    anime.remove(this.conclusion.material)
-    anime({
-      targets: this.conclusion.material,
-      opacity: 0,
-      duration: 300,
-      delay: 300,
-      easing: 'easeOutQuad'
-    })
-    this.state.media === "video" ? this.video.pause() : ''
+    // anime.remove(this.conclusion.material)
+    // anime({
+    //   targets: this.conclusion.material,
+    //   opacity: 0,
+    //   duration: 300,
+    //   delay: 300,
+    //   easing: 'easeOutQuad'
+    // })
+    // this.state.media === 'video' ? this.video.pause() : ''
     Storage.ComposerClass.unactivate()
   }
 

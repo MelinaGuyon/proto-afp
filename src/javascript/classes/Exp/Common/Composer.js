@@ -17,6 +17,7 @@ class Composer {
 
       // Add shaders
       const displacement = new ShaderPass(THREE.Displacement)
+      displacement.uniforms.videoTexture.value = new THREE.TextureLoader().load('assets/01.jpg')			
       this.composer.addPass(displacement)
 
       // And draw to the screen
@@ -30,11 +31,10 @@ class Composer {
       this.composer.render()
     }
 
-
-    // TODO BETTER,
     activate = (bool) => {
       this.isActive = true
       anime.remove(this.composer.passes[1].uniforms.u_ratio)
+      anime.remove(this.composer.passes[1].uniforms.u_fade)
       anime({
         targets: this.composer.passes[1].uniforms.u_ratio,
         value: [0.05],
@@ -49,16 +49,24 @@ class Composer {
           })
         }
       })
+      anime({
+        targets: this.composer.passes[1].uniforms.u_fade,
+        value: 1.,
+        duration: 500,
+        delay: 300,
+        easing: 'easeOutQuad',
+      })
     }
 
     unactivate = () => {
       anime.remove(this.composer.passes[1].uniforms.u_ratio)
+      anime.remove(this.composer.passes[1].uniforms.u_fade)
       anime({
         targets: this.composer.passes[1].uniforms.u_ratio,
         value: [0.05],
         duration: 500,
         easing: 'easeOutQuad',
-        complete: () => { 
+        complete: () => {
           anime({
             targets: this.composer.passes[1].uniforms.u_ratio,
             value: 0.,
@@ -67,6 +75,12 @@ class Composer {
             complete: () => { this.isActive = false }
           })
         }
+      })
+      anime({
+        targets: this.composer.passes[1].uniforms.u_fade,
+        value: 0.,
+        duration: 500,
+        easing: 'easeOutQuad',
       })
     }
 }

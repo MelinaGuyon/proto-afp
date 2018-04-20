@@ -1,6 +1,5 @@
 class ChaptersContainer {
     constructor(options) {
-
       this.chapterBoxes = []
 
       this.initObjects()

@@ -1,5 +1,3 @@
-const MTLLoader = require('three-mtl-loader')
-
 import ObjectsLoader from './ObjectsLoader'
 import CursorLight from './CursorLight.js'
 
