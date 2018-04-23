@@ -26,7 +26,7 @@ class ChaptersConclusion {
   }
 
   getMaterial = (url) => {
-    let material 
+    let material
 
     if (this.state.media == 'video') material = this.makeVideoTex(url)
     else material = this.makePhotoTex(url)
@@ -55,9 +55,9 @@ class ChaptersConclusion {
   }
 
   makePhotoTex = (url) => {
-    
+
   }
-  
+
   updateMedia = (url, type) => {
     if (type !== this.state.media) {
       // create new material with good texture type
@@ -65,34 +65,16 @@ class ChaptersConclusion {
       this.conclusion.material = this.getMaterial(url)
     } else {
       // just update material src
-      this.conclusion.material.map.image.src = url  
+      this.conclusion.material.map.image.src = url
     }
   }
 
   playConclusion = () => {
-    // anime.remove(this.conclusion.material)
-    // anime({
-    //   targets: this.conclusion.material,
-    //   opacity: 1,
-    //   duration: 300,
-    //   delay: 300,
-    //   easing: 'easeOutQuad'
-    // })
-    // this.state.media === 'video' ? this.video.play() : ''
     Storage.ComposerClass.activate()
   }
 
 
   stopConclusion = () => {
-    // anime.remove(this.conclusion.material)
-    // anime({
-    //   targets: this.conclusion.material,
-    //   opacity: 0,
-    //   duration: 300,
-    //   delay: 300,
-    //   easing: 'easeOutQuad'
-    // })
-    // this.state.media === 'video' ? this.video.pause() : ''
     Storage.ComposerClass.unactivate()
   }
 

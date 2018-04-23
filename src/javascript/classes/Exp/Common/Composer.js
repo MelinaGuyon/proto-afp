@@ -10,14 +10,14 @@ class Composer {
 
       this.initEffectComposer()
     }
-    
+
     initEffectComposer = () => {
       this.composer = new EffectComposer(Storage.RendererClass.renderer)
       this.composer.addPass(new RenderPass(Storage.SceneClasses.exp1.scene, Storage.CameraClasses.exp1.camera))
 
       // Add shaders
       const displacement = new ShaderPass(THREE.Displacement)
-      displacement.uniforms.videoTexture.value = new THREE.TextureLoader().load('assets/01.jpg')			
+      displacement.uniforms.videoTexture.value = new THREE.TextureLoader().load('assets/01.jpg')
       this.composer.addPass(displacement)
 
       // And draw to the screen
@@ -40,7 +40,7 @@ class Composer {
         value: [0.05],
         duration: 500,
         easing: 'easeOutQuad',
-        complete: () => { 
+        complete: () => {
           anime({
             targets: this.composer.passes[1].uniforms.u_ratio,
             value: 0.,
