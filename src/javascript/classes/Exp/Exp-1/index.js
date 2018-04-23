@@ -61,6 +61,7 @@ class Experience1 {
 
       this.betweenChapters = new BetweenChapters()
       this.chaptersConclusion = new ChaptersConclusionClass()
+      Storage.TextWriting.addTitle(datas.chaptersTitle[0])
 		}
 
     goToChapterOne = () => {

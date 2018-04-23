@@ -1,3 +1,67 @@
+.panelContainer {
+  width: 295px;
+  height: 350px;
+  position: absolute;
+  left: 40px;
+  bottom: 50px;
+
+  .infoContainer::-webkit-scrollbar {
+    display: none;
+  }
+
+  .infoContainerWrapper {
+    overflow-y: scroll;
+    height: 80%;
+    width: 100%;
+    position: relative;
+
+    .infoContainer {
+      transition: height 0.3s ease-in-out;
+      position: relative;
+      top: 100%;
+
+      div.info {
+        font-size: 16px;
+        font-family: westeindeThin;
+        margin-bottom: 20px;
+
+        div.row {
+          transition: height .3s ease-in-out, padding .3s ease-in-out;
+          background: linear-gradient(to right, rgba(30,30,30, 0.5), transparent);
+          margin: 8px 0;
+          padding: 5px 5px;
+          color: white;
+          height: 0;
+          padding: 0 5px;
+
+          &.fill {
+            padding: 5px 5px;
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+
+  .title {
+    height: 20%;
+    font-size: 19px;
+    color: #fff;
+    position: relative;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    display: flex;
+    align-items: center;
+
+    &.is-visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+
 .currentInfoContainer { text-align: justify; border-left: solid transparent 0.5px; font-size: 16px; position: absolute; width: 295px; height: 150px; bottom: 50px; right: 5px; overflow-y: scroll; }
 .currentInfoContainer::-webkit-scrollbar { display: none; }
 .currentTextWriting {
@@ -5,29 +69,8 @@
   bottom: 0;
   background-color: white;
   padding: 0;
-
-  &.has-padding {
-    padding: 5px;
-  }
 }
 
-.oldInfoContainer { font-size: 16px; color: white; border-left: solid white 0.5px; position: absolute; right: -240px; bottom: 200px; }
-
-.oldInfoContainerTitle { margin-right: 10px; color: black; background-color: white; float: left; width: 50px; height: 300px; bottom: 200px; right: 5px; text-align: center; padding-top: 60px; }
-.oldInfoContainerText {
-  text-align: justify;
-  width: 230px;
-  height: 300px;
-  bottom: 200px;
-  right: 5px;
-  overflow-y: scroll;
-  div {
-    margin-bottom: 10px;
-  }
-}
-.oldInfoContainerText::-webkit-scrollbar { display: none; }
-
-.typed-cursor { opacity: 0; /*-webkit-animation: blink 0.7s infinite; -moz-animation: blink 0.7s infinite; animation: blink 0.7s infinite;*/ }
 
 /*@keyframes blink {
   0% {  opacity: 1; }
@@ -44,5 +87,3 @@
   50% { opacity: 0; }
   100% { opacity: 1; }
 }*/
-
-

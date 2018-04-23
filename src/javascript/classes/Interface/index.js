@@ -1,5 +1,5 @@
 import Title from './Title.js'
-import TextWriting from './TextWriting.js'
+import TextWritting from './TextWritting.js'
 import Cursor from './Cursor.js'
 
 class Interface {
@@ -11,7 +11,7 @@ class Interface {
     init() {
       this.title = new Title()
       this.cursor = new Cursor()
-      new TextWriting()
+      new TextWritting()
 		}
 }
 

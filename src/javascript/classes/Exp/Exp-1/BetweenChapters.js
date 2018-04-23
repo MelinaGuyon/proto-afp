@@ -1,5 +1,3 @@
-import TextWriting from '../../Interface/TextWriting.js'
-
 import datas from '../../../datas/Experience1.js'
 
 class BetweenChapters {
@@ -26,12 +24,7 @@ class BetweenChapters {
     }
 
     launchText = (index) => () => {
-      Storage.TextWriting.writeInfo({
-        strings: [datas.textsPanel[index]],
-        typeSpeed: 30,
-        loopCount: 1,
-        onComplete: function(self) { Storage.TextWriting.hideTextPanel() }
-      })
+      Storage.TextWriting.writeInfo({ text: datas.textsPanel[index] })
     }
 
     launchConclusionOne = () => {
