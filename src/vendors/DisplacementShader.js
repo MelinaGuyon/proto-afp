@@ -8,7 +8,6 @@ THREE.Displacement = {
 		u_fade: { type: 'f', value: 0 },
 		u_ratio: { type: 'f', value: 0. },
 		u_resolution: { type: "v2", value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
-		u_texResolution: { type: "v2", value: null },
 		videoTexture: {
 			type : 't',
 			value: null

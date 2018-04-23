@@ -1,5 +1,6 @@
 import EffectComposer, { RenderPass, ShaderPass, CopyShader } from 'three-effectcomposer-es6'
 import anime from 'animejs'
+import { debounce } from 'lodash'
 
 import '../../../../vendors/DisplacementShader'
 
@@ -8,7 +9,12 @@ class Composer {
       Storage.ComposerClass = this
       this.isActive = false
 
+      this.bind()
       this.initEffectComposer()
+    }
+
+    bind = () => {
+      window.addEventListener('resize', this.resize)
     }
 
     initEffectComposer = () => {
@@ -17,7 +23,6 @@ class Composer {
 
       // Add shaders
       const displacement = new ShaderPass(THREE.Displacement)
-      displacement.uniforms.videoTexture.value = new THREE.TextureLoader().load('assets/01.jpg')
       this.composer.addPass(displacement)
 
       // And draw to the screen
@@ -83,6 +88,10 @@ class Composer {
         easing: 'easeOutQuad',
       })
     }
+
+    resize = debounce(() => {
+  		this.composer.passes[1].uniforms.u_resolution.value = new THREE.Vector2(window.innerWidth, window.innerHeight)
+  	}, 200, { leading: true, trailing: true })
 }
 
 // à mettre juste après l'appel au shader THREE.Displacement'

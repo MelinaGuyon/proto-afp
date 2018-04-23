@@ -26,7 +26,7 @@ class Experience1 {
 			this.camera = new Camera({ name: 'exp1', lookAround: true, movementRange: .05  })
       this.scene = new Scene({ name: 'exp1'  })
       this.ambiance = new Ambiance()
-      
+
       this.spherePreview = new Sphere({ relatedScene: this.scene.scene,  color: 0x303848, posZ: 2000 })
 
       this.chaptersContainer = new ChaptersContainer()
@@ -60,7 +60,7 @@ class Experience1 {
       )
 
       this.betweenChapters = new BetweenChapters()
-      this.chaptersConclusion = new ChaptersConclusionClass({ relatedCamera: this.camera.camera })
+      this.chaptersConclusion = new ChaptersConclusionClass()
 		}
 
     goToChapterOne = () => {
@@ -100,7 +100,7 @@ class Experience1 {
   			},
         .5
       )
-      this.chaptersConclusion.updateMedia('assets/video2.mp4', 'video')
+      this.chaptersConclusion.updateMedia('assets/01.jpg', 'photo')
     }
 
     placeOnSpline = (opt, mvmt) => {
