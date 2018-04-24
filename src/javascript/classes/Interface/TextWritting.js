@@ -24,7 +24,9 @@ class TextWriting {
       infoHeight: 0,
       infoHSupToBaseH: false,
       transformSaved: 0,
-      transform: 0
+      transform: 0,
+      isWritting: false,
+      queue: []
     }
   }
 
@@ -58,6 +60,7 @@ class TextWriting {
   }
 
   bindInterval () {
+    this.state.isWritting = true
     this.interval = window.setInterval(this.updateIndex, this.state.interval)
   }
 
@@ -67,6 +70,7 @@ class TextWriting {
     this.state.pass = false
     this.state.current = []
     this.state.current = []
+    this.state.isWritting = false
 	}
 
   addTitle = (text) => {
@@ -83,7 +87,12 @@ class TextWriting {
       const index = this.state.index + 1
       current[index] = target[index] || ''
 
-      if (index > target.length && target.length < current.length) return this.unbindInterval()
+      if (index > target.length && target.length < current.length) {
+        if (this.state.queue.length > 0) return this.manageQueue()
+        this.unbindInterval()
+        this.bindScroll()
+        return
+      }
 
       if (index%26 === 25) this.state.pass = true
       if (this.state.pass && (current[index] === ' ' || current[index] === '') ) {
@@ -96,8 +105,18 @@ class TextWriting {
     }
   }
 
-	writeInfo = (text) => {
+  manageQueue = () => {
+    const text = this.state.queue[0]
+    this.state.queue.shift()
+    this.writeInfo(text, true)
+  }
+
+	writeInfo = (text, writeQueue) => {
+    if(this.state.isWritting && !writeQueue) return this.state.queue.push(text)
+
     this.unbindInterval()
+    this.unbindScroll()
+    this.resetToBottom()
 
     let current = compact(this.state.current)
     const target = text.text.split('')
@@ -113,8 +132,10 @@ class TextWriting {
     this.newDiv.classList.add('info')
     this.infoContainer.appendChild(this.newDiv)
 
-    this.createRow(true)
-    this.bindInterval()
+    setTimeout(() => {
+      this.createRow(true)
+      this.bindInterval()
+    }, 600)
 	}
 
   createRow = (bool) => {
@@ -146,8 +167,20 @@ class TextWriting {
       duration: 600,
       easing: 'easeOutQuad'
     })
+
     this.state.transformSaved -= Y
     this.state.transform = this.state.transformSaved
+    this.inrtia.y.value = this.state.transformSaved
+  }
+
+  resetToBottom = () => {
+    anime.remove(this.infoContainer)
+    anime({
+      targets: this.infoContainer,
+      translateY: this.state.transformSaved,
+      duration: 500,
+      easing: 'easeOutQuad'
+    })
   }
 
   handleScroll = (event) =>  {

@@ -55,7 +55,6 @@ class Carousel {
 
 	updateExpName = () => {
 		Storage.expName = 'exp' + (this.index + 1)
-     console.log(Storage.expName)
   }
 
 }

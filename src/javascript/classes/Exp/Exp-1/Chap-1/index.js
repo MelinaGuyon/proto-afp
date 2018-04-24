@@ -10,7 +10,7 @@ class Chapitre1 {
 
     this.raycaster = new THREE.Raycaster()
     this.mouse = new THREE.Vector2()
-    
+
     this.step = 0
 
 		this.loadChapter()
@@ -19,7 +19,6 @@ class Chapitre1 {
 	loadChapter = () => {
     this.loader = new ObjectsLoader()
     this.loader.load().then((response) => {
-      console.log("RESPONSE chap 1", response)
       this.modelsGroup = response
     })
 	}
@@ -27,7 +26,7 @@ class Chapitre1 {
   init = () => {
     this.displayChapterObjects()
     this.bind()
-    
+
     this.frontalCity = new FrontalCity({ objectsGroup: this.modelsGroup })
   }
 

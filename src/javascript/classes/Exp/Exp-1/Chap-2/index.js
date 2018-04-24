@@ -14,7 +14,6 @@ class Chapitre2 {
 	loadChapter = () => {
     this.loader = new ObjectsLoader()
     this.loader.load().then((response) => {
-      console.log("RESPONSE", response)
       this.modelsGroup = response
     })
 	}
