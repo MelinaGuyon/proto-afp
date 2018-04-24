@@ -20,13 +20,62 @@ class ObjectsLoader {
 	}
 
 	load = () => {
+
+	    return new Promise((resolve, reject) => {
+	  		// this.loadHeightMap().then((response)=> {
+	    		this.loadMlleKWall().then((response)=> {
+	    		    console.log('Chapter 1 objects loaded')
+	    		    resolve(this.group)
+	    		}).catch((error)=> { console.warn(error) })
+	  		// }).catch((error)=> { console.warn(error) })
+	    })
+	}
+
+
+	loadHeightMap = () => {
 		return new Promise((resolve, reject) => {
-  		this.loadMlleKWall().then((response)=> {
-					console.log('Chapter 1 objects loaded')
-					resolve(this.group)
-  		}).catch((error)=> { console.warn(error) })
+
+			let geometry = new THREE.PlaneGeometry(3000, 3000, 32)
+		    let texture = THREE.ImageUtils.loadTexture( 'assets/northKoreaMap.jpg' )
+		    let material = new THREE.MeshLambertMaterial( { map: texture } )
+
+		    let plane = new THREE.Mesh( geometry, material )
+
+		    plane.position.x = 0
+		    plane.position.y = 0
+		    plane.position.z = 4000
+			plane.rotation.x = Math.PI / 2
+			plane.rotation.z = Math.PI
+
+			plane.castShadow = true
+			plane.receiveShadow = true
+
+		    //invert normals
+		    for ( var i = 0; i < geometry.faces.length; i ++ ) {
+		      var face = geometry.faces[ i ]
+		      var temp = face.a
+		      face.a = face.c
+		      face.c = temp
+		    }
+
+		    geometry.computeFaceNormals()
+		    geometry.computeVertexNormals()
+		    var faceVertexUvs = geometry.faceVertexUvs[ 0 ]
+		    for ( var i = 0; i < faceVertexUvs.length; i ++ ) {
+		      var temp = faceVertexUvs[ i ][ 0 ]
+		      faceVertexUvs[ i ][ 0 ] = faceVertexUvs[ i ][ 2 ]
+		      faceVertexUvs[ i ][ 2 ] = temp
+		    }
+
+			this.group.add(plane)
+			
+			
+			resolve()
+			
 		})
 	}
+
+
 
 	loadMlleKWall = () => {
 		return new Promise((resolve, reject) => {

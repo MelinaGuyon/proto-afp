@@ -1,5 +1,6 @@
 import ObjectsLoader from './ObjectsLoader'
 import FrontalCity from './FrontalCity'
+import HeightMap from './HeightMap'
 
 class Chapitre1 {
     constructor(options) {
@@ -28,6 +29,7 @@ class Chapitre1 {
     this.displayChapterObjects()
     this.bind()
     
+    this.heightMap = new HeightMap({relatedBox: this.state.relatedBox})
     this.frontalCity = new FrontalCity({ objectsGroup: this.modelsGroup })
   }
 
