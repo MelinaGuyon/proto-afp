@@ -34,7 +34,7 @@ void main() {
 
 	vec3 textureEcran = texture2D(tDiffuse, uv).rgb;
 
-
+	// pour centrer
 	vec2 ratioTextureL = vec2(1., (u_resolution.y / u_resolution.x));
 	vec2 ratioTextureH = vec2((u_resolution.x / u_resolution.y), 1.);
 	vec2 ratioTexture = min(ratioTextureH, ratioTextureL);
