@@ -32,6 +32,7 @@ varying vec2 vUv;
 
 void main(void) {
 	vec3 color = vec3(1.);
+	//vec3 color = texture2D(texture, vUv).rgb;
 
 	#include <clipping_planes_fragment>
 	vec4 diffuseColor = vec4( diffuse, opacity );
@@ -57,6 +58,7 @@ void main(void) {
 	vec3 outgoingLight = reflectedLight.directDiffuse + reflectedLight.indirectDiffuse + totalEmissiveRadiance;
 	#include <envmap_fragment>
 	gl_FragColor = vec4( 1. * outgoingLight, diffuseColor.a);
+	//gl_FragColor = vec4(color, 1.);
 	#include <tonemapping_fragment>
 	#include <encodings_fragment>
 	#include <fog_fragment>
