@@ -18,6 +18,8 @@ class TimelineExp {
       this.initInertia()
       this.init()
       this.bind()
+
+      this.createDots()
     }
 
     bind = () => {
@@ -29,9 +31,10 @@ class TimelineExp {
     }
 
     init = () => {
-      this.timeline = document.querySelector('.timeline-wrapper')
-      this.time = this.timeline.querySelector('.current-time')
-      setTimeout(() => { this.timeline.classList.add('is-active') }, 700)
+      this.timelineWrapper = document.querySelector('.timeline-wrapper')
+      this.timeline = this.timelineWrapper.querySelector('.timeline')
+      this.time = this.timelineWrapper.querySelector('.current-time')
+      setTimeout(() => { this.timelineWrapper.classList.add('is-active') }, 2000)
     }
 
     initInertia() {
@@ -96,6 +99,16 @@ class TimelineExp {
 				this.inrtia.height.update()
         this.time.style.height = this.inrtia.height.value * 100 + '%'
 			}
+    }
+
+    createDots = () => {
+      const height = this.timeline.getBoundingClientRect().height
+      for (let i = 0; i < this.totalChapters; i++) {
+        const dot = document.createElement('div')
+        dot.classList.add('timeline-dot')
+        this.timeline.appendChild(dot)
+        dot.style.transform = 'translateY(' + height / (i + 1) + 'px) translateX(-50%)'
+      }
     }
 }
 
