@@ -5,12 +5,8 @@
   left: 40px;
   bottom: 50px;
 
-  .infoContainer::-webkit-scrollbar {
-    display: none;
-  }
-
   .infoContainerWrapper {
-    overflow-y: scroll;
+    overflow-y: hidden;
     height: 80%;
     width: 100%;
     position: relative;
@@ -23,7 +19,11 @@
       div.info {
         font-size: 16px;
         font-family: westeindeThin;
-        margin-bottom: 20px;
+        margin-top: 20px;
+
+        &:first-of-type {
+          margin-top: 0;
+        }
 
         div.row {
           transition: height .3s ease-in-out, padding .3s ease-in-out;

@@ -3,8 +3,6 @@ import anime from 'animejs'
 class TransitionPanel {
   constructor(options) {
     Storage.TransitionPanel = this
-
-    console.log(this)
     this.transitionPanel = document.querySelector('.transition__panel')
   }
 

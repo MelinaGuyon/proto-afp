@@ -19,11 +19,11 @@ class Spline {
     }
 
     bind() {
-			window.addEventListener('mousewheel', this.handleScroll, { passive: true })
+			document.querySelector('canvas').addEventListener('mousewheel', this.handleScroll, { passive: true })
 		}
 
 		unbind() {
-			window.removeEventListener('mousewheel', this.handleScroll,  { passive: true })
+			document.querySelector('canvas').removeEventListener('mousewheel', this.handleScroll,  { passive: true })
 		}
 
 		initObjects() {
