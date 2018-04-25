@@ -31,12 +31,13 @@ class TimelineExp {
     init = () => {
       this.timeline = document.querySelector('.timeline-wrapper')
       this.time = this.timeline.querySelector('.current-time')
+      setTimeout(() => { this.timeline.classList.add('is-active') }, 700)
     }
 
     initInertia() {
 			const inrtiaOptions = {
 				value: 0,
-				friction: 50,
+				friction: 20,
 				precision: 5,
 				perfectStop: true,
 				interpolation: 'linear'
