@@ -13,16 +13,17 @@ class HeightMap {
 	    this.group.position.z = -300
 
 		this.load()
-		this.loadLight()
 	}
 
 	load = () => {
 	    return new Promise((resolve, reject) => {
-	  		this.loadShader("../../../glsl/testVert.vert", "../../../glsl/testFrag.frag").then((response)=> {
+	    	this.loadLights().then((response)=> {
+		  		this.loadShader("../../../glsl/testVert.vert", "../../../glsl/testFrag.frag").then((response)=> {
 	    		    console.log('heightmap loaded')
 	    		    resolve(this.group)
 	    		    this.displayHeightMap()
-	  		}).catch((error)=> { console.warn(error) })
+		  		}).catch((error)=> { console.warn(error) })
+		  	}).catch((error)=> { console.warn(error) })
 	    })
 	}
 
@@ -56,7 +57,6 @@ class HeightMap {
 			let geometry = new THREE.PlaneBufferGeometry(3000, 4000, 150, 150)
 
 		    let material = new THREE.ShaderMaterial( {
-		    	//uniforms: this.uniforms,
 		    	uniforms: Object.assign({u_amplitude:{ type: "f", value: 4. }, u_frequence:{ type: "f", value: 0.0005 } }, this.uniforms),
 		        vertexShader: vertex,
 		        fragmentShader: fragment,
@@ -65,13 +65,10 @@ class HeightMap {
 		        side: THREE.BackSide
 		    } )
 
-		    console.log("MATERIAL", material)
-
 		    material.uniforms.texture.value = THREE.ImageUtils.loadTexture( 'assets/texture.png' )
 
 		    let plane = new THREE.Mesh( geometry, material )
 
-		    plane.position.x = 0
 		    plane.position.y = 100
 		    plane.position.z = 4800
 			plane.rotation.x = Math.PI / 2
@@ -87,34 +84,35 @@ class HeightMap {
 		})
     }
 
-    loadLight = () => {
-    	let light1 = new THREE.PointLight(0xfdffd8, 0.5, 0, 2)
-		light1.position.set(-500, -600, 8000)
-		//light1.rotation.set(0, Math.PI, Math.PI)
-		light1.castShadow = true
+    loadLights = () => {
+    	return new Promise((resolve, reject) => {
 
-		console.log("LIGHT", light1)
+	    	let light1 = new THREE.PointLight(0xfdffd8, 0.5, 0, 2)
+			light1.position.set(-500, -600, 8000)
+			//light1.rotation.set(0, Math.PI, Math.PI)
+			light1.castShadow = true
+			this.state.relatedBox.add(light1)
+			//this.group.add(light1)
 
-		this.state.relatedBox.add(light1)
-
-		let sphereSize = 100
-		let pointLightHelper = new THREE.PointLightHelper( light1, sphereSize )
-		this.state.relatedBox.add( pointLightHelper )
+			let sphereSize = 100
+			let pointLightHelper = new THREE.PointLightHelper( light1, sphereSize )
+			this.state.relatedBox.add( pointLightHelper )
 
 
-    	let light2 = new THREE.PointLight(0xffffff, 0.5, 0, 2)
-		light2.position.set(500, -200, 7000)
-		//light2.rotation.set(0, Math.PI, Math.PI)
-		light2.castShadow = true
+	    	let light2 = new THREE.PointLight(0x99caff, 0.5, 0, 2)
+			light2.position.set(500, -200, 7000)
+			//light2.rotation.set(0, Math.PI, Math.PI)
+			light2.castShadow = true
+			this.state.relatedBox.add(light2)
+			//this.group.add(light1)
 
-		console.log("LIGHT", light2)
+			let sphereSize2 = 100
+			let pointLightHelper2 = new THREE.PointLightHelper( light2, sphereSize2 )
+			this.state.relatedBox.add( pointLightHelper2 )
 
-		this.state.relatedBox.add(light2)
+			resolve()
 
-		let sphereSize2 = 100
-		let pointLightHelper2 = new THREE.PointLightHelper( light2, sphereSize2 )
-		this.state.relatedBox.add( pointLightHelper2 )
-
+		})
     }
 
 

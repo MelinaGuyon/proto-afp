@@ -1,6 +1,6 @@
 import ObjectsLoader from './ObjectsLoader'
 import FrontalCity from './FrontalCity'
-import HeightMap from './HeightMap'
+//import HeightMap from './HeightMap'
 
 class Chapitre1 {
     constructor(options) {
@@ -28,7 +28,7 @@ class Chapitre1 {
     this.displayChapterObjects()
     this.bind()
     
-    this.heightMap = new HeightMap({relatedBox: this.state.relatedBox})
+    //this.heightMap = new HeightMap({relatedBox: this.state.relatedBox})
     this.frontalCity = new FrontalCity({ objectsGroup: this.modelsGroup })
   }
 
@@ -48,9 +48,11 @@ class Chapitre1 {
     if (this.step === 0) this.frontalCity.checkRaycaster(this.raycaster)
   }
 
+
   displayChapterObjects = () => {
     this.state.relatedBox.add(this.modelsGroup)
   }
+
 }
 
 export default Chapitre1

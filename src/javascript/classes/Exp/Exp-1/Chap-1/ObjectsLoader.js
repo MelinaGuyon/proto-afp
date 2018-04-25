@@ -1,13 +1,15 @@
 const MTLLoader = require('three-mtl-loader')
 
 class ObjectsLoader {
-	constructor(options) {
-		// this.video = 0
-  
+	constructor(options) {  
 		this.mtlLoader = new MTLLoader()
-  	this.objLoader = new THREE.OBJLoader()
-  	this.textureLoader = new THREE.TextureLoader()
+	  	this.objLoader = new THREE.OBJLoader()
+	  	this.textureLoader = new THREE.TextureLoader()
 		this.mtlLoader.manager = new THREE.LoadingManager()
+		this.vertex_loader = new THREE.FileLoader(THREE.DefaultLoadingManager)
+	    this.vertex_loader.setResponseType('text')
+	    this.fragment_loader = new THREE.FileLoader(THREE.DefaultLoadingManager)
+	    this.fragment_loader.setResponseType('text')
 		
 		this.init()
 	}
@@ -19,63 +21,105 @@ class ObjectsLoader {
 	    this.group.position.z = -300
 	}
 
+
 	load = () => {
 
 	    return new Promise((resolve, reject) => {
-	  		// this.loadHeightMap().then((response)=> {
-	    		this.loadMlleKWall().then((response)=> {
-	    		    console.log('Chapter 1 objects loaded')
-	    		    resolve(this.group)
-	    		}).catch((error)=> { console.warn(error) })
-	  		// }).catch((error)=> { console.warn(error) })
+	    	this.loadLights().then((response)=> {
+	    		    				console.log("LOADING CHAPTER 1")
+
+		  		this.loadShader("../../../glsl/testVert.vert", "../../../glsl/testFrag.frag").then((response)=> {
+	    		    this.loadMlleKWall().then((response)=> {
+	    		    	console.log('Chapter 1 objects loaded')
+	    		    	resolve(this.group)
+	    			}).catch((error)=> { console.warn(error) })
+		  		}).catch((error)=> { console.warn(error) })
+		  	}).catch((error)=> { console.warn(error) })
 	    })
 	}
 
 
-	loadHeightMap = () => {
-		return new Promise((resolve, reject) => {
+	loadShader = (vertex_url, fragment_url) => {
+		let that = this
 
-			let geometry = new THREE.PlaneGeometry(3000, 3000, 32)
-		    let texture = THREE.ImageUtils.loadTexture( 'assets/northKoreaMap.jpg' )
-		    let material = new THREE.MeshLambertMaterial( { map: texture } )
+		return new Promise((resolve, reject) => {
+		    this.uniforms = THREE.UniformsUtils.merge([
+		        THREE.ShaderLib.lambert.uniforms,
+		        { diffuse: { value: new THREE.Color(0xffffff) } },
+		    	{ texture: { type: "t", value: THREE.ImageUtils.loadTexture( 'assets/texture.png' ) } }
+		    ]);
+		    this.vertex_loader.load(vertex_url, function (vertex_text) {
+		        that.fragment_loader.load(fragment_url, function (fragment_text) {
+		          	that.loadHeightMap(vertex_text, fragment_text )
+		        })
+		    })
+	  	 	resolve()
+		})
+    }
+
+    loadHeightMap = (vertex, fragment) => {
+    	return new Promise((resolve, reject) => {
+
+			let geometry = new THREE.PlaneBufferGeometry(3000, 4000, 150, 150)
+
+		    let material = new THREE.ShaderMaterial( {
+		    	uniforms: Object.assign({u_amplitude:{ type: "f", value: 4. }, u_frequence:{ type: "f", value: 0.0005 } }, this.uniforms),
+		        vertexShader: vertex,
+		        fragmentShader: fragment,
+		        lights: true,
+		        fog: true,
+		        side: THREE.BackSide
+		    } )
+
+		    material.uniforms.texture.value = THREE.ImageUtils.loadTexture( 'assets/texture.png' )
 
 		    let plane = new THREE.Mesh( geometry, material )
 
-		    plane.position.x = 0
-		    plane.position.y = 0
-		    plane.position.z = 4000
+		    plane.position.y = 100
+		    plane.position.z = 4800
 			plane.rotation.x = Math.PI / 2
 			plane.rotation.z = Math.PI
 
 			plane.castShadow = true
 			plane.receiveShadow = true
 
-		    //invert normals
-		    for ( var i = 0; i < geometry.faces.length; i ++ ) {
-		      var face = geometry.faces[ i ]
-		      var temp = face.a
-		      face.a = face.c
-		      face.c = temp
-		    }
-
-		    geometry.computeFaceNormals()
-		    geometry.computeVertexNormals()
-		    var faceVertexUvs = geometry.faceVertexUvs[ 0 ]
-		    for ( var i = 0; i < faceVertexUvs.length; i ++ ) {
-		      var temp = faceVertexUvs[ i ][ 0 ]
-		      faceVertexUvs[ i ][ 0 ] = faceVertexUvs[ i ][ 2 ]
-		      faceVertexUvs[ i ][ 2 ] = temp
-		    }
-
 			this.group.add(plane)
-			
-			
+
 			resolve()
-			
+
 		})
-	}
+    }
+
+    loadLights = () => {
+    	return new Promise((resolve, reject) => {
+
+	    	let light1 = new THREE.PointLight(0xfdffd8, 0.5, 0, 2)
+			light1.position.set(-500, -600, 8000)
+			//light1.rotation.set(0, Math.PI, Math.PI)
+			light1.castShadow = true
+			//this.state.relatedBox.add(light1)
+			this.group.add(light1)
+
+			// let sphereSize = 100
+			// let pointLightHelper = new THREE.PointLightHelper( light1, sphereSize )
+			//this.state.relatedBox.add( pointLightHelper )
 
 
+	    	let light2 = new THREE.PointLight(0x99caff, 0.5, 0, 2)
+			light2.position.set(500, -200, 7000)
+			//light2.rotation.set(0, Math.PI, Math.PI)
+			light2.castShadow = true
+			//this.state.relatedBox.add(light2)
+			this.group.add(light2)
+
+			// let sphereSize2 = 100
+			// let pointLightHelper2 = new THREE.PointLightHelper( light2, sphereSize2 )
+			//this.state.relatedBox.add( pointLightHelper2 )
+
+			resolve()
+
+		})
+    }
 
 	loadMlleKWall = () => {
 		return new Promise((resolve, reject) => {
@@ -107,7 +151,7 @@ class ObjectsLoader {
 					})
 
 					that.group.add(object)
-          resolve()
+          			resolve()
 				})
 			})
 		})
