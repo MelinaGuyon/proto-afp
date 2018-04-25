@@ -1,6 +1,3 @@
-import raf from 'raf'
-import { debounce } from 'lodash'
-
 import datas from '../../../datas/Experience1.js'
 
 class SplineTimeManager {

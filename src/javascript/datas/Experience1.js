@@ -40,11 +40,18 @@ const conclusions =  [
 	['assets/video2.mp4', 'video']
 ]
 
+// number of spline, spline index begining
+const timelineIndicators = [
+	['CH 1', 'L\'envers du décors', 2, 0],
+	['CH 2', 'L\'armée protectrice', 2, 2]
+]
+
 
 export default {
   splines,
 	keyPoints,
 	textsPanel,
 	chaptersTitle,
-	conclusions
+	conclusions,
+	timelineIndicators
 }

@@ -55,6 +55,8 @@ class Spline {
 			const end = Math.max(Math.min(this.cameraObj.state + evolution, 0.98), 0.01)
 			this.animeSpline(this.cameraObj.state, end)
       this.timeManager.check(this.cameraObj.state, this.state.index)
+
+      Storage.TimelineExpClass.check(this.cameraObj.state, this.state.index)
 		}, 200, {leading: true, trailing: false})
 
 		animeSpline(start, end) {

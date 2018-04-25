@@ -8,11 +8,11 @@ class HeightMap {
 	    this.fragment_loader.setResponseType('text')
 
 	   	this.group = new THREE.Group()
-			
+
 	    this.group.position.y = -790
 	    this.group.position.z = -300
 
-		this.load()
+		// this.load()
 	}
 
 	load = () => {
