@@ -27,6 +27,7 @@ class Chapitre3 {
   init = () => {
     this.displayChapterObjects()
     raf.add(this.animate)
+    //setTimeout(() => { this.animate() }, 5000)
     return new Promise((resolve, reject) => {
       setTimeout(() => { resolve() }, 500)
     })
@@ -42,10 +43,16 @@ class Chapitre3 {
     this.state.relatedCamera.updateMatrix()
     this.state.relatedCamera.updateMatrixWorld() 
     this.frustum.setFromMatrix( new THREE.Matrix4().multiplyMatrices( this.state.relatedCamera.projectionMatrix, this.state.relatedCamera.matrixWorldInverse ) )
-   
+
+
     this.modelsGroup.traverse(function(o) {
       if(o.name === "head") {
-        if ( that.frustum.containsPoint( o.getWorldPosition()) ){
+        let distance = that.state.relatedCamera.position.z - o.getWorldPosition().z
+        // console.log("object z", o.getWorldPosition().z)
+        // console.log("camera z", that.state.relatedCamera.position.z)
+        // console.log("DISTANCE", distance)
+
+        if ( that.frustum.containsPoint( o.getWorldPosition()) && distance < 500 ){
           anime({
             targets: o.rotation,
             x: Math.PI/2,
