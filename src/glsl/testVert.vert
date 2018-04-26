@@ -25,7 +25,6 @@ vec3 newPos;
 
 uniform float u_amplitude;
 uniform float u_frequence;
-varying vec3 v_position;
 
 //  Classic Perlin 3D Noise
 //  by Stefan Gustavson

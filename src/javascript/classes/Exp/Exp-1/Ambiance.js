@@ -68,45 +68,9 @@ class Ambiance {
       this.vertex_loader.load('glsl/BackgroundVertex.vert', function (vertexGround) {
         that.fragment_loader.load('glsl/BackgroundFragment.frag', function (fragmentGround) {
           const h = 35000;
-          const geometry = new THREE.BoxGeometry(h, h, h)
+          const geometry = new THREE.BoxGeometry(h, h, h * 1.5)
 
-          that.backgroundUniforms = THREE.UniformsUtils.merge([
-            THREE.ShaderLib.lambert.uniforms,
-            { specular: { value: new THREE.Color(0x1b1b1b) } },
-            { emissive: { value: new THREE.Color(0x000000) } },
-            { shininess : { value: 5 } },
-            { hue : { value: 1 } },
-            { u_time: { type: "f", value: 1.0 } },
-            { u_resolution: { type: "v2", value: new THREE.Vector2(1024, 768) } },
-            { u_mouse: { type: "v2", value: new THREE.Vector2() } },
-            { u_color1: { value: new THREE.Color(0xffffff) } },
-            { u_color2: { value: new THREE.Color(0xefefef) } }
-          ]);
-
-          let material = new THREE.ShaderMaterial( {
-            uniforms: that.backgroundUniforms,
-            vertexShader: vertexGround,
-            fragmentShader: fragmentGround,
-            lights: true,
-            fog: true,
-            side: THREE.DoubleSide
-          } )
-
-          // invert normals
-          for ( var i = 0; i < geometry.faces.length; i ++ ) {
-            var face = geometry.faces[ i ];
-            var temp = face.a;
-            face.a = face.c;
-            face.c = temp;
-          }
-          geometry.computeFaceNormals();
-          geometry.computeVertexNormals();
-          var faceVertexUvs = geometry.faceVertexUvs[ 0 ];
-          for ( var i = 0; i < faceVertexUvs.length; i ++ ) {
-            var temp = faceVertexUvs[ i ][ 0 ];
-            faceVertexUvs[ i ][ 0 ] = faceVertexUvs[ i ][ 2 ];
-            faceVertexUvs[ i ][ 2 ] = temp;
-          }
+          let material = new THREE.MeshLambertMaterial({ color: 0xffffff, side: THREE.BackSide})
 
           const cube = new THREE.Mesh(geometry, material)
           cube.position.y = h / 2 - 30
@@ -117,7 +81,6 @@ class Ambiance {
       })
     }
 
-    // to have shadow with low opacity
     createFakeShadow() {
       const h = 35000;
       let geometry = new THREE.BoxGeometry(h, h, 32)

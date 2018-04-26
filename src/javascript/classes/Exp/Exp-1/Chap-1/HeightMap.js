@@ -11,8 +11,6 @@ class HeightMap {
 
 	    this.group.position.y = -790
 	    this.group.position.z = -300
-
-		// this.load()
 	}
 
 	load = () => {
@@ -21,7 +19,6 @@ class HeightMap {
 		  		this.loadShader("../../../glsl/testVert.vert", "../../../glsl/testFrag.frag").then((response)=> {
 	    		    console.log('heightmap loaded')
 	    		    resolve(this.group)
-	    		    this.displayHeightMap()
 		  		}).catch((error)=> { console.warn(error) })
 		  	}).catch((error)=> { console.warn(error) })
 	    })
@@ -115,10 +112,6 @@ class HeightMap {
 		})
     }
 
-
-    displayHeightMap = () => {
-    	this.state.relatedBox.add(this.group)
-    }
 
 }
 

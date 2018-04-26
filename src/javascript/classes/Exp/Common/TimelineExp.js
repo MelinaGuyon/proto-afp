@@ -152,13 +152,13 @@ class TimelineExp {
         const dot = document.createElement('div')
         dot.classList.add('timeline-dot')
         this.timeline.appendChild(dot)
-        dot.style.transform = 'translateY(' + height / (i + 1) + 'px) translateX(-50%)'
+        dot.style.transform = 'translateY(' + height / this.totalChapters * (i + 1) + 'px) translateX(-50%)'
         this.dots.push(dot)
       }
     }
 
     updateDots = (index) => {
-      this.dots[this.totalChapters - index - 1].classList.add('is-passed')
+      this.dots[index].classList.add('is-passed')
     }
 
     hideText = () => {

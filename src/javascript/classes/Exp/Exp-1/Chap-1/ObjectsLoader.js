@@ -1,7 +1,7 @@
 const MTLLoader = require('three-mtl-loader')
 
 class ObjectsLoader {
-	constructor(options) {  
+	constructor(options) {
 		this.mtlLoader = new MTLLoader()
 	  	this.objLoader = new THREE.OBJLoader()
 	  	this.textureLoader = new THREE.TextureLoader()
@@ -10,13 +10,13 @@ class ObjectsLoader {
 	    this.vertex_loader.setResponseType('text')
 	    this.fragment_loader = new THREE.FileLoader(THREE.DefaultLoadingManager)
 	    this.fragment_loader.setResponseType('text')
-		
+
 		this.init()
 	}
 
 	init = () => {
 	    this.group = new THREE.Group()
-			
+
 	    this.group.position.y = -790
 	    this.group.position.z = -300
 	}
@@ -66,19 +66,17 @@ class ObjectsLoader {
 		        fragmentShader: fragment,
 		        lights: true,
 		        fog: true,
-		        side: THREE.DoubleSide
+		        side: THREE.BackSide
 		    } )
 
 		    material.transparent = true
 		    material.uniforms.texture.value = THREE.ImageUtils.loadTexture( 'assets/texture.jpg' )
 
-		    
-
 		    let plane = new THREE.Mesh( geometry, material )
 
 		    plane.position.y = 300
 		    plane.position.z = 4800
-			plane.rotation.x = Math.PI / 2
+				plane.rotation.x = Math.PI / 2
 			// plane.rotation.z = Math.PI
 
 
@@ -95,24 +93,26 @@ class ObjectsLoader {
     loadLights = () => {
     	return new Promise((resolve, reject) => {
 
-	    	let light1 = new THREE.PointLight(0xfdffd8, 0.5, 0, 2)
+			// Issue of plane appaeating to check
+
+	    let light1 = new THREE.PointLight(0xfdffd8, 0.05, 0, 2)
 			light1.position.set(-500, -600, 8000)
 			//light1.rotation.set(0, Math.PI, Math.PI)
 			light1.castShadow = true
 			//this.state.relatedBox.add(light1)
-			this.group.add(light1)
-
+			// this.group.add(light1)
+			//
 			// let sphereSize = 100
 			// let pointLightHelper = new THREE.PointLightHelper( light1, sphereSize )
-			//this.state.relatedBox.add( pointLightHelper )
+			// this.state.relatedBox.add( pointLightHelper )
 
 
-	    	let light2 = new THREE.PointLight(0x99caff, 0.5, 0, 2)
+	    let light2 = new THREE.PointLight(0x99caff, 0.05, 0, 2)
 			light2.position.set(500, -200, 7000)
 			//light2.rotation.set(0, Math.PI, Math.PI)
 			light2.castShadow = true
 			//this.state.relatedBox.add(light2)
-			this.group.add(light2)
+			// this.group.add(light2)
 
 			// let sphereSize2 = 100
 			// let pointLightHelper2 = new THREE.PointLightHelper( light2, sphereSize2 )
@@ -153,7 +153,7 @@ class ObjectsLoader {
 					})
 
 					that.group.add(object)
-          			resolve()
+          resolve()
 				})
 			})
 		})

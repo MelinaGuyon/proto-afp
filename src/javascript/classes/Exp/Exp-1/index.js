@@ -58,16 +58,15 @@ class Experience1 {
 
 		init = () => {
       Storage.HiddingPanelClass.hidePanel()
-      this.chapter3.init().then(this.goToChapterThree)
-     //  this.chapter1.init()
-     //  this.placeOnSpline({
-  			// 	spline: new THREE.CatmullRomCurve3(datas.splines.enter),
-     //      relatedCamera: this.camera,
-     //      step: .30,
-     //      index: 0
-  			// },
-     //    .5
-     //  )
+      // this.chapter1.init()
+      this.placeOnSpline({
+  				spline: new THREE.CatmullRomCurve3(datas.splines.enter),
+          relatedCamera: this.camera,
+          step: .30,
+          index: 0
+  			},
+        .5
+      )
 
       this.betweenChapters = new BetweenChapters()
       this.chaptersConclusion = new ChaptersConclusionClass()

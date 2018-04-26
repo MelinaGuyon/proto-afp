@@ -21,13 +21,14 @@ class Chapitre1 {
     this.loader = new ObjectsLoader()
     this.loader.load().then((response) => {
       this.modelsGroup = response
+      this.init()
     })
 	}
 
   init = () => {
     this.displayChapterObjects()
     this.bind()
-    
+
     //this.heightMap = new HeightMap({relatedBox: this.state.relatedBox})
     this.frontalCity = new FrontalCity({ objectsGroup: this.modelsGroup })
   }
