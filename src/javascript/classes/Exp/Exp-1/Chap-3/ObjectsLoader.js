@@ -36,32 +36,48 @@ class ObjectsLoader {
 	loadPeople = () => {
 		return new Promise((resolve, reject) => {
 			let that = this
-			that.objLoader.load( 'assets/persos/people.obj', function ( object ) {
+			that.objLoader.load( 'assets/persos/people.obj', function ( body ) {
+				that.objLoader.load( 'assets/persos/head.obj', function ( head ) {
 
-				for ( let i = 0; i < 4; i ++ ) {
-					for ( let j = 0; j < 10; j ++ ) {
-				        let instance = object.clone()
-				        instance.scale.set(40, 40, 40)
-				        instance.position.x = i * 200
-				        instance.position.z = j * 200
-				        instance.name = "people"
-				        that.peopleGroup1.add( instance )
-				    }   
-				}
-				for ( let i = 0; i < 4; i ++ ) {
-					for ( let j = 0; j < 10; j ++ ) {
-				        let instance = object.clone()
-				        instance.scale.set(40, 40, 40)
-				        instance.position.x = i * -200
-				        instance.position.z = j * 200
-				        instance.name = "people"
-				        that.peopleGroup2.add( instance )
-				    }   
-				}
+					for ( let i = 0; i < 4; i ++ ) {
+						for ( let j = 0; j < 10; j ++ ) {
+					        let bodyInstance = body.clone()
+					        bodyInstance.scale.set(40, 40, 40)
+					        bodyInstance.position.x = i * 200
+					        bodyInstance.position.z = j * 200
+					        bodyInstance.name = "people"
+					        that.peopleGroup1.add( bodyInstance )
 
-				that.group.add( that.peopleGroup1, that.peopleGroup2 )
+					        let headInstance = head.clone()
+					        headInstance.position.x = i * 200
+					        headInstance.position.y = 250
+					        headInstance.position.z = j * 200
+					        headInstance.name = "head"
+					        that.peopleGroup1.add( headInstance )
+					    }   
+					}
+					for ( let i = 0; i < 4; i ++ ) {
+						for ( let j = 0; j < 10; j ++ ) {
+					        let bodyInstance = body.clone()
+					        bodyInstance.scale.set(40, 40, 40)
+					        bodyInstance.position.x = i * -200
+					        bodyInstance.position.z = j * 200
+					        bodyInstance.name = "people"
+					        that.peopleGroup2.add( bodyInstance )
 
-				resolve()
+					        let headInstance = head.clone()
+					        headInstance.position.x = i * -200
+					        headInstance.position.y = 250
+					        headInstance.position.z = j * 200
+					        headInstance.name = "head"
+					        that.peopleGroup2.add( headInstance )
+					    }   
+					}
+
+					that.group.add( that.peopleGroup1, that.peopleGroup2 )
+
+					resolve()
+				})
 			})
 		})
 
