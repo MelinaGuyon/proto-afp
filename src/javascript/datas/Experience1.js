@@ -1,19 +1,19 @@
 const splines = {
 	enter: [
-		new THREE.Vector3(0, 400, 1500),
-		new THREE.Vector3( 0, 400, -800)
+		new THREE.Vector3(0, 600, 1500),
+		new THREE.Vector3( 0, 600, -800)
 	],
 	chapter1: [
-		new THREE.Vector3(0, 400, -2000),
-		new THREE.Vector3( 0, 400, -5000)
+		new THREE.Vector3(0, 600, -2000),
+		new THREE.Vector3( 0, 600, -5000)
 	],
 	betweenChaptersOneTwo: [
-		new THREE.Vector3(0, 400, -6300),
-		new THREE.Vector3(0, 400, -10000),
+		new THREE.Vector3(0, 600, -6300),
+		new THREE.Vector3(0, 600, -10000),
 	],
 	chapter2: [
-		new THREE.Vector3(0, 400, -11000),
-		new THREE.Vector3( 0, 400, -14000)
+		new THREE.Vector3(0, 600, -11000),
+		new THREE.Vector3( 0, 600, -14000)
 	]
 }
 

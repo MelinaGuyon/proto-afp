@@ -25,11 +25,9 @@ class ObjectsLoader {
 	load = () => {
 
 	    return new Promise((resolve, reject) => {
-	    	this.loadLights().then((response)=> {
-	    		    				console.log("LOADING CHAPTER 1")
-
-		  		this.loadShader("../../../glsl/testVert.vert", "../../../glsl/testFrag.frag").then((response)=> {
-	    		    this.loadMlleKWall().then((response)=> {
+	    	this.loadMlleKWall().then((response)=> {
+	    		this.loadLights().then((response)=> {
+		  			this.loadShader("../../../glsl/testVert.vert", "../../../glsl/testFrag.frag").then((response)=> {
 	    		    	console.log('Chapter 1 objects loaded')
 	    		    	resolve(this.group)
 	    			}).catch((error)=> { console.warn(error) })
@@ -45,8 +43,8 @@ class ObjectsLoader {
 		return new Promise((resolve, reject) => {
 		    this.uniforms = THREE.UniformsUtils.merge([
 		        THREE.ShaderLib.lambert.uniforms,
-		        { diffuse: { value: new THREE.Color(0xffffff) } },
-		    	{ texture: { type: "t", value: THREE.ImageUtils.loadTexture( 'assets/texture.png' ) } }
+		        { diffuse: { value: new THREE.Color(0xf7f7f7) } },
+		    	{ texture: { type: "t", value: THREE.ImageUtils.loadTexture( 'assets/texture.jpg' ) } }
 		    ]);
 		    this.vertex_loader.load(vertex_url, function (vertex_text) {
 		        that.fragment_loader.load(fragment_url, function (fragment_text) {
@@ -60,7 +58,7 @@ class ObjectsLoader {
     loadHeightMap = (vertex, fragment) => {
     	return new Promise((resolve, reject) => {
 
-			let geometry = new THREE.PlaneBufferGeometry(3000, 4000, 150, 150)
+			let geometry = new THREE.PlaneBufferGeometry(8000, 3000, 150, 150)
 
 		    let material = new THREE.ShaderMaterial( {
 		    	uniforms: Object.assign({u_amplitude:{ type: "f", value: 4. }, u_frequence:{ type: "f", value: 0.0005 } }, this.uniforms),
@@ -68,17 +66,21 @@ class ObjectsLoader {
 		        fragmentShader: fragment,
 		        lights: true,
 		        fog: true,
-		        side: THREE.BackSide
+		        side: THREE.DoubleSide
 		    } )
 
-		    material.uniforms.texture.value = THREE.ImageUtils.loadTexture( 'assets/texture.png' )
+		    material.transparent = true
+		    material.uniforms.texture.value = THREE.ImageUtils.loadTexture( 'assets/texture.jpg' )
+
+		    
 
 		    let plane = new THREE.Mesh( geometry, material )
 
-		    plane.position.y = 100
+		    plane.position.y = 300
 		    plane.position.z = 4800
 			plane.rotation.x = Math.PI / 2
-			plane.rotation.z = Math.PI
+			// plane.rotation.z = Math.PI
+
 
 			plane.castShadow = true
 			plane.receiveShadow = true

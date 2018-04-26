@@ -121,19 +121,23 @@ void main() {
   vUv = uv;
 
   vec3 color = texture2D(texture, uv).rgb;
-  vec3 pp = vec3( position.x, 0., 0. );
-  float scale = smoothstep(1., .8, abs(uv.x * 2. - 1.));
+  // vec3 pp = vec3( position.x, 0., 0. );
+  // float scale = smoothstep(1., .8, abs(uv.x * 2. - 1.));
 
-  scalarMove = color.r * -300. * cnoise(u_frequence * pp) * u_amplitude * scale;
-  vec3 newPosition = position + normal * scalarMove;
+  // scalarMove = color.r * -300. * cnoise(u_frequence * pp) * u_amplitude * scale;
+  // vec3 newPosition = position + normal * scalarMove;
 
-  if (newPosition.z > 0. ) {
-    newPosition = position;
-  }
+  // if (newPosition.z > 0. ) {
+  //   newPosition = position;
+  // }
 
-  if (position.y < -1300.) {
-    newPosition.z = position.z;
-  }
+  // if (position.y < -1300.) {
+  //   newPosition.z = position.z;
+  // }
+
+  float _h = color.r * 0.33 + color.g * 0.33 + color.b * 0.34;
+  vec3 newPosition = position + normal * (_h * 450.);
+
 
   gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
 

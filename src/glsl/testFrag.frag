@@ -28,12 +28,33 @@ varying vec3 vLightFront;
 
 
 uniform sampler2D texture;
+uniform float u_amplitude;
+uniform float u_frequence;
+
+varying vec3 v_position;
 varying vec2 vUv;
 
-void main(void) {
-	vec3 color = vec3(1.);
-	//vec3 color = texture2D(texture, vUv).rgb;
+float whitePct;
+float newOpacity;
 
+
+void main(void) {
+	vec3 color = texture2D(texture, vUv).rgb;
+	whitePct = color.r;
+
+	//newOpacity = whitePct;
+	//newOpacity = 1./abs(v_position.x);
+	float porcentX = 1. - abs((vUv.x * 2.) - 1.);
+	float porcentY = 1. - abs((vUv.y * 2.) - 1.);
+
+	float porcent = min(porcentY, porcentX);
+
+	if ( porcent < 0.35 ) {
+		newOpacity = smoothstep(0., 0.35, porcent);
+	} else {
+		newOpacity = 1.;
+	}
+ 
 	#include <clipping_planes_fragment>
 	vec4 diffuseColor = vec4( diffuse, opacity );
 	ReflectedLight reflectedLight = ReflectedLight( vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ) );
@@ -57,11 +78,11 @@ void main(void) {
 	#include <aomap_fragment>
 	vec3 outgoingLight = reflectedLight.directDiffuse + reflectedLight.indirectDiffuse + totalEmissiveRadiance;
 	#include <envmap_fragment>
-	gl_FragColor = vec4( 1. * outgoingLight, diffuseColor.a);
-	//gl_FragColor = vec4(color, 1.);
+	gl_FragColor = vec4(  1. * outgoingLight, newOpacity * diffuseColor.a);
 	#include <tonemapping_fragment>
 	#include <encodings_fragment>
 	#include <fog_fragment>
 	#include <premultiplied_alpha_fragment>
 	#include <dithering_fragment>
+
 }
