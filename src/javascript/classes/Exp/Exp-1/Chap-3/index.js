@@ -1,5 +1,7 @@
 import ObjectsLoader from './ObjectsLoader'
 import raf from 'raf'
+import anime from 'animejs'
+
 
 class Chapitre3 {
     constructor(options) {
@@ -42,12 +44,22 @@ class Chapitre3 {
     this.frustum.setFromMatrix( new THREE.Matrix4().multiplyMatrices( this.state.relatedCamera.projectionMatrix, this.state.relatedCamera.matrixWorldInverse ) )
    
     this.modelsGroup.traverse(function(o) {
-      if(o.name === "people") {
+      if(o.name === "head") {
         if ( that.frustum.containsPoint( o.getWorldPosition()) ){
-            o.visible = false
+          anime({
+            targets: o.rotation,
+            x: Math.PI/2,
+            duration: 300,
+            easing: 'easeOutQuad'
+          })
         }
         else {
-            o.visible = true 
+          anime({
+            targets: o.rotation,
+            x: 0,
+            duration: 300,
+            easing: 'easeOutQuad'
+          })
         }
       }
     })
