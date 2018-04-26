@@ -17,11 +17,13 @@ class HeightMap {
 
 	load = () => {
 	    return new Promise((resolve, reject) => {
-	  		this.loadShader("../../../glsl/testVert.vert", "../../../glsl/testFrag.frag").then((response)=> {
+	    	this.loadLights().then((response)=> {
+		  		this.loadShader("../../../glsl/testVert.vert", "../../../glsl/testFrag.frag").then((response)=> {
 	    		    console.log('heightmap loaded')
 	    		    resolve(this.group)
 	    		    this.displayHeightMap()
-	  		}).catch((error)=> { console.warn(error) })
+		  		}).catch((error)=> { console.warn(error) })
+		  	}).catch((error)=> { console.warn(error) })
 	    })
 	}
 
@@ -33,7 +35,7 @@ class HeightMap {
 
 		    this.uniforms = THREE.UniformsUtils.merge([
 		        THREE.ShaderLib.lambert.uniforms,
-		        { diffuse: { value: new THREE.Color(0xfdad5b) } },
+		        { diffuse: { value: new THREE.Color(0xffffff) } },
 		    	{ texture: { type: "t", value: THREE.ImageUtils.loadTexture( 'assets/texture.png' ) } }
 		    ]);
 
@@ -52,25 +54,23 @@ class HeightMap {
 
     	return new Promise((resolve, reject) => {
 
-			let geometry = new THREE.PlaneBufferGeometry(3000, 3000, 150, 150)
+			let geometry = new THREE.PlaneBufferGeometry(3000, 4000, 150, 150)
 
 		    let material = new THREE.ShaderMaterial( {
-		    	uniforms: this.uniforms,
+		    	uniforms: Object.assign({u_amplitude:{ type: "f", value: 4. }, u_frequence:{ type: "f", value: 0.0005 } }, this.uniforms),
 		        vertexShader: vertex,
 		        fragmentShader: fragment,
 		        lights: true,
+		        fog: true,
 		        side: THREE.BackSide
 		    } )
 
-		    console.log("MATERIAL", material)
-
-		    material.uniforms.texture.value = THREE.ImageUtils.loadTexture( 'assets/northKoreaMap.jpg' )
+		    material.uniforms.texture.value = THREE.ImageUtils.loadTexture( 'assets/texture.png' )
 
 		    let plane = new THREE.Mesh( geometry, material )
 
-		    plane.position.x = 0
-		    plane.position.y = 0
-		    plane.position.z = 4000
+		    plane.position.y = 100
+		    plane.position.z = 4800
 			plane.rotation.x = Math.PI / 2
 			plane.rotation.z = Math.PI
 
@@ -78,6 +78,37 @@ class HeightMap {
 			plane.receiveShadow = true
 
 			this.group.add(plane)
+
+			resolve()
+
+		})
+    }
+
+    loadLights = () => {
+    	return new Promise((resolve, reject) => {
+
+	    	let light1 = new THREE.PointLight(0xfdffd8, 0.5, 0, 2)
+			light1.position.set(-500, -600, 8000)
+			//light1.rotation.set(0, Math.PI, Math.PI)
+			light1.castShadow = true
+			this.state.relatedBox.add(light1)
+			//this.group.add(light1)
+
+			let sphereSize = 100
+			let pointLightHelper = new THREE.PointLightHelper( light1, sphereSize )
+			this.state.relatedBox.add( pointLightHelper )
+
+
+	    	let light2 = new THREE.PointLight(0x99caff, 0.5, 0, 2)
+			light2.position.set(500, -200, 7000)
+			//light2.rotation.set(0, Math.PI, Math.PI)
+			light2.castShadow = true
+			this.state.relatedBox.add(light2)
+			//this.group.add(light1)
+
+			let sphereSize2 = 100
+			let pointLightHelper2 = new THREE.PointLightHelper( light2, sphereSize2 )
+			this.state.relatedBox.add( pointLightHelper2 )
 
 			resolve()
 

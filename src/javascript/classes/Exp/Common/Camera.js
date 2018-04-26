@@ -45,7 +45,7 @@ class Camera {
 
     initCamera() {
       this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 50000)
-			this.camera.position.set(0, 400, 3200)
+			this.camera.position.set(0, 600, 3200)
 
 			this.lookAround && raf.add(this.updateInertia)
 

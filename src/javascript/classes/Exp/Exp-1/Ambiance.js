@@ -79,8 +79,8 @@ class Ambiance {
             { u_time: { type: "f", value: 1.0 } },
             { u_resolution: { type: "v2", value: new THREE.Vector2(1024, 768) } },
             { u_mouse: { type: "v2", value: new THREE.Vector2() } },
-            { u_color1: { value: new THREE.Color(0x303848) } },
-            { u_color2: { value: new THREE.Color(0x2a3040) } }
+            { u_color1: { value: new THREE.Color(0xffffff) } },
+            { u_color2: { value: new THREE.Color(0xefefef) } }
           ]);
 
           let material = new THREE.ShaderMaterial( {
@@ -119,9 +119,9 @@ class Ambiance {
 
     // to have shadow with low opacity
     createFakeShadow() {
-      const h = 8000;
-      let geometry = new THREE.SphereGeometry(h, 32, 32)
-      let material = new THREE.ShadowMaterial({ side: THREE.DoubleSide, fog: false })
+      const h = 35000;
+      let geometry = new THREE.BoxGeometry(h, h, 32)
+      let material = new THREE.ShadowMaterial({ side: THREE.DoubleSide, fog: false})
       let fakeShadow = new THREE.Mesh( geometry, material )
       fakeShadow.material.opacity = 0.05
       fakeShadow.position.y = h - 12
