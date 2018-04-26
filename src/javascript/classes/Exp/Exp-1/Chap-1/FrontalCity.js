@@ -14,7 +14,7 @@ class FrontalCity {
 		let intersects = raycaster.intersectObjects(meshs, false)
 		if (intersects[0] &&
 				intersects[0].object &&
-				intersects[0].distance < 2000 &&
+				intersects[0].distance < 1000 &&
 				intersects[0].object.name === 'Cube_10') {
 					this.openAnimation(intersects[0].object)
 					this.launchNextStep()
@@ -49,7 +49,7 @@ class FrontalCity {
 			complete: this.closeAnimation(object)
     })
 	}, 400, { leading: true, trailing: false })
-	
+
 	closeAnimation = (object) => () => {
 		anime.remove(object.rotation)
 		anime({

@@ -1,5 +1,6 @@
 import Inrtia from 'inrtia'
 import raf from 'raf'
+import anime from 'animejs'
 
 import datas from '../../../datas/Experience1.js'
 
@@ -10,9 +11,12 @@ class TimelineExp {
 
       this.beginings = this.getBeginings()
       this.splinesInChapters = this.getSplinesInChapters()
+      this.ends = this.getEnds()
       this.totalChapters = datas.timelineIndicators.length
       this.splineIndex = 0
       this.chapterIndex = 0
+
+      this.dots =[]
 
       this.initObjects()
       this.initInertia()
@@ -59,8 +63,10 @@ class TimelineExp {
 
     getBeginings = () => {
       let tab = []
-       datas.timelineIndicators.forEach((chapter) => {
-         tab.push(chapter[3])
+      let actual = 0
+       datas.timelineIndicators.forEach((chapter, index) => {
+         tab.push(actual)
+         actual+= chapter[2]
        })
        return tab
     }
@@ -71,6 +77,15 @@ class TimelineExp {
          tab.push(chapter[2])
        })
        return tab
+    }
+
+    getEnds = () => {
+      let tab = []
+      this.beginings.forEach((number, index) => {
+        const num = number + this.splinesInChapters[index] - 1
+        tab.push(num)
+      })
+      return tab
     }
 
     check = (state, SplineIndex) => {
@@ -87,7 +102,27 @@ class TimelineExp {
       const time = this.timelineObj.stateSave + state * ratio
       this.timelineObj.state = Math.max(Math.min(time, 1), 0)
 
-      this.inrtia.height.to(this.timelineObj.state)
+      if (state < .88) {
+        this.inrtia.height.to(this.timelineObj.state)
+        if (state > .4) this.resetCursor()
+        return
+      }
+
+      if (this.ends.includes(SplineIndex)) this.transformCursor(ratio)
+    }
+
+    transformCursor = (ratio) => {
+      if (this.cursorTransformed) return
+      this.cursorTransformed = true
+      this.time.classList.add('is-round')
+      this.inrtia.height.to(this.timelineObj.stateSave + ratio)
+      setTimeout(() => { this.updateDots(this.chapterIndex) }, 1000)
+    }
+
+    resetCursor = () => {
+      if (!this.cursorTransformed) return
+      this.cursorTransformed = false
+      this.time.classList.remove('is-round')
     }
 
     updateChapter = () => {
@@ -108,7 +143,12 @@ class TimelineExp {
         dot.classList.add('timeline-dot')
         this.timeline.appendChild(dot)
         dot.style.transform = 'translateY(' + height / (i + 1) + 'px) translateX(-50%)'
+        this.dots.push(dot)
       }
+    }
+
+    updateDots = (index) => {
+      this.dots[this.totalChapters - index - 1].classList.add('is-passed')
     }
 }
 

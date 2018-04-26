@@ -53,6 +53,14 @@
         left: 50%;
         transform: translateX(-50%);
         border-radius: 6px;
+        z-index: 2;
+        transition: border-radius .5s $quad-ease-in-out, height .5s $quad-ease-in-out, width .5s $quad-ease-in-out;
+      }
+
+      &.is-round:after {
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
       }
     }
 
@@ -62,9 +70,14 @@
       position: absolute;
       border-radius: 50%;
       top: -8px;
-      background: #b1b2b1;
+      background-color: #b1b2b1;
       left: 50%;
       transform: translateX(-50%);
+      transition: background-color .3s $quad-ease-in-out;
+
+      &.is-passed {
+        background-color: #000000;
+      }
     }
   }
 }
