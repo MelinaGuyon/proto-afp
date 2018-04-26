@@ -14,6 +14,14 @@ const splines = {
 	chapter2: [
 		new THREE.Vector3(0, 600, -11000),
 		new THREE.Vector3( 0, 600, -14000)
+	],
+	betweenChaptersTwoThree: [
+		new THREE.Vector3(0, 600, -15300),
+		new THREE.Vector3(0, 600, -19000),
+	],
+	chapter3: [
+		new THREE.Vector3(0, 250, -20000),
+		new THREE.Vector3( 0, 250, -23000)
 	]
 }
 
@@ -22,7 +30,9 @@ const keyPoints = {
 	enter: [.1, .5],
 	chapter1: [.2, .7],
 	betweenChaptersOneTwo: [.4],
-	chapter2: [.5, .7]
+	chapter2: [.5, .7],
+	betweenChaptersTwoThree: [],
+	chapter3: []
 }
 
 const textsPanel =  [
@@ -32,11 +42,12 @@ const textsPanel =  [
 ]
 
 const chaptersTitle =  [
-	'l\'envers du décors'
+	'l\'envers du décor'
 ]
 
 const conclusions =  [
 	['assets/video.mp4', 'video'],
+	['assets/video2.mp4', 'video'],
 	['assets/video2.mp4', 'video']
 ]
 

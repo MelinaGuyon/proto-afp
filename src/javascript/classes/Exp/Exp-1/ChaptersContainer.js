@@ -9,13 +9,15 @@ class ChaptersContainer {
     initObjects = () => {
       this.positions = [
         [0, 800, -4000],
-        [0, 800, -13000]
+        [0, 800, -13000],
+        [0, 800, -22000]
       ]
       this.sizes = [
         [2000, 1600, 4000],
+        [3000, 1600, 4000],
         [3000, 1600, 4000]
       ]
-      this.colors = [0xfffff, 0xf0f6f]
+      this.colors = [0xfffff, 0xf0f6f, 0xff0000]
     }
 
 		init = () => {

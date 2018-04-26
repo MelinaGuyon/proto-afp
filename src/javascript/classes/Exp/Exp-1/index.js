@@ -14,6 +14,7 @@ import datas from '../../../datas/Experience1.js'
 
 import Chapitre1 from './Chap-1/index.js'
 import Chapitre2 from './Chap-2/index.js'
+import Chapitre3 from './Chap-3/index.js'
 
 import ChaptersConclusionClass from './ChaptersConclusion.js'
 
@@ -45,20 +46,28 @@ class Experience1 {
         relatedCamera: this.camera.camera,
         lightOpt: [this.ambiance]
       })
+      this.chapter3 = new Chapitre3({
+        relatedBox: this.chaptersContainer.chapterBoxes[2],
+        relatedCamera: this.camera.camera,
+        lightOpt: [this.ambiance]
+      })
+
+      console.log("là", this.chapter3)
 
 		}
 
 		init = () => {
       Storage.HiddingPanelClass.hidePanel()
-      this.chapter1.init()
-      this.placeOnSpline({
-  				spline: new THREE.CatmullRomCurve3(datas.splines.enter),
-          relatedCamera: this.camera,
-          step: .30,
-          index: 0
-  			},
-        .5
-      )
+      this.chapter3.init().then(this.goToChapterThree)
+     //  this.chapter1.init()
+     //  this.placeOnSpline({
+  			// 	spline: new THREE.CatmullRomCurve3(datas.splines.enter),
+     //      relatedCamera: this.camera,
+     //      step: .30,
+     //      index: 0
+  			// },
+     //    .5
+     //  )
 
       this.betweenChapters = new BetweenChapters()
       this.chaptersConclusion = new ChaptersConclusionClass()
@@ -100,8 +109,35 @@ class Experience1 {
   				spline: new THREE.CatmullRomCurve3(datas.splines.chapter2),
           relatedCamera: this.camera,
           step: .30,
-          index: 3
+          index: 3,
+          cbEnd: this.betweenChaptersTwoThree
   			},
+        .5
+      )
+      this.chaptersConclusion.updateMedia('assets/01.jpg', 'photo')
+    }
+
+    betweenChaptersTwoThree = () => {
+      console.log("entre chap 2 et 3")
+      this.placeOnSpline({
+          spline: new THREE.CatmullRomCurve3(datas.splines.betweenChaptersTwoThree),
+          relatedCamera: this.camera,
+          step: .30,
+          index: 4,
+          cbEnd: () => { this.chapter3.init().then(this.goToChapterThree) }
+        },
+        .5
+      )
+    }
+
+    goToChapterThree = () => {
+      console.log("entre dans chapitre 3")
+      this.placeOnSpline({
+          spline: new THREE.CatmullRomCurve3(datas.splines.chapter3),
+          relatedCamera: this.camera,
+          step: .30,
+          index: 5
+        },
         .5
       )
       this.chaptersConclusion.updateMedia('assets/01.jpg', 'photo')
