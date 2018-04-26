@@ -38,7 +38,14 @@ class TimelineExp {
       this.timelineWrapper = document.querySelector('.timeline-wrapper')
       this.timeline = this.timelineWrapper.querySelector('.timeline')
       this.time = this.timelineWrapper.querySelector('.current-time')
+      this.texts = this.timelineWrapper.querySelector('.texts')
+      this.textNumber = this.timelineWrapper.querySelector('.texts .number')
+      this.textName = this.timelineWrapper.querySelector('.texts .name')
+
       setTimeout(() => { this.timelineWrapper.classList.add('is-active') }, 2000)
+      setTimeout(() => { this.timelineWrapper.classList.add('not-hidden') }, 2500)
+      setTimeout(this.updateText, 2600)
+      setTimeout(this.showText, 2650)
     }
 
     initInertia() {
@@ -104,7 +111,7 @@ class TimelineExp {
 
       if (state < .88) {
         this.inrtia.height.to(this.timelineObj.state)
-        if (state > .4) this.resetCursor()
+        if (state > .35) this.resetCursor()
         return
       }
 
@@ -116,6 +123,7 @@ class TimelineExp {
       this.cursorTransformed = true
       this.time.classList.add('is-round')
       this.inrtia.height.to(this.timelineObj.stateSave + ratio)
+      this.hideText()
       setTimeout(() => { this.updateDots(this.chapterIndex) }, 1000)
     }
 
@@ -123,10 +131,12 @@ class TimelineExp {
       if (!this.cursorTransformed) return
       this.cursorTransformed = false
       this.time.classList.remove('is-round')
+      this.showText()
     }
 
     updateChapter = () => {
       this.chapterIndex++
+      this.updateText()
     }
 
     updateInertia = () => {
@@ -149,6 +159,19 @@ class TimelineExp {
 
     updateDots = (index) => {
       this.dots[this.totalChapters - index - 1].classList.add('is-passed')
+    }
+
+    hideText = () => {
+      this.texts.classList.remove('is-visible')
+    }
+
+    showText = () => {
+      this.texts.classList.add('is-visible')
+    }
+
+    updateText = () => {
+      this.textNumber.innerHTML = datas.timelineIndicators[this.chapterIndex][0]
+      this.textName.innerHTML = datas.timelineIndicators[this.chapterIndex][1]
     }
 }
 
