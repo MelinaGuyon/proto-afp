@@ -48,7 +48,7 @@ class Experience1 {
       })
       this.chapter3 = new Chapitre3({
         relatedBox: this.chaptersContainer.chapterBoxes[2],
-        relatedCamera: this.camera.camera,
+        relatedCamera: this.camera,
         lightOpt: [this.ambiance]
       })
 

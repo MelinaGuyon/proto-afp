@@ -13,6 +13,7 @@ class Chapitre3 {
     this.peopleColor2 = new THREE.Color( 0x000000 )
 
     this.frustum = new THREE.Frustum()
+    this.cameraRotation = false
 
     this.loadChapter()
     }
@@ -40,14 +41,14 @@ class Chapitre3 {
   animate = () => {
     let that = this
 
-    this.state.relatedCamera.updateMatrix()
-    this.state.relatedCamera.updateMatrixWorld() 
-    this.frustum.setFromMatrix( new THREE.Matrix4().multiplyMatrices( this.state.relatedCamera.projectionMatrix, this.state.relatedCamera.matrixWorldInverse ) )
+    this.state.relatedCamera.camera.updateMatrix()
+    this.state.relatedCamera.camera.updateMatrixWorld() 
+    this.frustum.setFromMatrix( new THREE.Matrix4().multiplyMatrices( this.state.relatedCamera.camera.projectionMatrix, this.state.relatedCamera.camera.matrixWorldInverse ) )
 
 
     this.modelsGroup.traverse(function(o) {
       if(o.name === "head") {
-        let distance = that.state.relatedCamera.position.z - o.getWorldPosition().z
+        let distance = that.state.relatedCamera.camera.position.z - o.getWorldPosition().z
         // console.log("object z", o.getWorldPosition().z)
         // console.log("camera z", that.state.relatedCamera.position.z)
         // console.log("DISTANCE", distance)
@@ -70,6 +71,22 @@ class Chapitre3 {
         }
       }
     })
+
+    if ( this.cameraRotation === false && this.state.relatedCamera.camera.position.z <= -22600 ) {
+      this.cameraRotation = true
+
+      anime({
+        targets: this.state.relatedCamera.camera.rotation,
+        y: -Math.PI,
+        duration: 300,
+        easing: 'easeOutQuad',
+        complete: () => {
+          this.state.relatedCamera.updateMovementRange(0)
+        }
+      })
+        
+      console.log("rotation camera vers foule")
+    }
   }
   
 }
