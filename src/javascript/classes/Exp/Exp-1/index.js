@@ -56,14 +56,15 @@ class Experience1 {
 
 		init = () => {
       Storage.HiddingPanelClass.hidePanel()
-      this.placeOnSpline({
-  				spline: new THREE.CatmullRomCurve3(datas.splines.enter),
-          relatedCamera: this.camera,
-          step: .30,
-          index: 0
-  			},
-        .5
-      )
+      this.chapter3.init().then(this.goToChapterThree)
+     //  this.placeOnSpline({
+  			// 	spline: new THREE.CatmullRomCurve3(datas.splines.enter),
+     //      relatedCamera: this.camera,
+     //      step: .30,
+     //      index: 0
+  			// },
+     //    .5
+     //  )
 
       this.betweenChapters = new BetweenChapters()
       this.chaptersConclusion = new ChaptersConclusionClass()
@@ -132,11 +133,25 @@ class Experience1 {
           spline: new THREE.CatmullRomCurve3(datas.splines.chapter3),
           relatedCamera: this.camera,
           step: .05,
-          index: 5
+          index: 5,
+          cbEnd: this.betweenChaptersThreeConclusion
         },
         .5
       )
       this.chaptersConclusion.updateMedia('assets/conclusion/01.jpg', 'photo')
+    }
+
+    betweenChaptersThreeConclusion = () => {
+      console.log("entre chap 3 et conclusion")
+      this.placeOnSpline({
+          spline: new THREE.CatmullRomCurve3(datas.splines.betweenChaptersThreeConclusion),
+          relatedCamera: this.camera,
+          step: .30,
+          index: 4,
+          cbEnd: () => { console.log("GO TO CONCLUSION") }
+        },
+        .5
+      )
     }
 
     placeOnSpline = (opt, mvmt) => {
