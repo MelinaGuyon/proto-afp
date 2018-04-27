@@ -14,6 +14,7 @@ class Chapitre3 {
 
     this.frustum = new THREE.Frustum()
     this.cameraRotation = false
+    this.animationOngoing = false
 
     this.loadChapter()
     }
@@ -53,42 +54,36 @@ class Chapitre3 {
         // console.log("camera z", that.state.relatedCamera.position.z)
         // console.log("DISTANCE", distance)
 
-        if ( that.frustum.containsPoint( o.getWorldPosition()) && distance < 500 ){
-          anime({
-            targets: o.rotation,
-            x: Math.PI/2,
-            duration: 300,
-            easing: 'easeOutQuad'
-          })
-        }
-        else {
-          anime({
-            targets: o.rotation,
-            x: 0,
-            duration: 300,
-            easing: 'easeOutQuad'
-          })
+        if (o.isAnimating === false) {
+
+          if ( that.frustum.containsPoint( o.getWorldPosition()) && distance < 500 ){
+            o.isAnimating = true
+            anime.remove(o.rotation)
+
+            anime({
+              targets: o.rotation,
+              x: [o.rotation.x, Math.PI/2],
+              duration: 1000,
+              easing: 'linear',
+              complete: () => { o.isAnimating = false }
+            })
+          }
+          else {
+            o.isAnimating = true
+            anime.remove(o.rotation)
+
+            anime({
+              targets: o.rotation,
+              x: [o.rotation.x, 0],
+              duration: 1000,
+              easing: 'linear',
+              complete: () => {  o.isAnimating = false }
+            })
+          }
         }
       }
     })
-
-    if ( this.cameraRotation === false && this.state.relatedCamera.camera.position.z <= -22600 ) {
-      this.cameraRotation = true
-
-      anime({
-        targets: this.state.relatedCamera.camera.rotation,
-        y: -Math.PI,
-        duration: 300,
-        easing: 'easeOutQuad',
-        complete: () => {
-          this.state.relatedCamera.updateMovementRange(0)
-        }
-      })
-        
-      console.log("rotation camera vers foule")
-    }
   }
-  
 }
 
 export default Chapitre3

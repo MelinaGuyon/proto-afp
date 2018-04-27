@@ -131,7 +131,7 @@ class Experience1 {
       this.placeOnSpline({
           spline: new THREE.CatmullRomCurve3(datas.splines.chapter3),
           relatedCamera: this.camera,
-          step: .30,
+          step: .05,
           index: 5
         },
         .5

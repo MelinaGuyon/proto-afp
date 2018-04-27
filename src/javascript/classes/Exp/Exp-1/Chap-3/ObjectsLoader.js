@@ -52,6 +52,7 @@ class ObjectsLoader {
 					        headInstance.position.x = i * 200
 					        headInstance.position.y = 250
 					        headInstance.position.z = j * 200
+					        headInstance.isAnimating = false
 					        headInstance.name = "head"
 					        that.peopleGroup1.add( headInstance )
 					    }   
@@ -70,6 +71,7 @@ class ObjectsLoader {
 					        headInstance.position.y = 250
 					        headInstance.position.z = j * 200
 					        headInstance.name = "head"
+					        headInstance.isAnimating = false
 					        that.peopleGroup2.add( headInstance )
 					    }   
 					}

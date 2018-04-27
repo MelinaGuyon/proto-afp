@@ -15,7 +15,11 @@ class BetweenChapters {
 
         [ this.launchText(2) ],
 
-        [ this.launchConclusionTwo, this.stopConclusion ]
+        [ this.launchConclusionTwo, this.stopConclusion ],
+
+        [],
+
+        [ this.launchConclusionThree, this.stopConclusion ]
       ]
     }
 
@@ -34,6 +38,11 @@ class BetweenChapters {
 
     launchConclusionTwo = () => {
       console.log('je lance conclu chapitre 2')
+      Storage.ChaptersConclusionClass.bindConclu()
+    }
+
+    launchConclusionThree = () => {
+      console.log('je lance conclu chapitre 3')
       Storage.ChaptersConclusionClass.bindConclu()
     }
 
