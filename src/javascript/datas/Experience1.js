@@ -1,7 +1,7 @@
 const splines = {
 	enter: [
-		new THREE.Vector3(0, 600, 1500),
-		new THREE.Vector3( 0, 600, -800)
+		new THREE.Vector3(0, 600, 2100),
+		new THREE.Vector3( 0, 600, 200)
 	],
 	chapter1: [
 		new THREE.Vector3(0, 600, -2000),
@@ -46,9 +46,9 @@ const chaptersTitle =  [
 ]
 
 const conclusions =  [
-	['assets/video.mp4', 'video'],
-	['assets/video2.mp4', 'video'],
-	['assets/video2.mp4', 'video']
+	['assets/conclusion/video.mp4', 'video'],
+	['assets/conclusion/video2.mp4', 'video'],
+	['assets/conclusion/video2.mp4', 'video']
 ]
 
 // number of spline, spline index begining

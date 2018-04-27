@@ -12,7 +12,7 @@ class Scene {
 
     initScene() {
       this.scene = new THREE.Scene()
-      this.scene.fog = new THREE.FogExp2( 0xf7f7f7, 0.00045 )
+      this.scene.fog = new THREE.FogExp2( 0xf7f7f7, 0.00038 )
       this.scene.add(Storage.CameraClasses[this.name].camera)
     }
 

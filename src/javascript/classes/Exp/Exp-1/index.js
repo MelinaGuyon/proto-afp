@@ -52,13 +52,10 @@ class Experience1 {
         lightOpt: [this.ambiance]
       })
 
-      console.log("là", this.chapter3)
-
 		}
 
 		init = () => {
       Storage.HiddingPanelClass.hidePanel()
-      // this.chapter1.init()
       this.placeOnSpline({
   				spline: new THREE.CatmullRomCurve3(datas.splines.enter),
           relatedCamera: this.camera,
@@ -86,7 +83,7 @@ class Experience1 {
   			},
         .5
       )
-      this.chaptersConclusion.updateMedia('assets/video.mp4', 'video')
+      this.chaptersConclusion.updateMedia('assets/conclusion/video.mp4', 'video')
     }
 
     betweenChaptersOneTwo = () => {
@@ -113,7 +110,7 @@ class Experience1 {
   			},
         .5
       )
-      this.chaptersConclusion.updateMedia('assets/01.jpg', 'photo')
+      this.chaptersConclusion.updateMedia('assets/conclusion/01.jpg', 'photo')
     }
 
     betweenChaptersTwoThree = () => {
@@ -139,7 +136,7 @@ class Experience1 {
         },
         .5
       )
-      this.chaptersConclusion.updateMedia('assets/01.jpg', 'photo')
+      this.chaptersConclusion.updateMedia('assets/conclusion/01.jpg', 'photo')
     }
 
     placeOnSpline = (opt, mvmt) => {

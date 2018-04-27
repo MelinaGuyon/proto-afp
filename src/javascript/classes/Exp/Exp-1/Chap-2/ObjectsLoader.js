@@ -79,10 +79,7 @@ class ObjectsLoader {
             })
 
             that.group.add(object)
-
-            console.log("GROUP CHAP 2", that.group)
             resolve()
-
         })
       })
     })

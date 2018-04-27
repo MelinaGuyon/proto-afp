@@ -14,10 +14,10 @@ class FrontalCity {
 		let intersects = raycaster.intersectObjects(meshs, false)
 		if (intersects[0] &&
 				intersects[0].object &&
-				intersects[0].distance < 1000 &&
-				intersects[0].object.name === 'Cube_10') {
+				intersects[0].distance < 1500 &&
+				intersects[0].object.name.includes('interaction_fenetre2')) {
 					this.openAnimation(intersects[0].object)
-					this.launchNextStep()
+					// this.launchNextStep()
 				}
 		else if (intersects[0]) {
 			Storage.InterfaceClass.cursor.reveal()
@@ -43,7 +43,7 @@ class FrontalCity {
 		anime.remove(object.rotation)
 		anime({
       targets: object.rotation,
-      z: -Math.PI / 4,
+      y: -Math.PI / 20,
       duration: 300,
 			easing: 'easeOutQuad',
 			complete: this.closeAnimation(object)
@@ -54,7 +54,7 @@ class FrontalCity {
 		anime.remove(object.rotation)
 		anime({
       targets: object.rotation,
-      z: 0,
+      y: 0,
 			duration: 300,
 			delay: 2000,
 			easing: 'easeInQuad'

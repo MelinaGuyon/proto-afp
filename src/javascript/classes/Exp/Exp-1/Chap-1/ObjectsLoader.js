@@ -23,9 +23,8 @@ class ObjectsLoader {
 
 
 	load = () => {
-
 	    return new Promise((resolve, reject) => {
-	    	this.loadMlleKWall().then((response)=> {
+	    	this.loadFrontalCity().then((response)=> {
 	    		this.loadLights().then((response)=> {
 		  			this.loadShader("../../../glsl/testVert.vert", "../../../glsl/testFrag.frag").then((response)=> {
 	    		    	console.log('Chapter 1 objects loaded')
@@ -123,36 +122,47 @@ class ObjectsLoader {
 		})
     }
 
-	loadMlleKWall = () => {
+	loadFrontalCity = () => {
 		return new Promise((resolve, reject) => {
-			let that = this
-			this.mtlLoader.load('assets/scenes/Mlle-k/mademoisellek_mur.mtl', function(matl) {
+			this.mtlLoader.load('assets/chapitre1/fausse-ville.mtl', (matl) => {
 				matl.preload()
-				that.objLoader.setMaterials( matl )
+				this.objLoader.setMaterials( matl )
 
-				let tuyauxMaterial = matl.materials.metal_clair
-				tuyauxMaterial.shininess = 100
+				console.log(matl.materials)
 
-				that.objLoader.load( 'assets/scenes/Mlle-k/mademoisellek_mur.obj', function ( object ) {
+				let mat = matl.materials.Mat
+				mat.specular = new THREE.Color(0xaa8888)
+				mat.shininess = 30
 
-					// coordinate may change with new assts
-					object.position.x = 0
-					object.position.y = -300
-					object.position.z = 2600
-					object.rotation.x = Math.PI / 2
-					object.rotation.z = Math.PI
-					object.scale.set( 4, 1, 4 )
+				let mat_1 = matl.materials.Mat_1
+				mat_1.specular = new THREE.Color(0xaa8888)
+				mat_1.shininess = 30
+
+				let mat_2 = matl.materials.Mat_2
+				mat_2.specular = new THREE.Color(0xaa8888)
+				mat_2.shininess = 30
+
+				this.objLoader.load( 'assets/chapitre1/fausse-ville.obj', (object) => {
+
+					object.position.x = 4000
+					object.position.z = 1500
+					object.scale.set( 5, 5, 2 )
 					object.name = 'wall'
 
 					object.traverse(function(o) {
 						if (o.type === 'Mesh') {
 							o.receiveShadow = true
 							o.castShadow = true
-							o.material.shininess = 2
+						}
+						if (o.type === 'Group') {
+							o.children.forEach((mesh) => {
+								mesh.receiveShadow = true
+								mesh.castShadow = true
+							})
 						}
 					})
 
-					that.group.add(object)
+					this.group.add(object)
           resolve()
 				})
 			})
