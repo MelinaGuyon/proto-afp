@@ -54,57 +54,35 @@ class Chapitre3 {
         // console.log("camera z", that.state.relatedCamera.position.z)
         // console.log("DISTANCE", distance)
 
+        if (o.isAnimating === false) {
 
-        if (that.animationOngoing === false) {
           if ( that.frustum.containsPoint( o.getWorldPosition()) && distance < 500 ){
-            that.beginAnimation()
+            o.isAnimating = true
+            anime.remove(o.rotation)
+
             anime({
               targets: o.rotation,
               x: [o.rotation.x, Math.PI/2],
-              duration: 300,
-              easing: 'easeOutQuad',
-              complete: that.endAnimation(o)
+              duration: 1000,
+              easing: 'linear',
+              complete: () => { o.isAnimating = false }
             })
           }
           else {
-            that.beginAnimation()
+            o.isAnimating = true
+            anime.remove(o.rotation)
+
             anime({
               targets: o.rotation,
               x: [o.rotation.x, 0],
-              duration: 300,
-              easing: 'easeOutQuad',
-              complete: that.endAnimation(o)
+              duration: 1000,
+              easing: 'linear',
+              complete: () => {  o.isAnimating = false }
             })
           }
         }
       }
     })
-
-    // if ( this.cameraRotation === false && this.state.relatedCamera.camera.position.z <= -22600 ) {
-    //   this.cameraRotation = true
-
-    //   anime({
-    //     targets: this.state.relatedCamera.camera.rotation,
-    //     y: -Math.PI,
-    //     duration: 300,
-    //     easing: 'easeOutQuad',
-    //     complete: () => {
-    //       //this.state.relatedCamera.updateMovementRange(0)
-    //       Storage.SplineClass.unbind()
-    //       this.state.relatedCamera.unbind()
-    //     }
-    //   })
-        
-    //   console.log("rotation camera vers foule")
-    // }
-  }
-
-  endAnimation = (o) => {
-    this.animationOngoing = false
-    anime.remove(o)
-  }
-  beginAnimation = () => {
-    this.animationOngoing = true
   }
 }
 

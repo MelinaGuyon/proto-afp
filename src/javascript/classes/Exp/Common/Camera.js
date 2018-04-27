@@ -59,6 +59,7 @@ class Camera {
 		}
 
 		updateMovementRange = (number, wait = 0) => {
+			console.log("UPDATE CAMERA")
 			setTimeout(() => { this.movmentRange = number }, wait )
 		}
 
