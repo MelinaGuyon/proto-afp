@@ -4,7 +4,6 @@ import Camera from '../Common/Camera.js'
 import Scene from '../Common/Scene.js'
 import Spline from '../Common/Spline.js'
 import Sphere from '../Common/Sphere.js'
-import TimelineExp from '../Common/TimelineExp.js'
 
 import Ambiance from './Ambiance.js'
 import ChaptersContainer from './ChaptersContainer.js'
@@ -61,8 +60,8 @@ class Experience1 {
 		}
 
 		init = () => {
+      Storage.InterfaceClass.displayExpInterface()
       Storage.HiddingPanelClass.hidePanel()
-      //this.conclusion.init().then(this.goToConclusion)
       this.placeOnSpline({
   				spline: new THREE.CatmullRomCurve3(datas.splines.enter),
           relatedCamera: this.camera,
@@ -74,7 +73,6 @@ class Experience1 {
 
       this.betweenChapters = new BetweenChapters()
       this.chaptersConclusion = new ChaptersConclusionClass()
-      this.timeline = new TimelineExp()
 
       Storage.TextWriting.addTitle(datas.chaptersTitle[0])
 		}

@@ -2,7 +2,7 @@ import Inrtia from 'inrtia'
 import raf from 'raf'
 import anime from 'animejs'
 
-import datas from '../../../datas/Experience1.js'
+import datas from '../../datas/Experience1.js'
 
 class TimelineExp {
     constructor(options) {

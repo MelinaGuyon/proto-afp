@@ -1,5 +1,7 @@
 import Title from './Title.js'
 import TextWritting from './TextWritting.js'
+import TimelineExp from './TimelineExp.js'
+import Subtitles from './Subtitles.js'
 import Cursor from './Cursor.js'
 
 class Interface {
@@ -9,10 +11,15 @@ class Interface {
     }
 
     init() {
-      this.title = new Title()
       this.cursor = new Cursor()
-      new TextWritting()
 		}
+
+    displayExpInterface = () => {
+      this.title = new Title()
+      this.textWriting = new TextWritting()
+      this.timelineExp = new TimelineExp()
+      this.subtitles = new Subtitles()
+    }
 }
 
 export default Interface

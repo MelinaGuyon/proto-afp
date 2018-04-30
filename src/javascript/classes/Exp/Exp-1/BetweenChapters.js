@@ -9,7 +9,7 @@ class BetweenChapters {
 
     initFcTable = () => {
       this.table = [
-        [ this.launchText(0), this.launchText(1) ],
+        [ this.launchText(0), this.launchSubtitles(0), this.launchText(1) ],
 
         [ this.launchConclusionOne, this.stopConclusion ],
 
@@ -33,6 +33,11 @@ class BetweenChapters {
 
     launchText = (index) => () => {
       Storage.TextWriting.writeInfo({ text: datas.textsPanel[index] })
+    }
+
+    launchSubtitles = (index) => () => {
+      Storage.InterfaceClass.subtitles.writeSubtitles(datas.subtitles[index])
+      // Storage.SoundManagerClass.laucnhAudio(datas.audio[index])
     }
 
     launchConclusionOne = () => {
