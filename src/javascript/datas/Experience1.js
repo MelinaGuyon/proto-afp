@@ -32,7 +32,7 @@ const splines = {
 
 // TODO: faire en sorte qu'aucun ne soit sauté (quand on va trop vite)
 const keyPoints = {
-	enter: [.1, .5],
+	enter: [.2, .5, .7],
 	chapter1: [.2, .7],
 	betweenChaptersOneTwo: [.4],
 	chapter2: [.5, .7],
@@ -64,11 +64,26 @@ const timelineIndicators = [
 	['CH 3  &nbsp/', 'Les classes sociales', 2]
 ]
 
+const subtitles = [
+	[
+		'Je m’appelle Min-Ho, je suis Nord-Coréen.',
+		'J’ai fui mon pays natal à 16 ans, et lui étais',
+		'jusqu’alors toujours resté fidèle.',
+		'Il était pour moi le meilleur pays au monde,',
+		'car je ne connaissais rien d’autre.'
+	],
+	[
+		'J’ai évolué jour après jour dans un monde artificiel,',
+		'dont les valeurs ne sont qu’une façade.'
+	]
+]
+
 
 export default {
   splines,
 	keyPoints,
 	textsPanel,
+	subtitles,
 	chaptersTitle,
 	conclusions,
 	timelineIndicators
