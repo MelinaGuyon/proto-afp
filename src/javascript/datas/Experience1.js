@@ -41,7 +41,7 @@ const splines = {
 
 const keyPoints = {
 	enter: [.2, .4, .7],
-	chapter1: [.2, .7],
+	chapter1: [.1, .5, .7],
 	betweenChaptersOneTwo: [.4],
 	chapter2: [.5, .7],
 	betweenChaptersTwoThree: [],
@@ -75,16 +75,21 @@ const timelineIndicators = [
 
 const subtitles = [
 	[
-		'Je m’appelle Min-Ho, je suis Nord-Coréen.',
-		'J’ai fui mon pays natal à 16 ans, et lui étais',
-		'jusqu’alors toujours resté fidèle.',
-		'Il était pour moi le meilleur pays au monde,',
-		'car je ne connaissais rien d’autre.'
+		['Je m’appelle Min-Ho, je suis Nord-Coréen.', 0],
+		['J’ai fui mon pays natal à 16 ans, et lui étais', 3000],
+		['jusqu’alors toujours resté fidèle.', 5500],
+		['Il était pour moi le meilleur pays au monde,', 8000],
+		['car je ne connaissais rien d’autre.', 9500]
 	],
 	[
-		'J’ai évolué jour après jour dans un monde artificiel,',
-		'dont les valeurs ne sont qu’une façade.'
+		['J’ai évolué jour après jour dans un monde artificiel,', 0],
+		['dont les valeurs ne sont qu’une façade.', 4000]
 	]
+]
+
+const voiceOver = [
+	'assets/sound/Audio1.wav',
+	'assets/sound/Audio2.wav'
 ]
 
 
@@ -93,6 +98,7 @@ export default {
 	keyPoints,
 	textsPanel,
 	subtitles,
+	voiceOver,
 	chaptersTitle,
 	conclusions,
 	timelineIndicators

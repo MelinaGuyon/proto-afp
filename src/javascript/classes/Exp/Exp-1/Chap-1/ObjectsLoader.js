@@ -81,7 +81,7 @@ class ObjectsLoader {
 
 		    plane.position.y = 300
 		    plane.position.z = 4800
-			plane.rotation.x = Math.PI / 2
+				plane.rotation.x = Math.PI / 2
 			// plane.rotation.z = Math.PI
 
 			plane.castShadow = true
@@ -116,7 +116,7 @@ class ObjectsLoader {
 					})
 
 					this.group.add(object)
-          			resolve()
+          resolve()
 				})
 			})
 		})
@@ -200,7 +200,7 @@ class ObjectsLoader {
 					})
 
 					this.group.add(object)
-          			resolve()
+          resolve()
 				})
 			})
 		})

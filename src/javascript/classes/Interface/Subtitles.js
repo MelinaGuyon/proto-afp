@@ -14,8 +14,8 @@ class Subtitles {
     map(options, this.write)
   }
 
-  write = (text, index) => {
-    delay(this.writeOne, 2000 * index, { text, index });
+  write = (opt, index) => {
+    delay(this.writeOne, opt[1], { text: opt[0], index });
   }
 
   writeOne = (opt) => {
