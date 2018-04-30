@@ -25,12 +25,18 @@ class ObjectsLoader {
 	load = () => {
 	    return new Promise((resolve, reject) => {
 	    	this.loadFrontalCity().then((response)=> {
-	    		this.loadLights().then((response)=> {
+	    	this.loadWindowLeft().then((response)=> {
+	    	this.loadWindowRight().then((response)=> {
+	    	this.loadDoor().then((response)=> {
+	    		//this.loadLights().then((response)=> {
 		  			this.loadShader("../../../glsl/testVert.vert", "../../../glsl/testFrag.frag").then((response)=> {
 	    		    	console.log('Chapter 1 objects loaded')
 	    		    	resolve(this.group)
 	    			}).catch((error)=> { console.warn(error) })
-		  		}).catch((error)=> { console.warn(error) })
+		  		//}).catch((error)=> { console.warn(error) })
+		  	}).catch((error)=> { console.warn(error) })
+		  	}).catch((error)=> { console.warn(error) })
+		  	}).catch((error)=> { console.warn(error) })
 		  	}).catch((error)=> { console.warn(error) })
 	    })
 	}
@@ -75,9 +81,8 @@ class ObjectsLoader {
 
 		    plane.position.y = 300
 		    plane.position.z = 4800
-				plane.rotation.x = Math.PI / 2
+			plane.rotation.x = Math.PI / 2
 			// plane.rotation.z = Math.PI
-
 
 			plane.castShadow = true
 			plane.receiveShadow = true
@@ -89,61 +94,15 @@ class ObjectsLoader {
 		})
     }
 
-    loadLights = () => {
-    	return new Promise((resolve, reject) => {
-
-			// Issue of plane appaeating to check
-
-	    let light1 = new THREE.PointLight(0xfdffd8, 0.05, 0, 2)
-			light1.position.set(-500, -600, 8000)
-			//light1.rotation.set(0, Math.PI, Math.PI)
-			light1.castShadow = true
-			//this.state.relatedBox.add(light1)
-			// this.group.add(light1)
-			//
-			// let sphereSize = 100
-			// let pointLightHelper = new THREE.PointLightHelper( light1, sphereSize )
-			// this.state.relatedBox.add( pointLightHelper )
-
-
-	    let light2 = new THREE.PointLight(0x99caff, 0.05, 0, 2)
-			light2.position.set(500, -200, 7000)
-			//light2.rotation.set(0, Math.PI, Math.PI)
-			light2.castShadow = true
-			//this.state.relatedBox.add(light2)
-			// this.group.add(light2)
-
-			// let sphereSize2 = 100
-			// let pointLightHelper2 = new THREE.PointLightHelper( light2, sphereSize2 )
-			//this.state.relatedBox.add( pointLightHelper2 )
-
-			resolve()
-
-		})
-    }
 
 	loadFrontalCity = () => {
 		return new Promise((resolve, reject) => {
 			this.mtlLoader.load('assets/chapitre1/fausse-ville.mtl', (matl) => {
 				matl.preload()
 				this.objLoader.setMaterials( matl )
-
 				console.log(matl.materials)
 
-				let mat = matl.materials.Mat
-				mat.specular = new THREE.Color(0xaa8888)
-				mat.shininess = 30
-
-				let mat_1 = matl.materials.Mat_1
-				mat_1.specular = new THREE.Color(0xaa8888)
-				mat_1.shininess = 30
-
-				let mat_2 = matl.materials.Mat_2
-				mat_2.specular = new THREE.Color(0xaa8888)
-				mat_2.shininess = 30
-
 				this.objLoader.load( 'assets/chapitre1/fausse-ville.obj', (object) => {
-
 					object.position.x = 4000
 					object.position.z = 1500
 					object.scale.set( 5, 5, 2 )
@@ -154,16 +113,94 @@ class ObjectsLoader {
 							o.receiveShadow = true
 							o.castShadow = true
 						}
-						if (o.type === 'Group') {
-							o.children.forEach((mesh) => {
-								mesh.receiveShadow = true
-								mesh.castShadow = true
-							})
+					})
+
+					this.group.add(object)
+          			resolve()
+				})
+			})
+		})
+	}
+
+	loadWindowLeft = () => {
+		return new Promise((resolve, reject) => {
+			this.mtlLoader.load('assets/chapitre1/fenetre-gauche.mtl', (matl) => {
+				matl.preload()
+				this.objLoader.setMaterials( matl )
+				console.log(matl.materials)
+
+				this.objLoader.load( 'assets/chapitre1/fenetre-gauche.obj', (object) => {
+					object.position.x = -800
+					object.position.y = 450
+					object.position.z = 2600
+					object.scale.set( 5, 5, 5 )
+					object.name = 'windowLeft'
+
+					object.traverse(function(o) {
+						if (o.type === 'Mesh') {
+							o.receiveShadow = true
+							o.castShadow = true
 						}
 					})
 
 					this.group.add(object)
-          resolve()
+          			resolve()
+				})
+			})
+		})
+	}
+
+	loadWindowRight = () => {
+		return new Promise((resolve, reject) => {
+			this.mtlLoader.load('assets/chapitre1/fenetre-droite.mtl', (matl) => {
+				matl.preload()
+				this.objLoader.setMaterials( matl )
+				console.log(matl.materials)
+
+				this.objLoader.load( 'assets/chapitre1/fenetre-droite.obj', (object) => {
+					object.position.x = 850
+					object.position.y = 450
+					object.position.z = 2600
+					object.scale.set( 5, 5, 5 )
+					object.name = 'windowRight'
+
+					object.traverse(function(o) {
+						if (o.type === 'Mesh') {
+							o.receiveShadow = true
+							o.castShadow = true
+						}
+					})
+
+					this.group.add(object)
+          			resolve()
+				})
+			})
+		})
+	}
+
+	loadDoor = () => {
+		return new Promise((resolve, reject) => {
+			this.mtlLoader.load('assets/chapitre1/porte.mtl', (matl) => {
+				matl.preload()
+				this.objLoader.setMaterials( matl )
+				console.log(matl.materials)
+
+				this.objLoader.load( 'assets/chapitre1/porte.obj', (object) => {
+					object.position.x = -230
+					object.position.y = 255
+					object.position.z = 2550
+					object.scale.set( 4.8, 5, 5 )
+					object.name = 'door'
+
+					object.traverse(function(o) {
+						if (o.type === 'Mesh') {
+							o.receiveShadow = true
+							o.castShadow = true
+						}
+					})
+
+					this.group.add(object)
+          			resolve()
 				})
 			})
 		})
