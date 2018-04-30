@@ -15,6 +15,7 @@ import datas from '../../../datas/Experience1.js'
 import Chapitre1 from './Chap-1/index.js'
 import Chapitre2 from './Chap-2/index.js'
 import Chapitre3 from './Chap-3/index.js'
+import Conclusion from './Conclusion/index.js'
 
 import ChaptersConclusionClass from './ChaptersConclusion.js'
 
@@ -51,20 +52,25 @@ class Experience1 {
         relatedCamera: this.camera,
         lightOpt: [this.ambiance]
       })
+      this.conclusion = new Conclusion({
+        relatedBox: this.chaptersContainer.chapterBoxes[3],
+        relatedCamera: this.camera,
+        lightOpt: [this.ambiance]
+      })
 
 		}
 
 		init = () => {
       Storage.HiddingPanelClass.hidePanel()
-      this.chapter3.init().then(this.goToChapterThree)
-     //  this.placeOnSpline({
-  			// 	spline: new THREE.CatmullRomCurve3(datas.splines.enter),
-     //      relatedCamera: this.camera,
-     //      step: .30,
-     //      index: 0
-  			// },
-     //    .5
-     //  )
+      //this.conclusion.init().then(this.goToConclusion)
+      this.placeOnSpline({
+  				spline: new THREE.CatmullRomCurve3(datas.splines.enter),
+          relatedCamera: this.camera,
+          step: .30,
+          index: 0
+  			},
+        .5
+      )
 
       this.betweenChapters = new BetweenChapters()
       this.chaptersConclusion = new ChaptersConclusionClass()
@@ -132,7 +138,7 @@ class Experience1 {
       this.placeOnSpline({
           spline: new THREE.CatmullRomCurve3(datas.splines.chapter3),
           relatedCamera: this.camera,
-          step: .05,
+          step: .10,
           index: 5,
           cbEnd: this.betweenChaptersThreeConclusion
         },
@@ -147,11 +153,24 @@ class Experience1 {
           spline: new THREE.CatmullRomCurve3(datas.splines.betweenChaptersThreeConclusion),
           relatedCamera: this.camera,
           step: .30,
-          index: 4,
-          cbEnd: () => { console.log("GO TO CONCLUSION") }
+          index: 6,
+          cbEnd: () => { this.conclusion.init().then(this.goToConclusion) }
         },
         .5
       )
+    }
+
+    goToConclusion = () => {
+      console.log("entre dans conclusion")
+      this.placeOnSpline({
+          spline: new THREE.CatmullRomCurve3(datas.splines.conclusion),
+          relatedCamera: this.camera,
+          step: .10,
+          index: 7
+        },
+        .5
+      )
+      this.chaptersConclusion.updateMedia('assets/conclusion/01.jpg', 'photo')
     }
 
     placeOnSpline = (opt, mvmt) => {
