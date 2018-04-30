@@ -19,7 +19,11 @@ class BetweenChapters {
 
         [],
 
-        [ this.launchConclusionThree, this.stopConclusion ]
+        [ this.launchConclusionThree, this.stopConclusion ],
+
+        [],
+
+        []
       ]
     }
 
@@ -48,6 +52,7 @@ class BetweenChapters {
 
     launchConclusionThree = () => {
       console.log('je lance conclu chapitre 3')
+      Storage.SplineClass.updateStep(0.8)
       Storage.ChaptersConclusionClass.bindConclu()
     }
 

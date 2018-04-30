@@ -25,8 +25,17 @@ const splines = {
 		new THREE.Vector3( 5, 250, -22850)
 	],
 	betweenChaptersThreeConclusion: [
-		new THREE.Vector3( 0, 250, -24150),
-		new THREE.Vector3( 0, 250, -30000)
+		new THREE.Vector3( 0, 250, -24500),
+		new THREE.Vector3( 0, 250, -29000)
+	],
+	conclusion: [
+		new THREE.Vector3(0, 250, -30500),
+		new THREE.Vector3(0, 280, -31500),
+		new THREE.Vector3(650, 310, -32500),
+		new THREE.Vector3( 0, 340, -33000),
+		new THREE.Vector3( -650, 370, -32500),
+		new THREE.Vector3( 0, 410, -31500),
+		new THREE.Vector3( 0, 450, -34000)
 	]
 }
 
@@ -37,8 +46,9 @@ const keyPoints = {
 	betweenChaptersOneTwo: [.4],
 	chapter2: [.5, .7],
 	betweenChaptersTwoThree: [],
-	chapter3: [.4, .7],
-	betweenChaptersThreeConclusion: []
+	chapter3: [.45, .7],
+	betweenChaptersThreeConclusion: [],
+	conclusion: []
 }
 
 const textsPanel =  [

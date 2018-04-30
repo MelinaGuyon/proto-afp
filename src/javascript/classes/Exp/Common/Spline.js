@@ -33,7 +33,7 @@ class Spline {
 		}
 
 		placeCameraAtFirstPoint = () => {
-      this.unbind()
+      		this.unbind()
 			const point = this.state.spline.points[0]
 			anime({
 				targets: this.state.relatedCamera.camera.position,
@@ -42,8 +42,17 @@ class Spline {
 				z: point.z,
 				duration: 2000,
 				easing: 'easeInOutQuad',
-        complete: () => { this.bind() }
+        		complete: () => { this.bind() }
 			})
+
+			if ( this.state.index === 6 ) {
+				anime({
+					targets: this.state.relatedCamera.camera.rotation,
+					y: 0,
+					duration: 2000,
+					easing: 'easeInOutQuad'
+				})
+			}
 		}
 
 		handleScroll = (event) => {
@@ -68,6 +77,12 @@ class Spline {
 				easing: 'easeOutSine',
 				update: this.updateCameraPos
 			})
+		}
+
+		updateStep = (step) => {
+			console.log("STEP EN COURS", this.state.step)
+			this.state.step = step
+			console.log("STEP EN COURS APRES UPDATE", this.state.step)
 		}
 
 		updateCameraPos = () => {
