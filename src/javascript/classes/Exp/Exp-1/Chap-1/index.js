@@ -49,7 +49,6 @@ class Chapitre1 {
     if (this.step === 0) this.frontalCity.checkRaycaster(this.raycaster)
   }
 
-
   displayChapterObjects = () => {
     this.state.relatedBox.add(this.modelsGroup)
   }

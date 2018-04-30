@@ -28,7 +28,7 @@ class BetweenChapters {
     }
 
     updateScene = (index, step) => {
-      this.table[index][step - 1]()
+      this.table[index][step]()
     }
 
     launchText = (index) => () => {

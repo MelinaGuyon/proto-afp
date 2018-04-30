@@ -39,9 +39,8 @@ const splines = {
 	]
 }
 
-// TODO: faire en sorte qu'aucun ne soit sauté (quand on va trop vite)
 const keyPoints = {
-	enter: [.2, .5, .7],
+	enter: [.2, .4, .7],
 	chapter1: [.2, .7],
 	betweenChaptersOneTwo: [.4],
 	chapter2: [.5, .7],

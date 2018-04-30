@@ -6,6 +6,7 @@ class SplineTimeManager {
 			this.state = options
 
       this.step = 0
+      this.actualStepToCheck = 0
     }
 
     check = (state, index) => {
@@ -15,17 +16,15 @@ class SplineTimeManager {
         return
       }
 
-      if (!datas.keyPoints[Object.keys(datas.keyPoints)[index]]) return
+      const stepToCheck = datas.keyPoints[Object.keys(datas.keyPoints)[index]][this.actualStepToCheck]
+      if (!stepToCheck) return
+      if (state > stepToCheck) this.update(index)
+    }
 
-      let previousStep = this.step
-      let newStep = 0
-      datas.keyPoints[Object.keys(datas.keyPoints)[index]].forEach((value, index) => {
-        if (state > value) newStep ++
-      })
-      if (newStep > this.step) this.step = newStep
-
-      if (this.step == 0 || previousStep === this.step) return
+    update = (index) => {
+      this.actualStepToCheck += 1
       Storage.BetweenChaptersClass.updateScene(index, this.step)
+      this.step += 1
     }
 
     end = () => {

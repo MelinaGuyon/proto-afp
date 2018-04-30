@@ -12,6 +12,8 @@ class Spline {
 			Storage.SplineClass = this
 
 			this.state = options
+
+      if (Storage.SplineTimeManagerClass) Storage.SplineTimeManagerClass = null
       this.timeManager = new SplineTimeManager({ spline: this.state.spline })
 
 			this.initObjects()
