@@ -3,23 +3,18 @@
 newmtl default
 Kd 1 1 1
 
-newmtl Mat
+newmtl blanc
 Ka 1 1 1
 Kd 1 1 1
 illum 7
 
-newmtl Mat_1
+newmtl gris_clair
 Ka 1 1 1
 Kd 0.91000002622604 0.91000002622604 0.91000002622604
 illum 7
 
-newmtl Mat_2
+newmtl gris_moyen
 Ka 1 1 1
 Kd 0.8299999833107 0.8299999833107 0.8299999833107
-illum 7
-
-newmtl Mat.1
-Ka 1 1 1
-Kd 0.71869277954102 0.71769601106644 0.74760001897812
 illum 7
 

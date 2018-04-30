@@ -7,19 +7,31 @@ class FrontalCity {
 	constructor(options) {
 		this.state = options
 		this.nextStepLaunched = false
+		this.windowPassed = false
 	}
 
 	checkRaycaster = (raycaster) => {
-		const meshs = this.state.objectsGroup.children[0].children
-		let intersects = raycaster.intersectObjects(meshs, false)
-		if (intersects[0] &&
-				intersects[0].object &&
-				intersects[0].distance < 1500 &&
-				intersects[0].object.name.includes('interaction_fenetre2')) {
-					this.openAnimation(intersects[0].object)
-					// this.launchNextStep()
-				}
-		else if (intersects[0]) {
+		const windowLeft = this.state.objectsGroup.children[1].children
+		const windowRight = this.state.objectsGroup.children[2].children
+		const door = this.state.objectsGroup.children[3].children
+
+		let intersectsDoor = raycaster.intersectObjects(door, false)
+		let intersectsWindowLeft = raycaster.intersectObjects(windowLeft, false)
+		let intersectsWindowRight = raycaster.intersectObjects(windowRight, false)
+
+		if (this.windowPassed === true && intersectsDoor[0] && intersectsDoor[0].distance < 2000 && intersectsDoor[0].object.name.includes('porte')) {
+			this.openAnimation(intersectsDoor[0].object, -Math.PI/4 * 3)
+			this.launchNextStep()
+		}
+
+		if (intersectsWindowLeft[0] && intersectsWindowLeft[0].distance < 5000 && intersectsWindowLeft[0].object.name.includes('droite')) {
+			this.openAnimation(intersectsWindowLeft[0].object, -Math.PI/4 * 3)
+		}
+		else if (intersectsWindowRight[0] && intersectsWindowRight[0].distance < 5000 && intersectsWindowRight[0].object.name.includes('gauche')) {
+			this.openAnimation(intersectsWindowRight[0].object, Math.PI/4 * 3)
+		}
+
+		if (intersectsDoor[0] || intersectsWindowLeft[0] || intersectsWindowRight[0]) {
 			Storage.InterfaceClass.cursor.reveal()
 		} else {
 			Storage.InterfaceClass.cursor.reset()
@@ -39,15 +51,18 @@ class FrontalCity {
 		}, 5000)
 	}
 
-	openAnimation = throttle((object) => {
+	openAnimation = throttle((object, rotationValue) => {
+		console.log("animation")
+		object.name.includes('droite') || object.name.includes('gauche') ? this.windowPassed = true : ''
+
 		anime.remove(object.rotation)
 		anime({
-      targets: object.rotation,
-      y: -Math.PI / 20,
-      duration: 300,
-			easing: 'easeOutQuad',
-			complete: this.closeAnimation(object)
-    })
+	      targets: object.rotation,
+	      y: rotationValue,
+	      duration: 5000,
+				easing: 'easeOutQuad',
+				complete: this.closeAnimation(object)
+	    })
 	}, 400, { leading: true, trailing: false })
 
 	closeAnimation = (object) => () => {
@@ -55,7 +70,7 @@ class FrontalCity {
 		anime({
       targets: object.rotation,
       y: 0,
-			duration: 300,
+			duration: 2000,
 			delay: 2000,
 			easing: 'easeInQuad'
 		})
