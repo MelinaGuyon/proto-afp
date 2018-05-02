@@ -24,10 +24,10 @@ class FrontalCity {
 			this.launchNextStep()
 		}
 
-		if (intersectsWindowLeft[0] && intersectsWindowLeft[0].distance < 5000 && intersectsWindowLeft[0].object.name.includes('droite')) {
+		if (intersectsWindowLeft[0] && intersectsWindowLeft[0].distance < 3000 && intersectsWindowLeft[0].object.name.includes('droite')) {
 			this.openAnimation(intersectsWindowLeft[0].object, -Math.PI/4 * 3)
 		}
-		else if (intersectsWindowRight[0] && intersectsWindowRight[0].distance < 5000 && intersectsWindowRight[0].object.name.includes('gauche')) {
+		else if (intersectsWindowRight[0] && intersectsWindowRight[0].distance < 3000 && intersectsWindowRight[0].object.name.includes('gauche')) {
 			this.openAnimation(intersectsWindowRight[0].object, Math.PI/4 * 3)
 		}
 
