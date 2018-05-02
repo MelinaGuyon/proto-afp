@@ -5,7 +5,6 @@ import { map } from 'lodash'
 class ActusAFP {
   constructor() {
     this.init()
-    this.makeActu()
   }
 
   init = () => {
@@ -14,13 +13,16 @@ class ActusAFP {
     this.contentWrapper = this.actusPage.querySelector('.content .wrapper')
   }
 
+  showActu = () => {
+    document.body.classList.add('actus-page-visible')
+  }
+
   makeActu = () => {
     this.datas = datas.actus
     map(this.datas, this.create)
   }
 
   create = (actu, index) => {
-    console.log(actu, 'here')
     const item = document.createElement('div')
     item.classList.add('item')
 

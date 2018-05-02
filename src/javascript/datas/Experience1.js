@@ -70,7 +70,8 @@ const conclusions =  [
 const timelineIndicators = [
 	['CH 1  &nbsp/', 'L\'envers du décors', 2],
 	['CH 2  &nbsp/', 'L\'armée protectrice', 2],
-	['CH 3  &nbsp/', 'Les classes sociales', 2]
+	['CH 3  &nbsp/', 'Les classes sociales', 2],
+	['END  &nbsp&nbsp/', '', 2]
 ]
 
 const subtitles = [

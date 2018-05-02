@@ -1,3 +1,5 @@
+@import './variables';
+
 .actus-page {
   position: absolute;
   width: 100%;
@@ -5,7 +7,17 @@
   top: 0;
   left: 0;
   overflow-y: auto;
+  z-index: 100;
   font-family: westeindeThin;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .6s $quad-ease-out;
+  transition-delay: .3s;
+
+  .actus-page-visible & {
+    opacity: 1;
+    pointer-events: all;
+  }
 
   .intro {
     height: 100%;
