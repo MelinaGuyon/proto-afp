@@ -28,6 +28,7 @@ class FrontalCity {
 			this.openAnimation(intersectsWindowLeft[0].object, -Math.PI/4 * 3)
 		}
 		else if (intersectsWindowRight[0] && intersectsWindowRight[0].distance < 2000 && intersectsWindowRight[0].object.name.includes('gauche')) {
+
 			this.openAnimation(intersectsWindowRight[0].object, Math.PI/4 * 3)
 		}
 

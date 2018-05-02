@@ -31,6 +31,12 @@
         height: 100%;
         top: 0;
         left: 0;
+        opacity: 1;
+        transition: opacity .6s $quad-ease-out;
+
+        .actus-page-visible & {
+          opacity: 0;
+        }
       }
     }
   }

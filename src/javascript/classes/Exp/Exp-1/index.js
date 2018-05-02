@@ -76,6 +76,8 @@ class Experience1 {
       this.betweenChapters = new BetweenChapters()
       this.chaptersConclusion = new ChaptersConclusionClass()
 
+      // this.conclusion.init().then(this.goToConclusion)
+
       Storage.TextWriting.addTitle(datas.chaptersTitle[0])
 		}
 
@@ -166,11 +168,13 @@ class Experience1 {
           spline: new THREE.CatmullRomCurve3(datas.splines.conclusion),
           relatedCamera: this.camera,
           step: .10,
-          index: 7
+          index: 7,
+          cbEnd: () => { Storage.InterfaceClass.actus.showActu() }
         },
         .5
       )
       this.chaptersConclusion.updateMedia('assets/conclusion/01.jpg', 'photo')
+      Storage.InterfaceClass.actus.makeActu()
     }
 
     placeOnSpline = (opt, mvmt) => {

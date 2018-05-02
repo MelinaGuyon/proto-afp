@@ -3,6 +3,7 @@ import TextWritting from './TextWritting.js'
 import TimelineExp from './TimelineExp.js'
 import Subtitles from './Subtitles.js'
 import Cursor from './Cursor.js'
+import ActusAFP from './ActusAFP.js'
 
 class Interface {
     constructor(options) {
@@ -19,6 +20,7 @@ class Interface {
       this.textWriting = new TextWritting()
       this.timelineExp = new TimelineExp()
       this.subtitles = new Subtitles()
+      this.actus = new ActusAFP()
     }
 }
 

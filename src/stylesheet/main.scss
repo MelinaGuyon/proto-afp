@@ -39,6 +39,10 @@ html, body {
   background: black;
   font-size: 62.5%;
   cursor: none;
+
+  .actus-page-visible & {
+    overflow-y: auto;
+  }
 }
 
 p { margin: 0; }
