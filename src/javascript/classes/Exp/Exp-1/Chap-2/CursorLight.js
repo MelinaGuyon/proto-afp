@@ -58,7 +58,7 @@ class CursorLight {
 		}
 
     initLight() {
-      this.light = new THREE.PointLight(0xff0, this.state.intensity, 640, 2)
+      this.light = new THREE.PointLight(0xff0000, this.state.intensity, 640, 2)
 			this.light.position.set(200, 200, 500)
 			this.light.castShadow = this.state.castingShadow
 			Storage.SceneClasses.exp1.scene.add(this.light)
@@ -70,11 +70,11 @@ class CursorLight {
 
   		this.lightSphereUnif = THREE.UniformsUtils.merge([
         THREE.ShaderLib.lambert.uniforms,
-        { specular: { value: new THREE.Color(0x1b1b1b) } },
-        { emissive: { value: new THREE.Color(0x777777) } },
+        { specular: { value: new THREE.Color(0xff0000) } },
+        { emissive: { value: new THREE.Color(0xff0000) } },
         { u_time: { type: "f", value: 1.0 } },
         { u_resolution: { type: "v2", value: new THREE.Vector2(1024, 768) } },
-				{ u_glowColor: { value: new THREE.Color(0xff0) } }
+				{ u_glowColor: { value: new THREE.Color(0xff0000) } }
 			])
 
 			const geometry = new THREE.SphereBufferGeometry( 20, 32, 32 )

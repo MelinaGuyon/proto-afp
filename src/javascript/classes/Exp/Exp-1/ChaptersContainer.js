@@ -32,6 +32,7 @@ class ChaptersContainer {
         cube.material.transparent = true
 
         if (index === 0) cube.material.opacity = 0
+        if (index === 1) cube.material.opacity = 0
         // cube.material.opacity = 0.2
 
         this.chapterBoxes.push(cube)
