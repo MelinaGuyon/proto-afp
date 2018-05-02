@@ -21,6 +21,7 @@ class Chapitre2 {
   init = () => {
     this.displayChapterObjects()
     this.initLight()
+
     return new Promise((resolve, reject) => {
       setTimeout(() => { resolve() }, 500)
     })
