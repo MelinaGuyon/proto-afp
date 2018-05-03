@@ -196,7 +196,16 @@ class Experience1 {
     placeOnSpline = (opt, mvmt) => {
       if (this.spline) this.spline.unbind()
       this.spline = new Spline(opt)
-			this.spline.placeCameraAtFirstPoint()
+      
+      if (opt.index === 0) { this.spline.animateAtFirstPoint([
+        new THREE.Vector3( 0, 250, 2100),
+        new THREE.Vector3( 0, 250, 1500),
+        new THREE.Vector3( 5, 250, 1000),
+        new THREE.Vector3( 0, 250, 0),
+        new THREE.Vector3( 0, 250, -1500)
+      ]) }
+      else { this.spline.placeCameraAtFirstPoint() }
+
       this.camera.updateMovementRange(mvmt, 1900)
     }
 }

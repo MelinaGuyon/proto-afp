@@ -1,7 +1,7 @@
 import anime from 'animejs'
 import raf from 'raf'
 import { Lethargy } from 'lethargy'
-import { throttle } from 'lodash'
+import { throttle, map, delay } from 'lodash'
 
 import SplineTimeManager from './SplineTimeManager.js'
 
@@ -55,6 +55,34 @@ class Spline {
 				})
 			}
 		}
+
+		animateAtFirstPoint = (pointsArray) => {
+			const length = pointsArray.length - 1
+			this.unbind()
+			map(pointsArray, this.goToPoint(length))	
+		}
+
+		goToPoint = (length) => (point, index) => {
+    		delay(this.goToPointAfterDelay, 1000*index, { point: point, index: index, length: length });
+  		}
+
+    	goToPointAfterDelay = (obj) => {
+		  	anime({
+				targets: this.state.relatedCamera.camera.position,
+				x: obj.point.x,
+				y: obj.point.y,
+				z: obj.point.z,
+				duration: 1000,
+				easing: 'linear',
+				complete: () => { 
+
+					console.log("index", obj.index)
+					console.log("length", obj.length)
+
+					obj.index === obj.length ? this.state.cbEnd() : '' 
+				}
+			})
+  		}
 
 		handleScroll = (event) => {
 			if (lethargy.check(event) !== false) this.onRealScroll(event)
