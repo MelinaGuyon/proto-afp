@@ -6,7 +6,6 @@
   height: 100%;
   top: 0;
   left: 0;
-  overflow-y: auto;
   overflow-x: hidden;
   z-index: 100;
   font-family: westeindeThin;
@@ -99,6 +98,12 @@
         padding: 0 20px;
         position: relative;
         margin-bottom: 250px;
+        transform: translateY(100px);
+        transition: transform .5s $quart-ease-out;
+
+        &.animated {
+          transform: translateY(0);
+        }
 
         &:nth-child(odd) {
           padding-right: 10%;

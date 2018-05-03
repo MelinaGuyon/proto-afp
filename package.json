@@ -47,6 +47,7 @@
     "lethargy": "^1.0.4",
     "raf": "github:pqml/raf",
     "raw-loader": "^0.5.1",
+    "scrolling-element": "^1.0.2",
     "spotify-web-api-js": "^0.22.1",
     "three-effectcomposer-es6": "0.0.4",
     "three-subdivision-modifier": "^1.0.5",

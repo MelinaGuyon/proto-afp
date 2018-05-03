@@ -1,10 +1,26 @@
 import anime from 'animejs'
 import datas from '../../datas/Experience1.js'
 import { map } from 'lodash'
+import Inrtia from 'inrtia'
+import raf from 'raf'
 
 class ActusAFP {
   constructor() {
     this.init()
+    this.initInertia()
+
+    this.windowHeight = window.innerHeight
+    this.store = []
+  }
+
+  initInertia = () => {
+    this.inrtia = new Inrtia({
+        value: 0,
+        friction: 5,
+        precision: 5,
+        perfectStop: true,
+        interpolation: 'linear'
+      })
   }
 
   init = () => {
@@ -15,6 +31,7 @@ class ActusAFP {
 
   bind = () => {
     document.addEventListener('mousewheel', this.handleScroll)
+    raf.add(this.update)
   }
 
   showActu = () => {
@@ -46,20 +63,43 @@ class ActusAFP {
     title.classList.add('title')
     title.innerHTML = actu.title
 
-
     titleContainer.appendChild(img)
     titleContainer.appendChild(title)
     item.appendChild(media)
     item.appendChild(titleContainer)
     item.appendChild(text)
     this.contentWrapper.appendChild(item)
+
+    const top = item.getBoundingClientRect().top
+    this.store.push({ item, top, animated: false })
   }
 
   handleScroll = (event) => {
-    console.log(document.scrollingElement.scrollTop)
+    this.inrtia.to(this.actusPage.scrollTop)
   }
 
-  animeActuItemUp = () => {
+  resetBottom = (item) => {
+    item.item.classList.remove('animated')
+    item.animated = false
+  }
+
+  animeTop = (item) => {
+    item.item.classList.add('animated')
+    item.animated = true
+  }
+
+  update = (force) => {
+    if (this.inrtia.stopped) return
+    const scrollTop = this.inrtia.update()
+    const offset = (this.windowHeight / 2) >> 0
+
+    this.store.forEach((item) => {
+      const distance = scrollTop - item.top + this.windowHeight
+      const ratio = distance / offset
+
+      if (distance < -100 && item.animated) this.resetBottom(item)
+      else if (distance > 50 && !item.animated) this.animeTop(item)
+    })
 
   }
 }
