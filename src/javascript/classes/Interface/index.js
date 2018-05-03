@@ -19,7 +19,7 @@ class Interface {
       this.title = new Title()
       this.textWriting = new TextWritting()
       this.timelineExp = new TimelineExp()
-      // this.subtitles = new Subtitles()
+      this.subtitles = new Subtitles()
       this.actus = new ActusAFP()
 
       // this.actus.makeActu()

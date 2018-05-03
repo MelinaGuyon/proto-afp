@@ -95,7 +95,7 @@ const subtitles = [
 	],
 	[
 		['J’ai évolué jour après jour dans un monde artificiel,', 0],
-		['dont les valeurs ne sont qu’une façade.', 4000]
+		['dont les valeurs ne sont qu’une façade.', 3500]
 	],
 	[
 		['C’est l’image d’un pays solide et fier qui est présentée,', 0],

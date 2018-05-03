@@ -38,7 +38,7 @@ class BetweenChapters {
     }
 
     launchVoiceOver = (index) => () => {
-      // Storage.InterfaceClass.subtitles.writeSubtitles(datas.subtitles[index])
+      Storage.InterfaceClass.subtitles.writeSubtitles(datas.subtitles[index], index)
       Storage.SoundManagerClass.launchVoiceOver(datas.voiceOver[index])
     }
 
