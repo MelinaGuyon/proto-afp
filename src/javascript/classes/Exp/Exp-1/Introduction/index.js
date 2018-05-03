@@ -30,6 +30,7 @@ class Introduction {
   displayChapterObjects = () => {
     this.state.relatedBox.add(this.modelsGroup)
   }
+
 }
 
 export default Introduction
