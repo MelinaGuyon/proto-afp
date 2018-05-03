@@ -74,6 +74,7 @@ class ObjectsLoader {
                   bodyInstance.position.x = i * 200
                   bodyInstance.position.z = j * 200
                   bodyInstance.name = "warrior"
+                  bodyInstance.passed = false
                   bodyInstance.castShadow = false
                   that.peopleGroup.add( bodyInstance )
               }   
