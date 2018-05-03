@@ -8,18 +8,20 @@ class ChaptersContainer {
 
     initObjects = () => {
       this.positions = [
-        [0, 800, -4000],
-        [0, 800, -13000],
-        [0, 800, -22000],
-        [0, 800, -32000]
+        [0, 800, -1000],
+        [0, 800, -10000],
+        [0, 800, -19000],
+        [0, 800, -28000],
+        [0, 800, -38000]
       ]
       this.sizes = [
+        [2000, 1600, 4000],
         [2000, 1600, 4000],
         [3000, 1600, 4000],
         [3000, 1600, 4000],
         [3000, 1600, 4000]
       ]
-      this.colors = [0xffffff, 0xf0f6f, 0xff0000, 0x00ff00]
+      this.colors = [0xffffff, 0xffffff, 0xf0f6f, 0xff0000, 0x00ff00]
     }
 
 		init = () => {
@@ -33,6 +35,7 @@ class ChaptersContainer {
 
         if (index === 0) cube.material.opacity = 0
         if (index === 1) cube.material.opacity = 0
+        if (index === 2) cube.material.opacity = 0
         // cube.material.opacity = 0.2
 
         this.chapterBoxes.push(cube)
