@@ -50,7 +50,8 @@ const splines = {
 }
 
 const keyPoints = {
-	enter: [.00001, .5, .6, .7],
+	enter: [],
+	betweenIntroductionChapterOne: [.00001, .5, .6, .7],
 	chapter1: [.1, .3, .5, .7],
 	betweenChaptersOneTwo: [.4],
 	chapter2: [.01, .1, .5, .7],
@@ -78,7 +79,7 @@ const conclusions =  [
 
 // number of spline, spline index begining
 const timelineIndicators = [
-	['CH 1  &nbsp/', 'L\'envers du décors', 2],
+	['CH 1  &nbsp/', 'L\'envers du décors', 3],
 	['CH 2  &nbsp/', 'L\'armée protectrice', 2],
 	['CH 3  &nbsp/', 'Les classes sociales', 2],
 	['END  &nbsp&nbsp/', '', 2]
@@ -154,6 +155,22 @@ const subtitles = [
 
 const voiceOver = [
 	'assets/sound/Audio1.wav',
+	'assets/sound/Audio2.wav',
+	'assets/sound/Audio2.wav',
+	'assets/sound/Audio2.wav',
+	'assets/sound/Audio2.wav',
+	'assets/sound/Audio2.wav',
+	'assets/sound/Audio2.wav',
+	'assets/sound/Audio2.wav',
+	'assets/sound/Audio2.wav',
+	'assets/sound/Audio2.wav',
+	'assets/sound/Audio2.wav',
+	'assets/sound/Audio2.wav',
+	'assets/sound/Audio2.wav',
+	'assets/sound/Audio2.wav',
+	'assets/sound/Audio2.wav',
+	'assets/sound/Audio2.wav',
+	'assets/sound/Audio2.wav',
 	'assets/sound/Audio2.wav'
 ]
 

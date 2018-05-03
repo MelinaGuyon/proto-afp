@@ -31,6 +31,10 @@ class Chapitre1 {
 
     //this.heightMap = new HeightMap({relatedBox: this.state.relatedBox})
     this.frontalCity = new FrontalCity({ objectsGroup: this.modelsGroup })
+    
+    return new Promise((resolve, reject) => {
+      setTimeout(() => { resolve() }, 500)
+    })
   }
 
   bind = () => {

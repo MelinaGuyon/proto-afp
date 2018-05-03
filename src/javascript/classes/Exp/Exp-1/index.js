@@ -68,7 +68,7 @@ class Experience1 {
 		init = () => {
       Storage.InterfaceClass.displayExpInterface()
       Storage.HiddingPanelClass.hidePanel()
-    
+
       this.introduction.init().then(
         this.placeOnSpline({
           spline: new THREE.CatmullRomCurve3(datas.splines.enter),

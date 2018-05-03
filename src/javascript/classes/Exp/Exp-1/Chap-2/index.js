@@ -27,7 +27,7 @@ class Chapitre2 {
   init = () => {
     this.displayChapterObjects()
     this.initLight()
-    raf.add(this.animate)
+    // raf.add(this.animate)
 
     return new Promise((resolve, reject) => {
       setTimeout(() => { resolve() }, 500)
@@ -88,7 +88,7 @@ class Chapitre2 {
       this.warrior = this.modelsGroup.children[1].children[i].children
       let intersectsWarrior = raycaster.intersectObjects(this.warrior, false)
 
-      if (intersectsWarrior[0] && this.warrior[0].passed != true ) { 
+      if (intersectsWarrior[0] && this.warrior[0].passed != true ) {
         this.warriorsNumber ++
         this.warrior[0].passed = true
         console.log(this.warriorsNumber)
