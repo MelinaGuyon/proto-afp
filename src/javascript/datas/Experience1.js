@@ -14,6 +14,7 @@ const splines = {
 	chapter2: [
 		new THREE.Vector3(0, 250, -11000),
 		new THREE.Vector3( 0, 250, -12500),
+		//blocage jusqu'à ce que l'ombre apparaisse
 		new THREE.Vector3( 900, 250, -12500),
 		new THREE.Vector3( 900, 250, -14500),
 		new THREE.Vector3( 300, 250, -14600),
