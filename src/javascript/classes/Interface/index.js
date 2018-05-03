@@ -21,6 +21,9 @@ class Interface {
       this.timelineExp = new TimelineExp()
       // this.subtitles = new Subtitles()
       this.actus = new ActusAFP()
+
+      // this.actus.makeActu()
+      // this.actus.showActu()
     }
 }
 

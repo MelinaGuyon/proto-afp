@@ -6,7 +6,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  overflow-y: auto;
+  overflow-x: hidden;
   z-index: 100;
   font-family: westeindeThin;
   opacity: 0;
@@ -97,14 +97,20 @@
         margin: 20px 0;
         padding: 0 20px;
         position: relative;
-        margin-bottom: 300px;
+        margin-bottom: 150px;
+        transform: translateY(50px);
+        transform-origin: left;
+
+        // &.animated {
+        //   transform: translateY(0);
+        // }
 
         &:nth-child(odd) {
-          padding-right: 10%;
+          padding-right: 7%;
         }
 
         &:nth-child(even) {
-          padding-left: 10%;
+          padding-left: 7%;
           top: 150px;
         }
 
@@ -112,21 +118,34 @@
           margin-bottom: 0;
         }
 
-        .media {
-          height: 290px;
+        .media-container {
+          transform-origin: left;
+          position: relative;
+          height: 340px;
           width: 100%;
-          max-width: 100%;
-          background-image: url('../assets/actusAFP/photo.png');
+          overflow: hidden;
+        }
+
+        .media {
+          height: 140%;
+          width: 100%;
+          min-width: 100%;
           background-repeat: no-repeat;
           background-size: cover;
           background-position: center;
+          position: absolute;
+          top: -20%;
+          left: 0;
+          z-index: 2;
         }
 
         .title-container {
           color: black;
-          width: 100px;
+          width: 120px;
           height: 60px;
-          transform: translateY(-70%);
+          transform: translateY(-80%);
+          position: relative;
+          z-index: 3;
 
           .img {
             position: absolute;
@@ -140,6 +159,7 @@
             position: relative;
             text-transform: uppercase;
             font-size: 12px;
+            line-height: 16px;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -55%);
@@ -151,6 +171,15 @@
           color: #ffffff;
           font-size: 14px;
           line-height: 18px;
+          opacity: 0;
+          width: 85%;
+          transform: translateY(-150px);
+          transition: transform .6s $quart-ease-out, opacity .9s $quart-ease-out;
+
+          &.animated {
+            opacity: 1;
+            transform: translateY(-30px);
+          }
         }
       }
     }
