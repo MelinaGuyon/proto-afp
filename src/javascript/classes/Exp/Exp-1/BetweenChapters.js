@@ -9,21 +9,21 @@ class BetweenChapters {
 
     initFcTable = () => {
       this.table = [
-        [ this.launchText(0), this.launchVoiceOver(0), this.launchText(1) ],
+        [ this.launchVoiceOver(0), this.launchVoiceOver(1), this.launchText(0), this.launchText(1) ],
 
-        [ this.launchConclusionOne, this.stopConclusion ],
+        [ this.launchVoiceOver(2), this.launchVoiceOver(3), this.launchConclusionOne, this.stopConclusion ],
 
         [ this.launchText(2) ],
 
-        [ this.launchConclusionTwo, this.stopConclusion ],
+        [ this.launchVoiceOver(4), this.launchVoiceOver(5), this.launchConclusionTwo, this.stopConclusion ],
 
         [],
 
-        [ this.launchConclusionThree, this.stopConclusion ],
+        [ this.launchVoiceOver(6), this.launchVoiceOver(7), this.launchConclusionThree, this.stopConclusion ],
 
-        [],
+        [ this.launchVoiceOver(8) ],
 
-        []
+        [ this.launchVoiceOver(9), this.launchVoiceOver(10), this.launchVoiceOver(11) ]
       ]
     }
 
