@@ -62,21 +62,17 @@ class Experience1 {
 		init = () => {
       Storage.InterfaceClass.displayExpInterface()
       Storage.HiddingPanelClass.hidePanel()
-     //  this.placeOnSpline({
-  			// 	spline: new THREE.CatmullRomCurve3(datas.splines.enter),
-     //      relatedCamera: this.camera,
-     //      step: .30,
-     //      index: 0
-  			// },
-     //    .5
-     //  )
-
-      this.chapter2.init().then(this.goToChapterTwo)
+      this.placeOnSpline({
+  				spline: new THREE.CatmullRomCurve3(datas.splines.enter),
+          relatedCamera: this.camera,
+          step: .30,
+          index: 0
+  			},
+        .5
+      )
 
       this.betweenChapters = new BetweenChapters()
       this.chaptersConclusion = new ChaptersConclusionClass()
-
-      // this.conclusion.init().then(this.goToConclusion)
 
       Storage.TextWriting.addTitle(datas.chaptersTitle[0])
 		}

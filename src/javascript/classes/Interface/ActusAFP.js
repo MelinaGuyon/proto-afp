@@ -13,8 +13,13 @@ class ActusAFP {
     this.contentWrapper = this.actusPage.querySelector('.content .wrapper')
   }
 
+  bind = () => {
+    document.addEventListener('mousewheel', this.handleScroll)
+  }
+
   showActu = () => {
     document.body.classList.add('actus-page-visible')
+    this.bind()
   }
 
   makeActu = () => {
@@ -48,6 +53,14 @@ class ActusAFP {
     item.appendChild(titleContainer)
     item.appendChild(text)
     this.contentWrapper.appendChild(item)
+  }
+
+  handleScroll = (event) => {
+    console.log(document.scrollingElement.scrollTop)
+  }
+
+  animeActuItemUp = () => {
+
   }
 }
 
