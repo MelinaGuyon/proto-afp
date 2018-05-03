@@ -76,7 +76,7 @@ class Chapitre2 {
   }
 
   animate = () => {
-    if ( this.state.relatedCamera.position.z <= -11400 ) {
+    if ( this.state.relatedCamera.position.z <= -17500 ) {
       raf.remove(this.animate)
       Storage.SplineClass.unbind()
       this.bind()

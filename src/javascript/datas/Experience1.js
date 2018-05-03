@@ -1,47 +1,51 @@
 const splines = {
 	enter: [
 		new THREE.Vector3(0, 600, 2100),
-		new THREE.Vector3( 0, 600, -200)
+		new THREE.Vector3( 0, 600, -1500)
+	],
+	betweenIntroductionChapterOne: [
+		new THREE.Vector3(0, 600, -3500),
+		new THREE.Vector3( 0, 600, -6000)
 	],
 	chapter1: [
-		new THREE.Vector3(0, 150, -2800),
-		new THREE.Vector3( 0, 150, -5000)
+		new THREE.Vector3(0, 150, -9000),
+		new THREE.Vector3( 0, 150, -11000)
 	],
 	betweenChaptersOneTwo: [
-		new THREE.Vector3(0, 600, -6300),
-		new THREE.Vector3(0, 600, -10000),
+		new THREE.Vector3(0, 600, -12300),
+		new THREE.Vector3(0, 600, -16000),
 	],
 	chapter2: [
-		new THREE.Vector3(0, 250, -11000),
-		new THREE.Vector3( 0, 250, -12500),
+		new THREE.Vector3(0, 250, -17000),
+		new THREE.Vector3( 0, 250, -18500),
 		//blocage jusqu'à ce que l'ombre apparaisse
-		new THREE.Vector3( 900, 250, -12500),
-		new THREE.Vector3( 900, 250, -14500),
-		new THREE.Vector3( 300, 250, -14600),
-		new THREE.Vector3( 0, 250, -14800),
-		new THREE.Vector3( 0, 250, -15300)
+		new THREE.Vector3( 900, 250, -18500),
+		new THREE.Vector3( 900, 250, -20500),
+		new THREE.Vector3( 300, 250, -20600),
+		new THREE.Vector3( 0, 250, -20800),
+		new THREE.Vector3( 0, 250, -21300)
 	],
 	betweenChaptersTwoThree: [
-		new THREE.Vector3(0, 600, -16000),
-		new THREE.Vector3(0, 600, -19000),
+		new THREE.Vector3(0, 600, -22000),
+		new THREE.Vector3(0, 600, -25000),
 	],
 	chapter3: [
-		new THREE.Vector3(0, 250, -20000),
-		new THREE.Vector3( 0, 250, -22900),
-		new THREE.Vector3( 5, 250, -22850)
+		new THREE.Vector3(0, 250, -26000),
+		new THREE.Vector3( 0, 250, -28900),
+		new THREE.Vector3( 5, 250, -28850)
 	],
 	betweenChaptersThreeConclusion: [
-		new THREE.Vector3( 0, 250, -24500),
-		new THREE.Vector3( 0, 250, -29000)
+		new THREE.Vector3( 0, 250, -30500),
+		new THREE.Vector3( 0, 250, -35000)
 	],
 	conclusion: [
-		new THREE.Vector3(0, 250, -30500),
-		new THREE.Vector3(0, 280, -31500),
-		new THREE.Vector3(650, 310, -32500),
-		new THREE.Vector3( 0, 340, -33000),
-		new THREE.Vector3( -650, 370, -32500),
-		new THREE.Vector3( 0, 410, -31500),
-		new THREE.Vector3( 0, 450, -34000)
+		new THREE.Vector3(0, 250, -36500),
+		new THREE.Vector3(0, 280, -37500),
+		new THREE.Vector3(650, 310, -38500),
+		new THREE.Vector3( 0, 340, -39000),
+		new THREE.Vector3( -650, 370, -38500),
+		new THREE.Vector3( 0, 410, -37500),
+		new THREE.Vector3( 0, 450, -40000)
 	]
 }
 
@@ -49,11 +53,11 @@ const keyPoints = {
 	enter: [.00001, .5, .6, .7],
 	chapter1: [.1, .3, .5, .7],
 	betweenChaptersOneTwo: [.4],
-	chapter2: [.03, .08, .5, .7],
+	chapter2: [.01, .1, .5, .7],
 	betweenChaptersTwoThree: [],
-	chapter3: [.1, .3, .45, .7],
+	chapter3: [.05, .3, .45, .7],
 	betweenChaptersThreeConclusion: [.5],
-	conclusion: [.2, .4, .7]
+	conclusion: [.001, .3, .75]
 }
 
 const textsPanel =  [

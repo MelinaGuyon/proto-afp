@@ -47,7 +47,7 @@ class Spline {
         		complete: () => { this.bind() }
 			})
 
-			if ( this.state.index === 6 ) {
+			if ( this.state.index === 7 ) {
 				anime({
 					targets: this.state.relatedCamera.camera.rotation,
 					y: 0,
