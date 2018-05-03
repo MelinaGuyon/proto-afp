@@ -1,58 +1,63 @@
 const splines = {
 	enter: [
 		new THREE.Vector3(0, 600, 2100),
-		new THREE.Vector3( 0, 600, -200)
+		new THREE.Vector3( 0, 600, -1500)
+	],
+	betweenIntroductionChapterOne: [
+		new THREE.Vector3(0, 600, -3500),
+		new THREE.Vector3( 0, 600, -6000)
 	],
 	chapter1: [
-		new THREE.Vector3(0, 150, -2800),
-		new THREE.Vector3( 0, 150, -5000)
+		new THREE.Vector3(0, 150, -9000),
+		new THREE.Vector3( 0, 150, -11000)
 	],
 	betweenChaptersOneTwo: [
-		new THREE.Vector3(0, 600, -6300),
-		new THREE.Vector3(0, 600, -10000),
+		new THREE.Vector3(0, 600, -12300),
+		new THREE.Vector3(0, 600, -16000),
 	],
 	chapter2: [
-		new THREE.Vector3(0, 250, -11000),
-		new THREE.Vector3( 0, 250, -12500),
-		new THREE.Vector3( 900, 250, -12500),
-		new THREE.Vector3( 900, 250, -14500),
-		new THREE.Vector3( 300, 250, -14600),
-		new THREE.Vector3( 0, 250, -14800),
-		new THREE.Vector3( 0, 250, -15300)
+		new THREE.Vector3(0, 250, -17000),
+		new THREE.Vector3( 0, 250, -18500),
+		//blocage jusqu'à ce que l'ombre apparaisse
+		new THREE.Vector3( 900, 250, -18500),
+		new THREE.Vector3( 900, 250, -20500),
+		new THREE.Vector3( 300, 250, -20600),
+		new THREE.Vector3( 0, 250, -20800),
+		new THREE.Vector3( 0, 250, -21300)
 	],
 	betweenChaptersTwoThree: [
-		new THREE.Vector3(0, 600, -16000),
-		new THREE.Vector3(0, 600, -19000),
+		new THREE.Vector3(0, 600, -22000),
+		new THREE.Vector3(0, 600, -25000),
 	],
 	chapter3: [
-		new THREE.Vector3(0, 250, -20000),
-		new THREE.Vector3( 0, 250, -22900),
-		new THREE.Vector3( 5, 250, -22850)
+		new THREE.Vector3(0, 250, -26000),
+		new THREE.Vector3( 0, 250, -28900),
+		new THREE.Vector3( 5, 250, -28850)
 	],
 	betweenChaptersThreeConclusion: [
-		new THREE.Vector3( 0, 250, -24500),
-		new THREE.Vector3( 0, 250, -29000)
+		new THREE.Vector3( 0, 250, -30500),
+		new THREE.Vector3( 0, 250, -35000)
 	],
 	conclusion: [
-		new THREE.Vector3(0, 250, -30500),
-		new THREE.Vector3(0, 280, -31500),
-		new THREE.Vector3(650, 310, -32500),
-		new THREE.Vector3( 0, 340, -33000),
-		new THREE.Vector3( -650, 370, -32500),
-		new THREE.Vector3( 0, 410, -31500),
-		new THREE.Vector3( 0, 450, -34000)
+		new THREE.Vector3(0, 250, -36500),
+		new THREE.Vector3(0, 280, -37500),
+		new THREE.Vector3(650, 310, -38500),
+		new THREE.Vector3( 0, 340, -39000),
+		new THREE.Vector3( -650, 370, -38500),
+		new THREE.Vector3( 0, 410, -37500),
+		new THREE.Vector3( 0, 450, -40000)
 	]
 }
 
 const keyPoints = {
-	enter: [.2, .4, .7],
-	chapter1: [.1, .5, .7],
+	enter: [.00001, .5, .6, .7],
+	chapter1: [.1, .3, .5, .7],
 	betweenChaptersOneTwo: [.4],
-	chapter2: [.5, .7],
+	chapter2: [.01, .1, .5, .7],
 	betweenChaptersTwoThree: [],
-	chapter3: [.45, .7],
-	betweenChaptersThreeConclusion: [],
-	conclusion: []
+	chapter3: [.05, .3, .45, .7],
+	betweenChaptersThreeConclusion: [.5],
+	conclusion: [.001, .3, .75]
 }
 
 const textsPanel =  [
@@ -90,6 +95,60 @@ const subtitles = [
 	[
 		['J’ai évolué jour après jour dans un monde artificiel,', 0],
 		['dont les valeurs ne sont qu’une façade.', 4000]
+	],
+	[
+		['C’est l’image d’un pays solide et fier qui est présentée,', 0],
+		['pendant que nous mourons de faim derrière ses murs.', 4000]
+	],
+	[
+		['J’ai vu une petite fille de deux ans affamée, succomber sous mes yeux.', 0],
+		['Vous voyez, quand une personne meurt, les mouches sont les premières à le savoir.', 4000],
+		['Même si elle respirait encore, elles se sont rassemblées autour de ses yeux et de sa bouche comme des folles… ', 9000],
+		['C’est à ce moment que j’ai décidé de fuir. ', 15000]
+	],
+	[
+		['On glorifie notre puissante armée, grande défenseuse des peuples,', 0],
+		['mais qui n’hésite pas à punir tout faux pas d’une froide exécution.', 4000]
+	],
+	[
+		['J’avais 12 ans lorsque j’ai assisté à ma première exécution publique.', 0],
+		['Le crime avait été de voler et vendre quelques mètres d’une corde épaisse appartenant à un site minier.', 4000],
+		['Le coupable ne recevait aucune aide de l’état pour vivre', 8000],
+		['et devait essayer de sauver sa famille de la faim. Mais il s’agissait d’une propriété du gouvernement…', 12000],
+		['Tous les habitants du village sont sortis pour regarder l’exécution,', 16000],
+		['même la famille du condamné.', 20000],
+		['Les soldats se sont mis à tirer.', 24000],
+		['Ils ont d’abord visé sa tête, puis son cou, sa poitrine, ses hanches, ses genoux et ses talons.', 28000],
+		['Le corps se pliait sur lui-même au fil des tirs.', 32000],
+		['La moitié de sa tête avait disparu, le sang jaillissait de sa poitrine.', 36000],
+		['Et moi, cela me paraissait naturel, puisqu’il avait commis un crime...', 40000],
+	],
+	[
+		['Notre pays, prétendument uni autour des mêmes valeurs et objectifs, est habité par une société divisée et méfiante.', 0],
+		['Je faisais moi-même partie de la catégorie des individus dits “neutres” mais suspects, ayant un cousin en Corée du Sud.', 4000]
+	],
+	[
+		['Toute parole doit être réfléchie, même entre amis,', 0],
+		['ou elle provoquera la disparition de son initiateur, certainement dans l’un des Kwanlisos de l’Etat.', 4000],
+		['Je n’ai appris ce qui se passe dans ces camps qu’après ma fuite du pays.', 8000],
+		['Les prisonniers y sont mal nourris, à tel point que les enfants ne grandissent plus.', 12000],
+		['Certains détenus sont torturés avec de longues aiguilles que les bourreaux insèrent sous leurs ongles,', 16000],
+		['d’autres se font plonger la tête dans l’eau jusqu’à la limite de la noyade.', 20000],
+		['Des femmes sont violées puis forcées à avorter.', 24000]
+	],
+	[
+		['J’ai grandi dans une société où l’on m’a appris qui je devais être, qui servir, et contre qui me battre.', 0]
+	],
+	[
+		['Notre chef nous ment.', 0],
+		['Notre chef nous menace.', 1500],
+		['C’est grâce à ces mirages qu’il détient les pleins pouvoirs sur le destin de notre nation.', 3000]
+	],
+	[
+		['Et cela pourrait largement dépasser nos frontières…', 0]
+	],
+	[
+		['Ce pays que j’ai aimé m’a traité en criminel, je l’ai fui pour survivre.', 0]
 	]
 ]
 
