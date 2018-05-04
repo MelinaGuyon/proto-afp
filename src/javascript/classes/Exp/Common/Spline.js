@@ -71,17 +71,17 @@ class Spline {
     		anime.remove(this.state.relatedCamera.camera.rotation)
     		anime.remove(this.state.relatedCamera.camera.position)
 
-    		anime({
-				targets: this.state.relatedCamera.camera.rotation,
-				x: [this.state.relatedCamera.camera.rotation.x, obj.rotation.x],
-				y: [this.state.relatedCamera.camera.rotation.y, obj.rotation.y],
-				z: [this.state.relatedCamera.camera.rotation.z, obj.rotation.z],
-				duration: obj.duration,
-				easing: 'linear',
-				complete: () => { 
-					console.log("new camera rotation", this.state.relatedCamera.camera.rotation.z)
-				}
-			})
+    		if ( obj.rotation ) {
+    			anime({
+					targets: this.state.relatedCamera.camera.rotation,
+					x: [this.state.relatedCamera.camera.rotation.x, obj.rotation.x],
+					y: [this.state.relatedCamera.camera.rotation.y, obj.rotation.y],
+					z: [this.state.relatedCamera.camera.rotation.z, obj.rotation.z],
+					duration: obj.duration,
+					easing: 'linear'
+				})
+    		}
+
 		  	anime({
 				targets: this.state.relatedCamera.camera.position,
 				x: obj.point.x,
