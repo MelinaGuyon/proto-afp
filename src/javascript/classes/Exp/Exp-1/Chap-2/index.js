@@ -28,7 +28,6 @@ class Chapitre2 {
     this.displayChapterObjects()
     this.initLight()
     this.bind()
-    //raf.add(this.animate)
 
     return new Promise((resolve, reject) => {
       setTimeout(() => { resolve() }, 500)
@@ -76,14 +75,6 @@ class Chapitre2 {
     this.state.relatedBox.add(this.modelsGroup)
   }
 
-  animate = () => {
-    if ( this.state.relatedCamera.camera.position.z <= -20500 ) {
-      raf.remove(this.animate)
-      Storage.SplineClass.unbind()
-      this.bind()
-    }
-  }
-
   checkRaycaster = (raycaster) => {
     for ( let i  = 0; i < this.modelsGroup.children[1].children.length; i ++ ) {
       this.warrior = this.modelsGroup.children[1].children[i].children
@@ -111,13 +102,13 @@ class Chapitre2 {
           new THREE.Vector3( 0, 250, -25000),
           ], 
           [
-          new THREE.Vector3( 0, -Math.PI/3, 0),
+          new THREE.Vector3( 0, -Math.PI/2, -Math.PI/4),
           new THREE.Vector3( 0, 0, 0),
-          new THREE.Vector3( 0, Math.PI/4, 0),
-          new THREE.Vector3( 0, Math.PI/3, 0),
+          new THREE.Vector3( 0, Math.PI/4, Math.PI/4),
+          new THREE.Vector3( 0, Math.PI/2, Math.PI/8),
           new THREE.Vector3( 0, 0, 0),
           ], 
-          1400)
+          800)
       }, 1000)
 
 
