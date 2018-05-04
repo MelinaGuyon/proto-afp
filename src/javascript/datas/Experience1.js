@@ -7,11 +7,11 @@ const splines = {
 	],
 	chapter1: [
 		new THREE.Vector3(0, 150, -12000),
-		new THREE.Vector3( 0, 150, -14000)
+		new THREE.Vector3( 0, 150, -16000)
 	],
 	betweenChaptersOneTwo: [
-		new THREE.Vector3(0, 600, -15300),
-		new THREE.Vector3(0, 600, -19000),
+		new THREE.Vector3(0, 400, -17000),
+		new THREE.Vector3(0, 400, -19500),
 	],
 	chapter2: [
 		new THREE.Vector3(0, 250, -21000),

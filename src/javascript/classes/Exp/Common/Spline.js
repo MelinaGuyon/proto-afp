@@ -60,7 +60,10 @@ class Spline {
 			this.state.relatedCamera.camera.rotation.set(0, 0, 0)
 			const length = pointsArray.length - 1
 			this.unbind()
-			map(pointsArray, this.goToPoint(length, rotationsArray, duration))	
+
+			//setTimeout(() => { 
+				map(pointsArray, this.goToPoint(length, rotationsArray, duration)) 
+			//}, 2000)
 		}
 
 		goToPoint = (length, rotationsArray, duration) => (point, index) => {
