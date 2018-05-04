@@ -6,19 +6,22 @@ class Subtitles {
     this.container = document.querySelector('.subtitles-container')
     this.subtitle = this.container.querySelector('.subtitles')
 
+    this.globalIndex = 0
     this.actualLength = 0
   }
 
-  writeSubtitles = (options) => {
+  writeSubtitles = (options, index) => {
     this.actualLength = options.length - 1
-    map(options, this.write)
+    this.globalIndex = index
+    map(options, this.write(index))
   }
 
-  write = (opt, index) => {
-    delay(this.writeOne, opt[1], { text: opt[0], index });
+  write = (indexOfGlobalSub) => (opt, index) => {
+    delay(this.writeOne, opt[1], { text: opt[0], index, indexOfGlobalSub });
   }
 
   writeOne = (opt) => {
+    if (opt.indexOfGlobalSub !== this.globalIndex) return
     this.subtitle.innerHTML = opt.text
     if (opt.index === this.actualLength) delay(this.remove, 2000);
   }

@@ -11,6 +11,7 @@ import BetweenChapters from './BetweenChapters.js'
 
 import datas from '../../../datas/Experience1.js'
 
+import Introduction from './Introduction/index.js'
 import Chapitre1 from './Chap-1/index.js'
 import Chapitre2 from './Chap-2/index.js'
 import Chapitre3 from './Chap-3/index.js'
@@ -35,24 +36,29 @@ class Experience1 {
 
       // here to load things without affect animations, because they load all on init
       // this may have to change
-      this.chapter1 = new Chapitre1({
+      this.introduction = new Introduction({
         relatedBox: this.chaptersContainer.chapterBoxes[0],
+        relatedCamera: this.camera,
+        lightOpt: [this.ambiance]
+      })
+      this.chapter1 = new Chapitre1({
+        relatedBox: this.chaptersContainer.chapterBoxes[1],
         relatedCamera: this.camera.camera,
         lightOpt: [this.ambiance],
         cbMiddle: this.goToChapterOne
       })
       this.chapter2 = new Chapitre2({
-        relatedBox: this.chaptersContainer.chapterBoxes[1],
+        relatedBox: this.chaptersContainer.chapterBoxes[2],
         relatedCamera: this.camera.camera,
         lightOpt: [this.ambiance]
       })
       this.chapter3 = new Chapitre3({
-        relatedBox: this.chaptersContainer.chapterBoxes[2],
+        relatedBox: this.chaptersContainer.chapterBoxes[3],
         relatedCamera: this.camera,
         lightOpt: [this.ambiance]
       })
       this.conclusion = new Conclusion({
-        relatedBox: this.chaptersContainer.chapterBoxes[3],
+        relatedBox: this.chaptersContainer.chapterBoxes[4],
         relatedCamera: this.camera,
         lightOpt: [this.ambiance]
       })
@@ -62,24 +68,34 @@ class Experience1 {
 		init = () => {
       Storage.InterfaceClass.displayExpInterface()
       Storage.HiddingPanelClass.hidePanel()
-     //  this.placeOnSpline({
-  			// 	spline: new THREE.CatmullRomCurve3(datas.splines.enter),
-     //      relatedCamera: this.camera,
-     //      step: .30,
-     //      index: 0
-  			// },
-     //    .5
-     //  )
 
-      this.chapter2.init().then(this.goToChapterTwo)
+      this.introduction.init().then(
+        this.placeOnSpline({
+          spline: new THREE.CatmullRomCurve3(datas.splines.enter),
+          relatedCamera: this.camera,
+          step: .30,
+          index: 0,
+          cbEnd: this.betweenIntroductionChapterOne
+        }, .0)
+      )
 
       this.betweenChapters = new BetweenChapters()
       this.chaptersConclusion = new ChaptersConclusionClass()
 
-      // this.conclusion.init().then(this.goToConclusion)
-
       Storage.TextWriting.addTitle(datas.chaptersTitle[0])
 		}
+
+    betweenIntroductionChapterOne = () => {
+      console.log("entre intro et chapitre 1")
+      this.placeOnSpline({
+          spline: new THREE.CatmullRomCurve3(datas.splines.betweenIntroductionChapterOne),
+          relatedCamera: this.camera,
+          step: .30,
+          index: 1
+        },
+        .5
+      )
+    }
 
     goToChapterOne = () => {
       console.log("entre dans chapitre 1")
@@ -87,7 +103,7 @@ class Experience1 {
   				spline: new THREE.CatmullRomCurve3(datas.splines.chapter1),
           relatedCamera: this.camera,
           step: .30,
-          index: 1,
+          index: 2,
           cbEnd: this.betweenChaptersOneTwo
   			},
         .5
@@ -101,7 +117,7 @@ class Experience1 {
           spline: new THREE.CatmullRomCurve3(datas.splines.betweenChaptersOneTwo),
           relatedCamera: this.camera,
           step: .30,
-          index: 2,
+          index: 3,
           cbEnd: () => { this.chapter2.init().then(this.goToChapterTwo) }
         },
         .5
@@ -114,7 +130,7 @@ class Experience1 {
   				spline: new THREE.CatmullRomCurve3(datas.splines.chapter2),
           relatedCamera: this.camera,
           step: .10,
-          index: 3,
+          index: 4,
           cbEnd: this.betweenChaptersTwoThree
   			},
         .5
@@ -128,7 +144,7 @@ class Experience1 {
           spline: new THREE.CatmullRomCurve3(datas.splines.betweenChaptersTwoThree),
           relatedCamera: this.camera,
           step: .30,
-          index: 4,
+          index: 5,
           cbEnd: () => { this.chapter3.init().then(this.goToChapterThree) }
         },
         .5
@@ -141,7 +157,7 @@ class Experience1 {
           spline: new THREE.CatmullRomCurve3(datas.splines.chapter3),
           relatedCamera: this.camera,
           step: .10,
-          index: 5,
+          index: 6,
           cbEnd: this.betweenChaptersThreeConclusion
         },
         .5
@@ -155,7 +171,7 @@ class Experience1 {
           spline: new THREE.CatmullRomCurve3(datas.splines.betweenChaptersThreeConclusion),
           relatedCamera: this.camera,
           step: .30,
-          index: 6,
+          index: 7,
           cbEnd: () => { this.conclusion.init().then(this.goToConclusion) }
         },
         .5
@@ -168,7 +184,7 @@ class Experience1 {
           spline: new THREE.CatmullRomCurve3(datas.splines.conclusion),
           relatedCamera: this.camera,
           step: .10,
-          index: 7,
+          index: 8,
           cbEnd: () => { Storage.InterfaceClass.actus.showActu() }
         },
         .5
@@ -180,7 +196,27 @@ class Experience1 {
     placeOnSpline = (opt, mvmt) => {
       if (this.spline) this.spline.unbind()
       this.spline = new Spline(opt)
-			this.spline.placeCameraAtFirstPoint()
+      
+      if (opt.index === 0) { this.spline.animateAtFirstPoint(
+      [
+        new THREE.Vector3( 0, 950, 2000),
+        new THREE.Vector3( 0, 900, 320),
+        new THREE.Vector3( 0, 600, -1360),
+        new THREE.Vector3( 0, 600, -3040),
+        new THREE.Vector3( 0, 600, -4720),
+        new THREE.Vector3( 0, 600, -6400)
+      ],
+      [
+        new THREE.Vector3( 0, 0, Math.PI/3),
+        new THREE.Vector3( 0, 0, Math.PI/3*2),
+        new THREE.Vector3( 0, 0, Math.PI/3*3),
+        new THREE.Vector3( 0, 0, Math.PI/3*4),
+        new THREE.Vector3( 0, 0, Math.PI/3*5),
+        new THREE.Vector3( 0, 0, Math.PI/3*6)
+      ], 800
+      ) }
+      else { this.spline.placeCameraAtFirstPoint() }
+
       this.camera.updateMovementRange(mvmt, 1900)
     }
 }
