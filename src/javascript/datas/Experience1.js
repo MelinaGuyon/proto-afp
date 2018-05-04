@@ -77,8 +77,8 @@ const chaptersTitle =  [
 
 const conclusions =  [
 	['assets/conclusion/video.mp4', 'video'],
-	['assets/conclusion/video2.mp4', 'video'],
-	['assets/conclusion/video2.mp4', 'video']
+	['assets/conclusion/conclusion2.mp4', 'video'],
+	['assets/conclusion/01.jpg', 'photo']
 ]
 
 // number of spline, spline index begining

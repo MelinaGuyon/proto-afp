@@ -108,7 +108,7 @@ class Experience1 {
   			},
         .5
       )
-      this.chaptersConclusion.updateMedia('assets/conclusion/video.mp4', 'video')
+      this.chaptersConclusion.updateMedia(datas.conclusions[0][0], datas.conclusions[0][1])
     }
 
     betweenChaptersOneTwo = () => {
@@ -135,7 +135,7 @@ class Experience1 {
   			},
         .5
       )
-      this.chaptersConclusion.updateMedia('assets/conclusion/01.jpg', 'photo')
+      this.chaptersConclusion.updateMedia(datas.conclusions[1][0], datas.conclusions[1][1])
     }
 
     betweenChaptersTwoThree = () => {
@@ -162,7 +162,7 @@ class Experience1 {
         },
         .5
       )
-      this.chaptersConclusion.updateMedia('assets/conclusion/01.jpg', 'photo')
+      this.chaptersConclusion.updateMedia(datas.conclusions[2][0], datas.conclusions[2][1])
     }
 
     betweenChaptersThreeConclusion = () => {
@@ -189,14 +189,13 @@ class Experience1 {
         },
         .5
       )
-      this.chaptersConclusion.updateMedia('assets/conclusion/01.jpg', 'photo')
       Storage.InterfaceClass.actus.makeActu()
     }
 
     placeOnSpline = (opt, mvmt) => {
       if (this.spline) this.spline.unbind()
       this.spline = new Spline(opt)
-      
+
       if (opt.index === 0) { this.spline.animateAtFirstPoint(
       [
         new THREE.Vector3( 0, 950, 2000),
