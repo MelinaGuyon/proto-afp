@@ -33,11 +33,18 @@ class Chapitre1 {
     this.frontalCity = new FrontalCity({ objectsGroup: this.modelsGroup })
   }
 
+  remove = () => {
+    setTimeout(() => {
+      this.state.relatedBox.remove(this.modelsGroup)
+      this.unbind()
+    }, 4000)
+  }
+
   bind = () => {
     document.addEventListener('mousemove', this.onMouseMove, { passive: true })
   }
 
-  unind = () => {
+  unbind = () => {
     document.removeEventListener('mousemove', this.onMouseMove, { passive: true })
   }
 

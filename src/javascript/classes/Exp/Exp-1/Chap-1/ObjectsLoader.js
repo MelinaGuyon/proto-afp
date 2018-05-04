@@ -28,7 +28,7 @@ class ObjectsLoader {
 	    	this.loadWindowLeft().then((response)=> {
 	    	this.loadWindowRight().then((response)=> {
 	    	this.loadDoor().then((response)=> {
-	    		//this.loadLights().then((response)=> {
+	    		// this.loadLights().then((response)=> {
 					this.loadRealCity().then((response)=> {
 						this.loadFristShutters().then((response)=> {
 							this.loadSecondShuttersRight().then((response)=> {

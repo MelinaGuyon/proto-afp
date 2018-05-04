@@ -34,6 +34,13 @@ class Chapitre2 {
     })
   }
 
+  remove = () => {
+    setTimeout(() => {
+      this.state.relatedBox.remove(this.modelsGroup)
+      this.unbind()
+    }, 4000)
+  }
+
   bind = () => {
     document.addEventListener('mousemove', this.onMouseMove, { passive: true })
   }

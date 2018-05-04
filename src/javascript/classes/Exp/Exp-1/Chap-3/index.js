@@ -28,11 +28,26 @@ class Chapitre3 {
 
   init = () => {
     this.displayChapterObjects()
-    raf.add(this.animate)
+    this.bind()
     //setTimeout(() => { this.animate() }, 5000)
     return new Promise((resolve, reject) => {
       setTimeout(() => { resolve() }, 500)
     })
+  }
+
+  bind = () => {
+    raf.add(this.animate)
+  }
+
+  unbind = () => {
+    raf.remove(this.animate)
+  }
+
+  remove = () => {
+    setTimeout(() => {
+      this.state.relatedBox.remove(this.modelsGroup)
+      this.unbind()
+    }, 4000)
   }
 
   displayChapterObjects = () => {
@@ -43,7 +58,7 @@ class Chapitre3 {
     let that = this
 
     this.state.relatedCamera.camera.updateMatrix()
-    this.state.relatedCamera.camera.updateMatrixWorld() 
+    this.state.relatedCamera.camera.updateMatrixWorld()
     this.frustum.setFromMatrix( new THREE.Matrix4().multiplyMatrices( this.state.relatedCamera.camera.projectionMatrix, this.state.relatedCamera.camera.matrixWorldInverse ) )
 
 
