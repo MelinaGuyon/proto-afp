@@ -12,12 +12,21 @@ const splines = {
 		new THREE.Vector3( 0, 600, -9000)
 	],
 	chapter1: [
+<<<<<<< HEAD
 		new THREE.Vector3(0, 150, -12000),
 		new THREE.Vector3( 0, 150, -14000)
 	],
 	betweenChaptersOneTwo: [
 		new THREE.Vector3(0, 600, -15300),
 		new THREE.Vector3(0, 600, -19000),
+=======
+		new THREE.Vector3(0, 150, -9000),
+		new THREE.Vector3( 0, 150, -15000)
+	],
+	betweenChaptersOneTwo: [
+		new THREE.Vector3(0, 600, -15300),
+		new THREE.Vector3(0, 600, -16000),
+>>>>>>> Add real city
 	],
 	chapter2: [
 		new THREE.Vector3(0, 250, -20000),

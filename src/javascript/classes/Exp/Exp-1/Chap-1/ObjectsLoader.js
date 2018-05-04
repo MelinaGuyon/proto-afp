@@ -29,10 +29,26 @@ class ObjectsLoader {
 	    	this.loadWindowRight().then((response)=> {
 	    	this.loadDoor().then((response)=> {
 	    		//this.loadLights().then((response)=> {
-		  			this.loadShader("../../../glsl/testVert.vert", "../../../glsl/testFrag.frag").then((response)=> {
-	    		    	console.log('Chapter 1 objects loaded')
-	    		    	resolve(this.group)
-	    			}).catch((error)=> { console.warn(error) })
+					this.loadRealCity().then((response)=> {
+						this.loadFristShutters().then((response)=> {
+							this.loadSecondShuttersRight().then((response)=> {
+								this.loadSecondShuttersLeft().then((response)=> {
+									this.loadFirstDoor().then((response)=> {
+										this.loadSecondDoor().then((response)=> {
+											this.loadFirstWindow().then((response)=> {
+												this.loadSecondWindow().then((response)=> {
+									  			this.loadShader("../../../glsl/testVert.vert", "../../../glsl/testFrag.frag").then((response)=> {
+								    		    	console.log('Chapter 1 objects loaded')
+								    		    	resolve(this.group)
+								    			}).catch((error)=> { console.warn(error) })
+												}).catch((error)=> { console.warn(error) })
+											}).catch((error)=> { console.warn(error) })
+										}).catch((error)=> { console.warn(error) })
+									}).catch((error)=> { console.warn(error) })
+								}).catch((error)=> { console.warn(error) })
+							}).catch((error)=> { console.warn(error) })
+						}).catch((error)=> { console.warn(error) })
+					}).catch((error)=> { console.warn(error) })
 		  		//}).catch((error)=> { console.warn(error) })
 		  	}).catch((error)=> { console.warn(error) })
 		  	}).catch((error)=> { console.warn(error) })
@@ -82,27 +98,23 @@ class ObjectsLoader {
 		    plane.position.y = 300
 		    plane.position.z = 4800
 				plane.rotation.x = Math.PI / 2
-			// plane.rotation.z = Math.PI
 
-			plane.castShadow = true
-			plane.receiveShadow = true
+				plane.castShadow = true
+				plane.receiveShadow = true
 
-			this.group.add(plane)
-
-			resolve()
-
-		})
+				this.group.add(plane)
+				resolve()
+			})
     }
 
 
 	loadFrontalCity = () => {
 		return new Promise((resolve, reject) => {
-			this.mtlLoader.load('assets/chapitre1/fausse-ville.mtl', (matl) => {
+			this.mtlLoader.load('assets/chapitre1/fausse-ville/fausse-ville.mtl', (matl) => {
 				matl.preload()
 				this.objLoader.setMaterials( matl )
-				console.log(matl.materials)
 
-				this.objLoader.load( 'assets/chapitre1/fausse-ville.obj', (object) => {
+				this.objLoader.load( 'assets/chapitre1/fausse-ville/fausse-ville.obj', (object) => {
 					object.position.x = 4000
 					object.position.z = 1500
 					object.scale.set( 5, 5, 2 )
@@ -124,12 +136,11 @@ class ObjectsLoader {
 
 	loadWindowLeft = () => {
 		return new Promise((resolve, reject) => {
-			this.mtlLoader.load('assets/chapitre1/fenetre-gauche.mtl', (matl) => {
+			this.mtlLoader.load('assets/chapitre1/fausse-ville/fenetre-gauche.mtl', (matl) => {
 				matl.preload()
 				this.objLoader.setMaterials( matl )
-				console.log(matl.materials)
 
-				this.objLoader.load( 'assets/chapitre1/fenetre-gauche.obj', (object) => {
+				this.objLoader.load( 'assets/chapitre1/fausse-ville/fenetre-gauche.obj', (object) => {
 					object.position.x = -800
 					object.position.y = 450
 					object.position.z = 2600
@@ -152,12 +163,11 @@ class ObjectsLoader {
 
 	loadWindowRight = () => {
 		return new Promise((resolve, reject) => {
-			this.mtlLoader.load('assets/chapitre1/fenetre-droite.mtl', (matl) => {
+			this.mtlLoader.load('assets/chapitre1/fausse-ville/fenetre-droite.mtl', (matl) => {
 				matl.preload()
 				this.objLoader.setMaterials( matl )
-				console.log(matl.materials)
 
-				this.objLoader.load( 'assets/chapitre1/fenetre-droite.obj', (object) => {
+				this.objLoader.load( 'assets/chapitre1/fausse-ville/fenetre-droite.obj', (object) => {
 					object.position.x = 850
 					object.position.y = 450
 					object.position.z = 2600
@@ -180,12 +190,11 @@ class ObjectsLoader {
 
 	loadDoor = () => {
 		return new Promise((resolve, reject) => {
-			this.mtlLoader.load('assets/chapitre1/porte.mtl', (matl) => {
+			this.mtlLoader.load('assets/chapitre1/fausse-ville/porte.mtl', (matl) => {
 				matl.preload()
 				this.objLoader.setMaterials( matl )
-				console.log(matl.materials)
 
-				this.objLoader.load( 'assets/chapitre1/porte.obj', (object) => {
+				this.objLoader.load( 'assets/chapitre1/fausse-ville/porte.obj', (object) => {
 					object.position.x = -230
 					object.position.y = 255
 					object.position.z = 2550
@@ -201,6 +210,200 @@ class ObjectsLoader {
 
 					this.group.add(object)
           resolve()
+				})
+			})
+		})
+	}
+
+	loadRealCity = () => {
+		return new Promise((resolve, reject) => {
+			this.mtlLoader.load('assets/chapitre1/vrai-ville/vraieville.mtl', (matl) => {
+				matl.preload()
+				this.objLoader.setMaterials( matl )
+				console.log(matl.materials)
+
+				this.objLoader.load( 'assets/chapitre1/vrai-ville/vraieville.obj', (object) => {
+					object.position.x = 1700
+					object.position.z = 400
+					object.scale.set( 2, 2, 2)
+					object.name = 'realCity'
+
+					object.traverse(function(o) {
+						if (o.type === 'Mesh') {
+							o.receiveShadow = true
+							o.castShadow = true
+						}
+					})
+
+					this.group.add(object)
+          resolve()
+				})
+			})
+		})
+	}
+
+	loadFristShutters = () => {
+		return new Promise((resolve, reject) => {
+			this.mtlLoader.load('assets/chapitre1/vrai-ville/interaction_volethaut.mtl', (matl) => {
+				matl.preload()
+				this.objLoader.setMaterials( matl )
+				console.log(matl.materials)
+
+				this.objLoader.load( 'assets/chapitre1/vrai-ville/interaction_volethaut.obj', (object) => {
+
+					for (let i = 0; i < 2; i++ ) {
+						let obj = object.clone()
+						obj.position.x = -405
+						obj.position.y = 300
+						if (i === 0 ) obj.position.z = 190
+						else obj.position.z = 90
+						obj.scale.set( 1, 1.8, 0.75)
+						obj.name = 'firstShutters'
+						obj.children[0].material.color = new THREE.Color(0x3f3f3f)
+						this.group.add(obj)
+					}
+
+					resolve()
+				})
+			})
+		})
+	}
+
+	loadSecondShuttersRight = () => {
+		return new Promise((resolve, reject) => {
+			this.mtlLoader.load('assets/chapitre1/vrai-ville/4.interaction_volet_droit.mtl', (matl) => {
+				matl.preload()
+				this.objLoader.setMaterials( matl )
+
+				this.objLoader.load( 'assets/chapitre1/vrai-ville/4.interaction_volet_droit.obj', (object) => {
+					for (let i = 0; i < 2; i++ ) {
+						let obj = object.clone()
+						obj.position.x = -440
+						obj.position.y = 242
+						if (i === 0 ) obj.position.z = -1410
+						else obj.position.z =  -1735
+						obj.scale.set( 2, 1.8, 1.4)
+						obj.name = 'firstShuttersRight'
+						obj.children[0].material.color = new THREE.Color(0x3f3f3f)
+						this.group.add(obj)
+					}
+
+					resolve()
+				})
+			})
+		})
+	}
+
+	loadSecondShuttersLeft = () => {
+		return new Promise((resolve, reject) => {
+			this.mtlLoader.load('assets/chapitre1/vrai-ville/4.interaction_volet_gauche.mtl', (matl) => {
+				matl.preload()
+				this.objLoader.setMaterials( matl )
+
+				this.objLoader.load( 'assets/chapitre1/vrai-ville/4.interaction_volet_gauche.obj', (object) => {
+
+					for (let i = 0; i < 2; i++ ) {
+						let obj = object.clone()
+						obj.position.x = -440
+						obj.position.y = 242
+						if (i === 0 ) obj.position.z = -1410
+						else obj.position.z =  -1735
+						obj.scale.set( 2, 1.8, 1.4)
+						obj.name = 'secondShuttersLeft'
+						obj.children[0].material.color = new THREE.Color(0x3f3f3f)
+
+						this.group.add(obj)
+					}
+
+					resolve()
+				})
+			})
+		})
+	}
+
+	loadFirstDoor = () => {
+		return new Promise((resolve, reject) => {
+			this.mtlLoader.load('assets/chapitre1/vrai-ville/1bis.interaction_porte.mtl', (matl) => {
+				matl.preload()
+				this.objLoader.setMaterials( matl )
+
+				this.objLoader.load( 'assets/chapitre1/vrai-ville/1bis.interaction_porte.obj', (object) => {
+					object.position.x = 580
+					object.position.y = 140
+					object.position.z = 172
+					object.scale.set( 2, 1.9, 1)
+					object.children[0].material.color = new THREE.Color(0x3f3f3f)
+					object.name = 'firstDoor'
+					this.group.add(object)
+					resolve()
+				})
+			})
+		})
+	}
+
+	loadSecondDoor = () => {
+		return new Promise((resolve, reject) => {
+			this.mtlLoader.load('assets/chapitre1/vrai-ville/5.interaction_porte.mtl', (matl) => {
+				matl.preload()
+				this.objLoader.setMaterials( matl )
+
+				this.objLoader.load( 'assets/chapitre1/vrai-ville/5.interaction_porte.obj', (object) => {
+					object.position.x = -460
+					object.position.y = 110
+					object.position.z =  -2600
+					object.scale.set( 2, 1.9, 1.8)
+					object.children[0].material.color = new THREE.Color(0x3f3f3f)
+					object.name = 'secondDoor'
+					this.group.add(object)
+					resolve()
+				})
+			})
+		})
+	}
+
+	loadFirstWindow = () => {
+		return new Promise((resolve, reject) => {
+			this.mtlLoader.load('assets/chapitre1/vrai-ville/2bis.interaction_fenetre.mtl', (matl) => {
+				matl.preload()
+				this.objLoader.setMaterials( matl )
+
+				this.objLoader.load( 'assets/chapitre1/vrai-ville/2bis.interaction_fenetre.obj', (object) => {
+
+					for (let i = 0; i < 2; i++ ) {
+						let obj = object.clone()
+						obj.position.x = 540
+						obj.position.y = 240
+						if (i === 0 ) obj.position.z = -1390
+						else obj.position.z =  -1190
+						obj.scale.set( 2, 2, 2.2)
+						obj.name = 'firstWindow'
+						obj.children[0].material.color = new THREE.Color(0x3f3f3f)
+						this.group.add(obj)
+					}
+
+					resolve()
+				})
+			})
+		})
+	}
+
+	loadSecondWindow = () => {
+		return new Promise((resolve, reject) => {
+			this.mtlLoader.load('assets/chapitre1/vrai-ville/5bis.interaction_fenetre.mtl', (matl) => {
+				matl.preload()
+				this.objLoader.setMaterials( matl )
+
+				this.objLoader.load( 'assets/chapitre1/vrai-ville/5bis.interaction_fenetre.obj', (object) => {
+
+					object.position.x = 620
+					object.position.y = 220
+					object.position.z =  -3250
+					object.scale.set( 2, 2, 2.2)
+					object.name = 'secondWindow'
+					object.children[0].material.color = new THREE.Color(0x3f3f3f)
+					this.group.add(object)
+
+					resolve()
 				})
 			})
 		})

@@ -82,6 +82,8 @@ class Experience1 {
       this.betweenChapters = new BetweenChapters()
       this.chaptersConclusion = new ChaptersConclusionClass()
 
+      // this.goToChapterOne()
+
       Storage.TextWriting.addTitle(datas.chaptersTitle[0])
 		}
 
@@ -102,7 +104,7 @@ class Experience1 {
       this.placeOnSpline({
   				spline: new THREE.CatmullRomCurve3(datas.splines.chapter1),
           relatedCamera: this.camera,
-          step: .30,
+          step: .10,
           index: 2,
           cbEnd: this.betweenChaptersOneTwo
   			},
