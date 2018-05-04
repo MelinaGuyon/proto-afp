@@ -1,11 +1,5 @@
 const splines = {
 	enter: [
-	    // new THREE.Vector3( 0, 950, 2000),
-     //    new THREE.Vector3( 0, 900, 920),
-     //    new THREE.Vector3( 0, 600, -160),
-     //    new THREE.Vector3( 0, 600, -1240),
-     //    new THREE.Vector3( 0, 600, -2320),
-     //    new THREE.Vector3( 0, 600, -4400)
 	],
 	betweenIntroductionChapterOne: [
 		new THREE.Vector3(0, 600, -6500),
@@ -20,14 +14,7 @@ const splines = {
 		new THREE.Vector3(0, 600, -19000),
 	],
 	chapter2: [
-		new THREE.Vector3(0, 250, -20000),
-		new THREE.Vector3( 0, 250, -21500),
-		//blocage jusqu'à ce que l'ombre apparaisse
-		new THREE.Vector3( 900, 250, -21500),
-		new THREE.Vector3( 900, 250, -23500),
-		new THREE.Vector3( 300, 250, -23600),
-		new THREE.Vector3( 0, 250, -23800),
-		new THREE.Vector3( 0, 250, -24300)
+		new THREE.Vector3(0, 250, -21000),
 	],
 	betweenChaptersTwoThree: [
 		new THREE.Vector3(0, 600, -25000),

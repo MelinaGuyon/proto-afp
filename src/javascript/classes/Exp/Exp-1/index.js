@@ -49,7 +49,7 @@ class Experience1 {
       })
       this.chapter2 = new Chapitre2({
         relatedBox: this.chaptersContainer.chapterBoxes[2],
-        relatedCamera: this.camera.camera,
+        relatedCamera: this.camera,
         lightOpt: [this.ambiance]
       })
       this.chapter3 = new Chapitre3({
@@ -69,15 +69,17 @@ class Experience1 {
       Storage.InterfaceClass.displayExpInterface()
       Storage.HiddingPanelClass.hidePanel()
 
-      this.introduction.init().then(
-        this.placeOnSpline({
-          spline: new THREE.CatmullRomCurve3(datas.splines.enter),
-          relatedCamera: this.camera,
-          step: .30,
-          index: 0,
-          cbEnd: this.betweenIntroductionChapterOne
-        }, .0)
-      )
+      // this.introduction.init().then(
+      //   this.placeOnSpline({
+      //     spline: new THREE.CatmullRomCurve3(datas.splines.enter),
+      //     relatedCamera: this.camera,
+      //     step: .30,
+      //     index: 0,
+      //     cbEnd: this.betweenIntroductionChapterOne
+      //   }, .0)
+      // )
+
+      this.chapter2.init().then(this.goToChapterTwo)
 
       this.betweenChapters = new BetweenChapters()
       this.chaptersConclusion = new ChaptersConclusionClass()

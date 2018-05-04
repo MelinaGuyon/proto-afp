@@ -90,7 +90,6 @@ class ObjectsLoader {
         let that = this
 
         let matl = new THREE.ShadowMaterial({ fog: false })
-        //let matl = new THREE.MeshStandardMaterial({ fog: false })
         matl.opacity = 0
 
         that.objLoader.load( 'assets/chapitre2/ombre_soldats.obj', function ( object ) {

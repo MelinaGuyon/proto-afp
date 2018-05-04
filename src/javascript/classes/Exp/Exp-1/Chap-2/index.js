@@ -27,7 +27,8 @@ class Chapitre2 {
   init = () => {
     this.displayChapterObjects()
     this.initLight()
-    // raf.add(this.animate)
+    this.bind()
+    //raf.add(this.animate)
 
     return new Promise((resolve, reject) => {
       setTimeout(() => { resolve() }, 500)
@@ -38,14 +39,14 @@ class Chapitre2 {
     document.addEventListener('mousemove', this.onMouseMove, { passive: true })
   }
 
-  unind = () => {
+  unbind = () => {
     document.removeEventListener('mousemove', this.onMouseMove, { passive: true })
   }
 
   onMouseMove = (event) => {
     this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1
     this.mouse.y = - (event.clientY / window.innerHeight) * 2 + 1
-    this.raycaster.setFromCamera(this.mouse, this.state.relatedCamera)
+    this.raycaster.setFromCamera(this.mouse, this.state.relatedCamera.camera)
 
     this.checkRaycaster(this.raycaster)
   }
@@ -55,7 +56,7 @@ class Chapitre2 {
     this.state.lightOpt.push(this.modelsGroup.children[0])
     this.light = new CursorLight({
       sceneIndex: 1,
-      relatedCamera: this.state.relatedCamera,
+      relatedCamera: this.state.relatedCamera.camera,
       intensity: 0,
       sphereVisible: false,
       castingShadow: false,
@@ -76,7 +77,7 @@ class Chapitre2 {
   }
 
   animate = () => {
-    if ( this.state.relatedCamera.position.z <= -17500 ) {
+    if ( this.state.relatedCamera.camera.position.z <= -20500 ) {
       raf.remove(this.animate)
       Storage.SplineClass.unbind()
       this.bind()
@@ -96,7 +97,30 @@ class Chapitre2 {
     }
 
     if ( this.warriorsNumber === this.modelsGroup.children[1].children.length ) {
-      Storage.SplineClass.bind()
+      console.log(this.state.relatedCamera)
+      this.state.relatedCamera.updateMovementRange(0, 0)
+      this.unbind()
+
+      setTimeout(() => {
+        Storage.Experience1Class.spline.animateAtFirstPoint(  
+          [
+          new THREE.Vector3( 600, 250, -21500),
+          new THREE.Vector3( 1200, 250, -22375),
+          new THREE.Vector3( 1200, 250, -23250),
+          new THREE.Vector3( 600, 250, -24125),
+          new THREE.Vector3( 0, 250, -25000),
+          ], 
+          [
+          new THREE.Vector3( 0, -Math.PI/3, 0),
+          new THREE.Vector3( 0, 0, 0),
+          new THREE.Vector3( 0, Math.PI/4, 0),
+          new THREE.Vector3( 0, Math.PI/3, 0),
+          new THREE.Vector3( 0, 0, 0),
+          ], 
+          1400)
+      }, 1000)
+
+
     }
 
   }
