@@ -16,6 +16,7 @@ class Introduction {
     this.loader = new ObjectsLoader()
     this.loader.load().then((response) => {
       this.modelsGroup = response
+      this.init()
     })
   }
 

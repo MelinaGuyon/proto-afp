@@ -95,26 +95,26 @@ class Chapitre2 {
     }
 
     if ( this.warriorsNumber === this.modelsGroup.children[1].children.length ) {
-      console.log(this.state.relatedCamera)
       this.state.relatedCamera.updateMovementRange(0, 0)
       this.unbind()
+      Storage.SplineClass.unbind()
 
       setTimeout(() => {
-        Storage.Experience1Class.spline.animateAtFirstPoint(  
+        Storage.Experience1Class.spline.animateAtFirstPoint(
           [
           new THREE.Vector3( 600, 250, -21500),
           new THREE.Vector3( 1200, 250, -22375),
           new THREE.Vector3( 1200, 250, -23250),
           new THREE.Vector3( 600, 250, -24125),
           new THREE.Vector3( 0, 250, -25000),
-          ], 
+          ],
           [
           new THREE.Vector3( 0, -Math.PI/2, -Math.PI/4),
           new THREE.Vector3( 0, 0, 0),
           new THREE.Vector3( 0, Math.PI/4, Math.PI/4),
           new THREE.Vector3( 0, Math.PI/2, Math.PI/8),
           new THREE.Vector3( 0, 0, 0),
-          ], 
+          ],
           800)
       }, 1000)
 

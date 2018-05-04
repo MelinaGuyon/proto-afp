@@ -3,7 +3,6 @@ import anime from 'animejs'
 import Camera from '../Common/Camera.js'
 import Scene from '../Common/Scene.js'
 import Spline from '../Common/Spline.js'
-import Sphere from '../Common/Sphere.js'
 
 import Ambiance from './Ambiance.js'
 import ChaptersContainer from './ChaptersContainer.js'
@@ -29,9 +28,6 @@ class Experience1 {
 			this.camera = new Camera({ name: 'exp1', lookAround: true, movementRange: .05  })
       this.scene = new Scene({ name: 'exp1'  })
       this.ambiance = new Ambiance()
-
-      this.spherePreview = new Sphere({ relatedScene: this.scene.scene,  color: 0x303848, posZ: 2000 })
-
       this.chaptersContainer = new ChaptersContainer()
 
       // here to load things without affect animations, because they load all on init
@@ -69,15 +65,13 @@ class Experience1 {
       Storage.InterfaceClass.displayExpInterface()
       Storage.HiddingPanelClass.hidePanel()
 
-      this.introduction.init().then(
-        this.placeOnSpline({
-          spline: new THREE.CatmullRomCurve3(datas.splines.enter),
-          relatedCamera: this.camera,
-          step: .30,
-          index: 0,
-          cbEnd: this.betweenIntroductionChapterOne
-        }, .0)
-      )
+      this.placeOnSpline({
+        spline: new THREE.CatmullRomCurve3(datas.splines.enter),
+        relatedCamera: this.camera,
+        step: .30,
+        index: 0,
+        cbEnd: this.betweenIntroductionChapterOne
+      }, .0)
 
       // this.chapter2.init().then(this.goToChapterTwo)
 
