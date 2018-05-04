@@ -56,30 +56,43 @@ class Spline {
 			}
 		}
 
-		animateAtFirstPoint = (pointsArray) => {
+		animateAtFirstPoint = (pointsArray, rotationsArray, duration) => {
+			this.state.relatedCamera.camera.rotation.set(0, 0, 0)
 			const length = pointsArray.length - 1
 			this.unbind()
-			map(pointsArray, this.goToPoint(length))	
+			map(pointsArray, this.goToPoint(length, rotationsArray, duration))	
 		}
 
-		goToPoint = (length) => (point, index) => {
-    		delay(this.goToPointAfterDelay, 1000*index, { point: point, index: index, length: length });
+		goToPoint = (length, rotationsArray, duration) => (point, index) => {
+    		delay(this.goToPointAfterDelay, duration*index-100, { duration: duration, point: point, index: index, length: length, rotation: rotationsArray[index] });
   		}
 
     	goToPointAfterDelay = (obj) => {
+    		anime.remove(this.state.relatedCamera.camera.rotation)
+    		anime.remove(this.state.relatedCamera.camera.position)
+
+    		anime({
+				targets: this.state.relatedCamera.camera.rotation,
+				x: [this.state.relatedCamera.camera.rotation.x, obj.rotation.x],
+				y: [this.state.relatedCamera.camera.rotation.y, obj.rotation.y],
+				z: [this.state.relatedCamera.camera.rotation.z, obj.rotation.z],
+				duration: obj.duration,
+				easing: 'linear',
+				complete: () => { 
+					console.log("new camera rotation", this.state.relatedCamera.camera.rotation.z)
+				}
+			})
 		  	anime({
 				targets: this.state.relatedCamera.camera.position,
 				x: obj.point.x,
 				y: obj.point.y,
 				z: obj.point.z,
-				duration: 1000,
+				duration: obj.duration,
 				easing: 'linear',
 				complete: () => { 
-
-					console.log("index", obj.index)
-					console.log("length", obj.length)
-
-					obj.index === obj.length ? this.state.cbEnd() : '' 
+					if ( obj.index === obj.length ) {
+						this.state.cbEnd()
+					}
 				}
 			})
   		}

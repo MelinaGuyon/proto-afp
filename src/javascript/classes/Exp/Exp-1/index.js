@@ -76,7 +76,7 @@ class Experience1 {
           step: .30,
           index: 0,
           cbEnd: this.betweenIntroductionChapterOne
-        }, .5)
+        }, .0)
       )
 
       this.betweenChapters = new BetweenChapters()
@@ -197,13 +197,24 @@ class Experience1 {
       if (this.spline) this.spline.unbind()
       this.spline = new Spline(opt)
       
-      if (opt.index === 0) { this.spline.animateAtFirstPoint([
-        new THREE.Vector3( 0, 250, 2100),
-        new THREE.Vector3( 0, 250, 1500),
-        new THREE.Vector3( 5, 250, 1000),
-        new THREE.Vector3( 0, 250, 0),
-        new THREE.Vector3( 0, 250, -1500)
-      ]) }
+      if (opt.index === 0) { this.spline.animateAtFirstPoint(
+      [
+        new THREE.Vector3( 0, 950, 2000),
+        new THREE.Vector3( 0, 900, 320),
+        new THREE.Vector3( 0, 600, -1360),
+        new THREE.Vector3( 0, 600, -3040),
+        new THREE.Vector3( 0, 600, -4720),
+        new THREE.Vector3( 0, 600, -6400)
+      ],
+      [
+        new THREE.Vector3( 0, 0, Math.PI/3),
+        new THREE.Vector3( 0, 0, Math.PI/3*2),
+        new THREE.Vector3( 0, 0, Math.PI/3*3),
+        new THREE.Vector3( 0, 0, Math.PI/3*4),
+        new THREE.Vector3( 0, 0, Math.PI/3*5),
+        new THREE.Vector3( 0, 0, Math.PI/3*6)
+      ], 800
+      ) }
       else { this.spline.placeCameraAtFirstPoint() }
 
       this.camera.updateMovementRange(mvmt, 1900)

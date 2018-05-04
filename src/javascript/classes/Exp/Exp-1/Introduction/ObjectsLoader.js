@@ -68,8 +68,8 @@ class ObjectsLoader {
 				
 				that.objLoader.load( 'assets/introduction/texte.obj', function ( texte ) {
 					texte.position.y = 500
-					texte.position.z = 1000
-					texte.position.x = 1300
+					texte.position.z = -1500
+					texte.position.x = 800
 					texte.scale.set(5, 5, 5)
 
 					that.group.add( texte )
@@ -89,8 +89,8 @@ class ObjectsLoader {
 				
 				that.objLoader.load( 'assets/introduction/missiles.obj', function ( missiles ) {
 					missiles.position.y = 250
-					missiles.position.z = 600
-					missiles.position.x = 1300
+					missiles.position.z = -1900
+					missiles.position.x = 800
 					missiles.scale.set(5, 5, 5)
 
 					that.group.add( missiles )
@@ -110,8 +110,8 @@ class ObjectsLoader {
 				
 				that.objLoader.load( 'assets/introduction/texte2.obj', function ( texte2 ) {
 					texte2.position.y = 700
-					texte2.position.z = -1000
-					texte2.position.x = -800
+					texte2.position.z = -3500
+					texte2.position.x = -300
 					texte2.scale.set(5, 5, 5)
 
 					that.group.add( texte2 )
@@ -132,8 +132,8 @@ class ObjectsLoader {
 				
 				that.objLoader.load( 'assets/introduction/tank.obj', function ( tank ) {
 					tank.position.y = 150
-					tank.position.z = -1000
-					tank.position.x = -1300
+					tank.position.z = -3500
+					tank.position.x = -800
 					tank.scale.set(5, 5, 5)
 
 					that.group.add( tank )
@@ -154,8 +154,8 @@ class ObjectsLoader {
 				
 				that.objLoader.load( 'assets/introduction/batiment.obj', function ( batiment ) {
 					batiment.position.y = 500
-					batiment.position.z = -1500
-					batiment.position.x = 500
+					batiment.position.z = -4000
+					batiment.position.x = 300
 					batiment.scale.set(3, 3, 3)
 
 					that.group.add( batiment )

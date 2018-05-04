@@ -1,49 +1,55 @@
 const splines = {
 	enter: [
+	    // new THREE.Vector3( 0, 950, 2000),
+     //    new THREE.Vector3( 0, 900, 920),
+     //    new THREE.Vector3( 0, 600, -160),
+     //    new THREE.Vector3( 0, 600, -1240),
+     //    new THREE.Vector3( 0, 600, -2320),
+     //    new THREE.Vector3( 0, 600, -4400)
 	],
 	betweenIntroductionChapterOne: [
-		new THREE.Vector3(0, 600, -3500),
-		new THREE.Vector3( 0, 600, -6000)
+		new THREE.Vector3(0, 600, -6500),
+		new THREE.Vector3( 0, 600, -9000)
 	],
 	chapter1: [
-		new THREE.Vector3(0, 150, -9000),
-		new THREE.Vector3( 0, 150, -11000)
+		new THREE.Vector3(0, 150, -12000),
+		new THREE.Vector3( 0, 150, -14000)
 	],
 	betweenChaptersOneTwo: [
-		new THREE.Vector3(0, 600, -12300),
-		new THREE.Vector3(0, 600, -16000),
+		new THREE.Vector3(0, 600, -15300),
+		new THREE.Vector3(0, 600, -19000),
 	],
 	chapter2: [
-		new THREE.Vector3(0, 250, -17000),
-		new THREE.Vector3( 0, 250, -18500),
+		new THREE.Vector3(0, 250, -20000),
+		new THREE.Vector3( 0, 250, -21500),
 		//blocage jusqu'à ce que l'ombre apparaisse
-		new THREE.Vector3( 900, 250, -18500),
-		new THREE.Vector3( 900, 250, -20500),
-		new THREE.Vector3( 300, 250, -20600),
-		new THREE.Vector3( 0, 250, -20800),
-		new THREE.Vector3( 0, 250, -21300)
+		new THREE.Vector3( 900, 250, -21500),
+		new THREE.Vector3( 900, 250, -23500),
+		new THREE.Vector3( 300, 250, -23600),
+		new THREE.Vector3( 0, 250, -23800),
+		new THREE.Vector3( 0, 250, -24300)
 	],
 	betweenChaptersTwoThree: [
-		new THREE.Vector3(0, 600, -22000),
 		new THREE.Vector3(0, 600, -25000),
+		new THREE.Vector3(0, 600, -28000),
 	],
 	chapter3: [
-		new THREE.Vector3(0, 250, -26000),
-		new THREE.Vector3( 0, 250, -28900),
-		new THREE.Vector3( 5, 250, -28850)
+		new THREE.Vector3(0, 250, -29000),
+		new THREE.Vector3( 0, 250, -31900),
+		new THREE.Vector3( 5, 250, -31850)
 	],
 	betweenChaptersThreeConclusion: [
-		new THREE.Vector3( 0, 250, -30500),
-		new THREE.Vector3( 0, 250, -35000)
+		new THREE.Vector3( 0, 250, -33500),
+		new THREE.Vector3( 0, 250, -38000)
 	],
 	conclusion: [
-		new THREE.Vector3(0, 250, -36500),
-		new THREE.Vector3(0, 280, -37500),
-		new THREE.Vector3(650, 310, -38500),
-		new THREE.Vector3( 0, 340, -39000),
-		new THREE.Vector3( -650, 370, -38500),
-		new THREE.Vector3( 0, 410, -37500),
-		new THREE.Vector3( 0, 450, -40000)
+		new THREE.Vector3(0, 250, -39500),
+		new THREE.Vector3(0, 280, -40500),
+		new THREE.Vector3(650, 310, -41500),
+		new THREE.Vector3( 0, 340, -42000),
+		new THREE.Vector3( -650, 370, -41500),
+		new THREE.Vector3( 0, 410, -40500),
+		new THREE.Vector3( 0, 450, -43000)
 	]
 }
 
