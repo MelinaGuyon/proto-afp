@@ -33,9 +33,7 @@ class Conclusion {
   }
 
   updateCamera = () => {
-    console.log("CAMERA CONCLUSION", this.state.relatedCamera)
     setTimeout(() => { this.state.relatedCamera.updateMovementRange(1) }, 3000)
-    
   }
 }
 

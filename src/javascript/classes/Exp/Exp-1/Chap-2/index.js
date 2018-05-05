@@ -2,6 +2,7 @@ import ObjectsLoader from './ObjectsLoader'
 import CursorLight from './CursorLight.js'
 import raf from 'raf'
 
+import datas from '../../../../datas/Experience1.js'
 
 class Chapitre2 {
     constructor(options) {
@@ -26,12 +27,15 @@ class Chapitre2 {
 
   init = () => {
     this.displayChapterObjects()
-    this.initLight()
-    this.bind()
 
     return new Promise((resolve, reject) => {
       setTimeout(() => { resolve() }, 500)
     })
+  }
+
+  initInteraction = () => {
+    this.initLight()
+    this.bind()
   }
 
   remove = () => {
@@ -72,10 +76,10 @@ class Chapitre2 {
       this.light.updateCastingShadow(true)
       this.light.updateSphereVisibility(true)
       this.light.updateLightIntensity(1)
-    }, 4000)
+    }, 1000)
     setTimeout(() => {
       Storage.InterfaceClass.cursor.target()
-    }, 4500)
+    }, 2000)
   }
 
   displayChapterObjects = () => {
@@ -100,22 +104,7 @@ class Chapitre2 {
       Storage.SplineClass.unbind()
 
       setTimeout(() => {
-        Storage.Experience1Class.spline.animateAtFirstPoint(
-          [
-          new THREE.Vector3( 600, 250, -21500),
-          new THREE.Vector3( 1200, 250, -22375),
-          new THREE.Vector3( 1200, 250, -23250),
-          new THREE.Vector3( 600, 250, -24125),
-          new THREE.Vector3( 0, 250, -25000),
-          ],
-          [
-          new THREE.Vector3( 0, -Math.PI/2, -Math.PI/4),
-          new THREE.Vector3( 0, 0, 0),
-          new THREE.Vector3( 0, Math.PI/4, Math.PI/4),
-          new THREE.Vector3( 0, Math.PI/2, Math.PI/8),
-          new THREE.Vector3( 0, 0, 0),
-          ],
-          800)
+        Storage.Experience1Class.animateCamera(datas.animations.toChapterThree, 800, this.state.cbAfterInteraction)
       }, 1000)
 
 

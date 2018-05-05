@@ -220,7 +220,6 @@ class ObjectsLoader {
 			this.mtlLoader.load('assets/chapitre1/vrai-ville/vraieville.mtl', (matl) => {
 				matl.preload()
 				this.objLoader.setMaterials( matl )
-				console.log(matl.materials)
 
 				this.objLoader.load( 'assets/chapitre1/vrai-ville/vraieville.obj', (object) => {
 					object.position.x = 1700
@@ -247,7 +246,6 @@ class ObjectsLoader {
 			this.mtlLoader.load('assets/chapitre1/vrai-ville/interaction_volethaut.mtl', (matl) => {
 				matl.preload()
 				this.objLoader.setMaterials( matl )
-				console.log(matl.materials)
 
 				this.objLoader.load( 'assets/chapitre1/vrai-ville/interaction_volethaut.obj', (object) => {
 

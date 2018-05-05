@@ -46,7 +46,7 @@ class Spline {
         complete: () => { this.bind() }
 			})
 
-			if ( this.state.index === 7 ) {
+			if (this.state.forceRotate) {
 				anime({
 					targets: this.state.relatedCamera.camera.rotation,
 					y: 0,
@@ -55,50 +55,6 @@ class Spline {
 				})
 			}
 		}
-
-		animateAtFirstPoint = (pointsArray, rotationsArray, duration) => {
-			this.state.relatedCamera.camera.rotation.set(0, 0, 0)
-			const length = pointsArray.length - 1
-			this.unbind()
-
-			//setTimeout(() => { 
-				map(pointsArray, this.goToPoint(length, rotationsArray, duration)) 
-			//}, 2000)
-		}
-
-		goToPoint = (length, rotationsArray, duration) => (point, index) => {
-    		delay(this.goToPointAfterDelay, duration*index-100, { duration: duration, point: point, index: index, length: length, rotation: rotationsArray[index] });
-  		}
-
-    	goToPointAfterDelay = (obj) => {
-    		anime.remove(this.state.relatedCamera.camera.rotation)
-    		anime.remove(this.state.relatedCamera.camera.position)
-
-    		if ( obj.rotation ) {
-    			anime({
-					targets: this.state.relatedCamera.camera.rotation,
-					x: [this.state.relatedCamera.camera.rotation.x, obj.rotation.x],
-					y: [this.state.relatedCamera.camera.rotation.y, obj.rotation.y],
-					z: [this.state.relatedCamera.camera.rotation.z, obj.rotation.z],
-					duration: obj.duration,
-					easing: 'linear'
-				})
-    		}
-
-		  	anime({
-				targets: this.state.relatedCamera.camera.position,
-				x: obj.point.x,
-				y: obj.point.y,
-				z: obj.point.z,
-				duration: obj.duration,
-				easing: 'linear',
-				complete: () => { 
-					if ( obj.index === obj.length ) {
-						this.state.cbEnd()
-					}
-				}
-			})
-  		}
 
 		handleScroll = (event) => {
 			if (lethargy.check(event) !== false) this.onRealScroll(event)
@@ -125,9 +81,7 @@ class Spline {
 		}
 
 		updateStep = (step) => {
-			console.log("STEP EN COURS", this.state.step)
 			this.state.step = step
-			console.log("STEP EN COURS APRES UPDATE", this.state.step)
 		}
 
 		updateCameraPos = () => {

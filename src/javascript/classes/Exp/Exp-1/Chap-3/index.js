@@ -29,7 +29,6 @@ class Chapitre3 {
   init = () => {
     this.displayChapterObjects()
     this.bind()
-    //setTimeout(() => { this.animate() }, 5000)
     return new Promise((resolve, reject) => {
       setTimeout(() => { resolve() }, 500)
     })
@@ -55,42 +54,32 @@ class Chapitre3 {
   }
 
   animate = () => {
-    let that = this
-
     this.state.relatedCamera.camera.updateMatrix()
     this.state.relatedCamera.camera.updateMatrixWorld()
     this.frustum.setFromMatrix( new THREE.Matrix4().multiplyMatrices( this.state.relatedCamera.camera.projectionMatrix, this.state.relatedCamera.camera.matrixWorldInverse ) )
 
-
-    this.modelsGroup.traverse(function(o) {
+    this.modelsGroup.traverse((o) => {
       if(o.name === "head") {
-        let distance = that.state.relatedCamera.camera.position.z - o.getWorldPosition().z
-        // console.log("object z", o.getWorldPosition().z)
-        // console.log("camera z", that.state.relatedCamera.position.z)
-        // console.log("DISTANCE", distance)
+        let distance = this.state.relatedCamera.camera.position.z - o.getWorldPosition().z
 
         if (o.isAnimating === false) {
+          o.isAnimating = true
+          anime.remove(o.rotation)
 
-          if ( that.frustum.containsPoint( o.getWorldPosition()) && distance < 500 ){
-            o.isAnimating = true
-            anime.remove(o.rotation)
-
+          if ( this.frustum.containsPoint( o.getWorldPosition()) && distance < 500 ){
             anime({
               targets: o.rotation,
               x: [o.rotation.x, Math.PI/2],
-              duration: 1000,
+              duration: 400,
               easing: 'linear',
               complete: () => { o.isAnimating = false }
             })
           }
           else {
-            o.isAnimating = true
-            anime.remove(o.rotation)
-
             anime({
               targets: o.rotation,
               x: [o.rotation.x, 0],
-              duration: 1000,
+              duration: 400,
               easing: 'linear',
               complete: () => {  o.isAnimating = false }
             })

@@ -48,18 +48,9 @@ class Camera {
 			this.camera.position.set(0, 600, 3200)
 
 			this.lookAround && raf.add(this.updateInertia)
-
-			// this.controls = new THREE.OrbitControls( this.camera )
-			// this.controls.minDistance = 0
-			// this.controls.maxDistance = Infinity
-			// this.controls.minPolarAngle = 0
-			// this.controls.maxPolarAngle = Math.PI
-			// this.controls.maxPolarAngle = Math.PI/2
-
 		}
 
 		updateMovementRange = (number, wait = 0) => {
-			console.log("UPDATE CAMERA")
 			setTimeout(() => { this.movmentRange = number }, wait )
 		}
 

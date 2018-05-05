@@ -31,13 +31,11 @@ class Introduction {
   remove = () => {
     setTimeout(() => {
       this.state.relatedBox.remove(this.modelsGroup)
-      console.log(this.state.relatedBox, 'intro')
     }, 4000)
   }
 
   displayChapterObjects = () => {
     this.state.relatedBox.add(this.modelsGroup)
-    console.log(this.state.relatedBox, 'intro')
   }
 
 }

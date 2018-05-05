@@ -44,7 +44,7 @@ class FrontalCity {
 		this.nextStepLaunched = true
 		setTimeout(() => {
 			Storage.Chapitre1Class.step++
-			Storage.Chapitre1Class.state.cbMiddle()
+			Storage.Chapitre1Class.state.cbAfterInteraction()
 			Storage.InterfaceClass.cursor.reset()
 		}, 2000)
 		setTimeout(() => {

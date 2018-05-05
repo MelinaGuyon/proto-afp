@@ -4,6 +4,7 @@ class SplineTimeManager {
     constructor(options) {
 			Storage.SplineTimeManagerClass = this
 			this.state = options
+      this.endDone = false
 
       this.step = 0
       this.actualStepToCheck = 0
@@ -12,11 +13,12 @@ class SplineTimeManager {
     check = (state, index) => {
       if (state > 0.9) {
         console.log('end of actual spline')
-        this.end()
+        !this.endDone && this.end()
+        this.endDone = true
         return
       }
 
-      const stepToCheck = datas.keyPoints[Object.keys(datas.keyPoints)[index]][this.actualStepToCheck]
+      const stepToCheck = datas.keyPointsOnSpline[Object.keys(datas.keyPointsOnSpline)[index]][this.actualStepToCheck]
       if (!stepToCheck) return
       if (state > stepToCheck) this.update(index)
     }

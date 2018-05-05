@@ -1,6 +1,4 @@
 const splines = {
-	enter: [
-	],
 	betweenIntroductionChapterOne: [
 		new THREE.Vector3(0, 600, -6500),
 		new THREE.Vector3( 0, 600, -9000)
@@ -9,28 +7,18 @@ const splines = {
 		new THREE.Vector3(0, 150, -12000),
 		new THREE.Vector3( 0, 150, -16000)
 	],
-	betweenChaptersOneTwo: [
-		new THREE.Vector3(0, 400, -17000),
-		new THREE.Vector3(0, 400, -19500),
-	],
 	chapter2: [
+		new THREE.Vector3(0, 400, -17000),
 		new THREE.Vector3(0, 250, -21000),
-		new THREE.Vector3(0, 250, -21050),
-	],
-	betweenChaptersTwoThree: [
-		new THREE.Vector3(0, 600, -25000),
-		new THREE.Vector3(0, 600, -28000),
 	],
 	chapter3: [
-		new THREE.Vector3(0, 250, -29000),
+		new THREE.Vector3(0, 600, -25000),
+		new THREE.Vector3(0, 200, -29000),
 		new THREE.Vector3( 0, 250, -31900),
 		new THREE.Vector3( 5, 250, -31850)
 	],
-	betweenChaptersThreeConclusion: [
-		new THREE.Vector3( 0, 250, -33500),
-		new THREE.Vector3( 0, 250, -38000)
-	],
 	conclusion: [
+		new THREE.Vector3( 0, 250, -33500),
 		new THREE.Vector3(0, 250, -39500),
 		new THREE.Vector3(0, 280, -40500),
 		new THREE.Vector3(650, 310, -41500),
@@ -41,15 +29,48 @@ const splines = {
 	]
 }
 
-const keyPoints = {
-	enter: [],
+const animations = {
+	enter: [
+		[
+			new THREE.Vector3( 0, 950, 2000),
+			new THREE.Vector3( 0, 900, 320),
+			new THREE.Vector3( 0, 600, -1360),
+			new THREE.Vector3( 0, 600, -3040),
+			new THREE.Vector3( 0, 600, -4720),
+			new THREE.Vector3( 0, 600, -6400)
+		],
+		[
+			new THREE.Vector3( 0, 0, Math.PI/3),
+			new THREE.Vector3( 0, 0, Math.PI/3*2),
+			new THREE.Vector3( 0, 0, Math.PI/3*3),
+			new THREE.Vector3( 0, 0, Math.PI/3*4),
+			new THREE.Vector3( 0, 0, Math.PI/3*5),
+			new THREE.Vector3( 0, 0, Math.PI/3*6)
+		]
+	],
+	toChapterThree: [
+		[
+			new THREE.Vector3( 600, 250, -21500),
+			new THREE.Vector3( 1200, 250, -22375),
+			new THREE.Vector3( 1200, 250, -23250),
+			new THREE.Vector3( 600, 250, -24125),
+			new THREE.Vector3( 0, 250, -25000),
+		],
+		[
+			new THREE.Vector3( 0, -Math.PI/2, -Math.PI/4),
+			new THREE.Vector3( 0, 0, 0),
+			new THREE.Vector3( 0, Math.PI/4, Math.PI/4),
+			new THREE.Vector3( 0, Math.PI/2, Math.PI/8),
+			new THREE.Vector3( 0, 0, 0),
+		]
+	]
+}
+
+const keyPointsOnSpline = {
 	betweenIntroductionChapterOne: [.00001, .5, .6, .7],
 	chapter1: [.1, .3, .5, .7],
-	betweenChaptersOneTwo: [.4],
-	chapter2: [.01, .1, .5, .7],
-	betweenChaptersTwoThree: [],
-	chapter3: [.05, .3, .45, .7],
-	betweenChaptersThreeConclusion: [.5],
+	chapter2: [.01, .1, .2, .5, .7],
+	chapter3: [.05, .3, .65, .9],
 	conclusion: [.001, .3, .75]
 }
 
@@ -71,10 +92,10 @@ const conclusions =  [
 
 // number of spline, spline index begining
 const timelineIndicators = [
-	['CH 1  &nbsp/', 'L\'envers du décors', 3],
-	['CH 2  &nbsp/', 'L\'armée protectrice', 2],
-	['CH 3  &nbsp/', 'Les classes sociales', 2],
-	['END  &nbsp&nbsp/', '', 2]
+	['CH 1  &nbsp/', 'L\'envers du décors', 2],
+	['CH 2  &nbsp/', 'L\'armée protectrice', 1],
+	['CH 3  &nbsp/', 'Les classes sociales', 1],
+	['END  &nbsp&nbsp/', '', 1]
 ]
 
 const subtitles = [
@@ -197,7 +218,8 @@ const actus = [
 
 export default {
   splines,
-	keyPoints,
+	animations,
+	keyPointsOnSpline,
 	textsPanel,
 	subtitles,
 	voiceOver,

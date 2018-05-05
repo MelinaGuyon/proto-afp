@@ -17,13 +17,11 @@ class HeightMap {
 	    return new Promise((resolve, reject) => {
 	    	this.loadLights().then((response)=> {
 		  		this.loadShader("../../../glsl/testVert.vert", "../../../glsl/testFrag.frag").then((response)=> {
-	    		    console.log('heightmap loaded')
 	    		    resolve(this.group)
 		  		}).catch((error)=> { console.warn(error) })
 		  	}).catch((error)=> { console.warn(error) })
 	    })
 	}
-
 
   	loadShader = (vertex_url, fragment_url) => {
 		let that = this
@@ -68,48 +66,43 @@ class HeightMap {
 
 		    plane.position.y = 100
 		    plane.position.z = 4800
-			plane.rotation.x = Math.PI / 2
-			plane.rotation.z = Math.PI
+				plane.rotation.x = Math.PI / 2
+				plane.rotation.z = Math.PI
 
-			plane.castShadow = true
-			plane.receiveShadow = true
-
-			this.group.add(plane)
-
-			resolve()
-
-		})
+				plane.castShadow = true
+				plane.receiveShadow = true
+				this.group.add(plane)
+				resolve()
+			})
     }
 
     loadLights = () => {
     	return new Promise((resolve, reject) => {
 
 	    	let light1 = new THREE.PointLight(0xfdffd8, 0.5, 0, 2)
-			light1.position.set(-500, -600, 8000)
-			//light1.rotation.set(0, Math.PI, Math.PI)
-			light1.castShadow = true
-			this.state.relatedBox.add(light1)
-			//this.group.add(light1)
+				light1.position.set(-500, -600, 8000)
+				//light1.rotation.set(0, Math.PI, Math.PI)
+				light1.castShadow = true
+				this.state.relatedBox.add(light1)
+				//this.group.add(light1)
 
-			let sphereSize = 100
-			let pointLightHelper = new THREE.PointLightHelper( light1, sphereSize )
-			this.state.relatedBox.add( pointLightHelper )
+				let sphereSize = 100
+				let pointLightHelper = new THREE.PointLightHelper( light1, sphereSize )
+				// this.state.relatedBox.add( pointLightHelper )
 
+		    let light2 = new THREE.PointLight(0x99caff, 0.5, 0, 2)
+				light2.position.set(500, -200, 7000)
+				//light2.rotation.set(0, Math.PI, Math.PI)
+				light2.castShadow = true
+				this.state.relatedBox.add(light2)
+				//this.group.add(light1)
 
-	    	let light2 = new THREE.PointLight(0x99caff, 0.5, 0, 2)
-			light2.position.set(500, -200, 7000)
-			//light2.rotation.set(0, Math.PI, Math.PI)
-			light2.castShadow = true
-			this.state.relatedBox.add(light2)
-			//this.group.add(light1)
+				let sphereSize2 = 100
+				let pointLightHelper2 = new THREE.PointLightHelper( light2, sphereSize2 )
+				// this.state.relatedBox.add( pointLightHelper2 )
 
-			let sphereSize2 = 100
-			let pointLightHelper2 = new THREE.PointLightHelper( light2, sphereSize2 )
-			this.state.relatedBox.add( pointLightHelper2 )
-
-			resolve()
-
-		})
+				resolve()
+			})
     }
 
 
