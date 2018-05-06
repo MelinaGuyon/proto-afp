@@ -1,6 +1,7 @@
 import variables from './variables.scss';
 
 import main from './main.scss';
+import intro from './intro.scss';
 import home from './home.scss';
 import chapters from './chapters.scss';
 import cursor from './cursor.scss';

@@ -31,7 +31,7 @@ class HeightMap {
 		    this.uniforms = THREE.UniformsUtils.merge([
 		        THREE.ShaderLib.lambert.uniforms,
 		        { diffuse: { value: new THREE.Color(0xffffff) } },
-		    	{ texture: { type: "t", value: THREE.ImageUtils.loadTexture( 'assets/texture.png' ) } }
+		    	{ texture: { type: "t", value: THREE.ImageUtils.loadTexture( 'assets/shaders/heightmap/texture.png' ) } }
 		    ]);
 
 		    this.vertex_loader.load(vertex_url, function (vertex_text) {

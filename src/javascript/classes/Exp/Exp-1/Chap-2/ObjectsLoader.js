@@ -66,7 +66,7 @@ class ObjectsLoader {
   loadPeople = () => {
     return new Promise((resolve, reject) => {
       let that = this
-      that.objLoader.load( 'assets/chapitre2/soldat_amultiplier.obj', function ( body ) {
+      that.objLoader.load( 'assets/models/chapitre2/soldat_amultiplier.obj', function ( body ) {
           for ( let i = 0; i < 5; i ++ ) {
             for ( let j = 0; j < 3; j ++ ) {
                   let bodyInstance = body.clone()
@@ -77,7 +77,7 @@ class ObjectsLoader {
                   bodyInstance.passed = false
                   bodyInstance.castShadow = false
                   that.peopleGroup.add( bodyInstance )
-              }   
+              }
           }
           that.group.add( that.peopleGroup )
           resolve()
@@ -92,7 +92,7 @@ class ObjectsLoader {
         let matl = new THREE.ShadowMaterial({ fog: false })
         matl.opacity = 0
 
-        that.objLoader.load( 'assets/chapitre2/ombre_soldats.obj', function ( object ) {
+        that.objLoader.load( 'assets/models/chapitre2/ombre_soldats.obj', function ( object ) {
           object.scale.x = 2
           object.scale.y = 2
           object.scale.z = 2

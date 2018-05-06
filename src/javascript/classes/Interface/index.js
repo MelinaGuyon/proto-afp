@@ -3,6 +3,7 @@ import TextWritting from './TextWritting.js'
 import TimelineExp from './TimelineExp.js'
 import Subtitles from './Subtitles.js'
 import Cursor from './Cursor.js'
+import Intro from './Intro.js'
 import ActusAFP from './ActusAFP.js'
 
 class Interface {
@@ -13,6 +14,7 @@ class Interface {
 
     init() {
       this.cursor = new Cursor()
+      this.intro = new Intro()
 		}
 
     displayExpInterface = () => {

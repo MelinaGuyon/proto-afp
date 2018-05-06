@@ -1,18 +1,18 @@
 const MTLLoader = require('three-mtl-loader')
 
 class ObjectsLoader {
-	constructor(options) {  
+	constructor(options) {
 		this.mtlLoader = new MTLLoader()
 	  	this.objLoader = new THREE.OBJLoader()
 	  	this.textureLoader = new THREE.TextureLoader()
 		this.mtlLoader.manager = new THREE.LoadingManager()
-		
+
 		this.init()
 	}
 
 	init = () => {
 	    this.group = new THREE.Group()
-			
+
 	    this.group.position.y = -790
 	    this.group.position.z = -600
 	}
@@ -42,11 +42,11 @@ class ObjectsLoader {
 		return new Promise((resolve, reject) => {
 			let that = this
 
-			this.mtlLoader.load('assets/introduction/drapeaux.mtl', (drapeauxMatl) => {
+			this.mtlLoader.load('assets/models/introduction/drapeaux.mtl', (drapeauxMatl) => {
 				drapeauxMatl.preload()
 				this.objLoader.setMaterials( drapeauxMatl )
-				
-				that.objLoader.load( 'assets/introduction/drapeaux.obj', function ( drapeaux ) {
+
+				that.objLoader.load( 'assets/models/introduction/drapeaux.obj', function ( drapeaux ) {
 					drapeaux.position.y = 500
 					drapeaux.position.z = 2500
 					drapeaux.scale.set(5, 5, 5)
@@ -62,11 +62,11 @@ class ObjectsLoader {
 		return new Promise((resolve, reject) => {
 			let that = this
 
-			this.mtlLoader.load('assets/introduction/texte.mtl', (texteMatl) => {
+			this.mtlLoader.load('assets/models/introduction/texte.mtl', (texteMatl) => {
 				texteMatl.preload()
 				this.objLoader.setMaterials( texteMatl )
-				
-				that.objLoader.load( 'assets/introduction/texte.obj', function ( texte ) {
+
+				that.objLoader.load( 'assets/models/introduction/texte.obj', function ( texte ) {
 					texte.position.y = 500
 					texte.position.z = -1500
 					texte.position.x = 800
@@ -83,11 +83,11 @@ class ObjectsLoader {
 		return new Promise((resolve, reject) => {
 			let that = this
 
-			this.mtlLoader.load('assets/introduction/missiles.mtl', (missilesMatl) => {
+			this.mtlLoader.load('assets/models/introduction/missiles.mtl', (missilesMatl) => {
 				missilesMatl.preload()
 				this.objLoader.setMaterials( missilesMatl )
-				
-				that.objLoader.load( 'assets/introduction/missiles.obj', function ( missiles ) {
+
+				that.objLoader.load( 'assets/models/introduction/missiles.obj', function ( missiles ) {
 					missiles.position.y = 250
 					missiles.position.z = -1900
 					missiles.position.x = 800
@@ -104,11 +104,11 @@ class ObjectsLoader {
 		return new Promise((resolve, reject) => {
 			let that = this
 
-			this.mtlLoader.load('assets/introduction/texte2.mtl', (texte2Matl) => {
+			this.mtlLoader.load('assets/models/introduction/texte2.mtl', (texte2Matl) => {
 				texte2Matl.preload()
 				this.objLoader.setMaterials( texte2Matl )
-				
-				that.objLoader.load( 'assets/introduction/texte2.obj', function ( texte2 ) {
+
+				that.objLoader.load( 'assets/models/introduction/texte2.obj', function ( texte2 ) {
 					texte2.position.y = 700
 					texte2.position.z = -3500
 					texte2.position.x = -300
@@ -126,11 +126,11 @@ class ObjectsLoader {
 		return new Promise((resolve, reject) => {
 			let that = this
 
-			this.mtlLoader.load('assets/introduction/tank.mtl', (tankMatl) => {
+			this.mtlLoader.load('assets/models/introduction/tank.mtl', (tankMatl) => {
 				tankMatl.preload()
 				this.objLoader.setMaterials( tankMatl )
-				
-				that.objLoader.load( 'assets/introduction/tank.obj', function ( tank ) {
+
+				that.objLoader.load( 'assets/models/introduction/tank.obj', function ( tank ) {
 					tank.position.y = 150
 					tank.position.z = -3500
 					tank.position.x = -800
@@ -148,11 +148,11 @@ class ObjectsLoader {
 		return new Promise((resolve, reject) => {
 			let that = this
 
-			this.mtlLoader.load('assets/introduction/batiment.mtl', (batimentMatl) => {
+			this.mtlLoader.load('assets/models/introduction/batiment.mtl', (batimentMatl) => {
 				batimentMatl.preload()
 				this.objLoader.setMaterials( batimentMatl )
-				
-				that.objLoader.load( 'assets/introduction/batiment.obj', function ( batiment ) {
+
+				that.objLoader.load( 'assets/models/introduction/batiment.obj', function ( batiment ) {
 					batiment.position.y = 500
 					batiment.position.z = -4000
 					batiment.position.x = 300
