@@ -62,8 +62,7 @@ class Experience1 {
 
 		init = () => {
       Storage.InterfaceClass.displayExpInterface()
-      Storage.HiddingPanelClass.hidePanel()
-
+      
       this.animateCamera(datas.animations.enter, 800, this.betweenIntroductionChapterOne)
 
       // to test

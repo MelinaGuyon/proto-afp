@@ -64,7 +64,7 @@ class ActusAFP {
 
     const img = document.createElement('img')
     img.classList.add('img')
-    img.setAttribute('src', 'assets/actusAFP/title.png')
+    img.setAttribute('src', 'assets/interface/actusAFP/title.png')
     const title = document.createElement('div')
     title.classList.add('title')
     title.innerHTML = actu.title
