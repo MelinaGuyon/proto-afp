@@ -59,9 +59,12 @@ class Carousel {
 
 
 	handleClick = (event) => {
-		if (this.index == 0) Storage.Experience1Class.init()
-		if (this.index == 1) Storage.Experience2Class.init()
 		this.unbind()
+    this.hideInfo()
+    setTimeout(() => {
+      if (this.index == 0) Storage.Experience1Class.init()
+  		if (this.index == 1) Storage.Experience2Class.init()
+    }, 600)
 	}
 
 	updateExpName = () => {
@@ -73,6 +76,12 @@ class Carousel {
     this.updateExpName()
   }
 
+  hideInfo = () => {
+    this.updateBackground(stop)
+    this.updatePaper(stop)
+    this.updateBlack(stop)
+  }
+
   updateInfo = () => {
     this.updateRender()
     this.updateBackground()
@@ -80,7 +89,7 @@ class Carousel {
     this.updateBlack()
   }
 
-  updateBlack = () => {
+  updateBlack = (stop) => {
     anime({
       targets: this.black,
       translateX: -300,
@@ -88,6 +97,7 @@ class Carousel {
       delay: 100,
       easing: 'easeInOutQuad',
       complete: () => {
+        if (stop) return
         anime({
           targets: this.black,
           translateX: 0,
@@ -99,7 +109,7 @@ class Carousel {
     })
   }
 
-  updateBackground = () => {
+  updateBackground = (stop) => {
     const color = datas.backgrounds[Storage.expName]
 
     anime({
@@ -108,6 +118,7 @@ class Carousel {
       duration: 400,
       easing: 'easeInOutQuad',
       complete: () => {
+        if (stop) return
         this.background.style.opacity = 1
         this.background.style.backgroundColor = color
         anime({
@@ -126,7 +137,7 @@ class Carousel {
     this.title.setAttribute('src', datasHome.titles[Storage.expName])
   }
 
-  updatePaper = () => {
+  updatePaper = (stop) => {
     anime({
       targets: this.paper,
       translateY: ['-50%', '-50%'],
@@ -134,6 +145,7 @@ class Carousel {
       duration: 400,
       easing: 'easeInOutQuad',
       complete: () => {
+        if (stop) return
         this.infosButton.classList.remove('is-animated')
         this.updateContent()
         this.animeButton()
