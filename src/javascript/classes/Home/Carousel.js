@@ -22,8 +22,8 @@ class Carousel {
 	}
 
 	unbind() {
-		window.removeEventListener('click', this.handleClick, false)
-		this.carousel.removeEventListener('mousewheel', this.handleScroll, false)
+		this.carousel.removeEventListener('click', this.handleClick, false)
+		window.removeEventListener('mousewheel', this.handleScroll, false)
 	}
 
 	handleScroll = (event) => {

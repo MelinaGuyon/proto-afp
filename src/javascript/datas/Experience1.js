@@ -30,21 +30,22 @@ const splines = {
 }
 
 const animations = {
+	// moins il y a de points, moins ça s'accade, donc à voir si il faut vraiment en garder pour enter :
 	enter: [
 		[
-			new THREE.Vector3( 0, 950, 2000),
-			new THREE.Vector3( 0, 900, 320),
-			new THREE.Vector3( 0, 600, -1360),
-			new THREE.Vector3( 0, 600, -3040),
-			new THREE.Vector3( 0, 600, -4720),
+			// new THREE.Vector3( 0, 950, 2000),
+			// new THREE.Vector3( 0, 900, 320),
+			// new THREE.Vector3( 0, 600, -1360),
+			// new THREE.Vector3( 0, 600, -3040),
+			// new THREE.Vector3( 0, 600, -4720),
 			new THREE.Vector3( 0, 600, -6400)
 		],
 		[
-			new THREE.Vector3( 0, 0, Math.PI/3),
-			new THREE.Vector3( 0, 0, Math.PI/3*2),
-			new THREE.Vector3( 0, 0, Math.PI/3*3),
-			new THREE.Vector3( 0, 0, Math.PI/3*4),
-			new THREE.Vector3( 0, 0, Math.PI/3*5),
+			// new THREE.Vector3( 0, 0, Math.PI/3),
+			// new THREE.Vector3( 0, 0, Math.PI/3*2),
+			// new THREE.Vector3( 0, 0, Math.PI/3*3),
+			// new THREE.Vector3( 0, 0, Math.PI/3*4),
+			// new THREE.Vector3( 0, 0, Math.PI/3*5),
 			new THREE.Vector3( 0, 0, Math.PI/3*6)
 		]
 	],

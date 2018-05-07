@@ -25,6 +25,8 @@ class Animate {
   		anime.remove(this.state.relatedCamera.camera.rotation)
   		anime.remove(this.state.relatedCamera.camera.position)
 
+      const easing = obj.index === obj.length ? 'easeInOutQuad' : 'linear'
+
   		if ( obj.rotation ) {
     		anime({
   				targets: this.state.relatedCamera.camera.rotation,
@@ -32,7 +34,7 @@ class Animate {
   				y: [this.state.relatedCamera.camera.rotation.y, obj.rotation.y],
   				z: [this.state.relatedCamera.camera.rotation.z, obj.rotation.z],
   				duration: obj.duration,
-  				easing: 'linear'
+  				easing
   			})
   		}
 
@@ -42,7 +44,7 @@ class Animate {
     		y: obj.point.y,
     		z: obj.point.z,
     		duration: obj.duration,
-    		easing: 'linear',
+    		easing,
     		complete: () => {
     			if ( obj.index === obj.length ) {
     				this.cb && this.cb()

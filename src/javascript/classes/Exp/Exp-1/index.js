@@ -62,8 +62,8 @@ class Experience1 {
 
 		init = () => {
       Storage.InterfaceClass.displayExpInterface()
-      
-      this.animateCamera(datas.animations.enter, 800, this.betweenIntroductionChapterOne)
+
+      this.animateCamera(datas.animations.enter, 4000, this.betweenIntroductionChapterOne)
 
       // to test
       // this.splineIndex = 3
@@ -158,7 +158,7 @@ class Experience1 {
     }
 
     animateCamera = (opt, time, cb) => {
-      this.anime.animateAtFirstPoint(opt[0], opt[1], 800, cb)
+      this.anime.animateAtFirstPoint(opt[0], opt[1], time, cb)
     }
 }
 
