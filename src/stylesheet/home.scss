@@ -45,7 +45,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    min-width: 800px;
+    width: 100%;
     height: 100%;
 
     .form-black {
@@ -58,6 +58,10 @@
       background-repeat: no-repeat;
       background-size: auto 100%;
       background-position-x: -70px;
+
+      @media screen and (min-height: 1200px) and (max-width: 800px) {
+        background-position-x: -130px;
+      }
     }
 
     .form-red {
@@ -72,29 +76,64 @@
     }
 
     .form-paper {
-      top: -16%;
       left: 0;
       position: absolute;
-      width: 100%;
-      height: 135%;
-      background-image: url('../assets/interface/carousel/form-paper.png');
-      background-repeat: no-repeat;
-      background-size: auto 100%;
-      background-position-x: -120px;
+      width: 700px;
+      min-height: 100%;
+      height: 1000px;
+      top: 50%;
+      transform: translateY(-50%);
+
+      @media screen and (max-height: 1024px) {
+        width: 600px;
+        left: -50px;
+      }
+
+      @media screen and (max-height: 800px) {
+        width: 500px;
+        left: -50px;
+      }
+
+      @media screen and (max-height: 600px) {
+        width: 600px;
+        left: -100px;
+      }
+
+      @media screen and (max-width: 1300px) {
+        width: 600px;
+        left: -30px;
+      }
+
+      .form-paper-img {
+        position: absolute;
+        top: -10%;
+        height: 120%;
+        width: 100%;
+        right: 0;
+      }
 
       .content {
-        position: relative;
-        width: 40%;
-        height: auto;
+        position: absolute;
+        width: 50%;
+        right: 0;
         top: 50%;
-        left: 15%;
-        transform: translateY(-30%);
+        transform: translateX(-30%) translateY(-35%);
+        height: auto;
         display: flex;
         flex-direction: column;
 
+        @media screen and (max-height: 800px) {
+          transform: translateX(-30%) translateY(-45%);
+        }
+
         .title {
           align-self: flex-end;
-          margin-bottom: 60px;
+          margin-bottom: 100px;
+          width: 80%;
+
+          @media screen and (max-height: 800px) {
+            margin-bottom: 50px;
+          }
         }
 
         .text {
