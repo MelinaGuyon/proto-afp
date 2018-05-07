@@ -3,6 +3,7 @@ import { Lethargy } from 'lethargy'
 import { throttle } from 'lodash'
 
 import datas from '../../datas/Colors.js'
+import datasHome from '../../datas/Home.js'
 
 const lethargy = new Lethargy()
 
@@ -16,6 +17,8 @@ class Carousel {
 
     this.init()
 		this.bind()
+    this.updateContent()
+    this.animeButton()
   }
 
   init = () => {
@@ -23,7 +26,10 @@ class Carousel {
     this.infosButton = this.infos.querySelector('button')
     this.background = this.infos.querySelector('.background')
     this.paper = this.infos.querySelector('.form-paper')
+    this.black = this.infos.querySelector('.form-black')
     this.content = this.paper.querySelector('.content')
+    this.title = this.paper.querySelector('.title')
+    this.text = this.paper.querySelector('.text')
   }
 
   bind() {
@@ -71,45 +77,66 @@ class Carousel {
     this.updateRender()
     this.updateBackground()
     this.updatePaper()
+    this.updateBlack()
+  }
+
+  updateBlack = () => {
+    anime({
+      targets: this.black,
+      translateX: -300,
+      duration: 300,
+      delay: 100,
+      easing: 'easeInOutQuad',
+      complete: () => {
+        anime({
+          targets: this.black,
+          translateX: 0,
+          duration: 400,
+          delay: 400,
+          easing: 'easeInOutQuad'
+        })
+      }
+    })
   }
 
   updateBackground = () => {
     const color = datas.backgrounds[Storage.expName]
+
     anime({
       targets: this.background,
-      opacity: 0,
-      duration: 100,
-      easing: 'easeInQuad',
+      translateX: -700,
+      duration: 400,
+      easing: 'easeInOutQuad',
       complete: () => {
+        this.background.style.opacity = 1
+        this.background.style.backgroundColor = color
         anime({
           targets: this.background,
-          scaleY: 0,
-          duration: 100,
-          easing: 'linear',
-          complete: () => {
-            this.background.style.opacity = 1
-            this.background.style.backgroundColor = color
-            anime({
-              targets: this.background,
-              scaleY: 1,
-              duration: 600,
-              delay: 600,
-              easing: 'easeOutQuad'
-            })
-          }
+          translateX: 0,
+          duration: 400,
+          delay: 200,
+          easing: 'easeInOutQuad'
         })
       }
     })
+  }
+
+  updateContent = () => {
+    this.text.innerHTML = datasHome.texts[Storage.expName]
+    this.title.setAttribute('src', datasHome.titles[Storage.expName])
   }
 
   updatePaper = () => {
     anime({
       targets: this.paper,
       translateY: ['-50%', '-50%'],
-      translateX: -400,
+      translateX: -700,
       duration: 400,
       easing: 'easeInOutQuad',
       complete: () => {
+        this.infosButton.classList.remove('is-animated')
+        this.updateContent()
+        this.animeButton()
         anime({
           targets: this.paper,
           translateY: ['-50%', '-50%'],
@@ -120,22 +147,10 @@ class Carousel {
         })
       }
     })
+  }
 
-    anime({
-      targets: this.content,
-      opacity: 0,
-      duration: 400,
-      easing: 'easeOutQuad',
-      complete: () => {
-        anime({
-          targets: this.content,
-          opacity: 1,
-          duration: 400,
-          delay: 400,
-          easing: 'easeOutQuad',
-        })
-      }
-    })
+  animeButton = () => {
+    setTimeout(() => { this.infosButton.classList.add('is-animated') }, 800)
   }
 
 }

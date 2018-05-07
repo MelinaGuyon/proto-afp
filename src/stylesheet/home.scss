@@ -67,12 +67,11 @@
     }
 
     .background {
-      left: 0;
       position: absolute;
-      width: 400px;
+      width: 300px;
       height: 100%;
       background-color: #C40202;
-      transform-origin: bottom;
+      transform-origin: right;
       z-index: 1;
     }
 
@@ -154,20 +153,48 @@
           width: 70%;
           height: 40px;
           text-transform: uppercase;
-          background-color: black;
-          border: none;
+          // background-color: black;
+          background-color: transparent;
+          border: 1px solid black;
           letter-spacing: 1px;
           font-family: westeindeBold;
-          color: white;
+          color: black;
+          position: relative;
           cursor: none;
+          padding: 0;
           pointer-events: all;
           outline: none;
-          transition: background-color .6s $circ-ease-in-out, border .6s $circ-ease-in-out, color .6s $circ-ease-in-out;
+          transition: color .6s $circ-ease-in-out;
 
-          &:hover {
-            background-color: transparent;
-            border: 1px solid #222;
+          &.is-animated {
+            color: white;
+
+            div {
+              transform: scaleX(1);
+              transition: transform .6s $circ-ease-in-out;
+            }
+          }
+
+          &.is-animated:hover {
             color: black;
+
+            div {
+              transform: scaleX(0);
+              transition: transform .6s $circ-ease-in-out;
+            }
+          }
+
+          div {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            transform: scaleX(0);
+            transform-origin: left;
+            position: absolute;
+            z-index: -1;
+            transition: transform .2s $circ-ease-in-out;
           }
         }
 
