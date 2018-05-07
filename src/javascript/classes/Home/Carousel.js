@@ -2,6 +2,7 @@ import anime from 'animejs'
 import { Lethargy } from 'lethargy'
 import { throttle } from 'lodash'
 
+import datas from '../../datas/Colors.js'
 
 const lethargy = new Lethargy()
 
@@ -20,6 +21,8 @@ class Carousel {
   init = () => {
     this.infos = document.querySelector('.home__interface')
     this.infosButton = this.infos.querySelector('button')
+    this.background = this.infos.querySelector('.background')
+    this.paper = this.infos.querySelector('.form-paper')
   }
 
   bind() {
@@ -44,12 +47,8 @@ class Carousel {
 	  this.index = Math.max(Math.min(this.index + update, this.numberItems - 1), 0)
 
     if (oldIndex === this.index) return
-    Storage.ComposerClass.effectBetweenCarousel(this.index + 1)
-    this.updateExpName()
-
-    // if (update > 0) avanceCarousel
-    // else reculeCarousel
-
+    this.updateInfo()
+    this.updateInfo()
 	}, 1000, {leading: true, trailing: false})
 
 
@@ -61,6 +60,65 @@ class Carousel {
 
 	updateExpName = () => {
 		Storage.expName = 'exp' + (this.index + 1)
+  }
+
+  updateRender = () => {
+    Storage.ComposerClass.effectBetweenCarousel(this.index + 1)
+    this.updateExpName()
+  }
+
+  updateInfo = () => {
+    this.updateRender()
+    this.updateBackground()
+    this.updatePaper()
+  }
+
+  updateBackground = () => {
+    const color = datas.backgrounds[Storage.expName]
+    anime({
+      targets: this.background,
+      opacity: 0,
+      duration: 100,
+      easing: 'easeInQuad'
+    })
+  }
+
+  updatePaper = () => {
+    const color = datas.backgrounds[Storage.expName]
+    anime({
+      targets: this.paper,
+      translateY: ['-50%', '-50%'],
+      translateX: -700,
+      opacity: 0,
+      duration: 400,
+      easing: 'easeInQuad',
+      complete: () => {
+        anime({
+          targets: this.paper,
+          translateY: ['-50%', '-50%'],
+          translateX: 0,
+          duration: 400,
+          delay: 500,
+          easing: 'easeOutQuad'
+        })
+        anime({
+          targets: this.paper,
+          opacity: 1,
+          delay: 500,
+          duration: 600,
+          easing: 'easeOutQuad',
+          complete: () => {
+            anime({
+              targets: this.background,
+              backgroundColor: color,
+              opacity: 1,
+              duration: 400,
+              easing: 'easeOutQuad',
+            })
+          }
+        })
+      }
+    })
   }
 
 }

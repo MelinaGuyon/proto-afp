@@ -72,15 +72,15 @@ class Ambiance {
 
           that.backgroundUniforms = THREE.UniformsUtils.merge([
             THREE.ShaderLib.lambert.uniforms,
-            { specular: { value: new THREE.Color(0x1b1b1b) } },
+            { specular: { value: new THREE.Color(0xffffff) } },
             { emissive: { value: new THREE.Color(0x000000) } },
             { shininess : { value: 5 } },
             { hue : { value: 1 } },
             { u_time: { type: "f", value: 1.0 } },
             { u_resolution: { type: "v2", value: new THREE.Vector2(1024, 768) } },
             { u_mouse: { type: "v2", value: new THREE.Vector2() } },
-            { u_color1: { value: new THREE.Color(0x9b202d) } },
-            { u_color2: { value: new THREE.Color(0x19050a) } }
+            { u_color1: { value: new THREE.Color(0x6132db) } },
+            { u_color2: { value: new THREE.Color(0xbea8f7) } }
           ]);
 
           let material = new THREE.ShaderMaterial( {
