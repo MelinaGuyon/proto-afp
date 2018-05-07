@@ -23,6 +23,7 @@ class Carousel {
     this.infosButton = this.infos.querySelector('button')
     this.background = this.infos.querySelector('.background')
     this.paper = this.infos.querySelector('.form-paper')
+    this.content = this.paper.querySelector('.content')
   }
 
   bind() {
@@ -47,7 +48,6 @@ class Carousel {
 	  this.index = Math.max(Math.min(this.index + update, this.numberItems - 1), 0)
 
     if (oldIndex === this.index) return
-    this.updateInfo()
     this.updateInfo()
 	}, 1000, {leading: true, trailing: false})
 
@@ -79,43 +79,60 @@ class Carousel {
       targets: this.background,
       opacity: 0,
       duration: 100,
-      easing: 'easeInQuad'
+      easing: 'easeInQuad',
+      complete: () => {
+        anime({
+          targets: this.background,
+          scaleY: 0,
+          duration: 100,
+          easing: 'linear',
+          complete: () => {
+            this.background.style.opacity = 1
+            this.background.style.backgroundColor = color
+            anime({
+              targets: this.background,
+              scaleY: 1,
+              duration: 600,
+              delay: 600,
+              easing: 'easeOutQuad'
+            })
+          }
+        })
+      }
     })
   }
 
   updatePaper = () => {
-    const color = datas.backgrounds[Storage.expName]
     anime({
       targets: this.paper,
       translateY: ['-50%', '-50%'],
-      translateX: -700,
-      opacity: 0,
+      translateX: -400,
       duration: 400,
-      easing: 'easeInQuad',
+      easing: 'easeInOutQuad',
       complete: () => {
         anime({
           targets: this.paper,
           translateY: ['-50%', '-50%'],
           translateX: 0,
           duration: 400,
-          delay: 500,
-          easing: 'easeOutQuad'
+          delay: 200,
+          easing: 'easeInOutQuad'
         })
+      }
+    })
+
+    anime({
+      targets: this.content,
+      opacity: 0,
+      duration: 400,
+      easing: 'easeOutQuad',
+      complete: () => {
         anime({
-          targets: this.paper,
+          targets: this.content,
           opacity: 1,
-          delay: 500,
-          duration: 600,
+          duration: 400,
+          delay: 400,
           easing: 'easeOutQuad',
-          complete: () => {
-            anime({
-              targets: this.background,
-              backgroundColor: color,
-              opacity: 1,
-              duration: 400,
-              easing: 'easeOutQuad',
-            })
-          }
         })
       }
     })
