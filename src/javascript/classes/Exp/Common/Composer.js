@@ -89,6 +89,43 @@ class Composer {
       })
     }
 
+    effectBetweenCarousel = (index) => {
+      this.isActive = true
+      anime.remove(this.composer.passes[1].uniforms.u_ratio)
+      anime({
+        targets: this.composer.passes[1].uniforms.u_ratio,
+        value: [0.05],
+        duration: 400,
+        easing: 'easeOutQuad',
+        complete: () => {
+          anime({
+            targets: this.composer.passes[1].uniforms.u_ratio,
+            value: 0.,
+            duration: 500,
+            delay: 100,
+            easing: 'easeOutQuad',
+            complete: () => { this.isActive = false }
+          })
+        }
+      })
+      anime({
+        targets: this.composer.passes[1].uniforms.u_fade,
+        value: 1.,
+        duration: 400,
+        easing: 'easeOutQuad',
+        complete: () => {
+          this.composer.passes[0] = new RenderPass(Storage.SceneClasses['exp'+index].scene, Storage.CameraClasses['exp'+index].camera)
+          anime({
+            targets: this.composer.passes[1].uniforms.u_fade,
+            value: 0.,
+            duration: 500,
+            delay: 100,
+            easing: 'easeOutQuad'
+          })
+        }
+      })
+    }
+
     resize = debounce(() => {
   		this.composer.passes[1].uniforms.u_resolution.value = new THREE.Vector2(window.innerWidth, window.innerHeight)
   	}, 200, { leading: true, trailing: true })
