@@ -27,10 +27,13 @@ class Chapitre1 {
 
   init = () => {
     this.displayChapterObjects()
-    this.bind()
 
     //this.heightMap = new HeightMap({relatedBox: this.state.relatedBox})
     this.frontalCity = new FrontalCity({ objectsGroup: this.modelsGroup })
+  }
+
+  initInteraction = () => {
+    this.bind()
   }
 
   remove = () => {

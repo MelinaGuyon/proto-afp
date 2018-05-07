@@ -14,7 +14,7 @@ class Shpere {
 
     createSphere = () => {
       const geometry = new THREE.SphereGeometry( 200, 32, 32 )
-      const material = new THREE.MeshPhongMaterial({ color: this.state.color, side: THREE.BackSide })
+      const material = new THREE.MeshPhongMaterial({ color: this.state.color, side: THREE.BackSide, shading: THREE.FlatShading })
 
       // invert normals
       for ( var i = 0; i < geometry.faces.length; i ++ ) {

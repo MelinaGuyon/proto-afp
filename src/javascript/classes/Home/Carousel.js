@@ -18,12 +18,12 @@ class Carousel {
 
   bind() {
 		window.addEventListener('mousewheel', this.handleScroll, false)
-		window.addEventListener('click', this.handleClick, false)
+		this.carousel.addEventListener('click', this.handleClick, false)
 	}
 
 	unbind() {
 		window.removeEventListener('click', this.handleClick, false)
-		window.removeEventListener('mousewheel', this.handleScroll, false)
+		this.carousel.removeEventListener('mousewheel', this.handleScroll, false)
 	}
 
 	handleScroll = (event) => {
@@ -36,7 +36,8 @@ class Carousel {
 	  this.index = Math.max(Math.min(this.index + update, this.numberItems - 1), 0)
 
     if (oldIndex === this.index) return
-    update > 0 ? Storage.TransitionPanel.avanceCarousel(this.updateExpName) : Storage.TransitionPanel.reculeCarrousel(this.updateExpName)
+    // if (update > 0) avanceCarousel
+    // else reculeCarousel
 
 	}, 1400, {leading: true, trailing: false})
 
