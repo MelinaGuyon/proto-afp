@@ -1,3 +1,8 @@
+const introTexts = [
+	['Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.', 0],
+	['Sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', 4000]
+]
+
 const titles = {
 	exp1: 'assets/interface/carousel/exp1-title.svg',
 	exp2: 'assets/interface/carousel/exp1-title.svg'
@@ -8,8 +13,8 @@ const texts = {
 	exp2: 'Quel est le plus vraisemblable des articles parus dans la presse ces derniers jours à propos du jeune dirigeant nord-coréen Kim Jong-Un? Qu\'il a exécuté son oncle en le livrant nu à une meute de chiens affamés ?'
 }
 
-
 export default {
+	introTexts,
 	texts,
 	titles
 }

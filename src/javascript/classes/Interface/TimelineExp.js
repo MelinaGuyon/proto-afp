@@ -42,10 +42,10 @@ class TimelineExp {
       this.textNumber = this.timelineWrapper.querySelector('.texts .number')
       this.textName = this.timelineWrapper.querySelector('.texts .name')
 
-      setTimeout(() => { this.timelineWrapper.classList.add('is-active') }, 2000)
-      setTimeout(() => { this.timelineWrapper.classList.add('not-hidden') }, 2500)
-      setTimeout(this.updateText, 2600)
-      setTimeout(this.showText, 2650)
+      setTimeout(() => { this.timelineWrapper.classList.add('is-active') }, 5000)
+      setTimeout(() => { this.timelineWrapper.classList.add('not-hidden') }, 5500)
+      setTimeout(this.updateText, 5600)
+      setTimeout(this.showText, 5650)
     }
 
     initInertia() {

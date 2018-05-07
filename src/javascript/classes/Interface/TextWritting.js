@@ -73,9 +73,9 @@ class TextWriting {
     this.state.isWritting = false
 	}
 
-  addTitle = (text) => {
+  addTitle = (text, duration) => {
     this.titleContainer.innerText = text
-    setTimeout(() => { this.titleContainer.classList.add('is-visible') }, 600)
+    setTimeout(() => { this.titleContainer.classList.add('is-visible') }, duration)
   }
 
   updateIndex = () => {
