@@ -56,12 +56,20 @@
       right: 30px;
       display: flex;
       align-items: center;
+      opacity: 1;
+      transition: opacity .4s $quad-ease-out;
+
+      &.is-hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
 
       .dot {
         position: relative;
         margin: 0 10px;
         width: 24px;
         height: 24px;
+        pointer-events: all;
 
         &.is-active .dot-outer {
           transform: scale(1);

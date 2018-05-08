@@ -15,20 +15,22 @@ class Cursor {
     this.boundingDot = this.dot.getBoundingClientRect()
     this.boundingRing = this.ring.getBoundingClientRect()
 
-    this.domElsConcerned = document.querySelectorAll('.cursor-reveal')
-    this.elIsActive = false
-
     this.initInertia()
     this.bind()
   }
 
   bind = () => {
     window.addEventListener('mousemove', this.handleMove, { passive: true })
+    raf.add(this.updateInertia)
+    setTimeout(() => { this.bindEls() }, 1000)
+  }
+
+  bindEls = () => {
+    this.domElsConcerned = document.querySelectorAll('.cursor-reveal')
     this.domElsConcerned.forEach((el) => {
       el.addEventListener('mouseenter', this.handleMouseEnter, { passive: true })
       el.addEventListener('mouseleave', this.handleMouseLeave, { passive: true })
     })
-    raf.add(this.updateInertia)
   }
 
   unbind = () => {

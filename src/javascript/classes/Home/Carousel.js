@@ -16,10 +16,11 @@ class Carousel {
 		this.carousel = el
 
     this.init()
-		this.bind()
     this.updateContent()
     this.createDots()
     this.animeButton()
+
+    this.bind()
   }
 
   init = () => {
@@ -38,12 +39,18 @@ class Carousel {
 		window.addEventListener('mousewheel', this.handleScroll, false)
 		this.carousel.addEventListener('click', this.handleClick, false)
     this.infosButton.addEventListener('click', this.handleClick, false)
+    this.dots.forEach((el) => {
+      el.addEventListener('click', this.handleDotClick, false)
+    })
 	}
 
 	unbind() {
     window.removeEventListener('mousewheel', this.handleScroll, false)
 		this.carousel.removeEventListener('click', this.handleClick, false)
     this.infosButton.removeEventListener('click', this.handleClick, false)
+    this.dots.forEach((el) => {
+      el.removeEventListener('click', this.handleDotClick, false)
+    })
 	}
 
 	handleScroll = (event) => {
@@ -59,6 +66,12 @@ class Carousel {
     this.updateInfo()
 	}, 1000, {leading: true, trailing: false})
 
+  handleDotClick = (event) => {
+    const index = Number(event.currentTarget.getAttribute('data-index'))
+    if (index === this.index) return
+    this.index = index
+    this.updateInfo()
+  }
 
 	handleClick = (event) => {
 		this.unbind()
@@ -82,6 +95,7 @@ class Carousel {
     this.updateBackground(stop)
     this.updatePaper(stop)
     this.updateBlack(stop)
+    this.hideDots()
   }
 
   updateInfo = () => {
@@ -172,7 +186,8 @@ class Carousel {
     this.dots = []
     for (let i = 0; i < this.numberItems; i++) {
       const dot = document.createElement('div')
-      dot.classList.add('dot')
+      dot.classList.add('dot', 'cursor-reveal')
+      dot.setAttribute('data-index', i)
       if (this.index === i) dot.classList.add('is-active')
       const dotOuter = document.createElement('div')
       dotOuter.classList.add('dot-outer')
@@ -191,6 +206,10 @@ class Carousel {
       el.classList.remove('is-active')
     })
     this.dots[this.index].classList.add('is-active')
+  }
+
+  hideDots = () => {
+    this.dotsContainer.classList.add('is-hidden')
   }
 }
 
