@@ -94,7 +94,7 @@ class Composer {
       anime.remove(this.composer.passes[1].uniforms.u_ratio)
       anime({
         targets: this.composer.passes[1].uniforms.u_ratio,
-        value: [0.05],
+        value: [0.2],
         duration: 400,
         easing: 'easeOutQuad',
         complete: () => {
