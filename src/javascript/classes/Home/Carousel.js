@@ -1,6 +1,6 @@
 import anime from 'animejs'
 import { Lethargy } from 'lethargy'
-import { throttle } from 'lodash'
+import { throttle, forEach, delay } from 'lodash'
 
 import datas from '../../datas/Colors.js'
 import datasHome from '../../datas/Home.js'
@@ -11,13 +11,14 @@ class Carousel {
   constructor(el, options) {
 		Storage.HomeCarouselClass = this
 
-    this.numberItems = 2
+    this.numberItems = Object.keys(datasHome.titles).length
 		this.index = options.index
 		this.carousel = el
 
     this.init()
 		this.bind()
     this.updateContent()
+    this.createDots()
     this.animeButton()
   }
 
@@ -30,6 +31,7 @@ class Carousel {
     this.content = this.paper.querySelector('.content')
     this.title = this.paper.querySelector('.title')
     this.text = this.paper.querySelector('.text')
+    this.dotsContainer = this.infos.querySelector('.dots-container')
   }
 
   bind() {
@@ -64,7 +66,7 @@ class Carousel {
     setTimeout(() => {
       if (this.index == 0) Storage.Experience1Class.init()
   		if (this.index == 1) Storage.Experience2Class.init()
-    }, 600)
+    }, 1000)
 	}
 
 	updateExpName = () => {
@@ -155,7 +157,8 @@ class Carousel {
           translateX: 0,
           duration: 400,
           delay: 200,
-          easing: 'easeInOutQuad'
+          easing: 'easeInOutQuad',
+          complete: () => { setTimeout(() => { this.updateDots() }, 500) }
         })
       }
     })
@@ -165,6 +168,30 @@ class Carousel {
     setTimeout(() => { this.infosButton.classList.add('is-animated') }, 800)
   }
 
+  createDots = () => {
+    this.dots = []
+    for (let i = 0; i < this.numberItems; i++) {
+      const dot = document.createElement('div')
+      dot.classList.add('dot')
+      if (this.index === i) dot.classList.add('is-active')
+      const dotOuter = document.createElement('div')
+      dotOuter.classList.add('dot-outer')
+      const dotInner = document.createElement('div')
+      dotInner.classList.add('dot-inner')
+
+      dot.appendChild(dotOuter)
+      dot.appendChild(dotInner)
+      this.dotsContainer.appendChild(dot)
+      this.dots.push(dot)
+    }
+  }
+
+  updateDots = () => {
+    this.dots.forEach((el) => {
+      el.classList.remove('is-active')
+    })
+    this.dots[this.index].classList.add('is-active')
+  }
 }
 
 export default Carousel
