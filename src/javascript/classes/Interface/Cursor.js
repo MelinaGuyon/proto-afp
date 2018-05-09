@@ -63,6 +63,7 @@ class Cursor {
     let val = 26
     if (this.cursorContainer.classList.contains('reveal')) val = 33
     else if (this.cursorContainer.classList.contains('target')) val = 13
+    else if (this.cursorContainer.classList.contains('hold')) val = 10
 
     const x = event.clientX - val
     const y = event.clientY - val
@@ -87,6 +88,41 @@ class Cursor {
     this.reset()
   }
 
+
+  animateHold = (cb) => {
+    anime({
+      targets: this.dot,
+      scale: 0.5,
+      backgroundColor: [ {value: '#c8c8c8'}, { value: datas.hold[Storage.expName] } ],
+      duration: 400,
+      easing: 'easeInQuad',
+      complete: () => {
+        anime.remove(this.dot)
+        anime({
+          targets: this.dot,
+          scale: 2,
+          opacity: .4,
+          duration: 300,
+          easing: 'easeOutQuad',
+          complete: cb
+        })
+      }
+    })
+  }
+
+  animateUnhold = (cb) => {
+    anime.remove(this.dot)
+    anime({
+      targets: this.dot,
+      backgroundColor: [ { value: datas.hold[Storage.expName] }, {value: '#c8c8c8'} ],
+      scale: 1,
+      opacity: [.4, .7],
+      easing: 'easeInOutQuad',
+      duration: 400,
+      complete: cb
+    })
+  }
+
   reveal = () => {
     this.cursorContainer.classList.add('reveal')
     this.innerRing.style.border = datas.reveal[Storage.expName]
@@ -97,8 +133,22 @@ class Cursor {
     this.innerRing.style.border = datas.target[Storage.expName]
   }
 
+  hold = () => {
+    this.cursorContainer.classList.add('hold')
+    const x = this.inrtia.x.targetValue + 16
+    const y = this.inrtia.y.targetValue + 16
+    this.inrtia.x.to(x)
+		this.inrtia.y.to(y)
+  }
+
   reset = () => {
-    this.cursorContainer.classList.remove('reveal', 'target')
+    if (this.cursorContainer.classList.contains('hold')) {
+      const x = this.inrtia.x.targetValue - 16
+      const y = this.inrtia.y.targetValue - 16
+      this.inrtia.x.to(x)
+      this.inrtia.y.to(y)
+    }
+    this.cursorContainer.classList.remove('reveal', 'target', 'hold')
     this.innerRing.style.removeProperty('border');
   }
 }

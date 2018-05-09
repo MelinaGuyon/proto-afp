@@ -5,8 +5,8 @@ import { map, delay, throttle } from 'lodash'
 class Intro {
   constructor() {
     this.init()
-    this.writeIntro()
-    // this.hideIntro()
+    // this.writeIntro()
+    this.hideIntro()
   }
 
   init = () => {

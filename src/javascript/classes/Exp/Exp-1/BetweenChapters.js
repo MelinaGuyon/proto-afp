@@ -12,11 +12,11 @@ class BetweenChapters {
       this.table = [
         [ this.launchVoiceOver(0), this.launchVoiceOver(1), this.launchText(0), this.launchText(1) ],
 
-        [ this.launchVoiceOver(2), this.launchVoiceOver(3), this.launchConclusionOne, this.stopConclusion ],
+        [ this.launchVoiceOver(2), this.launchVoiceOver(3), this.launchConclusion(1), this.stopConclusion ],
 
-        [ this.launchText(2), this.launchVoiceOver(4), this.launchVoiceOver(5), this.launchConclusionTwo, this.stopConclusion ],
+        [ this.launchText(2), this.launchVoiceOver(4), this.launchVoiceOver(5), this.launchConclusion(2), this.stopConclusion ],
 
-        [ this.launchVoiceOver(6), this.launchVoiceOver(7), this.launchConclusionThree, this.stopConclusion ],
+        [ this.launchVoiceOver(6), this.launchVoiceOver(7), this.launchConclusion(3), this.stopConclusion ],
 
         [ this.launchVoiceOver(9), this.launchVoiceOver(10), this.launchVoiceOver(11) ]
       ]
@@ -40,22 +40,12 @@ class BetweenChapters {
       Storage.SoundManagerClass.launchVoiceOver(datas.voiceOver[index])
     }
 
-    launchConclusionOne = () => {
-      console.log('je lance conclu chapitre 1')
+    launchConclusion = (index) => () => {
+      console.log('je lance conclu')
+      if (index == 3) Storage.SplineClass.updateStep(0.8)
       Storage.ChaptersConclusionClass.bindConclu()
     }
-
-    launchConclusionTwo = () => {
-      console.log('je lance conclu chapitre 2')
-      Storage.ChaptersConclusionClass.bindConclu()
-    }
-
-    launchConclusionThree = () => {
-      console.log('je lance conclu chapitre 3')
-      Storage.SplineClass.updateStep(0.8)
-      Storage.ChaptersConclusionClass.bindConclu()
-    }
-
+    
     stopConclusion = () => {
       console.log('je stop conclu')
       Storage.ChaptersConclusionClass.unbindConclu()

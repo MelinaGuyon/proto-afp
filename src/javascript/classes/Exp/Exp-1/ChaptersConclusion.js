@@ -53,25 +53,35 @@ class ChaptersConclusion {
   bindConclu = () => {
     document.addEventListener('mousedown', this.onMouseDown, false )
     document.addEventListener('mouseup', this.onMouseUp, false )
+    Storage.InterfaceClass.cursor.hold()
   }
 
   unbindConclu = () => {
     document.removeEventListener('mousedown', this.onMouseDown, false )
     document.removeEventListener('mouseup', this.onMouseUp, false )
+    Storage.InterfaceClass.cursor.reset()
   }
 
   onMouseDown = () => {
     if ( this.clicked === false ) {
-      this.playConclusion()
-      this.clicked = true
+      Storage.InterfaceClass.cursor.animateHold(this.afterHoldAnime)
     }
   }
 
   onMouseUp = () => {
     if ( this.clicked === true ) {
-      this.stopConclusion()
-      this.clicked = false
+      Storage.InterfaceClass.cursor.animateUnhold(this.afterUnholdAnime)
     }
+  }
+
+  afterHoldAnime = () => {
+    this.playConclusion()
+    this.clicked = true
+  }
+
+  afterUnholdAnime = () => {
+    this.stopConclusion()
+    this.clicked = false
   }
 }
 
