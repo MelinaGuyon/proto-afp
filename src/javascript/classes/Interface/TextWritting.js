@@ -18,7 +18,7 @@ class TextWriting {
       target: [],
       current: [],
       index: 0,
-      interval: 20,
+      interval: 25,
       pass: false,
       baseHeight: this.wrapper.getBoundingClientRect().height,
       infoHeight: 0,
@@ -26,7 +26,10 @@ class TextWriting {
       transformSaved: 0,
       transform: 0,
       isWritting: false,
-      queue: []
+      queue: [],
+      animeNewRow: 34,
+      animeNewInfo: 46,
+      marginTopOfFirstToRemove: 20
     }
   }
 
@@ -60,7 +63,6 @@ class TextWriting {
   }
 
   bindInterval () {
-    this.state.isWritting = true
     this.interval = window.setInterval(this.updateIndex, this.state.interval)
   }
 
@@ -70,7 +72,6 @@ class TextWriting {
     this.state.pass = false
     this.state.current = []
     this.state.current = []
-    this.state.isWritting = false
 	}
 
   addTitle = (text, duration) => {
@@ -89,6 +90,7 @@ class TextWriting {
 
       if (index > target.length && target.length < current.length) {
         if (this.state.queue.length > 0) return this.manageQueue()
+        this.state.isWritting = false
         this.unbindInterval()
         this.bindScroll()
         return
@@ -114,6 +116,7 @@ class TextWriting {
 	writeInfo = (text, writeQueue) => {
     if(this.state.isWritting && !writeQueue) return this.state.queue.push(text)
 
+    this.state.isWritting = true
     this.unbindInterval()
     this.unbindScroll()
     this.resetToBottom()
@@ -142,7 +145,7 @@ class TextWriting {
     this.actualRow = document.createElement('div')
     this.actualRow.classList.add('row')
     this.newDiv.appendChild(this.actualRow)
-    bool ? this.animeContainer(49) : this.animeContainer(34)
+    bool ? this.animeContainer(this.state.animeNewInfo) : this.animeContainer(this.state.animeNewRow)
     setTimeout(() => { this.actualRow.classList.add('fill') }, 30)
 
     this.state.infoHeight = this.infoContainer.getBoundingClientRect().height
@@ -164,7 +167,7 @@ class TextWriting {
     anime({
       targets: this.infoContainer,
       translateY: formatedY,
-      duration: 600,
+      duration: 500,
       easing: 'easeOutQuad'
     })
 
@@ -186,7 +189,7 @@ class TextWriting {
   handleScroll = (event) =>  {
     if (!this.state.infoHSupToBaseH) return
     const evolution = event.deltaY < 0 ? 50 : -50
-    const end = Math.max(Math.min(this.state.transform + evolution , -this.state.baseHeight), this.state.transformSaved)
+    const end = Math.max(Math.min(this.state.transform + evolution , -this.state.baseHeight -this.state.marginTopOfFirstToRemove), this.state.transformSaved)
 		this.inrtia.y.to(end)
   }
 

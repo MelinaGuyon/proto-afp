@@ -1,3 +1,5 @@
+import { throttle } from 'lodash'
+
 import datas from '../../../datas/Experience1.js'
 
 class BetweenChapters {
@@ -23,10 +25,15 @@ class BetweenChapters {
     updateScene = (index, step) => {
       if (this.table[index][step]) this.table[index][step]()
     }
-
+    
     launchText = (index) => () => {
-      Storage.TextWriting.writeInfo({ text: datas.textsPanel[index] })
+      this.lauchTextDelayed(index)
     }
+
+    // litle safety
+    lauchTextDelayed = throttle((index) => {
+      Storage.TextWriting.writeInfo({ text: datas.textsPanel[index] })
+    }, 50, {leading: true, trailing: true})
 
     launchVoiceOver = (index) => () => {
       Storage.InterfaceClass.subtitles.writeSubtitles(datas.subtitles[index], index)

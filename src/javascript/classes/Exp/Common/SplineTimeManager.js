@@ -12,13 +12,17 @@ class SplineTimeManager {
 
     check = (state, index) => {
       if (state > 0.9) {
-        console.log('end of actual spline')
-        !this.endDone && this.end()
-        this.endDone = true
-        return
+        // if there are no more keypoints
+        if (!datas.keyPointsOnSpline[Object.keys(datas.keyPointsOnSpline)[index]][this.actualStepToCheck]) {
+          console.log('end of actual spline')
+          !this.endDone && this.end()
+          this.endDone = true
+          return
+        }
       }
 
       const stepToCheck = datas.keyPointsOnSpline[Object.keys(datas.keyPointsOnSpline)[index]][this.actualStepToCheck]
+
       if (!stepToCheck) return
       if (state > stepToCheck) this.update(index)
     }
