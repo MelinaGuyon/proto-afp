@@ -71,6 +71,12 @@
         height: 24px;
         pointer-events: all;
 
+        &:hover {
+          .dot-outer {
+            transform: scale(1);
+          }
+        }
+
         &.is-active .dot-outer {
           transform: scale(1);
         }

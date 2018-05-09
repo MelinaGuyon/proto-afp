@@ -5,7 +5,8 @@ import { map, delay, throttle } from 'lodash'
 class Intro {
   constructor() {
     this.init()
-    this.writeIntro()
+    // this.writeIntro()
+    this.hideIntro()
   }
 
   init = () => {
@@ -52,7 +53,6 @@ class Intro {
   }
 
   enableScroll = () => {
-    console.log('je passe')
     // opacity of scroll arrow
     this.bind()
   }
@@ -64,6 +64,7 @@ class Intro {
 
   hideIntro = () => {
     this.introWrapper.classList.add('is-hide')
+    setTimeout(() => { Storage.HomeClass.bind() }, 1500)
   }
 }
 

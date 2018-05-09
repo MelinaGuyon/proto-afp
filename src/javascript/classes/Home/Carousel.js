@@ -19,8 +19,6 @@ class Carousel {
     this.updateContent()
     this.createDots()
     this.animeButton()
-
-    this.bind()
   }
 
   init = () => {
@@ -60,9 +58,10 @@ class Carousel {
 	onRealScroll = throttle((event) => {
 		const update = event.deltaY < 0 ? -1 : 1
     const oldIndex = this.index
-	  this.index = Math.max(Math.min(this.index + update, this.numberItems - 1), 0)
+    this.index = Math.max(Math.min(this.index + update, this.numberItems - 1), 0)
 
-    if (oldIndex === this.index) return
+    if (oldIndex === this.index && this.index == 0) this.index = this.numberItems - 1
+    else if (oldIndex === this.index && this.index == this.numberItems - 1) this.index = 0
     this.updateInfo()
 	}, 1000, {leading: true, trailing: false})
 
@@ -78,7 +77,8 @@ class Carousel {
     this.hideInfo()
     setTimeout(() => {
       if (this.index == 0) Storage.Experience1Class.init()
-  		if (this.index == 1) Storage.Experience2Class.init()
+      if (this.index == 1) Storage.Experience2Class.init()
+      if (this.index == 2) Storage.Experience3Class.init()
     }, 1000)
 	}
 
@@ -99,6 +99,7 @@ class Carousel {
   }
 
   updateInfo = () => {
+    this.updateDots()
     this.updateRender()
     this.updateBackground()
     this.updatePaper()
@@ -108,18 +109,18 @@ class Carousel {
   updateBlack = (stop) => {
     anime({
       targets: this.black,
-      translateX: -300,
+      translateX: -600,
       duration: 300,
       delay: 100,
-      easing: 'easeInOutQuad',
+      easing: 'easeInQuad',
       complete: () => {
         if (stop) return
         anime({
           targets: this.black,
           translateX: 0,
-          duration: 400,
+          duration: 600,
           delay: 400,
-          easing: 'easeInOutQuad'
+          easing: 'easeOutQuad'
         })
       }
     })
@@ -132,7 +133,7 @@ class Carousel {
       targets: this.background,
       translateX: -700,
       duration: 400,
-      easing: 'easeInOutQuad',
+      easing: 'easeInQuad',
       complete: () => {
         if (stop) return
         this.background.style.opacity = 1
@@ -142,7 +143,7 @@ class Carousel {
           translateX: 0,
           duration: 400,
           delay: 200,
-          easing: 'easeInOutQuad'
+          easing: 'easeOutQuad'
         })
       }
     })
@@ -159,7 +160,7 @@ class Carousel {
       translateY: ['-50%', '-50%'],
       translateX: -700,
       duration: 400,
-      easing: 'easeInOutQuad',
+      easing: 'easeInQuad',
       complete: () => {
         if (stop) return
         this.infosButton.classList.remove('is-animated')
@@ -171,8 +172,7 @@ class Carousel {
           translateX: 0,
           duration: 400,
           delay: 200,
-          easing: 'easeInOutQuad',
-          complete: () => { setTimeout(() => { this.updateDots() }, 500) }
+          easing: 'easeOutQuad'
         })
       }
     })

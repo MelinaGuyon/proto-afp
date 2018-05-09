@@ -9,6 +9,7 @@ import Home from './classes/Home/index.js'
 import Interface from './classes/Interface/index.js'
 import Experience1 from './classes/Exp/Exp-1/index.js'
 import Experience2 from './classes/Exp/Exp-2/index.js'
+import Experience3 from './classes/Exp/Exp-3/index.js'
 
 window.Storage = {}
 Storage.CameraClasses = {}
@@ -23,6 +24,7 @@ function initCanvas() {
 	new Interface()
 	new Experience1()
 	new Experience2()
+	new Experience3()
 
 	raf.add(render)
 }

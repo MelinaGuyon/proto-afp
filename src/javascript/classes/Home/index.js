@@ -22,6 +22,10 @@ class Home {
       // will have to be better initiated
       setTimeout( () => { new Composer() }, 500)
 		}
+
+    bind = () => {
+      this.carousel.bind()
+    }
 }
 
 export default Home
