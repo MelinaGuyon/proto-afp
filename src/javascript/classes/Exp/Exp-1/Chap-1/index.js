@@ -1,5 +1,6 @@
 import ObjectsLoader from './ObjectsLoader'
 import FrontalCity from './FrontalCity'
+import BehindCity from './BehindCity'
 //import HeightMap from './HeightMap'
 
 class Chapitre1 {
@@ -30,6 +31,7 @@ class Chapitre1 {
 
     //this.heightMap = new HeightMap({relatedBox: this.state.relatedBox})
     this.frontalCity = new FrontalCity({ objectsGroup: this.modelsGroup })
+    this.behindCity = new BehindCity({ objectsGroup: this.modelsGroup })
   }
 
   initInteraction = () => {
@@ -56,7 +58,10 @@ class Chapitre1 {
     this.mouse.y = - (event.clientY / window.innerHeight) * 2 + 1
     this.raycaster.setFromCamera(this.mouse, this.state.relatedCamera)
 
+    console.log("STEP", this.step)
+
     if (this.step === 0) this.frontalCity.checkRaycaster(this.raycaster)
+    if (this.step === 1) this.behindCity.checkRaycaster(this.raycaster)
   }
 
   displayChapterObjects = () => {

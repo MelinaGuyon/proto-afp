@@ -276,10 +276,10 @@ class ObjectsLoader {
 				this.objLoader.load( 'assets/models/chapitre1/vrai-ville/4.interaction_volet_droit.obj', (object) => {
 					for (let i = 0; i < 2; i++ ) {
 						let obj = object.clone()
-						obj.position.x = -440
+						obj.position.x = -460
 						obj.position.y = 242
-						if (i === 0 ) obj.position.z = -1410
-						else obj.position.z =  -1735
+						if (i === 0 ) obj.position.z = -1413
+						else obj.position.z =  -1738
 						obj.scale.set( 2, 1.8, 1.4)
 						obj.name = 'firstShuttersRight'
 						obj.children[0].material.color = new THREE.Color(0x3f3f3f)
@@ -302,10 +302,10 @@ class ObjectsLoader {
 
 					for (let i = 0; i < 2; i++ ) {
 						let obj = object.clone()
-						obj.position.x = -440
+						obj.position.x = -460
 						obj.position.y = 242
-						if (i === 0 ) obj.position.z = -1410
-						else obj.position.z =  -1735
+						if (i === 0 ) obj.position.z = -1387
+						else obj.position.z =  -1712
 						obj.scale.set( 2, 1.8, 1.4)
 						obj.name = 'secondShuttersLeft'
 						obj.children[0].material.color = new THREE.Color(0x3f3f3f)
