@@ -70,14 +70,14 @@ const animations = {
 const keyPointsOnSpline = {
 	betweenIntroductionChapterOne: [.00001, .6, .8],
 	chapter1: [.0001, .2, .6, .7, .9],
-	chapter2: [.01, .1, .2, .5, .7],
+	chapter2: [.1, .2, .2, .7, .9],
 	chapter3: [.05, .3, .65, .9],
 	conclusion: [.001, .3, .75]
 }
 
 const textsPanel =  [
-	'Derrière les mines apparaît un paisible village, Kijong-Dong. Construit dans les années 50 par le grand-père de l’actuel dirigeant, la petite cité revêt une caractéristique bien particulière : personne n’y vit, ou presque. Ses rares habitants sont des techniciens qui veillent à l’entretien du village. Les bâtiments sont dépourvus de fenêtres et les lumières s’y activent toutes en même temps à heure fixe. Il ne s’agit en réalité que d’une fausse ville, ou “ville propagande”, visant à donner une bonne image des cités nord-coréenne auprès de la Corée du Sud. Cela cache les réelles conditions de vie du pays.',
-	'L’ONU estime à 41% le taux de la population nord-coréenne sous-alimentée. Le programme nucléaire de l’état joue un rôle majeur dans l’aggravation de la pénurie de nourriture. Il requiert d’importants investissements financiers qui sont donc retirés à l’alimentation, et la mauvaise réputation du pays qu’il a engendrée rend la recherche de fonds très complexe. La famine a tué 3 millions d’individus en 20 ans durant le règne de Kim II - Sung. Chaque Nord-Coréen recevait 5$ dollars par mois de la part du gouvernement. Un kilo de riz coûtant 3$, un habitant devait se contenter d’à peine deux kilo de riz pour survivre jusqu’à la fin du mois. Ces aides auraient aujourd’hui disparu. Les coupures d’électricité sont monnaie courante et l’eau chaude inexistante depuis des années. Le paysage provincial prend des airs d’apocalypse. Les usines ont été abandonnées, la campagne est aride et dépourvue d’arbre, les routes demeurent désertées par les voitures.',
+	'Derrière les mines apparaît un paisible village, Kijong-Dong. Construit dans les années 50 par le grand-père de l’actuel dirigeant, la petite cité revêt une caractéristique bien particulière : personne n’y vit. Les bâtiments sont dépourvus de fenêtres et les lumières s’y activent toutes en même temps à heure fixe. Il ne s’agit en réalité que d’une fausse ville, ou “ville propagande”, visant à donner une bonne image des cités nord-coréenne auprès de la Corée du Sud. Cela cache les réelles conditions de vie du pays.',
+	'L’ONU estime à 41% le taux de la population nord-coréenne sous-alimentée. La famine a tué 3 millions d’individus en 20 ans durant le règne de Kim II - Sung. Chaque Nord-Coréen recevait 5$ dollars par mois de la part du gouvernement. Un kilo de riz coûtant 3$, un habitant devait se contenter d’à peine deux kilo de riz pour survivre jusqu’à la fin du mois. Ces aides auraient aujourd’hui disparu. Le paysage provincial prend des airs d’apocalypse. Les usines ont été abandonnées, la campagne est aride et dépourvue d’arbre, les routes demeurent désertées par les voitures.',
 	'L’armée nord-coréenne est l’un des sujets phares de la propagande du gouvernement, qui la présente comme la plus puissante au monde. Elle compte en effet le plus grand pourcentage au monde de militaires actifs par rapport au nombre d’habitants (5% de la population).'
 ]
 
