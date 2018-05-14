@@ -17,7 +17,8 @@ class TextWriting {
     this.state = {
       target: [],
       current: [],
-      index: 0,
+      tabIndex: 0,
+      moduloIndex: 0,
       interval: 25,
       pass: false,
       baseHeight: this.wrapper.getBoundingClientRect().height,
@@ -83,29 +84,29 @@ class TextWriting {
   updateIndex = () => {
     const { current, target } = this.state
 
-    const numberToChange = 1
+    const tabIndex = this.state.tabIndex + 1
+    let moduloIndex = this.state.moduloIndex + 1
 
-    for (let i = 0; i < Math.floor(numberToChange); i++) {
-      const index = this.state.index + 1
-      current[index] = target[index] || ''
+    current[tabIndex] = target[tabIndex] || ''
 
-      if (index > target.length && target.length < current.length) {
-        if (this.state.queue.length > 0) return this.manageQueue()
-        this.state.isWritting = false
-        this.unbindInterval()
-        this.bindScroll()
-        return
-      }
-
-      if (index%26 === 25) this.state.pass = true
-      if (this.state.pass && (current[index] === ' ' || current[index] === '') ) {
-        this.createRow()
-        this.state.pass = false
-      }
-
-      this.writeSpan(current[index])
-      this.state.index = index
+    if (tabIndex > target.length && target.length < current.length) {
+      if (this.state.queue.length > 0) return this.manageQueue()
+      this.state.isWritting = false
+      this.unbindInterval()
+      this.bindScroll()
+      return
     }
+    
+    if (moduloIndex%24 === 23) this.state.pass = true
+    if (this.state.pass && (current[tabIndex] === ' ' || current[tabIndex] === '') ) {
+      moduloIndex = -1
+      this.createRow()
+      this.state.pass = false
+    }
+
+    this.writeSpan(current[tabIndex])
+    this.state.tabIndex = tabIndex
+    this.state.moduloIndex = moduloIndex
   }
 
   manageQueue = () => {
@@ -130,7 +131,8 @@ class TextWriting {
 
     this.state.current = current
     this.state.target = target
-    this.state.index = -1
+    this.state.tabIndex = -1
+    this.state.moduloIndex = -1
 
     this.newDiv = document.createElement('div')
     this.newDiv.classList.add('info')
