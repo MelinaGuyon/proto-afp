@@ -63,14 +63,14 @@ class Experience1 {
 		init = () => {
       Storage.InterfaceClass.displayExpInterface()
 
-      this.animateCamera(datas.animations.enter, 4000, this.betweenIntroductionChapterOne)
-
-      // to test
-      // this.splineIndex = 3
-      // this.chapter3.init().then(this.goToChapterThree)
-
       this.betweenChapters = new BetweenChapters()
       this.chaptersConclusion = new ChaptersConclusionClass()
+
+      // this.animateCamera(datas.animations.enter, 4000, this.betweenIntroductionChapterOne)
+
+      // to test
+      this.splineIndex = 1
+      this.goToChapterOne()
 
       Storage.TextWriting.addTitle(datas.chaptersTitle[0], 5000)
 		}

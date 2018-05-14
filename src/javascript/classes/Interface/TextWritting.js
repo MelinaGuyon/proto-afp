@@ -47,9 +47,10 @@ class TextWriting {
   }
 
 	init = () => {
-    this.wrapper = document.querySelector('.infoContainerWrapper')
-		this.infoContainer = document.querySelector('.infoContainer')
-    this.titleContainer = document.querySelector('.panelContainer .title')
+    this.panel = document.querySelector('.panelContainer')
+    this.wrapper = this.panel.querySelector('.infoContainerWrapper')
+		this.infoContainer = this.panel.querySelector('.infoContainer')
+    this.titleContainer = this.panel.querySelector('.title')
 	}
 
   bindScroll = () => {
@@ -199,6 +200,14 @@ class TextWriting {
       this.state.transform = this.inrtia.y.value
       this.infoContainer.style.transform = 'translateY('+ this.inrtia.y.value +'px)'
     }
+  }
+
+  hidePanel = () => {
+    this.panel.classList.add('is-hidden')
+  }
+
+  showPanel = () => {
+    this.panel.classList.remove('is-hidden')
   }
 
 }

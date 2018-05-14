@@ -42,7 +42,12 @@ void main() {
 	vec2 textureOffset = vec2((1. - ratioTexture.x) / 2., (1. - ratioTexture.y) / 2. );
 	vec3 texturePhoto = texture2D(videoTexture, (uv * ratioTexture) + textureOffset).rgb;
 
-	texturePhoto = mix(mix(textureEcran, texturePhoto, u_fade), vec3(displacement), 0.);
+	float fade = u_fade;
+	// if (vUv.x < .05 || vUv.x > .95 || vUv.y < .05 || vUv.y > .95) {
+	// 	fade = 0.;
+	// }
+
+	texturePhoto = mix(mix(textureEcran, texturePhoto, fade), vec3(displacement), 0.);
 
 	gl_FragColor = vec4(texturePhoto, 1.);
 }

@@ -44,7 +44,6 @@ class ChaptersConclusion {
     Storage.ComposerClass.activate()
   }
 
-
   stopConclusion = () => {
     this.video && this.video.pause()
     Storage.ComposerClass.unactivate()
@@ -65,23 +64,33 @@ class ChaptersConclusion {
   onMouseDown = () => {
     if ( this.clicked === false ) {
       Storage.InterfaceClass.cursor.animateHold(this.afterHoldAnime)
+      this.clicked = true
     }
   }
 
   onMouseUp = () => {
     if ( this.clicked === true ) {
       Storage.InterfaceClass.cursor.animateUnhold(this.afterUnholdAnime)
+      this.clicked = false
     }
   }
 
   afterHoldAnime = () => {
-    this.playConclusion()
-    this.clicked = true
+    if ( this.clicked === true ) {
+      this.playConclusion()
+      Storage.InterfaceClass.timelineExp.hideTimeline()
+      Storage.InterfaceClass.textWriting.hidePanel()
+      Storage.InterfaceClass.subtitles.hideSubtitles()
+    }
   }
 
   afterUnholdAnime = () => {
-    this.stopConclusion()
-    this.clicked = false
+    if ( this.clicked === false ) {
+      this.stopConclusion()
+      setTimeout(Storage.InterfaceClass.subtitles.showSubtitles, 800)
+      setTimeout(Storage.InterfaceClass.timelineExp.showTimeline, 800)
+      setTimeout(Storage.InterfaceClass.textWriting.showPanel, 800)
+    }
   }
 }
 

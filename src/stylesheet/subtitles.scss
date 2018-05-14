@@ -9,6 +9,11 @@
   justify-content: center;
   align-items: center;
   pointer-events: none;
+  transition: opacity .3s ease-out;
+
+  &.is-hidden {
+    opacity: 0;
+  }
 
   .subtitles {
     height: 20px;

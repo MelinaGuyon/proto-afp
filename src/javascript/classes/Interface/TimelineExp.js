@@ -42,8 +42,7 @@ class TimelineExp {
       this.textNumber = this.timelineWrapper.querySelector('.texts .number')
       this.textName = this.timelineWrapper.querySelector('.texts .name')
 
-      setTimeout(() => { this.timelineWrapper.classList.add('is-active') }, 5000)
-      setTimeout(() => { this.timelineWrapper.classList.add('not-hidden') }, 5500)
+      setTimeout(this.showTimeline, 5000)
       setTimeout(this.updateText, 5600)
       setTimeout(this.showText, 5650)
     }
@@ -172,6 +171,20 @@ class TimelineExp {
     updateText = () => {
       this.textNumber.innerHTML = datas.timelineIndicators[this.chapterIndex][0]
       this.textName.innerHTML = datas.timelineIndicators[this.chapterIndex][1]
+    }
+
+    showTimeline = () => {
+      this.timelineWrapper.classList.add('is-active')
+      setTimeout(() => { 
+        this.timelineWrapper.classList.add('not-hidden')
+        this.showText()
+      }, 500)
+    }
+
+    hideTimeline = () => {
+      this.hideText()
+      this.timelineWrapper.classList.remove('not-hidden')
+      setTimeout(() => { this.timelineWrapper.classList.remove('is-active') }, 500)
     }
 }
 

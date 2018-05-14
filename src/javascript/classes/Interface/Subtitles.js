@@ -29,6 +29,14 @@ class Subtitles {
   remove = () => {
     this.subtitle.innerHTML = ''
   }
+
+  hideSubtitles = () => {
+    this.container.classList.add('is-hidden')
+  }
+
+  showSubtitles = () => {
+    this.container.classList.remove('is-hidden')
+  }
 }
 
 export default Subtitles

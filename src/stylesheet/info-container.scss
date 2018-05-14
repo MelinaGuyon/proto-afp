@@ -4,6 +4,12 @@
   position: absolute;
   left: 40px;
   bottom: 50px;
+  opacity: 1;
+  transition: opacity .3s ease-out;
+
+  &.is-hidden {
+    opacity: 0;
+  }
 
   .infoContainerWrapper {
     overflow-y: hidden;
