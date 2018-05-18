@@ -7,6 +7,7 @@ class BehindCity {
 	constructor(options) {
 		this.state = options
 		this.nextStepLaunched = false
+		this.lights = []
 	}
 
 	checkRaycaster = (raycaster) => {
@@ -54,6 +55,7 @@ class BehindCity {
 		}
 		else if (intersectsFirstDoor[0] && intersectsFirstDoor[0].distance < 2000) {
 			this.openVerticalPosition(intersectsFirstDoor[0].object, 90)
+			this.animeLight(intersectsFirstDoor[0].object.children[1], 0.42)
 		}
 		else if (intersectsSecondDoor[0] && intersectsSecondDoor[0].distance < 2000) {
 			this.openVerticalPosition(intersectsSecondDoor[0].object, 70)
@@ -77,6 +79,10 @@ class BehindCity {
 		}
 	}
 
+	animeLight = (light, intensity) => {
+		console.log(light, intensity)
+	}
+
 	openHorizontalRotation = throttle((object, rotationValue) => {
 		console.log("horizontal", object.name)
 
@@ -97,7 +103,7 @@ class BehindCity {
 		anime({
 	      targets: object.position,
 	      y: heighValue,
-	      duration: 5000,
+	      duration: 600,
 				easing: 'easeOutQuad',
 				complete: this.closeAnimation(object)
 	    })

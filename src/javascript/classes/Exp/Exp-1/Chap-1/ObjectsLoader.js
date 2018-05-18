@@ -1,5 +1,7 @@
 const MTLLoader = require('three-mtl-loader')
 
+let SHADOW_MAP_WIDTH = 1024, SHADOW_MAP_HEIGHT = 1024
+
 class ObjectsLoader {
 	constructor(options) {
 		this.mtlLoader = new MTLLoader()
@@ -19,6 +21,21 @@ class ObjectsLoader {
 
 	    this.group.position.y = -790
 	    this.group.position.z = -300
+	}
+
+	createLight = () => {
+		const light = new THREE.PointLight(0xff0000, 0, 500, 2)
+		light.castShadow = true
+		light.position.set(0, 0, 0)
+		light.shadow.mapSize.width = SHADOW_MAP_WIDTH
+    light.shadow.mapSize.height = SHADOW_MAP_HEIGHT
+		light.shadow.camera.far = 1000
+
+		// var sphereSize = 100;
+		// var pointLightHelper = new THREE.PointLightHelper( light, sphereSize );
+		// Storage.SceneClasses.exp1.scene.add( pointLightHelper );
+		
+		return light
 	}
 
 
@@ -333,6 +350,17 @@ class ObjectsLoader {
 					object.children[0].material.color = new THREE.Color(0x3f3f3f)
 					object.name = 'firstDoor'
 					this.group.add(object)
+
+					const light = this.createLight()
+					object.add(light)
+
+					object.traverse(function(o) {
+						if (o.type === 'Mesh') {
+							o.receiveShadow = true
+							o.castShadow = true
+						}
+					})
+
 					resolve()
 				})
 			})
