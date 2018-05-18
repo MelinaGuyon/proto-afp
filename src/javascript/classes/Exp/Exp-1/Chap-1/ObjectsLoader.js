@@ -24,7 +24,7 @@ class ObjectsLoader {
 	}
 
 	createLight = () => {
-		const light = new THREE.PointLight(0xff0000, 0, 500, 2)
+		const light = new THREE.PointLight(0xC40202, 0, 500, 2)
 		light.castShadow = true
 		light.position.set(0, 0, 0)
 		light.shadow.mapSize.width = SHADOW_MAP_WIDTH

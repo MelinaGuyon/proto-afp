@@ -55,7 +55,7 @@ class BehindCity {
 		}
 		else if (intersectsFirstDoor[0] && intersectsFirstDoor[0].distance < 2000) {
 			this.openVerticalPosition(intersectsFirstDoor[0].object, 90)
-			this.animeLight(intersectsFirstDoor[0].object.children[1], 0.42)
+			this.animeLight(intersectsFirstDoor[0].object.parent.children[1], 0.42)
 		}
 		else if (intersectsSecondDoor[0] && intersectsSecondDoor[0].distance < 2000) {
 			this.openVerticalPosition(intersectsSecondDoor[0].object, 70)
@@ -80,58 +80,63 @@ class BehindCity {
 	}
 
 	animeLight = (light, intensity) => {
-		console.log(light, intensity)
+		if (light.intensity !== 0) return
+		anime({
+			targets: light,
+			intensity,
+			duration: 800,
+			delay: 400,
+			easing: 'easeOutQuad'
+		})
 	}
 
 	openHorizontalRotation = throttle((object, rotationValue) => {
-		console.log("horizontal", object.name)
-
+		if (object.rotation.y === rotationValue) return
 		anime.remove(object.rotation)
 		anime({
 	      targets: object.rotation,
 	      y: rotationValue,
 	      duration: 5000,
-				easing: 'easeOutQuad',
-				complete: this.closeAnimation(object)
+				easing: 'easeOutQuad'
+				// complete: this.closeAnimation(object)
 	    })
 	}, 400, { leading: true, trailing: false })
 
 	openVerticalPosition = throttle((object, heighValue) => {
-		console.log("vertical", object.name)
-
+		if (object.position.y === heighValue) return
 		anime.remove(object.position)
 		anime({
 	      targets: object.position,
 	      y: heighValue,
-	      duration: 600,
-				easing: 'easeOutQuad',
-				complete: this.closeAnimation(object)
+	      duration: 800,
+				easing: 'easeInOutQuad'
+				// complete: this.closeAnimation(object)
 	    })
 	}, 400, { leading: true, trailing: false })
 
 	openHorizontalPosition = throttle((object, widthValue) => {
-		console.log("horizontal shutter", object.parent.position)
-
+		if (object.position.z === widthValue) return
 		anime.remove(object.position)
 		anime({
 	      targets: object.position,
 	      z: widthValue,
 	      duration: 5000,
-				easing: 'easeOutQuad',
-				complete: this.closeAnimation(object)
+				easing: 'easeOutQuad'
+				// complete: this.closeAnimation(object)
 	    })
 	}, 400, { leading: true, trailing: false })
 
-	closeAnimation = (object) => () => {
-		anime.remove(object.rotation)
-		anime({
-      targets: object.rotation,
-      y: 0,
-			duration: 2000,
-			delay: 2000,
-			easing: 'easeInQuad'
-		})
-	}
+	// TODO : make it work with lights
+	// closeAnimation = (object) => () => {
+	// 	anime.remove(object.rotation)
+	// 	anime({
+  //     targets: object.rotation,
+  //     y: 0,
+	// 		duration: 2000,
+	// 		delay: 2000,
+	// 		easing: 'easeInQuad'
+	// 	})
+	// }
 }
 
 export default BehindCity
