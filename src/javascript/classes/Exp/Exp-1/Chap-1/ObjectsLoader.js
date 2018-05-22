@@ -96,7 +96,7 @@ class ObjectsLoader {
     loadHeightMap = (vertex, fragment) => {
     	return new Promise((resolve, reject) => {
 
-			let geometry = new THREE.PlaneBufferGeometry(8000, 3000, 150, 150)
+			let geometry = new THREE.PlaneBufferGeometry(8000, 6000, 150, 150)
 
 		    let material = new THREE.ShaderMaterial( {
 		    	uniforms: Object.assign({u_amplitude:{ type: "f", value: 4. }, u_frequence:{ type: "f", value: 0.0005 } }, this.uniforms),
@@ -113,7 +113,7 @@ class ObjectsLoader {
 		    let plane = new THREE.Mesh( geometry, material )
 
 		    plane.position.y = 300
-		    plane.position.z = 4800
+		    plane.position.z = 6300
 				plane.rotation.x = Math.PI / 2
 
 				plane.castShadow = true
