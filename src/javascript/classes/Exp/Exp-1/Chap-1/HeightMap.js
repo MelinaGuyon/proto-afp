@@ -29,8 +29,8 @@ class HeightMap {
 		return new Promise((resolve, reject) => {
 
 		    this.uniforms = THREE.UniformsUtils.merge([
-		        THREE.ShaderLib.lambert.uniforms,
-		        { diffuse: { value: new THREE.Color(0xffffff) } },
+	        THREE.ShaderLib.lambert.uniforms,
+	        { diffuse: { value: new THREE.Color(0xffffff) } },
 		    	{ texture: { type: "t", value: THREE.ImageUtils.loadTexture( 'assets/shaders/heightmap/texture.png' ) } }
 		    ]);
 

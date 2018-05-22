@@ -8,6 +8,7 @@ class BehindCity {
 		this.state = options
 		this.nextStepLaunched = false
 		this.lights = []
+		this.bugAnimated = false
 	}
 
 	checkRaycaster = (raycaster) => {
@@ -37,9 +38,11 @@ class BehindCity {
 
 		if (intersectsFirstShutters1[0] && intersectsFirstShutters1[0].distance < 2000) {
 			this.openVerticalPosition(intersectsFirstShutters1[0].object, 50)
+			this.animeLight(intersectsFirstShutters1[0].object.parent.children[1], 0.42)
 		}
 		else if (intersectsFirstShutters2[0] && intersectsFirstShutters2[0].distance < 2000) {
 			this.openVerticalPosition(intersectsFirstShutters2[0].object, 50)
+			this.animeLight(intersectsFirstShutters2[0].object.parent.children[1], 0.42)
 		}
 		else if (intersectsFirstShuttersRight1[0] && intersectsFirstShuttersRight1[0].distance < 2000) {
 			this.openHorizontalPosition(intersectsFirstShuttersRight1[0].object, -15)
@@ -59,16 +62,24 @@ class BehindCity {
 		}
 		else if (intersectsSecondDoor[0] && intersectsSecondDoor[0].distance < 2000) {
 			this.openVerticalPosition(intersectsSecondDoor[0].object, 70)
+			this.animeLight(intersectsSecondDoor[0].object.parent.children[1], 0.42)
 		}
 		else if (intersectsFirstWindow1[0] && intersectsFirstWindow1[0].distance < 2000) {
 			this.openHorizontalRotation(intersectsFirstWindow1[0].object, -Math.PI/4 * 3)
 		}
 		else if (intersectsFirstWindow2[0] && intersectsFirstWindow2[0].distance < 2000) {
 			this.openHorizontalRotation(intersectsFirstWindow2[0].object, -Math.PI/4 * 3)
+
+			if (this.bugAnimated) return
+			this.animateBugs(intersectsFirstWindow2[0].object.parent.children[1])
+			setTimeout(() => { this.animateBugs(intersectsFirstWindow2[0].object.parent.children[2]) }, 250 )
+			setTimeout(() => { this.animateBugs(intersectsFirstWindow2[0].object.parent.children[3]) }, 700 )
 		}
 		else if (intersectsSecondWindow[0] && intersectsSecondWindow[0].distance < 2000) {
 			this.openHorizontalRotation(intersectsSecondWindow[0].object, -Math.PI/4 * 3)
 		}
+
+		if (Storage.ChaptersConclusionClass.binded) return
 
 		if (intersectsFirstShutters1[0] || intersectsFirstShutters2[0] || intersectsFirstShuttersRight1[0] || intersectsFirstShuttersRight2[0]
 			|| intersectsSecondShuttersLeft1[0] || intersectsSecondShuttersLeft2[0] || intersectsFirstDoor[0]
@@ -77,6 +88,39 @@ class BehindCity {
 		} else {
 			Storage.InterfaceClass.cursor.reset()
 		}
+	}
+
+	animateBugs = (sphere) =>{
+		this.bugAnimated = true
+		anime({
+			targets: sphere.position,
+			x: [
+				Math.random() * (80 - -10) + -10,
+				Math.random() * (80 - -10) + -10,
+				Math.random() * (80 - -10) + -10,
+				Math.random() * (80 - -10) + -10,
+				Math.random() * (80 - -10) + -10
+			],
+			y: [
+				Math.random() * (40 - -50) + -50,
+				Math.random() * (40 - -50) + -50,
+				Math.random() * (40 - -50) + -50,
+				Math.random() * (40 - -50) + -50,
+				Math.random() * (40 - -50) + -50
+			],
+			z: [
+				Math.random() * (80 - 0) + 0,
+				Math.random() * (80 - 0) + 0,
+				Math.random() * (80 - 0) + 0,
+				Math.random() * (80 - 0) + 0,
+				Math.random() * (80 - 0) + 0
+			],
+			duration: 2200,
+			easing: 'linear',
+			direction: 'alternate',
+	  	loop: true
+		})
+
 	}
 
 	animeLight = (light, intensity) => {
@@ -100,7 +144,7 @@ class BehindCity {
 				easing: 'easeOutQuad'
 				// complete: this.closeAnimation(object)
 	    })
-	}, 400, { leading: true, trailing: false })
+	}, 2000, { leading: true, trailing: false })
 
 	openVerticalPosition = throttle((object, heighValue) => {
 		if (object.position.y === heighValue) return
@@ -112,7 +156,7 @@ class BehindCity {
 				easing: 'easeInOutQuad'
 				// complete: this.closeAnimation(object)
 	    })
-	}, 400, { leading: true, trailing: false })
+	}, 2000, { leading: true, trailing: false })
 
 	openHorizontalPosition = throttle((object, widthValue) => {
 		if (object.position.z === widthValue) return
@@ -124,7 +168,7 @@ class BehindCity {
 				easing: 'easeOutQuad'
 				// complete: this.closeAnimation(object)
 	    })
-	}, 400, { leading: true, trailing: false })
+	}, 2000, { leading: true, trailing: false })
 
 	// TODO : make it work with lights
 	// closeAnimation = (object) => () => {

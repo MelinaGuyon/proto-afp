@@ -4,11 +4,11 @@
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%);
+	transform: translate(-50%, -60%);
 	pointer-events: none;
 
 	p {
-		font-size: 100px;
+		font-size: 60px;
 		overflow: hidden;
 		color: white;
 
