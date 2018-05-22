@@ -70,6 +70,8 @@ class BehindCity {
 			this.openHorizontalRotation(intersectsSecondWindow[0].object, -Math.PI/4 * 3)
 		}
 
+		if (Storage.ChaptersConclusionClass.binded) return
+
 		if (intersectsFirstShutters1[0] || intersectsFirstShutters2[0] || intersectsFirstShuttersRight1[0] || intersectsFirstShuttersRight2[0]
 			|| intersectsSecondShuttersLeft1[0] || intersectsSecondShuttersLeft2[0] || intersectsFirstDoor[0]
 			|| intersectsSecondDoor[0] || intersectsFirstWindow1[0] || intersectsFirstWindow2[0] || intersectsSecondWindow[0] ) {

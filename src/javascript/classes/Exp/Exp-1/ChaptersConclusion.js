@@ -8,6 +8,7 @@ class ChaptersConclusion {
 
 		this.conclusion
     this.clicked = false
+    this.binded = false
 
     this.conclusionIndicator = document.querySelector('.conclusion-indicator p')
 
@@ -83,6 +84,7 @@ class ChaptersConclusion {
   }
 
   bindConclu = () => {
+    this.binded = true
     document.addEventListener('mousedown', this.onMouseDown, false )
     document.addEventListener('mouseup', this.onMouseUp, false )
     Storage.InterfaceClass.cursor.hold()
@@ -93,6 +95,7 @@ class ChaptersConclusion {
     document.removeEventListener('mousedown', this.onMouseDown, false )
     document.removeEventListener('mouseup', this.onMouseUp, false )
     Storage.InterfaceClass.cursor.reset()
+    this.binded = false
   }
 
   onMouseDown = () => {
