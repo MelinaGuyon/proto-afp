@@ -42,8 +42,8 @@ class ObjectsLoader {
 		var geometry = new THREE.SphereGeometry( 1, 32, 32 )
 		var material = new THREE.MeshBasicMaterial( {color: 0x000000} )
 		var sphere = new THREE.Mesh( geometry, material )
-		sphere.position.z = 60
-		sphere.position.x = 50
+		sphere.position.z = 40
+		sphere.position.x = 40
 
 		return sphere
 	}

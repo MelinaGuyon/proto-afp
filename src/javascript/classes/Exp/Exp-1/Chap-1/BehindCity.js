@@ -95,11 +95,11 @@ class BehindCity {
 		anime({
 			targets: sphere.position,
 			x: [
-				Math.random() * (40 - -50) + -50,
-				Math.random() * (40 - -50) + -50,
-				Math.random() * (40 - -50) + -50,
-				Math.random() * (40 - -50) + -50,
-				Math.random() * (40 - -50) + -50
+				Math.random() * (80 - -10) + -10,
+				Math.random() * (80 - -10) + -10,
+				Math.random() * (80 - -10) + -10,
+				Math.random() * (80 - -10) + -10,
+				Math.random() * (80 - -10) + -10
 			],
 			y: [
 				Math.random() * (40 - -50) + -50,
@@ -109,11 +109,11 @@ class BehindCity {
 				Math.random() * (40 - -50) + -50
 			],
 			z: [
-				Math.random() * (20 - -15) + -15,
-				Math.random() * (20 - -15) + -15,
-				Math.random() * (20 - -15) + -15,
-				Math.random() * (20 - -15) + -15,
-				Math.random() * (20 - -15) + -15
+				Math.random() * (80 - 0) + 0,
+				Math.random() * (80 - 0) + 0,
+				Math.random() * (80 - 0) + 0,
+				Math.random() * (80 - 0) + 0,
+				Math.random() * (80 - 0) + 0
 			],
 			duration: 2200,
 			easing: 'linear',
