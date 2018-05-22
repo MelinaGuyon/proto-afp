@@ -38,6 +38,15 @@ class ObjectsLoader {
 		return light
 	}
 
+	createBug = () => {
+		var geometry = new THREE.SphereGeometry( 1, 32, 32 )
+		var material = new THREE.MeshBasicMaterial( {color: 0x000000} )
+		var sphere = new THREE.Mesh( geometry, material )
+		sphere.position.z = 60
+		sphere.position.x = 50
+
+		return sphere
+	}
 
 	load = () => {
 	    return new Promise((resolve, reject) => {
@@ -414,6 +423,16 @@ class ObjectsLoader {
 						obj.scale.set( 2, 2, 2.2)
 						obj.name = 'firstWindow'
 						obj.children[0].material.color = new THREE.Color(0x3f3f3f)
+
+						if (i === 1) {
+							const bug = this.createBug()
+							obj.add(bug)
+							const bug2 = this.createBug()
+							obj.add(bug2)
+							const bug3 = this.createBug()
+							obj.add(bug3)
+						}
+
 						this.group.add(obj)
 					}
 

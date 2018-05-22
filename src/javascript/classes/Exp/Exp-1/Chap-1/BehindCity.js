@@ -8,6 +8,7 @@ class BehindCity {
 		this.state = options
 		this.nextStepLaunched = false
 		this.lights = []
+		this.bugAnimated = false
 	}
 
 	checkRaycaster = (raycaster) => {
@@ -68,6 +69,11 @@ class BehindCity {
 		}
 		else if (intersectsFirstWindow2[0] && intersectsFirstWindow2[0].distance < 2000) {
 			this.openHorizontalRotation(intersectsFirstWindow2[0].object, -Math.PI/4 * 3)
+
+			if (this.bugAnimated) return
+			this.animateBugs(intersectsFirstWindow2[0].object.parent.children[1])
+			setTimeout(() => { this.animateBugs(intersectsFirstWindow2[0].object.parent.children[2]) }, 250 )
+			setTimeout(() => { this.animateBugs(intersectsFirstWindow2[0].object.parent.children[3]) }, 700 )
 		}
 		else if (intersectsSecondWindow[0] && intersectsSecondWindow[0].distance < 2000) {
 			this.openHorizontalRotation(intersectsSecondWindow[0].object, -Math.PI/4 * 3)
@@ -82,6 +88,39 @@ class BehindCity {
 		} else {
 			Storage.InterfaceClass.cursor.reset()
 		}
+	}
+
+	animateBugs = (sphere) =>{
+		this.bugAnimated = true
+		anime({
+			targets: sphere.position,
+			x: [
+				Math.random() * (40 - -50) + -50,
+				Math.random() * (40 - -50) + -50,
+				Math.random() * (40 - -50) + -50,
+				Math.random() * (40 - -50) + -50,
+				Math.random() * (40 - -50) + -50
+			],
+			y: [
+				Math.random() * (40 - -50) + -50,
+				Math.random() * (40 - -50) + -50,
+				Math.random() * (40 - -50) + -50,
+				Math.random() * (40 - -50) + -50,
+				Math.random() * (40 - -50) + -50
+			],
+			z: [
+				Math.random() * (20 - -15) + -15,
+				Math.random() * (20 - -15) + -15,
+				Math.random() * (20 - -15) + -15,
+				Math.random() * (20 - -15) + -15,
+				Math.random() * (20 - -15) + -15
+			],
+			duration: 2200,
+			easing: 'linear',
+			direction: 'alternate',
+	  	loop: true
+		})
+
 	}
 
 	animeLight = (light, intensity) => {
