@@ -1,31 +1,31 @@
 const splines = {
 	betweenIntroductionChapterOne: [
 		new THREE.Vector3(0, 600, -6500),
-		new THREE.Vector3( 0, 600, -9000)
+		new THREE.Vector3( 0, 600, -12000)
 	],
 	chapter1: [
-		new THREE.Vector3(0, 150, -12000),
-		new THREE.Vector3( 0, 150, -16000)
+		new THREE.Vector3(0, 150, -15000),
+		new THREE.Vector3( 0, 150, -19000)
 	],
 	chapter2: [
-		new THREE.Vector3(0, 400, -17000),
-		new THREE.Vector3(0, 250, -21000),
+		new THREE.Vector3(0, 400, -20000),
+		new THREE.Vector3(0, 250, -24000),
 	],
 	chapter3: [
-		new THREE.Vector3(0, 600, -25000),
-		new THREE.Vector3(0, 200, -29000),
-		new THREE.Vector3( 0, 250, -31900),
-		new THREE.Vector3( 5, 250, -31850)
+		new THREE.Vector3(0, 600, -28000),
+		new THREE.Vector3(0, 200, -32000),
+		new THREE.Vector3( 0, 250, -34900),
+		new THREE.Vector3( 5, 250, -34850)
 	],
 	conclusion: [
-		new THREE.Vector3( 0, 250, -33500),
-		new THREE.Vector3(0, 250, -39500),
-		new THREE.Vector3(0, 280, -40500),
-		new THREE.Vector3(650, 310, -41500),
-		new THREE.Vector3( 0, 340, -42000),
-		new THREE.Vector3( -650, 370, -41500),
-		new THREE.Vector3( 0, 410, -40500),
-		new THREE.Vector3( 0, 450, -43000)
+		new THREE.Vector3( 0, 250, -36500),
+		new THREE.Vector3(0, 250, -42500),
+		new THREE.Vector3(0, 280, -43500),
+		new THREE.Vector3(650, 310, -44500),
+		new THREE.Vector3( 0, 340, -45000),
+		new THREE.Vector3( -650, 370, -44500),
+		new THREE.Vector3( 0, 410, -43500),
+		new THREE.Vector3( 0, 450, -46000)
 	]
 }
 
@@ -51,11 +51,11 @@ const animations = {
 	],
 	toChapterThree: [
 		[
-			new THREE.Vector3( 600, 250, -21500),
-			new THREE.Vector3( 1200, 250, -22375),
-			new THREE.Vector3( 1200, 250, -23250),
-			new THREE.Vector3( 600, 250, -24125),
-			new THREE.Vector3( 0, 250, -25000),
+			new THREE.Vector3( 600, 250, -24500),
+			new THREE.Vector3( 1200, 250, -25375),
+			new THREE.Vector3( 1200, 250, -26250),
+			new THREE.Vector3( 600, 250, -27125),
+			new THREE.Vector3( 0, 250, -28000),
 		],
 		[
 			new THREE.Vector3( 0, -Math.PI/2, -Math.PI/4),
@@ -68,16 +68,18 @@ const animations = {
 }
 
 const keyPointsOnSpline = {
-	betweenIntroductionChapterOne: [.00001, .6, .8],
-	chapter1: [.0001, .2, .4, .75, .9],
+	betweenIntroductionChapterOne: [.00001, .6, .9],
+	chapter1: [.0001, .25, .65, .8, .9],
 	chapter2: [.1, .2, .2, .7, .9],
 	chapter3: [.05, .3, .65, .9],
 	conclusion: [.001, .3, .75]
 }
 
 const textsPanel =  [
-	'Derrière les mines apparaît un paisible village, Kijong-Dong. Construit dans les années 50 par le grand-père de l’actuel dirigeant, la petite cité revêt une caractéristique bien particulière : personne n’y vit. Les bâtiments sont dépourvus de fenêtres et les lumières s’y activent toutes en même temps à heure fixe. Il ne s’agit en réalité que d’une fausse ville, ou “ville propagande”, visant à donner une bonne image des cités nord-coréenne auprès de la Corée du Sud. Cela cache les réelles conditions de vie du pays.',
-	'L’ONU estime à 41% le taux de la population nord-coréenne sous-alimentée. La famine a tué 3 millions d’individus en 20 ans durant le règne de Kim II - Sung. Chaque Nord-Coréen recevait 5$ dollars par mois de la part du gouvernement. Un kilo de riz coûtant 3$, un habitant devait se contenter d’à peine deux kilo de riz pour survivre jusqu’à la fin du mois. Ces aides auraient aujourd’hui disparu. Le paysage provincial prend des airs d’apocalypse. Les usines ont été abandonnées, la campagne est aride et dépourvue d’arbre, les routes demeurent désertées par les voitures.',
+	'A la frontière entre les deux Corées apparaît un village où personne ne vit. Les bâtiments sont dépourvus de fenêtres et les lumières s’y activent à heure fixe. Il s’agit en réalité d’une “ville propagande”, visant à donner une bonne image des cités nord-coréenne auprès de la Corée du Sud. Cela cache les réelles conditions de vie du pays.',
+
+	'L’ONU estime à 41% le taux de la population nord-coréenne sous-alimentée. La famine a tué 3 millions d’individus en 20 ans durant le règne de Kim II - Sung. Le paysage provincial prend des airs d’apocalypse. Les usines ont été abandonnées, la campagne est aride, les routes demeurent désertées par les voitures.',
+
 	'L’armée nord-coréenne est l’un des sujets phares de la propagande du gouvernement, qui la présente comme la plus puissante au monde. Elle compte en effet le plus grand pourcentage au monde de militaires actifs par rapport au nombre d’habitants (5% de la population).'
 ]
 
@@ -102,28 +104,28 @@ const timelineIndicators = [
 const subtitles = [
 	[
 		['Je m’appelle Min-Ho, je suis Nord-Coréen.', 0],
-		['J’ai fui mon pays natal à 16 ans, et lui étais', 3000],
-		['jusqu’alors toujours resté fidèle.', 5500],
-		['Il était pour moi le meilleur pays au monde,', 8000],
-		['car je ne connaissais rien d’autre.', 9500]
+		['J’ai fui mon pays natal à 16 ans, et lui étais', 2000],
+		['jusqu’alors toujours resté fidèle.', 4000],
+		['Il était pour moi le meilleur pays au monde,', 6000],
+		['car je ne connaissais rien d’autre.', 8000]
 	],
 	[
 		['J’ai évolué jour après jour dans un monde artificiel,', 0],
-		['dont les valeurs ne sont qu’une façade.', 3500]
+		['dont les valeurs ne sont qu’une façade.', 3000]
 	],
 	[
 		['C’est l’image d’un pays solide et fier qui est présentée,', 0],
-		['pendant que nous mourons de faim derrière ses murs.', 4000]
+		['pendant que nous mourons de faim derrière ses murs.', 2500]
 	],
 	[
 		['J’ai vu une petite fille de deux ans affamée, succomber sous mes yeux.', 0],
-		['Vous voyez, quand une personne meurt, les mouches sont les premières à le savoir.', 4000],
-		['Même si elle respirait encore, elles se sont rassemblées autour de ses yeux et de sa bouche comme des folles… ', 9000],
-		['C’est à ce moment que j’ai décidé de fuir. ', 15000]
+		['Vous voyez, quand une personne meurt, les mouches sont les premières à le savoir.', 2500],
+		['Même si elle respirait encore, elles se sont rassemblées autour de ses yeux et de sa bouche comme des folles… ', 5500],
+		['C’est à ce moment que j’ai décidé de fuir. ', 10000]
 	],
 	[
 		['On glorifie notre puissante armée, grande défenseuse des peuples,', 0],
-		['mais qui n’hésite pas à punir tout faux pas d’une froide exécution.', 4000]
+		['mais qui n’hésite pas à punir tout faux pas d’une froide exécution.', 3000]
 	],
 	[
 		['J’avais 12 ans lorsque j’ai assisté à ma première exécution publique.', 0],

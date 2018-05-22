@@ -19,7 +19,7 @@ class TextWriting {
       current: [],
       tabIndex: 0,
       moduloIndex: 0,
-      interval: 25,
+      interval: 30,
       pass: false,
       baseHeight: this.wrapper.getBoundingClientRect().height,
       infoHeight: 0,
