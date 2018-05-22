@@ -23,8 +23,8 @@ class ObjectsLoader {
 	    this.group.position.z = -300
 	}
 
-	createLight = () => {
-		const light = new THREE.PointLight(0xC40202, 0, 500, 2)
+	createLight = (color) => {
+		const light = new THREE.PointLight(color, 0, 500, 2)
 		light.castShadow = true
 		light.position.set(0, 0, 0)
 		light.shadow.mapSize.width = SHADOW_MAP_WIDTH
@@ -34,7 +34,7 @@ class ObjectsLoader {
 		// var sphereSize = 100;
 		// var pointLightHelper = new THREE.PointLightHelper( light, sphereSize );
 		// Storage.SceneClasses.exp1.scene.add( pointLightHelper );
-		
+
 		return light
 	}
 
@@ -275,6 +275,12 @@ class ObjectsLoader {
 						obj.scale.set( 1, 1.8, 0.75)
 						obj.name = 'firstShutters'
 						obj.children[0].material.color = new THREE.Color(0x3f3f3f)
+
+						let light
+						if (i === 0 ) light = this.createLight(0xC40202)
+						else light = this.createLight(0xffffff)
+						obj.add(light)
+
 						this.group.add(obj)
 					}
 
@@ -351,7 +357,7 @@ class ObjectsLoader {
 					object.name = 'firstDoor'
 					this.group.add(object)
 
-					const light = this.createLight()
+					const light = this.createLight(0xC40202)
 					object.add(light)
 
 					object.traverse(function(o) {
@@ -380,6 +386,10 @@ class ObjectsLoader {
 					object.scale.set( 2, 1.9, 1.8)
 					object.children[0].material.color = new THREE.Color(0x3f3f3f)
 					object.name = 'secondDoor'
+
+					const light = this.createLight(0xC40202)
+					object.add(light)
+
 					this.group.add(object)
 					resolve()
 				})

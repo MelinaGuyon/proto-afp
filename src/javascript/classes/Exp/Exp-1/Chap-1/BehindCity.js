@@ -37,9 +37,11 @@ class BehindCity {
 
 		if (intersectsFirstShutters1[0] && intersectsFirstShutters1[0].distance < 2000) {
 			this.openVerticalPosition(intersectsFirstShutters1[0].object, 50)
+			this.animeLight(intersectsFirstShutters1[0].object.parent.children[1], 0.42)
 		}
 		else if (intersectsFirstShutters2[0] && intersectsFirstShutters2[0].distance < 2000) {
 			this.openVerticalPosition(intersectsFirstShutters2[0].object, 50)
+			this.animeLight(intersectsFirstShutters2[0].object.parent.children[1], 0.42)
 		}
 		else if (intersectsFirstShuttersRight1[0] && intersectsFirstShuttersRight1[0].distance < 2000) {
 			this.openHorizontalPosition(intersectsFirstShuttersRight1[0].object, -15)
@@ -59,6 +61,7 @@ class BehindCity {
 		}
 		else if (intersectsSecondDoor[0] && intersectsSecondDoor[0].distance < 2000) {
 			this.openVerticalPosition(intersectsSecondDoor[0].object, 70)
+			this.animeLight(intersectsSecondDoor[0].object.parent.children[1], 0.42)
 		}
 		else if (intersectsFirstWindow1[0] && intersectsFirstWindow1[0].distance < 2000) {
 			this.openHorizontalRotation(intersectsFirstWindow1[0].object, -Math.PI/4 * 3)
@@ -102,7 +105,7 @@ class BehindCity {
 				easing: 'easeOutQuad'
 				// complete: this.closeAnimation(object)
 	    })
-	}, 400, { leading: true, trailing: false })
+	}, 2000, { leading: true, trailing: false })
 
 	openVerticalPosition = throttle((object, heighValue) => {
 		if (object.position.y === heighValue) return
@@ -114,7 +117,7 @@ class BehindCity {
 				easing: 'easeInOutQuad'
 				// complete: this.closeAnimation(object)
 	    })
-	}, 400, { leading: true, trailing: false })
+	}, 2000, { leading: true, trailing: false })
 
 	openHorizontalPosition = throttle((object, widthValue) => {
 		if (object.position.z === widthValue) return
@@ -126,7 +129,7 @@ class BehindCity {
 				easing: 'easeOutQuad'
 				// complete: this.closeAnimation(object)
 	    })
-	}, 400, { leading: true, trailing: false })
+	}, 2000, { leading: true, trailing: false })
 
 	// TODO : make it work with lights
 	// closeAnimation = (object) => () => {
