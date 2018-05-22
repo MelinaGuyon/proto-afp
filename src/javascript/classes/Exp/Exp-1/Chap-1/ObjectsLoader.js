@@ -63,9 +63,11 @@ class ObjectsLoader {
 										this.loadSecondDoor().then((response)=> {
 											this.loadFirstWindow().then((response)=> {
 												this.loadSecondWindow().then((response)=> {
-									  			this.loadShader("../../../glsl/testVert.vert", "../../../glsl/testFrag.frag").then((response)=> {
+													this.loadDeadMan().then((response)=> {
+										  			this.loadShader("../../../glsl/testVert.vert", "../../../glsl/testFrag.frag").then((response)=> {
 								    		    	console.log('Chapter 1 objects loaded')
 								    		    	resolve(this.group)
+														}).catch((error)=> { console.warn(error) })
 								    			}).catch((error)=> { console.warn(error) })
 												}).catch((error)=> { console.warn(error) })
 											}).catch((error)=> { console.warn(error) })
@@ -283,7 +285,7 @@ class ObjectsLoader {
 						else obj.position.z = 90
 						obj.scale.set( 1, 1.8, 0.75)
 						obj.name = 'firstShutters'
-						obj.children[0].material.color = new THREE.Color(0x3f3f3f)
+						obj.children[0].material.color = new THREE.Color(0xcccccc)
 
 						let light
 						if (i === 0 ) light = this.createLight(0xC40202)
@@ -314,7 +316,7 @@ class ObjectsLoader {
 						else obj.position.z =  -1738
 						obj.scale.set( 2, 1.8, 1.4)
 						obj.name = 'firstShuttersRight'
-						obj.children[0].material.color = new THREE.Color(0x3f3f3f)
+						obj.children[0].material.color = new THREE.Color(0xcccccc)
 						this.group.add(obj)
 					}
 
@@ -340,7 +342,7 @@ class ObjectsLoader {
 						else obj.position.z =  -1712
 						obj.scale.set( 2, 1.8, 1.4)
 						obj.name = 'secondShuttersLeft'
-						obj.children[0].material.color = new THREE.Color(0x3f3f3f)
+						obj.children[0].material.color = new THREE.Color(0xcccccc)
 
 						this.group.add(obj)
 					}
@@ -362,7 +364,7 @@ class ObjectsLoader {
 					object.position.y = 140
 					object.position.z = 172
 					object.scale.set( 2, 1.9, 1)
-					object.children[0].material.color = new THREE.Color(0x3f3f3f)
+					object.children[0].material.color = new THREE.Color(0xcccccc)
 					object.name = 'firstDoor'
 					this.group.add(object)
 
@@ -393,7 +395,7 @@ class ObjectsLoader {
 					object.position.y = 110
 					object.position.z =  -2600
 					object.scale.set( 2, 1.9, 1.8)
-					object.children[0].material.color = new THREE.Color(0x3f3f3f)
+					object.children[0].material.color = new THREE.Color(0xcccccc)
 					object.name = 'secondDoor'
 
 					const light = this.createLight(0xC40202)
@@ -422,7 +424,7 @@ class ObjectsLoader {
 						else obj.position.z =  -1190
 						obj.scale.set( 2, 2, 2.2)
 						obj.name = 'firstWindow'
-						obj.children[0].material.color = new THREE.Color(0x3f3f3f)
+						obj.children[0].material.color = new THREE.Color(0xcccccc)
 
 						if (i === 1) {
 							const bug = this.createBug()
@@ -455,8 +457,33 @@ class ObjectsLoader {
 					object.position.z =  -3250
 					object.scale.set( 2, 2, 2.2)
 					object.name = 'secondWindow'
-					object.children[0].material.color = new THREE.Color(0x3f3f3f)
+					object.children[0].material.color = new THREE.Color(0xcccccc)
 					this.group.add(object)
+
+					resolve()
+				})
+			})
+		})
+	}
+
+	loadDeadMan = () => {
+		return new Promise((resolve, reject) => {
+			this.mtlLoader.load('assets/models/chapitre1/vrai-ville/dead.mtl', (matl) => {
+				matl.preload()
+				this.objLoader.setMaterials( matl )
+
+				this.objLoader.load( 'assets/models/chapitre1/vrai-ville/dead.obj', (object) => {
+
+					object.position.x = -490
+					object.position.y = 10
+					object.position.z =  -2250
+					object.scale.set( 1.2, 1.2, 1.2)
+					object.rotation.y = Math.PI * 1.5
+					object.name = 'deadMan'
+					object.children[0].material.color = new THREE.Color(0xcccccc)
+					this.group.add(object)
+
+					console.log(object)
 
 					resolve()
 				})

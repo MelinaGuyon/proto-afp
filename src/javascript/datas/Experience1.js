@@ -88,7 +88,7 @@ const chaptersTitle =  [
 ]
 
 const conclusions =  [
-	['assets/shaders/conclusion/conclusion2.mp4', 'video'],
+	['assets/shaders/conclusion/ville.mp4', 'video'],
 	['assets/shaders/conclusion/conclusion2.mp4', 'video'],
 	['assets/shaders/conclusion/01.jpg', 'photo']
 ]
