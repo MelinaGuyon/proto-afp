@@ -85,6 +85,8 @@ class SoundManager {
     }
 
     createNewBackgroundMusic = (track) => {
+
+      console.log( "here music")
       this.backgroundMusic = new Audio(track)
       this.backgroundMusic.volume = 0
       this.backgroundMusic.play()
