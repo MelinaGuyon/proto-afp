@@ -1,4 +1,5 @@
 import anime from 'animejs'
+import { delay } from 'lodash'
 
 class ChaptersConclusion {
     constructor(options) {
@@ -7,6 +8,8 @@ class ChaptersConclusion {
 
 		this.conclusion
     this.clicked = false
+
+    this.conclusionIndicator = document.querySelector('.conclusion-indicator p')
 
     // to test
     // this.makePhotoTex('assets/01.jpg')
@@ -49,10 +52,41 @@ class ChaptersConclusion {
     Storage.ComposerClass.unactivate()
   }
 
+  indicateConclusion = () => {
+    for (let i = 0; i < this.conclusionIndicator.children.length; i ++) {
+      delay(this.writeSpan, i * 50, { span: this.conclusionIndicator.children[i] })
+    }
+    setTimeout(() => {
+      for (let i = 0; i < this.conclusionIndicator.children.length; i ++) {
+        delay(this.removeSpan, i * 50, { span: this.conclusionIndicator.children[i] })
+      }
+    }, 1500)
+  }
+
+  writeSpan = (opt) => {
+    anime({
+      targets: opt.span,
+      translateY: ['100%', 0],
+      duration: 500,
+			easing: 'easeOutQuad'
+    })
+  }
+
+  removeSpan = (opt) => {
+    anime({
+      targets: opt.span,
+      translateY: '-100%',
+      duration: 500,
+			easing: 'easeOutQuad',
+      complete: () => { opt.span.style.transform = 'translateY(100%)' }
+    })
+  }
+
   bindConclu = () => {
     document.addEventListener('mousedown', this.onMouseDown, false )
     document.addEventListener('mouseup', this.onMouseUp, false )
     Storage.InterfaceClass.cursor.hold()
+    this.indicateConclusion()
   }
 
   unbindConclu = () => {

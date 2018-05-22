@@ -53,7 +53,6 @@ class FrontalCity {
 	}
 
 	openAnimation = throttle((object, rotationValue) => {
-		console.log("animation")
 		object.name.includes('droite') || object.name.includes('gauche') ? this.windowPassed = true : ''
 
 		anime.remove(object.rotation)

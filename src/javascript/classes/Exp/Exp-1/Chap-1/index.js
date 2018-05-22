@@ -58,8 +58,6 @@ class Chapitre1 {
     this.mouse.y = - (event.clientY / window.innerHeight) * 2 + 1
     this.raycaster.setFromCamera(this.mouse, this.state.relatedCamera)
 
-    console.log("STEP", this.step)
-
     if (this.step === 0) this.frontalCity.checkRaycaster(this.raycaster)
     if (this.step === 1) this.behindCity.checkRaycaster(this.raycaster)
   }
