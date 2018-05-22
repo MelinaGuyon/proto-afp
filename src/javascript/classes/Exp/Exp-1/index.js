@@ -66,11 +66,11 @@ class Experience1 {
       this.betweenChapters = new BetweenChapters()
       this.chaptersConclusion = new ChaptersConclusionClass()
 
-      this.animateCamera(datas.animations.enter, 4000, this.betweenIntroductionChapterOne)
+      // this.animateCamera(datas.animations.enter, 4000, this.betweenIntroductionChapterOne)
 
       // to test
-      // this.splineIndex = 1
-      // this.goToChapterOne()
+      this.splineIndex = 1
+      this.goToChapterOne()
 
       Storage.TextWriting.addTitle(datas.chaptersTitle[0], 5000)
 		}
@@ -94,7 +94,7 @@ class Experience1 {
       this.placeOnSpline({
   				spline: new THREE.CatmullRomCurve3(datas.splines.chapter1),
           relatedCamera: this.camera,
-          step: .06,
+          step: .16,
           index: this.splineIndex,
           cbEnd: () => { this.chapter2.init().then(this.goToChapterTwo) }
   			},
