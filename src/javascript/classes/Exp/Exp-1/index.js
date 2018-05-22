@@ -66,7 +66,10 @@ class Experience1 {
       this.betweenChapters = new BetweenChapters()
       this.chaptersConclusion = new ChaptersConclusionClass()
 
+      this.animateCamera(datas.animations.enter, 4000, this.betweenIntroductionChapterOne)
+      Storage.SoundManagerClass.createNewBackgroundMusic("assets/sound/fondsonore.mp3")
       // this.animateCamera(datas.animations.enter, 4000, this.betweenIntroductionChapterOne)
+
 
       // to test
       this.splineIndex = 1
