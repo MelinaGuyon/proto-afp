@@ -49,7 +49,7 @@ class ObjectsLoader {
 				that.objLoader.load( 'assets/models/introduction/drapeaux.obj', function ( drapeaux ) {
 					drapeaux.position.y = 500
 					drapeaux.position.z = 2500
-					drapeaux.scale.set(5, 5, 5)
+					drapeaux.scale.set(2, 2, 2)
 
 					that.group.add( drapeaux )
 					resolve()
@@ -67,7 +67,7 @@ class ObjectsLoader {
 				this.objLoader.setMaterials( texteMatl )
 
 				that.objLoader.load( 'assets/models/introduction/texte.obj', function ( texte ) {
-					texte.position.y = 500
+					texte.position.y = 300
 					texte.position.z = -1500
 					texte.position.x = 800
 					texte.scale.set(5, 5, 5)
@@ -109,7 +109,7 @@ class ObjectsLoader {
 				this.objLoader.setMaterials( texte2Matl )
 
 				that.objLoader.load( 'assets/models/introduction/texte2.obj', function ( texte2 ) {
-					texte2.position.y = 700
+					texte2.position.y = 500
 					texte2.position.z = -3500
 					texte2.position.x = -300
 					texte2.scale.set(5, 5, 5)
@@ -153,10 +153,10 @@ class ObjectsLoader {
 				this.objLoader.setMaterials( batimentMatl )
 
 				that.objLoader.load( 'assets/models/introduction/batiment.obj', function ( batiment ) {
-					batiment.position.y = 500
-					batiment.position.z = -4000
-					batiment.position.x = 300
-					batiment.scale.set(3, 3, 3)
+					batiment.position.y = 2500
+					batiment.position.z = -5000
+					batiment.position.x = -600
+					batiment.scale.set(5, 5, 5)
 
 					that.group.add( batiment )
 					resolve()
