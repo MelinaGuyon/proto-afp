@@ -79,6 +79,43 @@ class SoundManager {
       })
     }
 
+    launchSecondAmbianceSound = (track) => {
+      if (this.secondAmbianceSound) this.updateAmbianceSrc(track)
+      else this.createNewAmbiance(track)
+    }
+
+    createSecondNewAmbiance = (track) => {
+      this.secondAmbianceSound = new Audio(track)
+      this.secondAmbianceSound.volume = 0
+      this.secondAmbianceSound.play()
+      anime({
+        targets: this.secondAmbianceSound,
+        volume: [0, 1],
+        duration: 600,
+        easing: 'linear'
+      })
+    }
+
+    updateSecondAmbianceSrc = (track) => {
+      anime({
+        targets: this.secondAmbianceSound,
+        volume: [1, 0],
+        duration: 600,
+        easing: 'linear',
+        complete: () => {
+          this.secondAmbianceSound.pause()
+          this.secondAmbianceSound.src = track
+          this.secondAmbianceSound.play()
+          anime({
+            targets: this.secondAmbianceSound,
+            volume: [0, 1],
+            duration: 600,
+            easing: 'linear'
+          })
+        }
+      })
+    }
+
     launchBackgroundMusic = (track) => {
       if (this.backgroundMusic) this.updateBackgroundMusicSrc(track)
       else this.createNewBackgroundMusic(track)

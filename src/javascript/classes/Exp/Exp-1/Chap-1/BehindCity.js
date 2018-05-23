@@ -68,6 +68,11 @@ class BehindCity {
 			this.openHorizontalRotation(intersectsFirstWindow1[0].object, -Math.PI/4 * 3)
 		}
 		else if (intersectsFirstWindow2[0] && intersectsFirstWindow2[0].distance < 2000) {
+			if (this.fliesSoundLaunched != true) {
+				this.fliesSoundLaunched = true
+				Storage.SoundManagerClass.launchSecondAmbianceSound("assets/sound/mouches.mp3")
+			}
+
 			this.openHorizontalRotation(intersectsFirstWindow2[0].object, -Math.PI/4 * 3)
 
 			if (this.bugAnimated) return

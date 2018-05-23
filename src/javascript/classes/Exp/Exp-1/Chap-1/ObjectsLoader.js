@@ -452,9 +452,9 @@ class ObjectsLoader {
 
 				this.objLoader.load( 'assets/models/chapitre1/vrai-ville/5bis.interaction_fenetre.obj', (object) => {
 
-					object.position.x = 620
+					object.position.x = 625
 					object.position.y = 220
-					object.position.z =  -3250
+					object.position.z =  -3290
 					object.scale.set( 2, 2, 2.2)
 					object.name = 'secondWindow'
 					object.children[0].material.color = new THREE.Color(0xcccccc)
