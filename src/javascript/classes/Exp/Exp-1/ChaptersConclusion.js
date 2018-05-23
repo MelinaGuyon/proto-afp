@@ -29,6 +29,9 @@ class ChaptersConclusion {
     texture.format = THREE.RGBFormat
 
     Storage.ComposerClass.composer.passes[1].uniforms.videoTexture.value = texture
+    setTimeout(() => {
+      Storage.ComposerClass.composer.passes[1].uniforms.u_textureResolution.value = new THREE.Vector2(texture.image.videoWidth, texture.image.videoHeight)
+    }, 500)
   }
 
   makePhotoTex = (url) => {

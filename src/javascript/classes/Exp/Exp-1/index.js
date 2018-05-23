@@ -68,12 +68,12 @@ class Experience1 {
 
       this.animateCamera(datas.animations.enter, 4000, this.betweenIntroductionChapterOne)
       Storage.SoundManagerClass.createNewBackgroundMusic("assets/sound/fondsonore.mp3")
-      // this.animateCamera(datas.animations.enter, 4000, this.betweenIntroductionChapterOne)
+      this.animateCamera(datas.animations.enter, 4000, this.betweenIntroductionChapterOne)
 
 
       // to test
-      this.splineIndex = 1
-      this.goToChapterOne()
+      // this.splineIndex = 1
+      // this.goToChapterOne()
 
       Storage.TextWriting.addTitle(datas.chaptersTitle[0], 5000)
 		}
