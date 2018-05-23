@@ -20,67 +20,54 @@ class ObjectsLoader {
   }
 
 	load = () => {
-
-		this.addWall()
-
     return new Promise((resolve, reject) => {
-  		this.loadPeople().then((response)=> {
-    		this.loadShadow().then((response)=> {
-    		    console.log('Chapter 2 objects loaded')
-    		    resolve(this.group)
+      this.loadWall().then((response)=> {
+    		this.loadPeople().then((response)=> {
+          this.loadShadow().then((response)=> {
+      		    console.log('Chapter 2 objects loaded')
+      		    resolve(this.group)
+          }).catch((error)=> { console.warn(error) })
     		}).catch((error)=> { console.warn(error) })
   		}).catch((error)=> { console.warn(error) })
     })
 	}
 
-	addWall = () => {
-		let geometry = new THREE.PlaneGeometry( 1500, 1000, 32 )
-		let material = new THREE.MeshStandardMaterial( { color: 0xffffff, side: THREE.BackSide } )
-		let plane = new THREE.Mesh( geometry, material )
-
-		plane.position.z = -100
-    plane.position.y = 500
-
-		plane.castShadow = true
-		plane.receiveShadow = true
-
-    // invert normals
-    for ( var i = 0; i < geometry.faces.length; i ++ ) {
-      var face = geometry.faces[ i ]
-      var temp = face.a
-      face.a = face.c
-      face.c = temp
-    }
-    geometry.computeFaceNormals()
-    geometry.computeVertexNormals()
-    var faceVertexUvs = geometry.faceVertexUvs[ 0 ]
-    for ( var i = 0; i < faceVertexUvs.length; i ++ ) {
-      var temp = faceVertexUvs[ i ][ 0 ]
-      faceVertexUvs[ i ][ 0 ] = faceVertexUvs[ i ][ 2 ]
-      faceVertexUvs[ i ][ 2 ] = temp
-    }
-
-    this.group.add(plane)
+	loadWall = () => {
+    return new Promise((resolve, reject) => {
+      let that = this
+      that.objLoader.load( 'assets/models/chapitre2/mur_fond.obj', function ( wall ) {
+        wall.scale.set(4, 4, 4)
+        wall.position.z = -700
+        wall.position.x = -150
+        wall.position.y = 500
+        //wall.rotation.y = Math.PI/2
+        wall.rotation.y = -Math.PI/2
+        wall.castShadow = true
+        wall.receiveShadow = true
+        that.group.add( wall )
+      })
+      resolve()
+    })
 	}
 
   loadPeople = () => {
     return new Promise((resolve, reject) => {
       let that = this
       that.objLoader.load( 'assets/models/chapitre2/soldat_amultiplier.obj', function ( body ) {
-          for ( let i = 0; i < 5; i ++ ) {
-            for ( let j = 0; j < 3; j ++ ) {
-                  let bodyInstance = body.clone()
-                  bodyInstance.scale.set(1.5, 1.5, 1.5)
-                  bodyInstance.position.x = i * 200
-                  bodyInstance.position.z = j * 200
-                  bodyInstance.name = "warrior"
-                  bodyInstance.passed = false
-                  bodyInstance.castShadow = false
-                  that.peopleGroup.add( bodyInstance )
-              }
+        for ( let i = 0; i < 5; i ++ ) {
+          for ( let j = 0; j < 3; j ++ ) {
+            let bodyInstance = body.clone()
+            bodyInstance.scale.set(1.5, 1.5, 1.5)
+            bodyInstance.position.x = i * 200
+            bodyInstance.position.z = j * 200
+            bodyInstance.name = "warrior"
+            bodyInstance.passed = false
+            bodyInstance.castShadow = false
+            that.peopleGroup.add( bodyInstance )
           }
-          that.group.add( that.peopleGroup )
-          resolve()
+        }
+        that.group.add( that.peopleGroup )
+        resolve()
       })
     })
   }

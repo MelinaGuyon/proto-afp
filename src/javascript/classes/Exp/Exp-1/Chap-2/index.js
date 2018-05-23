@@ -63,7 +63,9 @@ class Chapitre2 {
 
 
   initLight = () => {
-    this.state.lightOpt.push(this.modelsGroup.children[0])
+    this.state.lightOpt.push(this.modelsGroup.children[0].children[0])
+
+    console.log("coucou", this.modelsGroup.children[0])
     this.light = new CursorLight({
       sceneIndex: 1,
       relatedCamera: this.state.relatedCamera.camera,

@@ -140,8 +140,11 @@ class CursorLight {
 			let intersects = this.raycaster.intersectObjects(this.table, false)
 
 			if (intersects && intersects.length > 0) {
+
+				console.log("tameeeeeer", face)
+
 				const { point, face } = intersects[0]
-        let offset = -300
+        let offset = 300
 				pos.x = point.x + offset * face.normal.x
 				pos.y = point.y + -offset * face.normal.y
 				pos.z = point.z + (offset - 100) * face.normal.z
