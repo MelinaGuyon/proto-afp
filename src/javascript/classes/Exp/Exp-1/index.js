@@ -84,13 +84,15 @@ class Experience1 {
       this.placeOnSpline({
           spline: new THREE.CatmullRomCurve3(datas.splines.betweenIntroductionChapterOne),
           relatedCamera: this.camera,
-          step: .06,
+          step: 0,
           index: this.splineIndex,
           cbEnd: () => { this.chapter1.initInteraction() }
         },
         .5
       )
       this.introduction.remove()
+      setTimeout(() => { this.betweenChapters.launchVoiceOver(0)() }, 500)
+      setTimeout(() => { this.spline.updateStep(0.12) }, 5000)
     }
 
     goToChapterOne = () => {
@@ -155,9 +157,10 @@ class Experience1 {
       Storage.InterfaceClass.actus.makeActu()
     }
 
-    placeOnSpline = (opt, mvmt) => {
+    placeOnSpline = (opt, mvmt, wait) => {
       if (this.spline) this.spline.unbind()
       this.spline = new Spline(opt)
+
       this.spline.placeCameraAtFirstPoint()
 
       this.camera.updateMovementRange(mvmt, 1900)

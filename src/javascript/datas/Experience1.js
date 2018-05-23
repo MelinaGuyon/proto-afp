@@ -1,61 +1,53 @@
 const splines = {
 	betweenIntroductionChapterOne: [
 		new THREE.Vector3(0, 600, -6500),
-		new THREE.Vector3( 0, 600, -12000)
+		new THREE.Vector3(0, 600, -9000),
+		new THREE.Vector3(1000, 1200, -12000),
+		new THREE.Vector3(-300, 400, -15000),
+		new THREE.Vector3( 0, 600, -22000)
 	],
 	chapter1: [
-		new THREE.Vector3(0, 150, -15000),
-		new THREE.Vector3( 0, 150, -19000)
+		new THREE.Vector3(0, 150, -25000),
+		new THREE.Vector3( 0, 150, -29000)
 	],
 	chapter2: [
-		new THREE.Vector3(0, 400, -20000),
-		new THREE.Vector3(0, 250, -24000),
+		new THREE.Vector3(0, 400, -30000),
+		new THREE.Vector3(0, 250, -34000),
 	],
 	chapter3: [
-		new THREE.Vector3(0, 600, -28000),
-		new THREE.Vector3(0, 200, -32000),
-		new THREE.Vector3( 0, 250, -34900),
-		new THREE.Vector3( 5, 250, -34850)
+		new THREE.Vector3(0, 600, -38000),
+		new THREE.Vector3(0, 200, -42000),
+		new THREE.Vector3( 0, 250, -44900),
+		new THREE.Vector3( 5, 250, -44850)
 	],
 	conclusion: [
-		new THREE.Vector3( 0, 250, -36500),
-		new THREE.Vector3(0, 250, -42500),
-		new THREE.Vector3(0, 280, -43500),
-		new THREE.Vector3(650, 310, -44500),
-		new THREE.Vector3( 0, 340, -45000),
-		new THREE.Vector3( -650, 370, -44500),
-		new THREE.Vector3( 0, 410, -43500),
-		new THREE.Vector3( 0, 450, -46000)
+		new THREE.Vector3( 0, 250, -46500),
+		new THREE.Vector3(0, 250, -52500),
+		new THREE.Vector3(0, 280, -53500),
+		new THREE.Vector3(650, 310, -54500),
+		new THREE.Vector3( 0, 340, -55000),
+		new THREE.Vector3( -650, 370, -54500),
+		new THREE.Vector3( 0, 410, -53500),
+		new THREE.Vector3( 0, 450, -56000)
 	]
 }
 
 const animations = {
-	// moins il y a de points, moins ça s'accade, donc à voir si il faut vraiment en garder pour enter :
 	enter: [
 		[
-			// new THREE.Vector3( 0, 950, 2000),
-			// new THREE.Vector3( 0, 900, 320),
-			// new THREE.Vector3( 0, 600, -1360),
-			// new THREE.Vector3( 0, 600, -3040),
-			// new THREE.Vector3( 0, 600, -4720),
 			new THREE.Vector3( 0, 600, -6400)
 		],
 		[
-			// new THREE.Vector3( 0, 0, Math.PI/3),
-			// new THREE.Vector3( 0, 0, Math.PI/3*2),
-			// new THREE.Vector3( 0, 0, Math.PI/3*3),
-			// new THREE.Vector3( 0, 0, Math.PI/3*4),
-			// new THREE.Vector3( 0, 0, Math.PI/3*5),
 			new THREE.Vector3( 0, 0, Math.PI/3*6)
 		]
 	],
 	toChapterThree: [
 		[
-			new THREE.Vector3( 600, 250, -24500),
-			new THREE.Vector3( 1200, 250, -25375),
-			new THREE.Vector3( 1200, 250, -26250),
-			new THREE.Vector3( 600, 250, -27125),
-			new THREE.Vector3( 0, 250, -28000),
+			new THREE.Vector3( 600, 250, -34500),
+			new THREE.Vector3( 1200, 250, -35375),
+			new THREE.Vector3( 1200, 250, -36250),
+			new THREE.Vector3( 600, 250, -237125),
+			new THREE.Vector3( 0, 250, -38000),
 		],
 		[
 			new THREE.Vector3( 0, -Math.PI/2, -Math.PI/4),
@@ -68,7 +60,7 @@ const animations = {
 }
 
 const keyPointsOnSpline = {
-	betweenIntroductionChapterOne: [.00001, .6, .9],
+	betweenIntroductionChapterOne: [.65, .9],
 	chapter1: [.0001, .25, .65, .8, .9],
 	chapter2: [.1, .2, .2, .7, .9],
 	chapter3: [.05, .3, .65, .9],
@@ -105,9 +97,9 @@ const subtitles = [
 	[
 		['Je m’appelle Min-Ho, je suis Nord-Coréen.', 0],
 		['J’ai fui mon pays natal à 16 ans, et lui étais', 3000],
-		['jusqu’alors toujours resté fidèle.', 5000],
-		['Il était pour moi le meilleur pays au monde,', 7000],
-		['car je ne connaissais rien d’autre.', 9000]
+		['jusqu’alors toujours resté fidèle.', 5500],
+		['Il était pour moi le meilleur pays au monde,', 7800],
+		['car je ne connaissais rien d’autre.', 9500]
 	],
 	[
 		['J’ai évolué jour après jour dans un monde artificiel,', 0],
