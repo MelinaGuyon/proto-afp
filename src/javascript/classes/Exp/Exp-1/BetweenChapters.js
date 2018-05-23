@@ -10,7 +10,7 @@ class BetweenChapters {
 
     initFcTable = () => {
       this.table = [
-        [ this.launchVoiceOver(0), this.launchVoiceOver(1), this.launchText(0) ],
+        [this.launchVoiceOver(1), this.launchText(0) ],
 
         [ this.launchVoiceOver(2), this.launchVoiceOver(3), this.launchText(1), this.launchConclusion(1), this.stopConclusion ],
 
@@ -25,7 +25,7 @@ class BetweenChapters {
     updateScene = (index, step) => {
       if (this.table[index][step]) this.table[index][step]()
     }
-    
+
     launchText = (index) => () => {
       this.lauchTextDelayed(index)
     }
@@ -51,7 +51,7 @@ class BetweenChapters {
       if (index == 3) Storage.SplineClass.updateStep(0.8)
       Storage.ChaptersConclusionClass.bindConclu()
     }
-    
+
     stopConclusion = () => {
       console.log('je stop conclu')
       Storage.ChaptersConclusionClass.unbindConclu()

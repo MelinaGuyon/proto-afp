@@ -92,7 +92,7 @@ class ObjectsLoader {
 		return new Promise((resolve, reject) => {
 		    this.uniforms = THREE.UniformsUtils.merge([
 	        THREE.ShaderLib.lambert.uniforms,
-	        { diffuse: { value: new THREE.Color(0xf7f7f7) } },
+					{ diffuse: { value: new THREE.Color(0xf7f7f7) } },
 	    		{ texture: { type: "t", value: THREE.ImageUtils.loadTexture( 'assets/shaders/heightmap/texture.jpg' ) } }
 		    ]);
 		    this.vertex_loader.load(vertex_url, function (vertex_text) {
@@ -107,7 +107,7 @@ class ObjectsLoader {
     loadHeightMap = (vertex, fragment) => {
     	return new Promise((resolve, reject) => {
 
-			let geometry = new THREE.PlaneBufferGeometry(8000, 6000, 150, 150)
+			let geometry = new THREE.PlaneBufferGeometry(12000, 15500, 150, 150)
 
 		    let material = new THREE.ShaderMaterial( {
 		    	uniforms: Object.assign({u_amplitude:{ type: "f", value: 4. }, u_frequence:{ type: "f", value: 0.0005 } }, this.uniforms),
@@ -124,7 +124,7 @@ class ObjectsLoader {
 		    let plane = new THREE.Mesh( geometry, material )
 
 		    plane.position.y = 300
-		    plane.position.z = 6300
+		    plane.position.z = 10500
 				plane.rotation.x = Math.PI / 2
 
 				plane.castShadow = true

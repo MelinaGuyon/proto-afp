@@ -19,15 +19,15 @@ class FrontalCity {
 		let intersectsWindowLeft = raycaster.intersectObjects(windowLeft, false)
 		let intersectsWindowRight = raycaster.intersectObjects(windowRight, false)
 
-		if (this.windowPassed === true && intersectsDoor[0] && intersectsDoor[0].distance < 2000 && intersectsDoor[0].object.name.includes('porte')) {
+		if (this.windowPassed === true && intersectsDoor[0] && intersectsDoor[0].distance < 2500 && intersectsDoor[0].object.name.includes('porte')) {
 			this.openAnimation(intersectsDoor[0].object, -Math.PI/4 * 3)
 			this.launchNextStep()
 		}
 
-		if (intersectsWindowLeft[0] && intersectsWindowLeft[0].distance < 2000 && intersectsWindowLeft[0].object.name.includes('droite')) {
+		if (intersectsWindowLeft[0] && intersectsWindowLeft[0].distance < 2500 && intersectsWindowLeft[0].object.name.includes('droite')) {
 			this.openAnimation(intersectsWindowLeft[0].object, -Math.PI/4 * 3)
 		}
-		else if (intersectsWindowRight[0] && intersectsWindowRight[0].distance < 2000 && intersectsWindowRight[0].object.name.includes('gauche')) {
+		else if (intersectsWindowRight[0] && intersectsWindowRight[0].distance < 2500 && intersectsWindowRight[0].object.name.includes('gauche')) {
 
 			this.openAnimation(intersectsWindowRight[0].object, Math.PI/4 * 3)
 		}

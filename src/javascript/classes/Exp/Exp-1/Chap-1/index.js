@@ -29,7 +29,6 @@ class Chapitre1 {
   init = () => {
     this.displayChapterObjects()
 
-    //this.heightMap = new HeightMap({relatedBox: this.state.relatedBox})
     this.frontalCity = new FrontalCity({ objectsGroup: this.modelsGroup })
     this.behindCity = new BehindCity({ objectsGroup: this.modelsGroup })
   }
