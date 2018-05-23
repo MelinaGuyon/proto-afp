@@ -69,7 +69,7 @@ const animations = {
 
 const keyPointsOnSpline = {
 	betweenIntroductionChapterOne: [.00001, .6, .9],
-	chapter1: [.0001, .0001, .25, .65, .8, .9],
+	chapter1: [.0001, .25, .65, .8, .9],
 	chapter2: [.1, .2, .2, .7, .9],
 	chapter3: [.05, .3, .65, .9],
 	conclusion: [.001, .3, .75]
@@ -104,10 +104,10 @@ const timelineIndicators = [
 const subtitles = [
 	[
 		['Je m’appelle Min-Ho, je suis Nord-Coréen.', 0],
-		['J’ai fui mon pays natal à 16 ans, et lui étais', 2000],
-		['jusqu’alors toujours resté fidèle.', 4000],
-		['Il était pour moi le meilleur pays au monde,', 6000],
-		['car je ne connaissais rien d’autre.', 8000]
+		['J’ai fui mon pays natal à 16 ans, et lui étais', 3000],
+		['jusqu’alors toujours resté fidèle.', 5000],
+		['Il était pour moi le meilleur pays au monde,', 7000],
+		['car je ne connaissais rien d’autre.', 9000]
 	],
 	[
 		['J’ai évolué jour après jour dans un monde artificiel,', 0],
@@ -115,13 +115,13 @@ const subtitles = [
 	],
 	[
 		['C’est l’image d’un pays solide et fier qui est présentée,', 0],
-		['pendant que nous mourons de faim derrière ses murs.', 2500]
+		['pendant que nous mourons de faim derrière ses murs.', 2000]
 	],
 	[
 		['J’ai vu une petite fille de deux ans affamée, succomber sous mes yeux.', 0],
-		['Vous voyez, quand une personne meurt, les mouches sont les premières à le savoir.', 2500],
-		['Même si elle respirait encore, elles se sont rassemblées autour de ses yeux et de sa bouche comme des folles… ', 5500],
-		['C’est à ce moment que j’ai décidé de fuir. ', 10000]
+		['Vous voyez, quand une personne meurt, les mouches sont les premières à le savoir.', 3000],
+		['Même si elle respirait encore, elles se sont rassemblées autour de ses yeux et de sa bouche comme des folles… ', 7000],
+		['C’est à ce moment que j’ai décidé de fuir. ', 11000]
 	],
 	[
 		['On glorifie notre puissante armée, grande défenseuse des peuples,', 0],
@@ -172,8 +172,8 @@ const subtitles = [
 const voiceOver = [
 	'assets/sound/Audio1.wav',
 	'assets/sound/Audio2.wav',
-	'assets/sound/Audio2.wav',
-	'assets/sound/Audio2.wav',
+	'assets/sound/Audio3.wav',
+	'assets/sound/Audio4.wav',
 	'assets/sound/Audio2.wav',
 	'assets/sound/Audio2.wav',
 	'assets/sound/Audio2.wav',

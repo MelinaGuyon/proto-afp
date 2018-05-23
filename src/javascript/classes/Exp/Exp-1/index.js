@@ -67,13 +67,15 @@ class Experience1 {
       this.chaptersConclusion = new ChaptersConclusionClass()
 
       this.animateCamera(datas.animations.enter, 4000, this.betweenIntroductionChapterOne)
-      Storage.SoundManagerClass.createNewBackgroundMusic("assets/sound/fondsonore.mp3")
+
+      Storage.SoundManagerClass.launchBackgroundMusic("assets/sound/fondsonore.mp3")
+      Storage.SoundManagerClass.launchAmbianceSound("assets/sound/intro.mp3")
       // this.animateCamera(datas.animations.enter, 4000, this.betweenIntroductionChapterOne)
 
 
       // to test
-      this.splineIndex = 1
-      this.goToChapterOne()
+      // this.splineIndex = 1
+      // this.goToChapterOne()
 
       Storage.TextWriting.addTitle(datas.chaptersTitle[0], 5000)
 		}
@@ -94,10 +96,12 @@ class Experience1 {
 
     goToChapterOne = () => {
       console.log("entre dans chapitre 1")
+      Storage.SoundManagerClass.launchAmbianceSound("assets/sound/vraieville_NorthKorea.mp3")
+
       this.placeOnSpline({
   				spline: new THREE.CatmullRomCurve3(datas.splines.chapter1),
           relatedCamera: this.camera,
-          step: .16,
+          step: .075,
           index: this.splineIndex,
           cbEnd: () => { this.chapter2.init().then(this.goToChapterTwo) }
   			},
