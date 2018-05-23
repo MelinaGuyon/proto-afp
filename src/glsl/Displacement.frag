@@ -4,6 +4,7 @@ uniform float u_ratio;
 uniform float u_fade;
 uniform vec2 u_resolution;
 uniform vec2 u_texResolution;
+uniform vec2 u_textureResolution;
 varying vec2 vUv;
 
 uniform sampler2D videoTexture;
@@ -34,18 +35,21 @@ void main() {
 
 	vec3 textureEcran = texture2D(tDiffuse, uv).rgb;
 
-	// pour centrer
-	vec2 ratioTextureL = vec2(1., (u_resolution.y / u_resolution.x));
-	vec2 ratioTextureH = vec2((u_resolution.x / u_resolution.y), 1.);
-	vec2 ratioTexture = min(ratioTextureH, ratioTextureL);
-
-	vec2 textureOffset = vec2((1. - ratioTexture.x) / 2., (1. - ratioTexture.y) / 2. );
-	vec3 texturePhoto = texture2D(videoTexture, (uv * ratioTexture) + textureOffset).rgb;
+	// pour centrer en cover
+	vec2 s = u_resolution; // Screen
+  vec2 i = u_textureResolution; // Image
+  float rs = s.x / s.y;
+  float ri = i.x / i.y;
+  vec2 new = rs < ri ? vec2(i.x * s.y / i.y, s.y) : vec2(s.x, i.y * s.x / i.x);
+  vec2 offset = (rs < ri ? vec2((new.x - s.x) / 2.0, 0.0) : vec2(0.0, (new.y - s.y) / 2.0)) / new;
+  vec2 uvtest = uv * s / new + offset;
+	vec3 texturePhoto = texture2D(videoTexture, uvtest).rgb;
 
 	float fade = u_fade;
 	// if (vUv.x < .05 || vUv.x > .95 || vUv.y < .05 || vUv.y > .95) {
 	// 	fade = 0.;
 	// }
+
 
 	texturePhoto = mix(mix(textureEcran, texturePhoto, fade), vec3(displacement), 0.);
 

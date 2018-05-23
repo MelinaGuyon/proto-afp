@@ -72,7 +72,6 @@ class Experience1 {
       Storage.SoundManagerClass.launchAmbianceSound("assets/sound/intro.mp3")
       // this.animateCamera(datas.animations.enter, 4000, this.betweenIntroductionChapterOne)
 
-
       // to test
       // this.splineIndex = 1
       // this.goToChapterOne()

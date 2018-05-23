@@ -483,8 +483,6 @@ class ObjectsLoader {
 					object.children[0].material.color = new THREE.Color(0xcccccc)
 					this.group.add(object)
 
-					console.log(object)
-
 					resolve()
 				})
 			})
