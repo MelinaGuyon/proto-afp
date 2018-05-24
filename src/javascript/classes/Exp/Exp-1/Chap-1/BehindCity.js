@@ -43,6 +43,9 @@ class BehindCity {
 		else if (intersectsFirstShutters2[0] && intersectsFirstShutters2[0].distance < 2000) {
 			this.openVerticalPosition(intersectsFirstShutters2[0].object, 50)
 			this.animeLight(intersectsFirstShutters2[0].object.parent.children[1], 0.42)
+			setTimeout(() => {
+				this.flashlight(intersectsFirstShutters2[0].object.parent.children[1], 0.42)
+			}, 2000)
 		}
 		else if (intersectsFirstShuttersRight1[0] && intersectsFirstShuttersRight1[0].distance < 2000) {
 			this.openHorizontalPosition(intersectsFirstShuttersRight1[0].object, -15)
@@ -59,10 +62,16 @@ class BehindCity {
 		else if (intersectsFirstDoor[0] && intersectsFirstDoor[0].distance < 2000) {
 			this.openVerticalPosition(intersectsFirstDoor[0].object, 90)
 			this.animeLight(intersectsFirstDoor[0].object.parent.children[1], 0.42)
+			setTimeout(() => {
+				this.flashlight(intersectsFirstDoor[0].object.parent.children[1], 0.42)
+			}, 2000)
 		}
 		else if (intersectsSecondDoor[0] && intersectsSecondDoor[0].distance < 2000) {
 			this.openVerticalPosition(intersectsSecondDoor[0].object, 70)
 			this.animeLight(intersectsSecondDoor[0].object.parent.children[1], 0.42)
+			setTimeout(() => {
+				this.flashlight(intersectsSecondDoor[0].object.parent.children[1], 0.42)
+			}, 2000)
 		}
 		else if (intersectsFirstWindow1[0] && intersectsFirstWindow1[0].distance < 2000) {
 			this.openHorizontalRotation(intersectsFirstWindow1[0].object, -Math.PI/4 * 3)
@@ -70,7 +79,7 @@ class BehindCity {
 		else if (intersectsFirstWindow2[0] && intersectsFirstWindow2[0].distance < 2000) {
 			if (this.fliesSoundLaunched != true) {
 				this.fliesSoundLaunched = true
-				Storage.SoundManagerClass.launchSecondAmbianceSound("assets/sound/mouches.mp3")
+				Storage.SoundManagerClass.launchNoisySound("assets/sound/mouches.mp3")
 			}
 
 			this.openHorizontalRotation(intersectsFirstWindow2[0].object, -Math.PI/4 * 3)
@@ -130,6 +139,7 @@ class BehindCity {
 
 	animeLight = (light, intensity) => {
 		if (light.intensity !== 0) return
+		anime.remove(light)
 		anime({
 			targets: light,
 			intensity,
@@ -139,6 +149,18 @@ class BehindCity {
 		})
 	}
 
+	flashlight = throttle((light, intensity) => {
+		anime.remove(light)
+		anime({
+			targets: light,
+			intensity: [0, intensity],
+			duration: 300,
+			easing: 'linear',
+			loop: 5
+		})
+		Storage.SoundManagerClass.launchNoisySound("assets/sound/lumiere.mp3")
+	}, 2000, { leading: true, trailing: false })
+
 	openHorizontalRotation = throttle((object, rotationValue) => {
 		if (object.rotation.y === rotationValue) return
 		anime.remove(object.rotation)
@@ -147,7 +169,6 @@ class BehindCity {
 	      y: rotationValue,
 	      duration: 5000,
 				easing: 'easeOutQuad'
-				// complete: this.closeAnimation(object)
 	    })
 	}, 2000, { leading: true, trailing: false })
 
@@ -159,7 +180,6 @@ class BehindCity {
 	      y: heighValue,
 	      duration: 800,
 				easing: 'easeInOutQuad'
-				// complete: this.closeAnimation(object)
 	    })
 	}, 2000, { leading: true, trailing: false })
 
@@ -171,21 +191,8 @@ class BehindCity {
 	      z: widthValue,
 	      duration: 5000,
 				easing: 'easeOutQuad'
-				// complete: this.closeAnimation(object)
 	    })
 	}, 2000, { leading: true, trailing: false })
-
-	// TODO : make it work with lights
-	// closeAnimation = (object) => () => {
-	// 	anime.remove(object.rotation)
-	// 	anime({
-  //     targets: object.rotation,
-  //     y: 0,
-	// 		duration: 2000,
-	// 		delay: 2000,
-	// 		easing: 'easeInQuad'
-	// 	})
-	// }
 }
 
 export default BehindCity

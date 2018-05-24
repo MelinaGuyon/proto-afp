@@ -91,13 +91,14 @@ class Experience1 {
         .5
       )
       this.introduction.remove()
-      setTimeout(() => { this.betweenChapters.launchVoiceOver(0)() }, 500)
-      setTimeout(() => { this.spline.updateStep(0.12) }, 5000)
+      setTimeout(() => { this.betweenChapters.launchVoiceOver(0)() }, 2500)
+      setTimeout(() => { this.spline.updateStep(0.12) }, 7000)
     }
 
     goToChapterOne = () => {
       console.log("entre dans chapitre 1")
       Storage.SoundManagerClass.launchAmbianceSound("assets/sound/vraieville_NorthKorea.mp3")
+      setTimeout(() => { this.betweenChapters.launchVoiceOver(2)() }, 4000) 
 
       this.placeOnSpline({
   				spline: new THREE.CatmullRomCurve3(datas.splines.chapter1),
