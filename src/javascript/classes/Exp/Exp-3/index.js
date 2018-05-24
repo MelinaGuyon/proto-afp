@@ -17,7 +17,7 @@ class Experience3 {
       this.scene = new Scene({ name: 'exp3'  })
 
 			this.ambiance = new Ambiance()
-      this.sphere = new Sphere({ relatedScene: this.scene.scene, color: 0x9b202d })
+      this.sphere = new Sphere({ relatedScene: this.scene.scene, color: 0x550F6C })
 		}
 
 		init = () => {
