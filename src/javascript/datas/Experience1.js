@@ -114,7 +114,8 @@ const subtitles = [
 	[
 		['J’ai vu une petite fille de deux ans affamée, succomber sous mes yeux.', 0],
 		['Vous voyez, quand une personne meurt, les mouches sont les premières à le savoir.', 3000],
-		['Même si elle respirait encore, elles se sont rassemblées autour de ses yeux et de sa bouche comme des folles… ', 7000],
+		['Même si elle respirait encore, elles se sont rassemblées', 7000],
+		['autour de ses yeux et de sa bouche comme des folles…', 9000],
 		['C’est à ce moment que j’ai décidé de fuir. ', 11000]
 	],
 	[
