@@ -22,13 +22,12 @@ class SoundManager {
     }
 
     createNewVoiceOver = (track) => {
-      console.log('je lance voice over', track)
       this.audioLoader.load( track, (buffer) => {
       	this.voiceOver.setBuffer( buffer )
         this.voiceOver.play()
         anime({
-          targets: this.voiceOver,
-          volume: [0, 1],
+          targets: this.voiceOver.gain.gain,
+          value: [0, 1],
           duration: 600,
           easing: 'linear'
         })
@@ -40,16 +39,33 @@ class SoundManager {
     }
 
     createNewAmbiance = (track) => {
-      console.log('je lance new ambiance', track)
       this.audioLoader.load( track, (buffer) => {
       	this.ambianceSound.setBuffer( buffer )
         this.ambianceSound.play()
         anime({
-          targets: this.ambianceSound,
-          volume: [0, .7],
+          targets: this.ambianceSound.gain.gain,
+          value: [0, .7],
           duration: 2000,
           easing: 'linear'
         })
+      })
+    }
+
+    lowAmbiance = () => {
+      anime({
+        targets: this.ambianceSound.gain.gain,
+        value: [.7, 0],
+        duration: 600,
+        easing: 'linear'
+      })
+    }
+
+    upAmbiance = () => {
+      anime({
+        targets: this.ambianceSound.gain.gain,
+        value: [0, .7],
+        duration: 600,
+        easing: 'linear'
       })
     }
 
@@ -58,13 +74,12 @@ class SoundManager {
     }
 
     createNoisySound = (track) => {
-      console.log('je lance second ambiance', track)
       this.audioLoader.load( track, (buffer) => {
       	this.noisySound.setBuffer( buffer )
         this.noisySound.play()
         anime({
-          targets: this.noisySound,
-          volume: [0, .7],
+          targets: this.noisySound.gain.gain,
+          value: [0, .7],
           duration: 600,
           easing: 'linear'
         })
@@ -76,16 +91,33 @@ class SoundManager {
     }
 
     createNewBackgroundMusic = (track) => {
-      console.log('je lance BG music', track)
       this.audioLoader.load( track, (buffer) => {
       	this.backgroundMusic.setBuffer( buffer )
         this.backgroundMusic.play()
         anime({
-          targets: this.backgroundMusic,
-          volume: [0, .8],
+          targets: this.backgroundMusic.gain.gain,
+          value: [0, .8],
           duration: 600,
           easing: 'linear'
         })
+      })
+    }
+
+    lowBackground = () => {
+      anime({
+        targets: this.backgroundMusic.gain.gain,
+        value: [.8, 0],
+        duration: 600,
+        easing: 'linear'
+      })
+    }
+
+    upBackground = () => {
+      anime({
+        targets: this.backgroundMusic.gain.gain,
+        value: [0, .8],
+        duration: 600,
+        easing: 'linear'
       })
     }
 

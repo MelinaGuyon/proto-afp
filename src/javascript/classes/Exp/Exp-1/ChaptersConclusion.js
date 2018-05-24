@@ -121,15 +121,21 @@ class ChaptersConclusion {
       Storage.InterfaceClass.timelineExp.hideTimeline()
       Storage.InterfaceClass.textWriting.hidePanel()
       Storage.InterfaceClass.subtitles.hideSubtitles()
+      Storage.SoundManagerClass.lowAmbiance()
+      Storage.SoundManagerClass.lowBackground()
     }
   }
 
   afterUnholdAnime = () => {
     if ( this.clicked === false ) {
       this.stopConclusion()
-      setTimeout(Storage.InterfaceClass.subtitles.showSubtitles, 800)
-      setTimeout(Storage.InterfaceClass.timelineExp.showTimeline, 800)
-      setTimeout(Storage.InterfaceClass.textWriting.showPanel, 800)
+      setTimeout(() => {
+        Storage.SoundManagerClass.upAmbiance()
+        Storage.SoundManagerClass.upBackground()
+        Storage.InterfaceClass.subtitles.showSubtitles()
+        Storage.InterfaceClass.timelineExp.showTimeline()
+        Storage.InterfaceClass.textWriting.showPanel()
+      }, 800)
     }
   }
 }
