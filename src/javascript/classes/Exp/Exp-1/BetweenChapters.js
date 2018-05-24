@@ -28,6 +28,7 @@ class BetweenChapters {
 
     launchText = (index) => () => {
       this.lauchTextDelayed(index)
+      if (index == 2) Storage.SplineClass.updateStep(0.025)
     }
 
     // litle safety
@@ -38,6 +39,7 @@ class BetweenChapters {
     launchVoiceOver = (index) => () => {
       Storage.InterfaceClass.subtitles.writeSubtitles(datas.subtitles[index], index)
       Storage.SoundManagerClass.launchVoiceOver(datas.voiceOver[index])
+      if (index == 3) Storage.SplineClass.updateStep(0.035)
     }
 
     launchMusic = (src) => () => {

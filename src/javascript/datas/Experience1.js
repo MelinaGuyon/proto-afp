@@ -61,7 +61,7 @@ const animations = {
 
 const keyPointsOnSpline = {
 	betweenIntroductionChapterOne: [.6, .9],
-	chapter1: [.1, .35, .7, .85, .9],
+	chapter1: [.15, .33, .7, .85, .9],
 	chapter2: [.1, .2, .2, .7, .9],
 	chapter3: [.05, .3, .65, .9],
 	conclusion: [.001, .3, .75]
@@ -70,9 +70,9 @@ const keyPointsOnSpline = {
 const textsPanel =  [
 	'A la frontière entre les deux Corées apparaît un village où personne ne vit. Les bâtiments sont dépourvus de fenêtres et les lumières s’y activent à heure fixe. Il s’agit en réalité d’une “ville propagande”, visant à donner une bonne image des cités nord-coréenne auprès de la Corée du Sud. Cela cache les réelles conditions de vie du pays.',
 
-	'Chaque matin, les habitants de Pyongyang sont réveillés à 6h par un chant lancinant.',
+	'Chaque matin, les habitants de Pyongyang sont réveillés à 6h par un chant patriotique lancinant.',
 
-	'L’ONU estime à 41% le taux de la population nord-coréenne sous-alimentée. La famine a tué 3 millions d’individus en 20 ans durant le règne de Kim II - Sung. Le paysage provincial prend des airs d’apocalypse. Les usines ont été abandonnées, la campagne est aride, les routes demeurent désertées par les voitures.',
+	'L’ONU estime à 41% le taux de la population nord-coréenne sous-alimentée. Le paysage provincial prend des airs d’apocalypse. Les usines ont été abandonnées, les routes demeurent désertées par les voitures.',
 
 	'L’armée nord-coréenne est l’un des sujets phares de la propagande du gouvernement, qui la présente comme la plus puissante au monde. Elle compte en effet le plus grand pourcentage au monde de militaires actifs par rapport au nombre d’habitants (5% de la population).'
 ]
