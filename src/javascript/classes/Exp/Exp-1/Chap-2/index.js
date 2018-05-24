@@ -77,7 +77,7 @@ class Chapitre2 {
     setTimeout(() => {
       this.light.updateCastingShadow(true)
       this.light.updateSphereVisibility(true)
-      this.light.updateLightIntensity(1)
+      this.light.updateLightIntensity(2)
     }, 1000)
     setTimeout(() => {
       Storage.InterfaceClass.cursor.target()
