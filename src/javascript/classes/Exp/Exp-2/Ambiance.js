@@ -79,8 +79,8 @@ class Ambiance {
             { u_time: { type: "f", value: 1.0 } },
             { u_resolution: { type: "v2", value: new THREE.Vector2(1024, 768) } },
             { u_mouse: { type: "v2", value: new THREE.Vector2() } },
-            { u_color1: { value: new THREE.Color(0x6132db) } },
-            { u_color2: { value: new THREE.Color(0xbea8f7) } }
+            { u_color1: { value: new THREE.Color(0x3B5D9C) } },
+            { u_color2: { value: new THREE.Color(0x3B5D9C) } }
           ]);
 
           let material = new THREE.ShaderMaterial( {
