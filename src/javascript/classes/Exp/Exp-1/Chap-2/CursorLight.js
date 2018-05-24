@@ -141,10 +141,10 @@ class CursorLight {
 
 			if (intersects && intersects.length > 0) {
 				const { point, face } = intersects[0]
-        let offset = -300
+        let offset =  200
 				pos.x = point.x + offset * face.normal.x
 				pos.y = point.y + -offset * face.normal.y
-				pos.z = point.z + (offset - 100) * face.normal.z
+				pos.z = point.z + (offset + 200) * face.normal.z
 				this.inrtia.x.to(pos.x)
 				this.inrtia.y.to(pos.y)
 				this.inrtia.z.to(pos.z)

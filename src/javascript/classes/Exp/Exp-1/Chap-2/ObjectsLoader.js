@@ -2,10 +2,10 @@ const MTLLoader = require('three-mtl-loader')
 
 class ObjectsLoader {
   constructor(options) {
-  	this.mtlLoader = new MTLLoader()
-  	this.objLoader = new THREE.OBJLoader()
-  	this.textureLoader = new THREE.TextureLoader()
-  	this.mtlLoader.manager = new THREE.LoadingManager()
+    this.mtlLoader = new MTLLoader()
+    this.objLoader = new THREE.OBJLoader()
+    this.textureLoader = new THREE.TextureLoader()
+    this.mtlLoader.manager = new THREE.LoadingManager()
 
     this.init()
   }
@@ -17,70 +17,61 @@ class ObjectsLoader {
 
     this.peopleGroup = new THREE.Group()
     this.peopleGroup.position.x = -400
+    this.peopleGroup.position.z = 200
   }
 
-	load = () => {
-
-		this.addWall()
-
+  load = () => {
     return new Promise((resolve, reject) => {
-  		this.loadPeople().then((response)=> {
-    		this.loadShadow().then((response)=> {
-    		    console.log('Chapter 2 objects loaded')
-    		    resolve(this.group)
-    		}).catch((error)=> { console.warn(error) })
-  		}).catch((error)=> { console.warn(error) })
+      this.loadWall().then((response)=> {
+        this.loadPeople().then((response)=> {
+          this.loadShadow().then((response)=> {
+              console.log('Chapter 2 objects loaded')
+              resolve(this.group)
+          }).catch((error)=> { console.warn(error) })
+        }).catch((error)=> { console.warn(error) })
+      }).catch((error)=> { console.warn(error) })
     })
-	}
+  }
 
-	addWall = () => {
-		let geometry = new THREE.PlaneGeometry( 1500, 1000, 32 )
-		let material = new THREE.MeshStandardMaterial( { color: 0xffffff, side: THREE.BackSide } )
-		let plane = new THREE.Mesh( geometry, material )
+  loadWall = () => {
+    return new Promise((resolve, reject) => {
+      let that = this
+      that.objLoader.load( 'assets/models/chapitre2/mur_fond.obj', function ( wall ) {
+        wall.scale.set(3.5, 3.5, 3.5)
+        wall.position.z = -100
+        wall.position.y = 750
 
-		plane.position.z = -100
-    plane.position.y = 500
+        wall.traverse(function(o) {
+          if (o.type === 'Mesh') {
+            o.castShadow = true
+            o.receiveShadow = true
+          }
+        })
 
-		plane.castShadow = true
-		plane.receiveShadow = true
-
-    // invert normals
-    for ( var i = 0; i < geometry.faces.length; i ++ ) {
-      var face = geometry.faces[ i ]
-      var temp = face.a
-      face.a = face.c
-      face.c = temp
-    }
-    geometry.computeFaceNormals()
-    geometry.computeVertexNormals()
-    var faceVertexUvs = geometry.faceVertexUvs[ 0 ]
-    for ( var i = 0; i < faceVertexUvs.length; i ++ ) {
-      var temp = faceVertexUvs[ i ][ 0 ]
-      faceVertexUvs[ i ][ 0 ] = faceVertexUvs[ i ][ 2 ]
-      faceVertexUvs[ i ][ 2 ] = temp
-    }
-
-    this.group.add(plane)
-	}
+        that.group.add( wall )
+      })
+      resolve()
+    })
+  }
 
   loadPeople = () => {
     return new Promise((resolve, reject) => {
       let that = this
       that.objLoader.load( 'assets/models/chapitre2/soldat_amultiplier.obj', function ( body ) {
-          for ( let i = 0; i < 5; i ++ ) {
-            for ( let j = 0; j < 3; j ++ ) {
-                  let bodyInstance = body.clone()
-                  bodyInstance.scale.set(1.5, 1.5, 1.5)
-                  bodyInstance.position.x = i * 200
-                  bodyInstance.position.z = j * 200
-                  bodyInstance.name = "warrior"
-                  bodyInstance.passed = false
-                  bodyInstance.castShadow = false
-                  that.peopleGroup.add( bodyInstance )
-              }
+        for ( let i = 0; i < 5; i ++ ) {
+          for ( let j = 0; j < 3; j ++ ) {
+            let bodyInstance = body.clone()
+            bodyInstance.scale.set(1.5, 1.5, 1.5)
+            bodyInstance.position.x = i * 200
+            bodyInstance.position.z = j * 200
+            bodyInstance.name = "warrior"
+            bodyInstance.passed = false
+            bodyInstance.castShadow = false
+            that.peopleGroup.add( bodyInstance )
           }
-          that.group.add( that.peopleGroup )
-          resolve()
+        }
+        that.group.add( that.peopleGroup )
+        resolve()
       })
     })
   }
@@ -93,12 +84,12 @@ class ObjectsLoader {
         matl.opacity = 0
 
         that.objLoader.load( 'assets/models/chapitre2/ombre_soldats.obj', function ( object ) {
-          object.scale.x = 2
-          object.scale.y = 2
-          object.scale.z = 2
+          object.scale.x = 1.7
+          object.scale.y = 1.7
+          object.scale.z = 1.7
           object.position.z = 30
-          object.position.x = -500
-          object.position.y = -100
+          object.position.x = -400
+          object.position.y = -40
 
 
           object.traverse(function(o) {

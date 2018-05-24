@@ -70,11 +70,10 @@ class Experience1 {
 
       Storage.SoundManagerClass.launchBackgroundMusic("assets/sound/fondsonore.mp3")
       Storage.SoundManagerClass.launchAmbianceSound("assets/sound/intro.mp3")
-      // this.animateCamera(datas.animations.enter, 4000, this.betweenIntroductionChapterOne)
 
       // to test
-      // this.splineIndex = 1
-      // this.goToChapterOne()
+      // this.splineIndex = 2
+      // this.chapter2.init().then(this.goToChapterTwo)
 
       Storage.TextWriting.addTitle(datas.chaptersTitle[0], 5000)
 		}

@@ -63,7 +63,9 @@ class Chapitre2 {
 
 
   initLight = () => {
-    this.state.lightOpt.push(this.modelsGroup.children[0])
+    this.state.lightOpt.push(this.modelsGroup.children[0].children[0])
+
+    console.log("coucou", this.modelsGroup.children[0])
     this.light = new CursorLight({
       sceneIndex: 1,
       relatedCamera: this.state.relatedCamera.camera,
@@ -75,7 +77,7 @@ class Chapitre2 {
     setTimeout(() => {
       this.light.updateCastingShadow(true)
       this.light.updateSphereVisibility(true)
-      this.light.updateLightIntensity(1)
+      this.light.updateLightIntensity(2)
     }, 1000)
     setTimeout(() => {
       Storage.InterfaceClass.cursor.target()
