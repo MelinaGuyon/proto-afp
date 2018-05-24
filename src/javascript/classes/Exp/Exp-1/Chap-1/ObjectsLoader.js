@@ -25,7 +25,6 @@ class ObjectsLoader {
 
 	createLight = (color) => {
 		const light = new THREE.PointLight(color, 0, 500, 2)
-		light.castShadow = true
 		light.position.set(0, 0, 0)
 		light.shadow.mapSize.width = SHADOW_MAP_WIDTH
     light.shadow.mapSize.height = SHADOW_MAP_HEIGHT
@@ -63,11 +62,9 @@ class ObjectsLoader {
 										this.loadSecondDoor().then((response)=> {
 											this.loadFirstWindow().then((response)=> {
 												this.loadSecondWindow().then((response)=> {
-													this.loadDeadMan().then((response)=> {
-										  			this.loadShader("../../../glsl/testVert.vert", "../../../glsl/testFrag.frag").then((response)=> {
-								    		    	console.log('Chapter 1 objects loaded')
-								    		    	resolve(this.group)
-														}).catch((error)=> { console.warn(error) })
+									  			this.loadShader("../../../glsl/testVert.vert", "../../../glsl/testFrag.frag").then((response)=> {
+							    		    	console.log('Chapter 1 objects loaded')
+							    		    	resolve(this.group)
 								    			}).catch((error)=> { console.warn(error) })
 												}).catch((error)=> { console.warn(error) })
 											}).catch((error)=> { console.warn(error) })

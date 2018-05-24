@@ -42,8 +42,8 @@ class Spline {
 				x: point.x,
 				y: point.y,
 				z: point.z,
-				duration: 2000,
-				easing: 'easeInOutQuad',
+				duration: 2500,
+				easing: 'easeInOutSine',
         complete: () => { this.bind() }
 			})
 
