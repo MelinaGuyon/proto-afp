@@ -36,47 +36,47 @@ class BehindCity {
 		let intersectsFirstWindow2 = raycaster.intersectObjects(firstWindow2, false)
 		let intersectsSecondWindow = raycaster.intersectObjects(secondWindow, false)
 
-		if (intersectsFirstShutters1[0] && intersectsFirstShutters1[0].distance < 2000) {
+		if (intersectsFirstShutters1[0] && intersectsFirstShutters1[0].distance < 1000) {
 			this.openVerticalPosition(intersectsFirstShutters1[0].object, 50)
 			this.animeLight(intersectsFirstShutters1[0].object.parent.children[1], 0.42)
 		}
-		else if (intersectsFirstShutters2[0] && intersectsFirstShutters2[0].distance < 2000) {
+		else if (intersectsFirstShutters2[0] && intersectsFirstShutters2[0].distance < 1000) {
 			this.openVerticalPosition(intersectsFirstShutters2[0].object, 50)
 			this.animeLight(intersectsFirstShutters2[0].object.parent.children[1], 0.42)
 			setTimeout(() => {
 				this.flashlight(intersectsFirstShutters2[0].object.parent.children[1], 0.42)
 			}, 2000)
 		}
-		else if (intersectsFirstShuttersRight1[0] && intersectsFirstShuttersRight1[0].distance < 2000) {
+		else if (intersectsFirstShuttersRight1[0] && intersectsFirstShuttersRight1[0].distance < 1000) {
 			this.openHorizontalPosition(intersectsFirstShuttersRight1[0].object, -15)
 		}
-		else if (intersectsFirstShuttersRight2[0] && intersectsFirstShuttersRight2[0].distance < 2000) {
+		else if (intersectsFirstShuttersRight2[0] && intersectsFirstShuttersRight2[0].distance < 1000) {
 			this.openHorizontalPosition(intersectsFirstShuttersRight2[0].object, -15)
 		}
-		else if (intersectsSecondShuttersLeft1[0] && intersectsSecondShuttersLeft1[0].distance < 2000) {
+		else if (intersectsSecondShuttersLeft1[0] && intersectsSecondShuttersLeft1[0].distance < 1000) {
 			this.openHorizontalPosition(intersectsSecondShuttersLeft1[0].object, 15)
 		}
-		else if (intersectsSecondShuttersLeft2[0] && intersectsSecondShuttersLeft2[0].distance < 2000) {
+		else if (intersectsSecondShuttersLeft2[0] && intersectsSecondShuttersLeft2[0].distance < 1000) {
 			this.openHorizontalPosition(intersectsSecondShuttersLeft2[0].object, 15)
 		}
-		else if (intersectsFirstDoor[0] && intersectsFirstDoor[0].distance < 2000) {
+		else if (intersectsFirstDoor[0] && intersectsFirstDoor[0].distance < 1000) {
 			this.openVerticalPosition(intersectsFirstDoor[0].object, 90)
 			this.animeLight(intersectsFirstDoor[0].object.parent.children[1], 0.42)
 			setTimeout(() => {
 				this.flashlight(intersectsFirstDoor[0].object.parent.children[1], 0.42)
 			}, 2000)
 		}
-		else if (intersectsSecondDoor[0] && intersectsSecondDoor[0].distance < 2000) {
+		else if (intersectsSecondDoor[0] && intersectsSecondDoor[0].distance < 1000) {
 			this.openVerticalPosition(intersectsSecondDoor[0].object, 70)
 			this.animeLight(intersectsSecondDoor[0].object.parent.children[1], 0.42)
 			setTimeout(() => {
 				this.flashlight(intersectsSecondDoor[0].object.parent.children[1], 0.42)
 			}, 2000)
 		}
-		else if (intersectsFirstWindow1[0] && intersectsFirstWindow1[0].distance < 2000) {
+		else if (intersectsFirstWindow1[0] && intersectsFirstWindow1[0].distance < 1000) {
 			this.openHorizontalRotation(intersectsFirstWindow1[0].object, -Math.PI/4 * 3)
 		}
-		else if (intersectsFirstWindow2[0] && intersectsFirstWindow2[0].distance < 2000) {
+		else if (intersectsFirstWindow2[0] && intersectsFirstWindow2[0].distance < 1000) {
 			if (this.fliesSoundLaunched != true) {
 				this.fliesSoundLaunched = true
 				Storage.SoundManagerClass.launchNoisySound("assets/sound/mouches.mp3")
@@ -89,7 +89,7 @@ class BehindCity {
 			setTimeout(() => { this.animateBugs(intersectsFirstWindow2[0].object.parent.children[2]) }, 250 )
 			setTimeout(() => { this.animateBugs(intersectsFirstWindow2[0].object.parent.children[3]) }, 700 )
 		}
-		else if (intersectsSecondWindow[0] && intersectsSecondWindow[0].distance < 2000) {
+		else if (intersectsSecondWindow[0] && intersectsSecondWindow[0].distance < 1000) {
 			this.openHorizontalRotation(intersectsSecondWindow[0].object, -Math.PI/4 * 3)
 		}
 
@@ -167,10 +167,10 @@ class BehindCity {
 		anime({
 	      targets: object.rotation,
 	      y: rotationValue,
-	      duration: 5000,
+	      duration: 800,
 				easing: 'easeOutQuad'
 	    })
-	}, 2000, { leading: true, trailing: false })
+	}, 800, { leading: true, trailing: false })
 
 	openVerticalPosition = throttle((object, heighValue) => {
 		if (object.position.y === heighValue) return
@@ -181,7 +181,7 @@ class BehindCity {
 	      duration: 800,
 				easing: 'easeInOutQuad'
 	    })
-	}, 2000, { leading: true, trailing: false })
+	}, 800, { leading: true, trailing: false })
 
 	openHorizontalPosition = throttle((object, widthValue) => {
 		if (object.position.z === widthValue) return
@@ -189,10 +189,10 @@ class BehindCity {
 		anime({
 	      targets: object.position,
 	      z: widthValue,
-	      duration: 5000,
+	      duration: 800,
 				easing: 'easeOutQuad'
 	    })
-	}, 2000, { leading: true, trailing: false })
+	}, 800, { leading: true, trailing: false })
 }
 
 export default BehindCity

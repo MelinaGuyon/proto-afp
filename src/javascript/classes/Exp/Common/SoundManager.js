@@ -7,9 +7,14 @@ class SoundManager {
 			Storage.SoundManagerClass = this
 			this.state = options
 
-      this.voiceOver
-      this.ambianceSound
-      this.backgroundMusic
+      let listener = new THREE.AudioListener()
+      Storage.CameraClasses[Storage.expName].camera.add( listener )
+
+      this.voiceOver = new THREE.Audio( listener )
+      this.ambianceSound = new THREE.Audio( listener )
+      this.noisySound = new THREE.Audio( listener )
+      this.backgroundMusic = new THREE.Audio( listener )
+      this.audioLoader = new THREE.AudioLoader();
     }
 
     launchVoiceOver = (track) => {
@@ -18,14 +23,15 @@ class SoundManager {
 
     createNewVoiceOver = (track) => {
       console.log('je lance voice over', track)
-      this.voiceOver = new Audio(track)
-      this.voiceOver.volume = 0
-      this.voiceOver.play()
-      anime({
-        targets: this.voiceOver,
-        volume: [0, 1],
-        duration: 600,
-        easing: 'linear'
+      this.audioLoader.load( track, (buffer) => {
+      	this.voiceOver.setBuffer( buffer )
+        this.voiceOver.play()
+        anime({
+          targets: this.voiceOver,
+          volume: [0, 1],
+          duration: 600,
+          easing: 'linear'
+        })
       })
     }
 
@@ -35,14 +41,15 @@ class SoundManager {
 
     createNewAmbiance = (track) => {
       console.log('je lance new ambiance', track)
-      this.ambianceSound = new Audio(track)
-      this.ambianceSound.volume = 0
-      this.ambianceSound.play()
-      anime({
-        targets: this.ambianceSound,
-        volume: [0, .8],
-        duration: 600,
-        easing: 'linear'
+      this.audioLoader.load( track, (buffer) => {
+      	this.ambianceSound.setBuffer( buffer )
+        this.ambianceSound.play()
+        anime({
+          targets: this.ambianceSound,
+          volume: [0, .7],
+          duration: 2000,
+          easing: 'linear'
+        })
       })
     }
 
@@ -52,14 +59,15 @@ class SoundManager {
 
     createNoisySound = (track) => {
       console.log('je lance second ambiance', track)
-      this.noisySound = new Audio(track)
-      this.noisySound.volume = 0
-      this.noisySound.play()
-      anime({
-        targets: this.noisySound,
-        volume: [0, 0.7],
-        duration: 600,
-        easing: 'linear'
+      this.audioLoader.load( track, (buffer) => {
+      	this.noisySound.setBuffer( buffer )
+        this.noisySound.play()
+        anime({
+          targets: this.noisySound,
+          volume: [0, .7],
+          duration: 600,
+          easing: 'linear'
+        })
       })
     }
 
@@ -68,14 +76,16 @@ class SoundManager {
     }
 
     createNewBackgroundMusic = (track) => {
-      this.backgroundMusic = new Audio(track)
-      this.backgroundMusic.volume = 0
-      this.backgroundMusic.play()
-      anime({
-        targets: this.backgroundMusic,
-        volume: [0, 0.8],
-        duration: 600,
-        easing: 'linear'
+      console.log('je lance BG music', track)
+      this.audioLoader.load( track, (buffer) => {
+      	this.backgroundMusic.setBuffer( buffer )
+        this.backgroundMusic.play()
+        anime({
+          targets: this.backgroundMusic,
+          volume: [0, .8],
+          duration: 600,
+          easing: 'linear'
+        })
       })
     }
 

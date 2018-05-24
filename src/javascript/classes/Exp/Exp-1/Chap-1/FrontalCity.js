@@ -59,7 +59,7 @@ class FrontalCity {
 		anime({
 	      targets: object.rotation,
 	      y: rotationValue,
-	      duration: 5000,
+	      duration: 3000,
 				easing: 'easeOutQuad',
 				complete: this.closeAnimation(object)
 	    })

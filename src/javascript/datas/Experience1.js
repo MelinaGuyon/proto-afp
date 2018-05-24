@@ -8,10 +8,10 @@ const splines = {
 	],
 	chapter1: [
 		new THREE.Vector3(0, 150, -25000),
-		new THREE.Vector3( 0, 150, -29000)
+		new THREE.Vector3( 0, 150, -30000)
 	],
 	chapter2: [
-		new THREE.Vector3(0, 400, -30000),
+		new THREE.Vector3(0, 400, -32000),
 		new THREE.Vector3(0, 250, -34000),
 	],
 	chapter3: [
@@ -60,8 +60,8 @@ const animations = {
 }
 
 const keyPointsOnSpline = {
-	betweenIntroductionChapterOne: [.65, .9],
-	chapter1: [.0001, .25, .65, .8, .9],
+	betweenIntroductionChapterOne: [.6, .9],
+	chapter1: [.1, .35, .7, .85, .9],
 	chapter2: [.1, .2, .2, .7, .9],
 	chapter3: [.05, .3, .65, .9],
 	conclusion: [.001, .3, .75]
@@ -69,6 +69,8 @@ const keyPointsOnSpline = {
 
 const textsPanel =  [
 	'A la frontière entre les deux Corées apparaît un village où personne ne vit. Les bâtiments sont dépourvus de fenêtres et les lumières s’y activent à heure fixe. Il s’agit en réalité d’une “ville propagande”, visant à donner une bonne image des cités nord-coréenne auprès de la Corée du Sud. Cela cache les réelles conditions de vie du pays.',
+
+	'Chaque matin, les habitants de Pyongyang sont réveillés à 6h par un chant lancinant.',
 
 	'L’ONU estime à 41% le taux de la population nord-coréenne sous-alimentée. La famine a tué 3 millions d’individus en 20 ans durant le règne de Kim II - Sung. Le paysage provincial prend des airs d’apocalypse. Les usines ont été abandonnées, la campagne est aride, les routes demeurent désertées par les voitures.',
 

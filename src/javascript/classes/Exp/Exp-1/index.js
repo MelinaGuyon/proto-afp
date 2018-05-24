@@ -66,14 +66,15 @@ class Experience1 {
       this.betweenChapters = new BetweenChapters()
       this.chaptersConclusion = new ChaptersConclusionClass()
 
-      this.animateCamera(datas.animations.enter, 4000, this.betweenIntroductionChapterOne)
+      // this.animateCamera(datas.animations.enter, 4000, this.betweenIntroductionChapterOne)
 
       Storage.SoundManagerClass.launchBackgroundMusic("assets/sound/fondsonore.mp3")
       Storage.SoundManagerClass.launchAmbianceSound("assets/sound/intro.mp3")
 
+
       // to test
-      // this.splineIndex = 2
-      // this.chapter2.init().then(this.goToChapterTwo)
+      this.splineIndex = 1
+      this.goToChapterOne()
 
       Storage.TextWriting.addTitle(datas.chaptersTitle[0], 5000)
 		}
@@ -91,18 +92,18 @@ class Experience1 {
       )
       this.introduction.remove()
       setTimeout(() => { this.betweenChapters.launchVoiceOver(0)() }, 2500)
-      setTimeout(() => { this.spline.updateStep(0.12) }, 7000)
+      setTimeout(() => { this.spline.updateStep(0.1) }, 7000)
     }
 
     goToChapterOne = () => {
       console.log("entre dans chapitre 1")
-      Storage.SoundManagerClass.launchAmbianceSound("assets/sound/vraieville_NorthKorea.mp3")
-      setTimeout(() => { this.betweenChapters.launchVoiceOver(2)() }, 4000) 
+      setTimeout(() => { this.betweenChapters.launchVoiceOver(2)() }, 4000)
+      setTimeout(() => { Storage.SoundManagerClass.launchAmbianceSound("assets/sound/vraieville_NorthKorea.mp3") }, 6000)
 
       this.placeOnSpline({
   				spline: new THREE.CatmullRomCurve3(datas.splines.chapter1),
           relatedCamera: this.camera,
-          step: .075,
+          step: .06,
           index: this.splineIndex,
           cbEnd: () => { this.chapter2.init().then(this.goToChapterTwo) }
   			},

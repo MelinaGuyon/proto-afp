@@ -48,38 +48,36 @@ class ObjectsLoader {
 	}
 
 	load = () => {
-	    return new Promise((resolve, reject) => {
-	    	this.loadFrontalCity().then((response)=> {
+    return new Promise((resolve, reject) => {
+    	this.loadFrontalCity().then((response)=> {
 	    	this.loadWindowLeft().then((response)=> {
-	    	this.loadWindowRight().then((response)=> {
-	    	this.loadDoor().then((response)=> {
-	    		// this.loadLights().then((response)=> {
-					this.loadRealCity().then((response)=> {
-						this.loadFristShutters().then((response)=> {
-							this.loadSecondShuttersRight().then((response)=> {
-								this.loadSecondShuttersLeft().then((response)=> {
-									this.loadFirstDoor().then((response)=> {
-										this.loadSecondDoor().then((response)=> {
-											this.loadFirstWindow().then((response)=> {
-												this.loadSecondWindow().then((response)=> {
-									  			this.loadShader("../../../glsl/testVert.vert", "../../../glsl/testFrag.frag").then((response)=> {
-							    		    	console.log('Chapter 1 objects loaded')
-							    		    	resolve(this.group)
-								    			}).catch((error)=> { console.warn(error) })
+		    	this.loadWindowRight().then((response)=> {
+			    	this.loadDoor().then((response)=> {
+							this.loadRealCity().then((response)=> {
+								this.loadFristShutters().then((response)=> {
+									this.loadSecondShuttersRight().then((response)=> {
+										this.loadSecondShuttersLeft().then((response)=> {
+											this.loadFirstDoor().then((response)=> {
+												this.loadSecondDoor().then((response)=> {
+													this.loadFirstWindow().then((response)=> {
+														this.loadSecondWindow().then((response)=> {
+											  			this.loadShader("../../../glsl/testVert.vert", "../../../glsl/testFrag.frag").then((response)=> {
+									    		    	console.log('Chapter 1 objects loaded')
+									    		    	resolve(this.group)
+										    			}).catch((error)=> { console.warn(error) })
+														}).catch((error)=> { console.warn(error) })
+													}).catch((error)=> { console.warn(error) })
 												}).catch((error)=> { console.warn(error) })
 											}).catch((error)=> { console.warn(error) })
 										}).catch((error)=> { console.warn(error) })
 									}).catch((error)=> { console.warn(error) })
 								}).catch((error)=> { console.warn(error) })
 							}).catch((error)=> { console.warn(error) })
-						}).catch((error)=> { console.warn(error) })
-					}).catch((error)=> { console.warn(error) })
-		  		//}).catch((error)=> { console.warn(error) })
+				  	}).catch((error)=> { console.warn(error) })
+			  	}).catch((error)=> { console.warn(error) })
 		  	}).catch((error)=> { console.warn(error) })
-		  	}).catch((error)=> { console.warn(error) })
-		  	}).catch((error)=> { console.warn(error) })
-		  	}).catch((error)=> { console.warn(error) })
-	    })
+	  	}).catch((error)=> { console.warn(error) })
+    })
 	}
 
 
