@@ -43,13 +43,13 @@ class BetweenChapters {
     }
 
     launchMusic = (src) => () => {
-      console.log('je lance music')
+      console.log('je lance music', src)
       Storage.SoundManagerClass.createNewAmbiance(src)
     }
 
     launchConclusion = (index) => () => {
       console.log('je lance conclu')
-      Storage.SoundManagerClass.createNewAmbiance("assets/sound/son_conclusion.mp3")
+      Storage.SoundManagerClass.launchNoisySound("assets/sound/son_conclusion.mp3")
       if (index == 3) Storage.SplineClass.updateStep(0.8)
       Storage.ChaptersConclusionClass.bindConclu()
     }
