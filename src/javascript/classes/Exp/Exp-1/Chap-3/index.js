@@ -1,4 +1,5 @@
 import ObjectsLoader from './ObjectsLoader'
+import InfosPeople from './InfosPeople'
 import raf from 'raf'
 import anime from 'animejs'
 
@@ -28,6 +29,8 @@ class Chapitre3 {
 
   init = () => {
     this.displayChapterObjects()
+    this.infos = new InfosPeople({ objectsGroup: this.modelsGroup, relatedBox: this.state.relatedBox })
+
     this.bind()
     return new Promise((resolve, reject) => {
       setTimeout(() => { resolve() }, 500)
