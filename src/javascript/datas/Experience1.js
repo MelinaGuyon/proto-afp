@@ -62,7 +62,7 @@ const animations = {
 const keyPointsOnSpline = {
 	betweenIntroductionChapterOne: [.6, .9],
 	chapter1: [.15, .33, .7, .85],
-	chapter2: [.1, .2, .2, .7, .9],
+	chapter2: [.1, .2, .2],
 	chapter3: [.05, .3, .65, .9],
 	conclusion: [.001, .3, .75]
 }

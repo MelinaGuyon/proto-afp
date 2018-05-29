@@ -101,13 +101,17 @@ class Chapitre2 {
     }
 
     if ( this.warriorsNumber === this.modelsGroup.children[1].children.length ) {
-      this.state.relatedCamera.updateMovementRange(0, 0)
-      this.unbind()
-      Storage.SplineClass.unbind()
+      //this.state.relatedCamera.updateMovementRange(0, 0)
+      // this.unbind()
+      // Storage.SplineClass.unbind()
 
-      setTimeout(() => {
-        Storage.Experience1Class.animateCamera(datas.animations.toChapterThree, 800, this.state.cbAfterInteraction)
-      }, 1000)
+      console.log("conclusion", Storage.BetweenChaptersClass)
+
+      Storage.BetweenChaptersClass.launchConclusion(2)()
+
+      // setTimeout(() => {
+      //   Storage.Experience1Class.animateCamera(datas.animations.toChapterThree, 800, this.state.cbAfterInteraction)
+      // }, 1000)
 
 
     }
