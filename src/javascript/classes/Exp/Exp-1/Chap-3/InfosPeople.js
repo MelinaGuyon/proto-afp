@@ -61,7 +61,7 @@ class InfosPeople {
 
         const textMaterial = new THREE.MeshBasicMaterial( { color: 0xC40202, overdraw: true, transparent: true, opacity: 0 } )
         const text = new THREE.Mesh( geometry, textMaterial )
-        text.position.set( -60, 50, 10 )
+        text.position.set( -60, 50, -20 )
         this.plane.add( text )
 
         resolve(text)
@@ -134,7 +134,7 @@ class InfosPeople {
 
           const textMaterial = new THREE.MeshBasicMaterial( { color: 0xC40202, overdraw: true, transparent: true, opacity: 0 } )
           const text = new THREE.Mesh( geometry, textMaterial )
-          text.position.set( -60, top, 10 )
+          text.position.set( -60, top, -20 )
           top -= 18
           textTable.push(text)
           this.plane.add(text)
@@ -152,9 +152,9 @@ class InfosPeople {
     let intersectsPeople2 = raycaster.intersectObjects(people2.children, false)
 
 		if (intersectsPeople[0] && intersectsPeople[0].distance < 2000) {
-      if (!this.plane.isVisible) this.showInfos(people1)
+      if (!this.plane.isVisible) this.showInfos(people1, 0)
 		} else if (intersectsPeople2[0] && intersectsPeople2[0].distance < 2000) {
-      if (!this.plane.isVisible) this.showInfos(people2)
+      if (!this.plane.isVisible) this.showInfos(people2, 1)
 		} else {
       if (this.plane.isVisible && !this.plane.isHidding) this.hideInfos()
     }
@@ -166,7 +166,7 @@ class InfosPeople {
 		}
 	}
 
-  showInfos = (people) => {
+  showInfos = (people, index) => {
     console.log('SHOWWW')
     this.plane.isVisible = true
 
@@ -192,17 +192,20 @@ class InfosPeople {
     })
 
     anime.remove(this.tiret.material)
-    anime.remove(this.status[0].material)
+    anime.remove(this.status[index].material)
+    this.status[index].position.z = 10
+    this.tiret.position.z = 10
     anime({
-      targets: [this.tiret.material, this.status[0].material],
+      targets: [this.tiret.material, this.status[index].material],
       opacity: 0.8,
       duration: 500,
       delay: 500,
       easing: 'easeOutQuad'
     })
 
-    this.infos[0].forEach((el) => {
+    this.infos[index].forEach((el) => {
       anime.remove(el.material)
+      el.position.z = 10
       anime({
         targets: el.material,
         opacity: 0.8,
@@ -222,7 +225,8 @@ class InfosPeople {
         targets: el.material,
         opacity: 0,
         duration: 300,
-        easing: 'easeOutQuad'
+        easing: 'easeOutQuad',
+        complete: () => { el.position.z = -20 }
       })
     })
 

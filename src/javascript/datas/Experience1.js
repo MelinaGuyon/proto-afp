@@ -217,6 +217,10 @@ const infosPeople = [
 	{
 		status: 'HOSTILE',
 		info: 'Son grand père était partisant pour la Corée du Sud durant la guerre'
+	},
+	{
+		status: 'HOSTILE',
+		info: 'Sa mère a fui le pays avec son frère il y a 10 ans'
 	}
 ]
 
