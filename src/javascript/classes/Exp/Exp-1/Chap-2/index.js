@@ -100,19 +100,33 @@ class Chapitre2 {
       }
     }
 
-    if ( this.warriorsNumber === this.modelsGroup.children[1].children.length ) {
-      this.state.relatedCamera.updateMovementRange(0, 0)
-      this.unbind()
-      Storage.SplineClass.unbind()
-
-      setTimeout(() => {
-        Storage.Experience1Class.animateCamera(datas.animations.toChapterThree, 800, this.state.cbAfterInteraction)
-      }, 1000)
-
-
+    if ( this.warriorsNumber === this.modelsGroup.children[1].children.length && this.conclusionPassed != true) {
+      this.conclusionPassed = true
+      Storage.BetweenChaptersClass.launchConclusion(2)()
     }
 
+    if ( this.conclusionPassed === true && this.scrollPassed != true) {
+      this.scrollPassed = true
+
+      setTimeout(() => {
+        document.querySelector('canvas').addEventListener('mousewheel', this.handleScroll)
+      }, 1000)
+    }
   }
+
+  handleScroll = () => { 
+    /*    
+    this.state.relatedCamera.updateMovementRange(0, 0)
+    this.unbind()
+    Storage.SplineClass.unbind()
+    */
+    document.querySelector('canvas').removeEventListener('mousewheel', this.handleScroll)
+
+    setTimeout(() => {
+      Storage.Experience1Class.animateCamera(datas.animations.toChapterThree, 900, this.state.cbAfterInteraction)
+    }, 500)
+  }
+
 }
 
 export default Chapitre2

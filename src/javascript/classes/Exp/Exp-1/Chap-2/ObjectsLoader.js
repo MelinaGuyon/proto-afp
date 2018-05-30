@@ -25,13 +25,110 @@ class ObjectsLoader {
       this.loadWall().then((response)=> {
         this.loadPeople().then((response)=> {
           this.loadShadow().then((response)=> {
-              console.log('Chapter 2 objects loaded')
-              resolve(this.group)
+            this.loadSpeaker1().then((response)=> {
+              this.loadSpeaker2().then((response)=> {
+                //this.loadRadio().then((response)=> {
+                  this.loadRadioTower().then((response)=> {
+                    console.log('Chapter 2 objects loaded')
+                    resolve(this.group)
+                  }).catch((error)=> { console.warn(error) })
+                //}).catch((error)=> { console.warn(error) })
+              }).catch((error)=> { console.warn(error) })
+            }).catch((error)=> { console.warn(error) })
           }).catch((error)=> { console.warn(error) })
         }).catch((error)=> { console.warn(error) })
       }).catch((error)=> { console.warn(error) })
     })
   }
+
+  loadSpeaker1 = () => {
+    return new Promise((resolve, reject) => {
+      let that = this
+      that.objLoader.load( 'assets/models/beforeChap2/speaker1.obj', function ( speaker ) {
+        speaker.scale.set(0.3, 0.3, 0.3)
+        speaker.position.z = 2500
+        speaker.position.y = 0
+        speaker.position.x = 800
+
+        speaker.traverse(function(o) {
+          if (o.type === 'Mesh') {
+            o.castShadow = true
+            o.receiveShadow = true
+          }
+        })
+
+        that.group.add( speaker )
+      })
+      resolve()
+    })
+  }
+
+  loadSpeaker2 = () => {
+    return new Promise((resolve, reject) => {
+      let that = this
+      that.objLoader.load( 'assets/models/beforeChap2/speaker2.obj', function ( speaker ) {
+        speaker.scale.set(0.3, 0.3, 0.3)
+        speaker.position.z = 2000
+        speaker.position.y = 0
+        speaker.position.x = -800
+
+        speaker.traverse(function(o) {
+          if (o.type === 'Mesh') {
+            o.castShadow = true
+            o.receiveShadow = true
+          }
+        })
+
+        that.group.add( speaker )
+      })
+      resolve()
+    })
+  }
+
+  loadRadioTower = () => {
+    return new Promise((resolve, reject) => {
+      let that = this
+      that.objLoader.load( 'assets/models/beforeChap2/RadioTower.obj', function ( tower ) {
+        tower.scale.set(50, 50, 50)
+        tower.position.z = 1200
+        tower.position.y = 0
+        tower.position.x = 1000
+
+        tower.traverse(function(o) {
+          if (o.type === 'Mesh') {
+            o.castShadow = true
+            o.receiveShadow = true
+          }
+        })
+
+        that.group.add( tower )
+      })
+      resolve()
+    })
+  }
+
+  // loadRadio = () => {
+  //   return new Promise((resolve, reject) => {
+  //     let that = this
+  //     that.objLoader.load( 'assets/models/beforeChap2/model.obj', function ( radio ) {
+  //       radio.scale.set(500, 500, 500)
+  //       radio.position.z = 2000
+  //       radio.position.y = 50
+  //       radio.position.x = -500
+
+  //       radio.traverse(function(o) {
+  //         if (o.type === 'Mesh') {
+  //           o.castShadow = true
+  //           o.receiveShadow = true
+  //         }
+  //       })
+
+  //       that.group.add( radio )
+  //     })
+  //     resolve()
+  //   })
+  // }
+
 
   loadWall = () => {
     return new Promise((resolve, reject) => {

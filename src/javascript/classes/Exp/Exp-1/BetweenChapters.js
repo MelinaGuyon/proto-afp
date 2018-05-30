@@ -12,9 +12,9 @@ class BetweenChapters {
       this.table = [
         [this.launchVoiceOver(1), this.launchText(0) ],
 
-        [ this.launchText(1), this.launchVoiceOver(3), this.launchText(2), this.launchConclusion(1)],
+        [ this.launchText(1), this.launchVoiceOver(3), this.launchText(2), this.launchConclusion(1), this.stopConclusion ],
 
-        [ this.launchVoiceOver(4), this.launchVoiceOver(5),  this.launchText(3), this.launchConclusion(2), this.stopConclusion ],
+        [ this.launchVoiceOver(4), this.launchVoiceOver(5),  this.launchText(3) ],
 
         [ this.launchVoiceOver(6), this.launchVoiceOver(7), this.launchConclusion(3), this.stopConclusion ],
 
