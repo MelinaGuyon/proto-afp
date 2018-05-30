@@ -43,18 +43,29 @@ class ObjectsLoader {
 						for ( let j = 0; j < 10; j ++ ) {
 					        let bodyInstance = body.clone()
 					        bodyInstance.scale.set(1.5, 1.5, 1.5)
-					        bodyInstance.position.x = i * 200
 					        bodyInstance.position.z = j * 200
 					        bodyInstance.name = "people"
-					        that.peopleGroup1.add( bodyInstance )
+
+									if (i === 0 && j === 8) {
+										bodyInstance.children[0].material = new THREE.MeshPhongMaterial({ color: 0xC40202 })
+										bodyInstance.position.x = i * 200 + 250
+										bodyInstance.isGroup2 = true
+										that.peopleInfosGroup.add(bodyInstance)
+									} else {
+										bodyInstance.position.x = i * 200
+										that.peopleGroup1.add( bodyInstance )
+									}
 
 					        let headInstance = head.clone()
 					        headInstance.position.x = i * 200
-					        // headInstance.position.y = 250
 					        headInstance.position.z = j * 200
 					        headInstance.isAnimating = false
 									headInstance.scale.set(1.5, 1.5, 1.5)
 					        headInstance.name = "head"
+
+									if (i === 0 && j === 8) {
+										headInstance.children[0].material = new THREE.MeshPhongMaterial({ color: 0xC40202 })
+									}
 					        that.peopleGroup1.add( headInstance )
 					    }
 					}
@@ -77,7 +88,6 @@ class ObjectsLoader {
 
 					        let headInstance = head.clone()
 					        headInstance.position.x = i * -200
-					        // headInstance.position.y = 250
 					        headInstance.position.z = j * 200
 									headInstance.scale.set(1.5, 1.5, 1.5)
 					        headInstance.name = "head"

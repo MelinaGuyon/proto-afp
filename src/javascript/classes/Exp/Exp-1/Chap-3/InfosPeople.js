@@ -51,7 +51,7 @@ class InfosPeople {
         const geometry = new THREE.TextGeometry( status, {
           font: font,
           size: 12,
-          height: 1,
+          height: 0,
           curveSegments: 5,
           bevelEnabled: true,
           bevelThickness: 1,
@@ -76,7 +76,7 @@ class InfosPeople {
         const geometry = new THREE.TextGeometry( '--', {
           font: font,
           size: 12,
-          height: 1,
+          height: 0,
           curveSegments: 5,
           bevelEnabled: true,
           bevelThickness: 1,
@@ -124,7 +124,7 @@ class InfosPeople {
           const geometry = new THREE.TextGeometry(descTab[i], {
             font: font,
             size: 8,
-            height: 1,
+            height: 0,
             curveSegments: 5,
             bevelEnabled: true,
             bevelThickness: 1,
@@ -145,17 +145,21 @@ class InfosPeople {
   }
 
   checkRaycaster = (raycaster, objectsGroup) => {
-		const people = objectsGroup.children[0]
+		const people1 = objectsGroup.children[0]
+    const people2 = objectsGroup.children[1]
 
-		let intersectsPeople = raycaster.intersectObjects(people.children, false)
+		let intersectsPeople = raycaster.intersectObjects(people1.children, false)
+    let intersectsPeople2 = raycaster.intersectObjects(people2.children, false)
 
-		if (intersectsPeople[0] && intersectsPeople[0].distance < 1500) {
-      if (!this.plane.isVisible) this.showInfos(people)
+		if (intersectsPeople[0] && intersectsPeople[0].distance < 2000) {
+      if (!this.plane.isVisible) this.showInfos(people1)
+		} else if (intersectsPeople2[0] && intersectsPeople2[0].distance < 2000) {
+      if (!this.plane.isVisible) this.showInfos(people2)
 		} else {
-      if (this.plane.isVisible && !this.plane.isHidding) this.hideInfos(people)
+      if (this.plane.isVisible && !this.plane.isHidding) this.hideInfos()
     }
 
-		if (intersectsPeople[0]) {
+		if (intersectsPeople[0] || intersectsPeople2[0]) {
 			Storage.InterfaceClass.cursor.reveal()
 		} else {
 			Storage.InterfaceClass.cursor.reset()
@@ -163,6 +167,7 @@ class InfosPeople {
 	}
 
   showInfos = (people) => {
+    console.log('SHOWWW')
     this.plane.isVisible = true
 
     this.plane.position.x = people.position.x
