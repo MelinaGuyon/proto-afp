@@ -1,5 +1,6 @@
 import ObjectsLoader from './ObjectsLoader'
 import raf from 'raf'
+import anime from 'animejs'
 
 class InfosPeople {
   constructor(options) {
@@ -38,7 +39,7 @@ class InfosPeople {
     		bevelSegments: 1
     	} );
 
-      const textMaterial = new THREE.MeshBasicMaterial( { color: 0x000000, overdraw: true } )
+      const textMaterial = new THREE.MeshBasicMaterial( { color: 0x000000, overdraw: true, transparent: true, opacity: 0 } )
       const text = new THREE.Mesh( geometry, textMaterial )
       text.position.set( -90, 100, 10 )
       this.plane.add( text )
@@ -59,7 +60,7 @@ class InfosPeople {
         bevelSegments: 1
       } );
 
-      const textMaterial = new THREE.MeshBasicMaterial( { color: 0x000000, overdraw: true } )
+      const textMaterial = new THREE.MeshBasicMaterial( { color: 0x000000, overdraw: true, transparent: true, opacity: 0 } )
       const text = new THREE.Mesh( geometry, textMaterial )
       text.position.set( -90, 65, 10 )
       this.plane.add( text )
@@ -102,7 +103,7 @@ class InfosPeople {
           bevelSegments: 1
         } );
 
-        const textMaterial = new THREE.MeshBasicMaterial( { color: 0x000000, overdraw: true } )
+        const textMaterial = new THREE.MeshBasicMaterial( { color: 0x000000, overdraw: true, transparent: true, opacity: 0 } )
         const text = new THREE.Mesh( geometry, textMaterial )
         text.position.set( -90, top, 10 )
         top -= 25
@@ -110,6 +111,43 @@ class InfosPeople {
       }
     })
   }
+
+  checkRaycaster = (raycaster, objectsGroup) => {
+    console.log(objectsGroup)
+		const people = objectsGroup.children[0]
+
+		let intersectsPeople = raycaster.intersectObjects(people.children, false)
+
+		if (intersectsPeople[0] && intersectsPeople[0].distance < 1000) {
+			this.showInfos(people)
+		}
+
+		if (intersectsPeople[0]) {
+			Storage.InterfaceClass.cursor.reveal()
+		} else {
+			Storage.InterfaceClass.cursor.reset()
+		}
+	}
+
+  showInfos = (people) => {
+    this.plane.position.x = people.position.x
+    this.plane.position.z = people.position.z - 600
+
+    if (people.isGroup1) this.plane.rotation.y = Math.PI / 5
+    else if (people.isGroup2) this.plane.rotation.y = -Math.PI / 5
+
+    this.plane.children.forEach((el) => {
+      anime.remove(el.material)
+      anime({
+        targets: el.material,
+        opacity: 1,
+        duration: 600,
+        delay: 300,
+        easing: 'easeOutQuad'
+      })
+    })
+  }
+
 }
 
 export default InfosPeople

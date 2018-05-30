@@ -8,6 +8,7 @@ class Chapitre3 {
     constructor(options) {
     Storage.Chapitre3Class = this
     this.state = options
+    this.step = 0
 
     this.modelsGroup
     this.peopleColor1 = new THREE.Color( 0xffffff )
@@ -17,13 +18,17 @@ class Chapitre3 {
     this.cameraRotation = false
     this.animationOngoing = false
 
+    this.raycaster = new THREE.Raycaster()
+    this.mouse = new THREE.Vector2()
+
     this.loadChapter()
     }
 
   loadChapter = () => {
     this.loader = new ObjectsLoader()
     this.loader.load().then((response) => {
-      this.modelsGroup = response
+      this.modelsGroup = response[0]
+      this.peopleInfosGroup = response[1]
     })
   }
 
@@ -38,10 +43,12 @@ class Chapitre3 {
   }
 
   bind = () => {
+    document.addEventListener('mousemove', this.onMouseMove, { passive: true })
     raf.add(this.animate)
   }
 
   unbind = () => {
+    document.removeEventListener('mousemove', this.onMouseMove, { passive: true })
     raf.remove(this.animate)
   }
 
@@ -90,6 +97,14 @@ class Chapitre3 {
         }
       }
     })
+  }
+
+  onMouseMove = (event) => {
+    this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1
+    this.mouse.y = - (event.clientY / window.innerHeight) * 2 + 1
+    this.raycaster.setFromCamera(this.mouse, this.state.relatedCamera.camera)
+
+    if (this.step === 0) this.infos.checkRaycaster(this.raycaster, this.peopleInfosGroup)
   }
 }
 

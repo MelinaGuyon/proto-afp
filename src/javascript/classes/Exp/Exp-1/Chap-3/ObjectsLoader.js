@@ -14,6 +14,7 @@ class ObjectsLoader {
 	    this.group = new THREE.Group()
 	    this.peopleGroup1 = new THREE.Group()
 	    this.peopleGroup2 = new THREE.Group()
+			this.peopleInfosGroup = new THREE.Group()
 
 	    this.group.position.y = -790
 	    this.group.position.z = -600
@@ -24,13 +25,12 @@ class ObjectsLoader {
 
 
 	load = () => {
-
-	    return new Promise((resolve, reject) => {
-	    	this.loadPeople().then((response)=> {
-		    	console.log('Chapter 3 objects loaded')
-		    	resolve(this.group)
-		  	}).catch((error)=> { console.warn(error) })
-	    })
+    return new Promise((resolve, reject) => {
+    	this.loadPeople().then((response)=> {
+	    	console.log('Chapter 3 objects loaded')
+	    	resolve([this.group, this.peopleInfosGroup])
+	  	}).catch((error)=> { console.warn(error) })
+    })
 	}
 
 	loadPeople = () => {
@@ -61,10 +61,18 @@ class ObjectsLoader {
 						for ( let j = 0; j < 10; j ++ ) {
 					        let bodyInstance = body.clone()
 					        bodyInstance.scale.set(40, 40, 40)
-					        bodyInstance.position.x = i * -200
 					        bodyInstance.position.z = j * 200
 					        bodyInstance.name = "people"
-					        that.peopleGroup2.add( bodyInstance )
+
+									if (i === 0 && j === 6) {
+										bodyInstance.children[0].material = new THREE.MeshPhongMaterial({ color: 0xff0000 })
+										bodyInstance.position.x = i * -200 - 250
+										bodyInstance.isGroup1 = true
+										that.peopleInfosGroup.add(bodyInstance)
+									} else {
+										bodyInstance.position.x = i * -200
+										that.peopleGroup2.add( bodyInstance )
+									}
 
 					        let headInstance = head.clone()
 					        headInstance.position.x = i * -200
@@ -76,7 +84,7 @@ class ObjectsLoader {
 					    }
 					}
 
-					that.group.add( that.peopleGroup1, that.peopleGroup2 )
+					that.group.add( that.peopleGroup1, that.peopleGroup2, that.peopleInfosGroup )
 
 					resolve()
 				})
