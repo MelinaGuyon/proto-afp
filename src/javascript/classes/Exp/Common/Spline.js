@@ -62,7 +62,7 @@ class Spline {
 		}
 
 		onRealScroll = throttle((event) => {
-			const evolution = event.deltaY > 0 ? this.state.step : -this.state.step
+			const evolution = event.deltaY < 0 ? this.state.step : -this.state.step
 			const end = Math.max(Math.min(this.cameraObj.state + evolution, 0.98), 0.01)
 			this.animeSpline(this.cameraObj.state, end)
 			this.timeManager.check(this.cameraObj.state, this.state.index)
