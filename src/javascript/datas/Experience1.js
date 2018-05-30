@@ -44,16 +44,16 @@ const animations = {
 	toChapterThree: [
 		[
 			new THREE.Vector3(600, 250, -34500),
-			new THREE.Vector3(1200, 250, -35375),
-			new THREE.Vector3(1200, 250, -36250),
+			new THREE.Vector3(2000, 250, -35375),
+			new THREE.Vector3(2000, 250, -36250),
 			new THREE.Vector3(600, 250, -37125),
 			new THREE.Vector3(0, 250, -38000),
 		],
 		[
-			new THREE.Vector3(0, -Math.PI/2, -Math.PI/4),
+			new THREE.Vector3(0, -Math.PI/2, -Math.PI/10),
 			new THREE.Vector3(0, 0, 0),
-			new THREE.Vector3(0, Math.PI/4, Math.PI/4),
-			new THREE.Vector3(0, Math.PI/2, Math.PI/8),
+			new THREE.Vector3(0, Math.PI/4, Math.PI/10),
+			new THREE.Vector3(0, Math.PI/2, 0),
 			new THREE.Vector3(0, 0, 0),
 		]
 	]
