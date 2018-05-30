@@ -213,6 +213,13 @@ const actus = [
 	}
 ]
 
+const infosPeople = [
+	{
+		status: 'HOSTILE',
+		info: 'Son grand père était partisant pour la Corée du Sud durant la guerre'
+	}
+]
+
 
 export default {
   splines,
@@ -221,6 +228,7 @@ export default {
 	textsPanel,
 	subtitles,
 	voiceOver,
+	infosPeople,
 	chaptersTitle,
 	conclusions,
 	timelineIndicators,

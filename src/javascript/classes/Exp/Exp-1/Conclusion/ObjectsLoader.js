@@ -170,8 +170,8 @@ class ObjectsLoader {
 		return new Promise((resolve, reject) => {
 			let that = this
 			that.objLoader.load( 'assets/models/conclusion/people.obj', function ( body ) {
-		        body.scale.set(120, 120, 120)
-		        body.position.z = 300
+	      body.scale.set(120, 120, 120)
+	      body.position.z = 300
 
 				that.group.add( body )
 				resolve()

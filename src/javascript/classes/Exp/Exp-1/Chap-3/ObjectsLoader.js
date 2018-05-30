@@ -36,13 +36,13 @@ class ObjectsLoader {
 	loadPeople = () => {
 		return new Promise((resolve, reject) => {
 			let that = this
-			that.objLoader.load( 'assets/models/chapitre3/people.obj', function ( body ) {
-				that.objLoader.load( 'assets/models/chapitre3/head.obj', function ( head ) {
+			that.objLoader.load( 'assets/models/chapitre3/corps_homme.obj', function ( body ) {
+				that.objLoader.load( 'assets/models/chapitre3/tete_hmme.obj', function ( head ) {
 
 					for ( let i = 0; i < 4; i ++ ) {
 						for ( let j = 0; j < 10; j ++ ) {
 					        let bodyInstance = body.clone()
-					        bodyInstance.scale.set(40, 40, 40)
+					        bodyInstance.scale.set(1.5, 1.5, 1.5)
 					        bodyInstance.position.x = i * 200
 					        bodyInstance.position.z = j * 200
 					        bodyInstance.name = "people"
@@ -50,9 +50,10 @@ class ObjectsLoader {
 
 					        let headInstance = head.clone()
 					        headInstance.position.x = i * 200
-					        headInstance.position.y = 250
+					        // headInstance.position.y = 250
 					        headInstance.position.z = j * 200
 					        headInstance.isAnimating = false
+									headInstance.scale.set(1.5, 1.5, 1.5)
 					        headInstance.name = "head"
 					        that.peopleGroup1.add( headInstance )
 					    }
@@ -60,12 +61,12 @@ class ObjectsLoader {
 					for ( let i = 0; i < 4; i ++ ) {
 						for ( let j = 0; j < 10; j ++ ) {
 					        let bodyInstance = body.clone()
-					        bodyInstance.scale.set(40, 40, 40)
+					        bodyInstance.scale.set(1.5, 1.5, 1.5)
 					        bodyInstance.position.z = j * 200
 					        bodyInstance.name = "people"
 
 									if (i === 0 && j === 6) {
-										bodyInstance.children[0].material = new THREE.MeshPhongMaterial({ color: 0xff0000 })
+										bodyInstance.children[0].material = new THREE.MeshPhongMaterial({ color: 0xC40202 })
 										bodyInstance.position.x = i * -200 - 250
 										bodyInstance.isGroup1 = true
 										that.peopleInfosGroup.add(bodyInstance)
@@ -76,11 +77,16 @@ class ObjectsLoader {
 
 					        let headInstance = head.clone()
 					        headInstance.position.x = i * -200
-					        headInstance.position.y = 250
+					        // headInstance.position.y = 250
 					        headInstance.position.z = j * 200
+									headInstance.scale.set(1.5, 1.5, 1.5)
 					        headInstance.name = "head"
 					        headInstance.isAnimating = false
-					        that.peopleGroup2.add( headInstance )
+
+									if (i === 0 && j === 6) {
+										headInstance.children[0].material = new THREE.MeshPhongMaterial({ color: 0xC40202 })
+									}
+									that.peopleGroup2.add( headInstance )
 					    }
 					}
 
