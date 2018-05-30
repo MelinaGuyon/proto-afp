@@ -36,7 +36,7 @@ class ChaptersContainer {
         if (index === 0) cube.material.opacity = 0
         if (index === 1) cube.material.opacity = 0
         if (index === 2) cube.material.opacity = 0
-        // cube.material.opacity = 0.2
+        if (index === 3) cube.material.opacity = 0
 
         this.chapterBoxes.push(cube)
         Storage.SceneClasses.exp1.scene.add(cube)
