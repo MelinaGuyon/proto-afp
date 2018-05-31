@@ -149,14 +149,59 @@ class InfosPeople {
     const people1head = objectsGroup.children[1]
     const people2body = objectsGroup.children[2]
     const people2head = objectsGroup.children[3]
+    const people3body = objectsGroup.children[4]
+    const people3head = objectsGroup.children[5]
+    const people4body = objectsGroup.children[6]
+    const people4head = objectsGroup.children[7]
+    const people5body = objectsGroup.children[8]
+    const people5head = objectsGroup.children[9]
+    const people6body = objectsGroup.children[10]
+    const people6head = objectsGroup.children[11]
+    const people7body = objectsGroup.children[12]
+    const people7head = objectsGroup.children[13]
+    const people8body = objectsGroup.children[14]
+    const people8head = objectsGroup.children[15]
+    const people9body = objectsGroup.children[16]
+    const people9head = objectsGroup.children[17]
+    const people10body = objectsGroup.children[18]
+    const people10head = objectsGroup.children[19]
+    const people11body = objectsGroup.children[20]
+    const people11head = objectsGroup.children[21]
 
 		let intersectsPeople = raycaster.intersectObjects(people1body.children.concat(people1head.children), false)
     let intersectsPeople2 = raycaster.intersectObjects(people2body.children.concat(people2head.children), false)
+    let intersectsPeople3 = raycaster.intersectObjects(people3body.children.concat(people3head.children), false)
+    let intersectsPeople4 = raycaster.intersectObjects(people4body.children.concat(people4head.children), false)
+    let intersectsPeople5 = raycaster.intersectObjects(people5body.children.concat(people5head.children), false)
+    let intersectsPeople6 = raycaster.intersectObjects(people6body.children.concat(people6head.children), false)
+    let intersectsPeople7 = raycaster.intersectObjects(people7body.children.concat(people7head.children), false)
+    let intersectsPeople8 = raycaster.intersectObjects(people8body.children.concat(people8head.children), false)
+    let intersectsPeople9 = raycaster.intersectObjects(people9body.children.concat(people9head.children), false)
+    let intersectsPeople10 = raycaster.intersectObjects(people10body.children.concat(people10head.children), false)
+    let intersectsPeople11 = raycaster.intersectObjects(people11body.children.concat(people11head.children), false)
 
 		if (intersectsPeople[0] && intersectsPeople[0].distance < 2000) {
       if (!this.plane.isVisible) this.showInfos(people1body, 0)
 		} else if (intersectsPeople2[0] && intersectsPeople2[0].distance < 2000) {
       if (!this.plane.isVisible) this.showInfos(people2body, 1)
+		} else if (intersectsPeople3[0] && intersectsPeople3[0].distance < 2000) {
+      if (!this.plane.isVisible) this.showInfos(people3body, 2)
+		} else if (intersectsPeople4[0] && intersectsPeople4[0].distance < 2000) {
+      if (!this.plane.isVisible) this.showInfos(people4body, 3)
+		} else if (intersectsPeople5[0] && intersectsPeople5[0].distance < 2000) {
+      if (!this.plane.isVisible) this.showInfos(people5body, 4)
+		} else if (intersectsPeople6[0] && intersectsPeople6[0].distance < 2000) {
+      if (!this.plane.isVisible) this.showInfos(people6body, 5)
+		} else if (intersectsPeople7[0] && intersectsPeople7[0].distance < 2000) {
+      if (!this.plane.isVisible) this.showInfos(people7body, 6)
+		} else if (intersectsPeople8[0] && intersectsPeople8[0].distance < 2000) {
+      if (!this.plane.isVisible) this.showInfos(people7body, 7)
+		} else if (intersectsPeople9[0] && intersectsPeople9[0].distance < 2000) {
+      if (!this.plane.isVisible) this.showInfos(people7body, 8)
+		} else if (intersectsPeople10[0] && intersectsPeople10[0].distance < 2000) {
+      if (!this.plane.isVisible) this.showInfos(people7body, 9)
+		} else if (intersectsPeople11[0] && intersectsPeople11[0].distance < 2000) {
+      if (!this.plane.isVisible) this.showInfos(people7body, 10)
 		} else {
       if (this.plane.isVisible && !this.plane.isHidding) this.hideInfos()
     }

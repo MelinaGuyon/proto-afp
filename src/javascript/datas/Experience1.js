@@ -231,11 +231,47 @@ const actus = [
 const infosPeople = [
 	{
 		status: 'HOSTILE',
-		info: 'Son grand père était partisant pour la Corée du Sud durant la guerre'
+		info: 'Son grand père était partisan pour la Corée du Sud durant la guerre'
 	},
 	{
 		status: 'HOSTILE',
 		info: 'Sa mère a fui le pays avec son frère il y a 10 ans'
+	},
+	{
+		status: 'HOSTILE',
+		info: 'Son cousin est emprisonné dans le camps de travail de Yeko'
+	},
+	{
+		status: 'HOSTILE',
+		info: 'Sa famille n\'approuve pas l\'isolement politique du pays'
+	},
+	{
+		status: 'HOSTILE',
+		info: 'Sa mère a fui le pays avec son frère il y a 10 ans'
+	},
+	{
+		status: 'HOSTILE',
+		info: 'Son cousin est emprisonné dans le camps de travail de Yeko'
+	},
+	{
+		status: 'HOSTILE',
+		info: 'Sa mère a été executée pour avoir volé une propriété de l\'état'
+	},
+	{
+		status: 'HOSTILE',
+		info: 'Sa mère a été executée pour avoir volé une propriété de l\'état'
+	},
+	{
+		status: 'HOSTILE',
+		info: 'Sa mère a été executée pour avoir volé une propriété de l\'état'
+	},
+	{
+		status: 'HOSTILE',
+		info: 'Sa mère a été executée pour avoir volé une propriété de l\'état'
+	},
+	{
+		status: 'HOSTILE',
+		info: 'Sa mère a été executée pour avoir volé une propriété de l\'état'
 	}
 ]
 
