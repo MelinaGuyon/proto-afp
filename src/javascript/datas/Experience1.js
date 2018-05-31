@@ -64,7 +64,7 @@ const keyPointsOnSpline = {
 	chapter1: [.15, .33, .7, .85],
 	chapter2: [.1, .6, .9],
 	chapter3: [.2, .35, .55, .7, .9],
-	conclusion: [.001, .15, .55, .75]
+	conclusion: [.15, .55, .75]
 }
 
 const textsPanel =  [

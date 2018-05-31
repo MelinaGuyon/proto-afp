@@ -134,7 +134,7 @@ class Experience1 {
           relatedCamera: this.camera,
           step: .045,
           index: this.splineIndex,
-          cbEnd: () => { this.conclusion.init().then(this.goToConclusion) }
+          //cbEnd: () => { this.conclusion.init().then(this.goToConclusion) }
         },
         .5
       )
@@ -144,6 +144,8 @@ class Experience1 {
 
     goToConclusion = () => {
       console.log("entre dans conclusion")
+      setTimeout(() => { this.betweenChapters.launchVoiceOver(8)() }, 2000)
+
       this.placeOnSpline({
           spline: new THREE.CatmullRomCurve3(datas.splines.conclusion),
           relatedCamera: this.camera,
