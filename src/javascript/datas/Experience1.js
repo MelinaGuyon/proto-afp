@@ -82,9 +82,9 @@ const chaptersTitle =  [
 ]
 
 const conclusions =  [
-	['assets/shaders/conclusion/ville-rect.mp4', 'video'],
+	['assets/shaders/conclusion/conclusion1.mp4', 'video'],
 	['assets/shaders/conclusion/conclusion2.mp4', 'video'],
-	['assets/shaders/conclusion/01.jpg', 'photo']
+	['assets/shaders/conclusion/conclusion3.mp4', 'video']
 ]
 
 // number of spline, spline index begining
