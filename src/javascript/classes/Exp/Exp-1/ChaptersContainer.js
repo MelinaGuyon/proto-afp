@@ -10,9 +10,9 @@ class ChaptersContainer {
       this.positions = [
         [0, 800, -1000],
         [0, 800, -26000],
-        [0, 800, -35000],
-        [0, 800, -44000],
-        [0, 800, -54000]
+        [0, 800, -47000],
+        [0, 800, -60000],
+        [0, 800, -70000]
       ]
       this.sizes = [
         [2000, 1600, 4000],
@@ -35,7 +35,7 @@ class ChaptersContainer {
 
         if (index === 0) cube.material.opacity = 0
         if (index === 1) cube.material.opacity = 0
-        if (index === 2) cube.material.opacity = 0
+        if (index === 2) cube.material.opacity = 1
         if (index === 3) cube.material.opacity = 0
 
         this.chapterBoxes.push(cube)
