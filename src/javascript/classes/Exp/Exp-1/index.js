@@ -66,7 +66,7 @@ class Experience1 {
       this.betweenChapters = new BetweenChapters()
       this.chaptersConclusion = new ChaptersConclusionClass()
 
-      // this.animateCamera(datas.animations.enter, 4000, this.betweenIntroductionChapterOne)
+      //this.animateCamera(datas.animations.enter, 4000, this.betweenIntroductionChapterOne)
 
       Storage.SoundManagerClass.launchBackgroundMusic("assets/sound/fondsonore.mp3")
       Storage.SoundManagerClass.launchAmbianceSound("assets/sound/intro.mp3")
@@ -117,7 +117,7 @@ class Experience1 {
       this.placeOnSpline({
   				spline: new THREE.CatmullRomCurve3(datas.splines.chapter2),
           relatedCamera: this.camera,
-          step: .40,
+          step: .06,
           index: this.splineIndex,
           cbEnd: () => { this.chapter2.initInteraction() }
   			},
@@ -132,7 +132,7 @@ class Experience1 {
       this.placeOnSpline({
           spline: new THREE.CatmullRomCurve3(datas.splines.chapter3),
           relatedCamera: this.camera,
-          step: .07,
+          step: .02,
           index: this.splineIndex,
           cbEnd: () => { this.conclusion.init().then(this.goToConclusion) }
         },

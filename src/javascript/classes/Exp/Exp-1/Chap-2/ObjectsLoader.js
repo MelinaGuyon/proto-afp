@@ -28,10 +28,10 @@ class ObjectsLoader {
             this.loadSpeaker1().then((response)=> {
               this.loadSpeaker2().then((response)=> {
                 //this.loadRadio().then((response)=> {
-                  this.loadRadioTower().then((response)=> {
+                  //this.loadRadioTower().then((response)=> {
                     console.log('Chapter 2 objects loaded')
                     resolve(this.group)
-                  }).catch((error)=> { console.warn(error) })
+                  //}).catch((error)=> { console.warn(error) })
                 //}).catch((error)=> { console.warn(error) })
               }).catch((error)=> { console.warn(error) })
             }).catch((error)=> { console.warn(error) })
@@ -46,7 +46,7 @@ class ObjectsLoader {
       let that = this
       that.objLoader.load( 'assets/models/beforeChap2/speaker1.obj', function ( speaker ) {
         speaker.scale.set(0.3, 0.3, 0.3)
-        speaker.position.z = 2500
+        speaker.position.z = 10000
         speaker.position.y = 0
         speaker.position.x = 800
 
@@ -68,7 +68,7 @@ class ObjectsLoader {
       let that = this
       that.objLoader.load( 'assets/models/beforeChap2/speaker2.obj', function ( speaker ) {
         speaker.scale.set(0.3, 0.3, 0.3)
-        speaker.position.z = 2000
+        speaker.position.z = 7000
         speaker.position.y = 0
         speaker.position.x = -800
 
@@ -85,27 +85,27 @@ class ObjectsLoader {
     })
   }
 
-  loadRadioTower = () => {
-    return new Promise((resolve, reject) => {
-      let that = this
-      that.objLoader.load( 'assets/models/beforeChap2/RadioTower.obj', function ( tower ) {
-        tower.scale.set(50, 50, 50)
-        tower.position.z = 1200
-        tower.position.y = 0
-        tower.position.x = 1000
+  // loadRadioTower = () => {
+  //   return new Promise((resolve, reject) => {
+  //     let that = this
+  //     that.objLoader.load( 'assets/models/beforeChap2/RadioTower.obj', function ( tower ) {
+  //       tower.scale.set(50, 50, 50)
+  //       tower.position.z = 1200
+  //       tower.position.y = 0
+  //       tower.position.x = 1000
 
-        tower.traverse(function(o) {
-          if (o.type === 'Mesh') {
-            o.castShadow = true
-            o.receiveShadow = true
-          }
-        })
+  //       tower.traverse(function(o) {
+  //         if (o.type === 'Mesh') {
+  //           o.castShadow = true
+  //           o.receiveShadow = true
+  //         }
+  //       })
 
-        that.group.add( tower )
-      })
-      resolve()
-    })
-  }
+  //       that.group.add( tower )
+  //     })
+  //     resolve()
+  //   })
+  // }
 
   // loadRadio = () => {
   //   return new Promise((resolve, reject) => {

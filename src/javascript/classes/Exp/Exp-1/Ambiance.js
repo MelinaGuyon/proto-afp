@@ -68,7 +68,7 @@ class Ambiance {
       this.vertex_loader.load('glsl/BackgroundVertex.vert', function (vertexGround) {
         that.fragment_loader.load('glsl/BackgroundFragment.frag', function (fragmentGround) {
           const h = 40000;
-          const geometry = new THREE.BoxGeometry(h, h, h * 3)
+          const geometry = new THREE.BoxGeometry(h, h, h * 4)
 
           let material = new THREE.MeshLambertMaterial({ color: 0xffffff, side: THREE.BackSide})
 

@@ -16,7 +16,7 @@ class BetweenChapters {
 
         [ this.launchVoiceOver(4), this.launchVoiceOver(5),  this.launchText(3) ],
 
-        [ this.launchVoiceOver(6), this.launchVoiceOver(7), this.launchConclusion(3), this.stopConclusion ],
+        [ this.launchVoiceOver(6), this.launchText(4), this.launchVoiceOver(7), this.launchText(5), this.launchConclusion(3), this.stopConclusion ],
 
         [ this.launchVoiceOver(9), this.launchVoiceOver(10), this.launchVoiceOver(11) ]
       ]

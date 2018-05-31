@@ -12,23 +12,23 @@ const splines = {
 	],
 	chapter2: [
 		new THREE.Vector3(0, 400, -32000),
-		new THREE.Vector3(0, 250, -34000),
+		new THREE.Vector3(0, 250, -46000),
 	],
 	chapter3: [
-		new THREE.Vector3(0, 600, -38000),
-		new THREE.Vector3(0, 200, -42000),
-		new THREE.Vector3( 0, 250, -44900),
-		new THREE.Vector3( 5, 250, -44850)
+		new THREE.Vector3(0, 600, -50000),
+		new THREE.Vector3(0, 200, -58000),
+		new THREE.Vector3( 0, 250, -60900),
+		new THREE.Vector3( 5, 250, -60850)
 	],
 	conclusion: [
-		new THREE.Vector3( 0, 250, -46500),
-		new THREE.Vector3(0, 250, -52500),
-		new THREE.Vector3(0, 280, -53500),
-		new THREE.Vector3(650, 310, -54500),
-		new THREE.Vector3( 0, 340, -55000),
-		new THREE.Vector3( -650, 370, -54500),
-		new THREE.Vector3( 0, 410, -53500),
-		new THREE.Vector3( 0, 450, -56000)
+		new THREE.Vector3( 0, 250, -62500),
+		new THREE.Vector3(0, 250, -68500),
+		new THREE.Vector3(0, 280, -69500),
+		new THREE.Vector3(650, 310, -70500),
+		new THREE.Vector3( 0, 340, -71000),
+		new THREE.Vector3( -650, 370, -70500),
+		new THREE.Vector3( 0, 410, -69500),
+		new THREE.Vector3( 0, 450, -72000)
 	]
 }
 
@@ -43,11 +43,11 @@ const animations = {
 	],
 	toChapterThree: [
 		[
-			new THREE.Vector3(600, 250, -34500),
-			new THREE.Vector3(2000, 250, -35375),
-			new THREE.Vector3(2000, 250, -36250),
-			new THREE.Vector3(600, 250, -37125),
-			new THREE.Vector3(0, 250, -38000),
+			new THREE.Vector3(600, 250, -46500),
+			new THREE.Vector3(2000, 250, -47375),
+			new THREE.Vector3(2000, 250, -48250),
+			new THREE.Vector3(600, 250, -49125),
+			new THREE.Vector3(0, 250, -50000),
 		],
 		[
 			new THREE.Vector3(0, -Math.PI/2, -Math.PI/10),
@@ -62,8 +62,8 @@ const animations = {
 const keyPointsOnSpline = {
 	betweenIntroductionChapterOne: [.6, .9],
 	chapter1: [.15, .33, .7, .85],
-	chapter2: [.1, .2, .2],
-	chapter3: [.05, .3, .65, .9],
+	chapter2: [.1, .6, .9],
+	chapter3: [.001, .08, 0.5, 0.6, .7, .9],
 	conclusion: [.001, .3, .75]
 }
 
@@ -74,7 +74,11 @@ const textsPanel =  [
 
 	'L’ONU estime à 41% le taux de la population nord-coréenne sous-alimentée. Le paysage provincial prend des airs d’apocalypse. Les usines ont été abandonnées, les routes demeurent désertées par les voitures.',
 
-	'L’armée nord-coréenne est l’un des sujets phares de la propagande du gouvernement, qui la présente comme la plus puissante au monde. Elle compte en effet le plus grand pourcentage au monde de militaires actifs par rapport au nombre d’habitants (5% de la population).'
+	'L’armée nord-coréenne est l’un des sujets phares de la propagande du gouvernement, qui la présente comme la plus puissante au monde. Elle compte en effet le plus grand pourcentage au monde de militaires actifs par rapport au nombre d’habitants (5% de la population).',
+
+	'La société nord-coréenne est divisée en trois grandes classes sociales, dont l\'une comprend les individus loyaux, une autre les citoyens neutres ou suspects, et une dernière les ennemis de l’Etat. Cette classification se fait dès la naissance selon les antécédents familiaux de l’individu.',
+
+	'Les Kwanlisos sont des camps de travail forcé construits par le gouvernement, qui lui permettent d’emprisonner et exterminer les “ennemis de l’Etat”. L’ONU estime que de 80 000 à 120 000 prisonniers y sont détenus actuellement. Les conditions de vie y sont sont déplorables : la torture est courante, les viols sont tolérés, les exécutions sont quotidiennes. Les détenus sont souvent incarcérés avec les membres de leur famille, les plaçant ainsi tous sous la menace du pouvoir. Ce système de « culpabilité par association » a pour but d\'étouffer toute contestation en contrôlant la population grâce à la peur.'
 ]
 
 const chaptersTitle =  [
@@ -136,8 +140,8 @@ const subtitles = [
 		['Et moi, cela me paraissait naturel, puisqu’il avait commis un crime...', 40000],
 	],
 	[
-		['Notre pays, prétendument uni autour des mêmes valeurs et objectifs, est habité par une société divisée et méfiante.', 0],
-		['Je faisais moi-même partie de la catégorie des individus dits “neutres” mais suspects, ayant un cousin en Corée du Sud.', 4000]
+		['Notre pays, prétendument uni autour des mêmes valeurs et objectifs,', 0],
+		['est habité par une société divisée et méfiante.', 3500]
 	],
 	[
 		['Toute parole doit être réfléchie, même entre amis,', 0],
@@ -145,8 +149,7 @@ const subtitles = [
 		['Je n’ai appris ce qui se passe dans ces camps qu’après ma fuite du pays.', 8000],
 		['Les prisonniers y sont mal nourris, à tel point que les enfants ne grandissent plus.', 12000],
 		['Certains détenus sont torturés avec de longues aiguilles que les bourreaux insèrent sous leurs ongles,', 16000],
-		['d’autres se font plonger la tête dans l’eau jusqu’à la limite de la noyade.', 20000],
-		['Des femmes sont violées puis forcées à avorter.', 24000]
+		['Des femmes sont violées puis forcées à avorter.', 20000]
 	],
 	[
 		['J’ai grandi dans une société où l’on m’a appris qui je devais être, qui servir, et contre qui me battre.', 0]
