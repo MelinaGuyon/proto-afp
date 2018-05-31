@@ -145,19 +145,23 @@ class InfosPeople {
   }
 
   checkRaycaster = (raycaster, objectsGroup) => {
-		const people1 = objectsGroup.children[0]
-    const people2 = objectsGroup.children[1]
+		const people1body = objectsGroup.children[0]
+    const people1head = objectsGroup.children[1]
+    const people2body = objectsGroup.children[2]
+    const people2head = objectsGroup.children[3]
 
-		let intersectsPeople = raycaster.intersectObjects(people1.children, false)
-    let intersectsPeople2 = raycaster.intersectObjects(people2.children, false)
+		let intersectsPeople = raycaster.intersectObjects(people1body.children.concat(people1head.children), false)
+    let intersectsPeople2 = raycaster.intersectObjects(people2body.children.concat(people2head.children), false)
 
 		if (intersectsPeople[0] && intersectsPeople[0].distance < 2000) {
-      if (!this.plane.isVisible) this.showInfos(people1, 0)
+      if (!this.plane.isVisible) this.showInfos(people1body, 0)
 		} else if (intersectsPeople2[0] && intersectsPeople2[0].distance < 2000) {
-      if (!this.plane.isVisible) this.showInfos(people2, 1)
+      if (!this.plane.isVisible) this.showInfos(people2body, 1)
 		} else {
       if (this.plane.isVisible && !this.plane.isHidding) this.hideInfos()
     }
+
+    if (Storage.ChaptersConclusionClass.binded) return
 
 		if (intersectsPeople[0] || intersectsPeople2[0]) {
 			Storage.InterfaceClass.cursor.reveal()

@@ -37,19 +37,26 @@ class Chapitre3 {
     this.infos = new InfosPeople({ objectsGroup: this.modelsGroup, relatedBox: this.state.relatedBox })
 
     this.bind()
+    this.bindInfos()
     return new Promise((resolve, reject) => {
       setTimeout(() => { resolve() }, 500)
     })
   }
 
   bind = () => {
-    document.addEventListener('mousemove', this.onMouseMove, { passive: true })
     raf.add(this.animate)
   }
 
+  bindInfos = () => {
+    document.addEventListener('mousemove', this.onMouseMove, { passive: true })
+  }
+
   unbind = () => {
-    document.removeEventListener('mousemove', this.onMouseMove, { passive: true })
     raf.remove(this.animate)
+  }
+
+  unbindInfos = () => {
+    document.removeEventListener('mousemove', this.onMouseMove, { passive: true })
   }
 
   remove = () => {
@@ -79,8 +86,8 @@ class Chapitre3 {
           if ( this.frustum.containsPoint( o.getWorldPosition()) && distance < 500 ){
             anime({
               targets: o.rotation,
-              x: [o.rotation.x, Math.PI/2],
-              duration: 400,
+              x: [o.rotation.x, Math.PI/6],
+              duration: 700,
               easing: 'linear',
               complete: () => { o.isAnimating = false }
             })
@@ -105,6 +112,18 @@ class Chapitre3 {
     this.raycaster.setFromCamera(this.mouse, this.state.relatedCamera.camera)
 
     if (this.step === 0) this.infos.checkRaycaster(this.raycaster, this.peopleInfosGroup)
+  }
+
+  removePoeple = () => {
+    this.unbindInfos()
+    this.peopleInfosGroup.children.forEach((el) => {
+      anime({
+        targets: el.children[0].material,
+        opacity: 0,
+        duration: 600,
+        easing: 'easeInQuad'
+      })
+    })
   }
 }
 
