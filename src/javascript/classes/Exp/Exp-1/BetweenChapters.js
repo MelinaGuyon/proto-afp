@@ -16,9 +16,9 @@ class BetweenChapters {
 
         [ this.launchVoiceOver(4), this.launchVoiceOver(5),  this.launchText(3) ],
 
-        [ this.launchVoiceOver(6), this.launchText(4), this.removePeople, this.stopConclusion ],
+        [ this.launchVoiceOver(6), this.launchText(4), this.faster, this.removePeople, this.stopConclusion ],
 
-        [ this.launchVoiceOver(9), this.launchVoiceOver(10), this.launchVoiceOver(11) ]
+        [ this.launchVoiceOver(8), this.launchVoiceOver(9), this.launchVoiceOver(10), this.launchVoiceOver(11) ]
       ]
     }
 
@@ -40,6 +40,7 @@ class BetweenChapters {
       Storage.InterfaceClass.subtitles.writeSubtitles(datas.subtitles[index], index)
       Storage.SoundManagerClass.launchVoiceOver(datas.voiceOver[index])
       if (index == 3) Storage.SplineClass.updateStep(0.035)
+      if (index == 6) Storage.SplineClass.updateStep(0.03)
     }
 
     launchMusic = (src) => () => {
@@ -64,6 +65,10 @@ class BetweenChapters {
       this.launchVoiceOver(7)()
       setTimeout(() => { this.launchText(5)() }, 21000)
       setTimeout(() => { this.launchConclusion(3)() }, 41000)
+    }
+
+    faster = () => {
+      Storage.SplineClass.updateStep(0.06)
     }
 }
 

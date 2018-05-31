@@ -16,19 +16,19 @@ const splines = {
 	],
 	chapter3: [
 		new THREE.Vector3(0, 600, -50000),
-		new THREE.Vector3(0, 200, -58000),
-		new THREE.Vector3( 0, 250, -60900),
-		new THREE.Vector3( 5, 250, -60850)
+		new THREE.Vector3(0, 200, -54000),
+		new THREE.Vector3( 0, 250, -56900),
+		new THREE.Vector3( 5, 250, -56850)
 	],
 	conclusion: [
-		new THREE.Vector3( 0, 250, -62500),
-		new THREE.Vector3(0, 250, -68500),
-		new THREE.Vector3(0, 280, -69500),
-		new THREE.Vector3(650, 310, -70500),
-		new THREE.Vector3( 0, 340, -71000),
-		new THREE.Vector3( -650, 370, -70500),
-		new THREE.Vector3( 0, 410, -69500),
-		new THREE.Vector3( 0, 450, -72000)
+		new THREE.Vector3( 0, 250, -58500),
+		new THREE.Vector3(0, 250, -64500),
+		new THREE.Vector3(0, 280, -65500),
+		new THREE.Vector3(650, 310, -66500),
+		new THREE.Vector3( 0, 340, -67000),
+		new THREE.Vector3( -650, 370, -66500),
+		new THREE.Vector3( 0, 410, -65500),
+		new THREE.Vector3( 0, 450, -68000)
 	]
 }
 
@@ -63,12 +63,12 @@ const keyPointsOnSpline = {
 	betweenIntroductionChapterOne: [.6, .9],
 	chapter1: [.15, .33, .7, .85],
 	chapter2: [.1, .6, .9],
-	chapter3: [.3, .4, .7, .9],
-	conclusion: [.001, .3, .75]
+	chapter3: [.2, .35, .55, .7, .9],
+	conclusion: [.001, .15, .55, .75]
 }
 
 const textsPanel =  [
-	'A la frontière entre les deux Corées apparaît un village où personne ne vit. Les bâtiments sont dépourvus de fenêtres et les lumières s’y activent à heure fixe. Il s’agit en réalité d’une “ville propagande”, visant à donner une bonne image des cités nord-coréenne auprès de la Corée du Sud. Cela cache les réelles conditions de vie du pays.',
+	'A la frontière entre les deux Corées apparaît un village où personne ne vit. Les bâtiments sont dépourvus de fenêtres et les lumières s’y activent à heure fixe. Il s’agit en réalité d’une “ville propagande”, qui vise à donner une bonne image des cités nord-coréenne auprès de la Corée du Sud. Cela cache les réelles conditions de vie du pays.',
 
 	'Chaque matin, les habitants de Pyongyang sont réveillés à 6h par un chant patriotique lancinant.',
 
@@ -103,9 +103,9 @@ const subtitles = [
 	[
 		['Je m’appelle Min-Ho, je suis Nord-Coréen.', 0],
 		['J’ai fui mon pays natal à 16 ans, et lui étais', 3000],
-		['jusqu’alors toujours resté fidèle.', 5500],
-		['Il était pour moi le meilleur pays au monde,', 7800],
-		['car je ne connaissais rien d’autre.', 9500]
+		['jusqu’alors toujours resté fidèle.', 6000],
+		['Il était pour moi le meilleur pays au monde,', 8000],
+		['car je ne connaissais rien d’autre.', 11000]
 	],
 	[
 		['J’ai évolué jour après jour dans un monde artificiel,', 0],
@@ -113,57 +113,69 @@ const subtitles = [
 	],
 	[
 		['C’est l’image d’un pays solide et fier qui est présentée,', 0],
-		['pendant que nous mourons de faim derrière ses murs.', 2000]
+		['pendant que nous mourons de faim derrière ses murs.', 2500]
 	],
 	[
 		['J’ai vu une petite fille de deux ans affamée, succomber sous mes yeux.', 0],
 		['Vous voyez, quand une personne meurt, les mouches sont les premières à le savoir.', 3000],
 		['Même si elle respirait encore, elles se sont rassemblées', 7000],
-		['autour de ses yeux et de sa bouche comme des folles…', 9000],
-		['C’est à ce moment que j’ai décidé de fuir. ', 11000]
+		['autour de ses yeux et de sa bouche comme des folles…', 10000],
+		['C’est à ce moment que j’ai décidé de fuir. ', 12000]
 	],
 	[
 		['On glorifie notre puissante armée, grande défenseuse des peuples,', 0],
-		['mais qui n’hésite pas à punir tout faux pas d’une froide exécution.', 3000]
+		['mais qui n’hésite pas à punir tout faux pas ', 3000],
+		['d’une froide exécution.', 5300]
 	],
 	[
 		['J’avais 12 ans lorsque j’ai assisté à ma première exécution publique.', 0],
-		['Le crime avait été de voler et vendre quelques mètres d’une corde épaisse appartenant à un site minier.', 4000],
-		['Le coupable ne recevait aucune aide de l’état pour vivre', 8000],
-		['et devait essayer de sauver sa famille de la faim. Mais il s’agissait d’une propriété du gouvernement…', 12000],
+		['Le crime avait été de voler et vendre quelques mètres d’une corde épaisse', 3500], 
+		['appartenant à un site minier.', 7000],
+		['Le coupable ne recevait aucune aide de l’état pour vivre', 8500],
+		['et devait essayer de sauver sa famille de la faim.', 11000], 
+		['Mais il s’agissait d’une propriété du gouvernement…', 13300],
 		['Tous les habitants du village sont sortis pour regarder l’exécution,', 16000],
-		['même la famille du condamné.', 20000],
-		['Les soldats se sont mis à tirer.', 24000],
-		['Ils ont d’abord visé sa tête, puis son cou, sa poitrine, ses hanches, ses genoux et ses talons.', 28000],
-		['Le corps se pliait sur lui-même au fil des tirs.', 32000],
-		['La moitié de sa tête avait disparu, le sang jaillissait de sa poitrine.', 36000],
-		['Et moi, cela me paraissait naturel, puisqu’il avait commis un crime...', 40000],
+		['même la famille du condamné.', 19000],
+		['Les soldats se sont mis à tirer.', 21000],
+		['Ils ont d’abord visé sa tête, puis son cou, sa poitrine, ses hanches, ses genoux et ses talons.', 22300],
+		['Le corps se pliait sur lui-même au fil des tirs.', 27000],
+		['La moitié de sa tête avait disparu, le sang jaillissait de sa poitrine.', 29600],
+		['Et moi, cela me paraissait naturel,', 34000],
+		['puisqu’il avait commis un crime...', 37000],
 	],
 	[
-		['Notre pays, prétendument uni autour des mêmes valeurs et objectifs,', 0],
-		['est habité par une société divisée et méfiante.', 3500]
+		['Notre pays,', 0],
+		['prétendument uni autour des mêmes valeurs et objectifs,', 1000],
+		['est habité par une société divisée et méfiante.', 3700]
 	],
 	[
 		['Toute parole doit être réfléchie, même entre amis,', 0],
-		['ou elle provoquera la disparition de son initiateur, certainement dans l’un des Kwanlisos de l’Etat.', 4000],
-		['Je n’ai appris ce qui se passe dans ces camps qu’après ma fuite du pays.', 8000],
-		['Les prisonniers y sont mal nourris, à tel point que les enfants ne grandissent plus.', 12000],
-		['Certains détenus sont torturés avec de longues aiguilles que les bourreaux insèrent sous leurs ongles,', 16000],
-		['Des femmes sont violées puis forcées à avorter.', 20000]
+		['ou elle provoquera la disparition de son initiateur', 2800],
+		['certainement dans l’un des Kwanlisos de l’Etat.', 5200],
+		['Je n’ai appris ce qui se passe dans ces camps qu’après ma fuite du pays.', 7700],
+		['Les prisonniers y sont mal nourris', 10800], 
+		['à tel point que les enfants ne grandissent plus.', 12300],
+		['Certains détenus sont torturés', 14500],
+		['avec de longues aiguilles que les bourreaux insèrent sous leurs ongles.', 16000],
+		['Des femmes sont violées puis forcées à avorter.', 19000]
 	],
 	[
-		['J’ai grandi dans une société où l’on m’a appris qui je devais être, qui servir, et contre qui me battre.', 0]
+		['J’ai grandi dans une société où l’on m’a appris qui je devais être,', 0],
+		['qui servir,', 3000], 
+		['et contre qui me battre.', 4500]
 	],
 	[
 		['Notre chef nous ment.', 0],
 		['Notre chef nous menace.', 1500],
-		['C’est grâce à ces mirages qu’il détient les pleins pouvoirs sur le destin de notre nation.', 3000]
+		['C’est grâce à ces mirages', 3500], 
+		['qu’il détient les pleins pouvoirs sur le destin de notre nation.', 4800]
 	],
 	[
 		['Et cela pourrait largement dépasser nos frontières…', 0]
 	],
 	[
-		['Ce pays que j’ai aimé m’a traité en criminel, je l’ai fui pour survivre.', 0]
+		['Ce pays que j’ai aimé m’a traité en criminel', 0], 
+		['je l’ai fui pour survivre.', 2500]
 	]
 ]
 

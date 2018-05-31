@@ -73,8 +73,8 @@ class Experience1 {
 
 
       // to test
-      this.splineIndex = 3
-      this.chapter3.init().then(this.goToChapterThree)
+      this.splineIndex = 4
+      this.conclusion.init().then(this.goToConclusion)
 
       Storage.TextWriting.addTitle(datas.chaptersTitle[0], 5000)
 		}
@@ -132,7 +132,7 @@ class Experience1 {
       this.placeOnSpline({
           spline: new THREE.CatmullRomCurve3(datas.splines.chapter3),
           relatedCamera: this.camera,
-          step: .02,
+          step: .045,
           index: this.splineIndex,
           cbEnd: () => { this.conclusion.init().then(this.goToConclusion) }
         },
@@ -147,7 +147,7 @@ class Experience1 {
       this.placeOnSpline({
           spline: new THREE.CatmullRomCurve3(datas.splines.conclusion),
           relatedCamera: this.camera,
-          step: .10,
+          step: .06,
           index: this.splineIndex,
           forceRotate: true,
           cbEnd: () => { Storage.InterfaceClass.actus.showActu() }
