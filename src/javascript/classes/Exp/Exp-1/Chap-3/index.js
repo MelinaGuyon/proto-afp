@@ -116,13 +116,17 @@ class Chapitre3 {
 
   removePoeple = () => {
     this.unbindInfos()
-    this.peopleInfosGroup.children.forEach((el) => {
-      anime({
-        targets: el.children[0].material,
-        opacity: 0,
-        duration: 600,
-        easing: 'easeInQuad'
-      })
+    let test = 0
+    this.peopleInfosGroup.children.forEach((el, index) => {
+      if (index%2 === 0) test++
+      setTimeout(() => {
+        anime({
+          targets: el.children[0].material,
+          opacity: 0,
+          duration: 1000,
+          easing: 'easeOutQuart'
+        })
+      }, test * 1800)
     })
   }
 }

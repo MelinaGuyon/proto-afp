@@ -46,7 +46,7 @@ class ObjectsLoader {
 					        bodyInstance.position.z = j * 200
 					        bodyInstance.name = "people"
 
-									if (i === 0 && j === 8) {
+									if ((i === 0 && j === 8) || (i === 2 && j === 9) || (i === 2 && j === 4) || (i === 3 && j === 2) || (i === 1 && j === 4) || (i === 0 && j === 0)) {
 										bodyInstance.children[0].material = new THREE.MeshPhongMaterial({ color: 0xC40202, transparent: true })
 										bodyInstance.position.x = i * 200 + 250
 										bodyInstance.isGroup2 = true
@@ -63,7 +63,7 @@ class ObjectsLoader {
 									headInstance.scale.set(1.5, 1.5, 1.5)
 					        headInstance.name = "head"
 
-									if (i === 0 && j === 8) {
+									if ((i === 0 && j === 8) || (i === 2 && j === 9) || (i === 2 && j === 4) || (i === 3 && j === 2) || (i === 1 && j === 4) || (i === 0 && j === 0)) {
 										headInstance.children[0].material = new THREE.MeshPhongMaterial({ color: 0xC40202, transparent: true })
 										headInstance.position.x = i * 200 + 250
 										that.peopleInfosGroup.add(headInstance)
@@ -81,7 +81,7 @@ class ObjectsLoader {
 					        bodyInstance.position.z = j * 200
 					        bodyInstance.name = "people"
 
-									if (i === 0 && j === 6) {
+									if ((i === 0 && j === 6) || (i === 3 && j === 5) || (i === 2 && j === 8) || (i === 1 && j === 2) || (i === 2 && j === 0)) {
 										bodyInstance.children[0].material = new THREE.MeshPhongMaterial({ color: 0xC40202, transparent: true })
 										bodyInstance.position.x = i * -200 - 250
 										bodyInstance.isGroup1 = true
@@ -98,7 +98,7 @@ class ObjectsLoader {
 					        headInstance.name = "head"
 					        headInstance.isAnimating = false
 
-									if (i === 0 && j === 6) {
+									if ((i === 0 && j === 6) || (i === 3 && j === 5) || (i === 2 && j === 8) || (i === 1 && j === 2) || (i === 2 && j === 0)) {
 										headInstance.children[0].material = new THREE.MeshPhongMaterial({ color: 0xC40202, transparent: true })
 										headInstance.position.x = i * -200 -250
 										that.peopleInfosGroup.add(headInstance)
