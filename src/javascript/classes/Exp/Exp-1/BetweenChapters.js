@@ -16,7 +16,7 @@ class BetweenChapters {
 
         [ this.launchVoiceOver(4), this.launchVoiceOver(5),  this.launchText(3) ],
 
-        [ this.launchVoiceOver(6), this.launchText(4), this.launchVoiceOver(7), this.launchText(5), this.removePeople, this.stopConclusion ],
+        [ this.launchVoiceOver(6), this.launchText(4), this.removePeople, this.stopConclusion ],
 
         [ this.launchVoiceOver(9), this.launchVoiceOver(10), this.launchVoiceOver(11) ]
       ]
@@ -61,8 +61,9 @@ class BetweenChapters {
 
     removePeople = () => {
       Storage.Chapitre3Class.removePoeple()
-      // launchText qui explique pour les camps
-      setTimeout(() => { this.launchConclusion(3)() }, 5000)
+      this.launchVoiceOver(7)()
+      setTimeout(() => { this.launchText(5)() }, 21000)
+      setTimeout(() => { this.launchConclusion(3)() }, 41000)
     }
 }
 

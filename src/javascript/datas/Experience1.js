@@ -63,7 +63,7 @@ const keyPointsOnSpline = {
 	betweenIntroductionChapterOne: [.6, .9],
 	chapter1: [.15, .33, .7, .85],
 	chapter2: [.1, .6, .9],
-	chapter3: [.001, .08, 0.5, 0.6, .7, .9],
+	chapter3: [.3, .4, .7, .9],
 	conclusion: [.001, .3, .75]
 }
 
