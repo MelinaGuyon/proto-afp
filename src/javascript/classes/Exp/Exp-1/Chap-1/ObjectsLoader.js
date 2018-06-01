@@ -61,7 +61,7 @@ class ObjectsLoader {
 												this.loadSecondDoor().then((response)=> {
 													this.loadFirstWindow().then((response)=> {
 														this.loadSecondWindow().then((response)=> {
-											  			this.loadShader("../../../glsl/testVert.vert", "../../../glsl/testFrag.frag").then((response)=> {
+											  			this.loadShader("glsl/testVert.vert", "glsl/testFrag.frag").then((response)=> {
 									    		    	console.log('Chapter 1 objects loaded')
 									    		    	resolve(this.group)
 										    			}).catch((error)=> { console.warn(error) })

@@ -62,7 +62,7 @@ const animations = {
 const keyPointsOnSpline = {
 	betweenIntroductionChapterOne: [.6, .9],
 	chapter1: [.15, .33, .7, .85],
-	chapter2: [.1, .6, .9],
+	chapter2: [.1, .8],
 	chapter3: [.2, .35, .55, .7, .9],
 	conclusion: [.15, .55, .75]
 }
@@ -75,6 +75,8 @@ const textsPanel =  [
 	'L’ONU estime à 41% le taux de la population nord-coréenne sous-alimentée. Le paysage provincial prend des airs d’apocalypse. Les usines ont été abandonnées, les routes demeurent désertées par les voitures.',
 
 	'L’armée nord-coréenne est l’un des sujets phares de la propagande du gouvernement, qui la présente comme la plus puissante au monde. Elle compte en effet le plus grand pourcentage au monde de militaires actifs par rapport au nombre d’habitants (5% de la population).',
+
+	'Après 12 ans, les Nord-Coréens ont l\'obligation d’assister aux exécutions publiques. C\'est une technique d’intimidation utilisée par le gouvernement pour obtenir l’obéissance du peuple. Ces exécutions ont lieu dans des lieux publics comme des marchés, voire des écoles.',
 
 	'La société nord-coréenne est divisée en trois grandes classes sociales, dont l\'une comprend les individus loyaux, une autre les citoyens neutres ou suspects, et une dernière les ennemis de l’Etat. Cette classification se fait dès la naissance selon les antécédents familiaux de l’individu.',
 
@@ -129,10 +131,10 @@ const subtitles = [
 	],
 	[
 		['J’avais 12 ans lorsque j’ai assisté à ma première exécution publique.', 0],
-		['Le crime avait été de voler et vendre quelques mètres d’une corde épaisse', 3500], 
+		['Le crime avait été de voler et vendre quelques mètres d’une corde épaisse', 3500],
 		['appartenant à un site minier.', 7000],
 		['Le coupable ne recevait aucune aide de l’état pour vivre', 8500],
-		['et devait essayer de sauver sa famille de la faim.', 11000], 
+		['et devait essayer de sauver sa famille de la faim.', 11000],
 		['Mais il s’agissait d’une propriété du gouvernement…', 13300],
 		['Tous les habitants du village sont sortis pour regarder l’exécution,', 16000],
 		['même la famille du condamné.', 19000],
@@ -153,7 +155,7 @@ const subtitles = [
 		['ou elle provoquera la disparition de son initiateur', 2800],
 		['certainement dans l’un des Kwanlisos de l’Etat.', 5200],
 		['Je n’ai appris ce qui se passe dans ces camps qu’après ma fuite du pays.', 7700],
-		['Les prisonniers y sont mal nourris', 10800], 
+		['Les prisonniers y sont mal nourris', 10800],
 		['à tel point que les enfants ne grandissent plus.', 12300],
 		['Certains détenus sont torturés', 14500],
 		['avec de longues aiguilles que les bourreaux insèrent sous leurs ongles.', 16000],
@@ -161,20 +163,20 @@ const subtitles = [
 	],
 	[
 		['J’ai grandi dans une société où l’on m’a appris qui je devais être,', 0],
-		['qui servir,', 3000], 
+		['qui servir,', 3000],
 		['et contre qui me battre.', 4500]
 	],
 	[
 		['Notre chef nous ment.', 0],
 		['Notre chef nous menace.', 1500],
-		['C’est grâce à ces mirages', 3500], 
+		['C’est grâce à ces mirages', 3500],
 		['qu’il détient les pleins pouvoirs sur le destin de notre nation.', 4800]
 	],
 	[
 		['Et cela pourrait largement dépasser nos frontières…', 0]
 	],
 	[
-		['Ce pays que j’ai aimé m’a traité en criminel', 0], 
+		['Ce pays que j’ai aimé m’a traité en criminel', 0],
 		['je l’ai fui pour survivre.', 2500]
 	]
 ]

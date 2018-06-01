@@ -41,6 +41,7 @@ class Chapitre2 {
   remove = () => {
     setTimeout(() => {
       this.state.relatedBox.remove(this.modelsGroup)
+      Storage.SceneClasses.exp1.scene.remove(this.light)
       this.unbind()
     }, 4000)
   }
@@ -64,8 +65,6 @@ class Chapitre2 {
 
   initLight = () => {
     this.state.lightOpt.push(this.modelsGroup.children[0].children[0])
-
-    console.log("coucou", this.modelsGroup.children[0])
     this.light = new CursorLight({
       sceneIndex: 1,
       relatedCamera: this.state.relatedCamera.camera,
@@ -101,26 +100,25 @@ class Chapitre2 {
     }
 
     if ( this.warriorsNumber === this.modelsGroup.children[1].children.length && this.conclusionPassed != true) {
-      this.conclusionPassed = true
-      Storage.BetweenChaptersClass.launchConclusion(2)()
+      if (!Storage.ChaptersConclusionClass.binded && Storage.ChaptersConclusionClass.allowBind) {
+        this.conclusionPassed = true
+        this.light.updateLightIntensity(0)
+        this.light.updateSphereScale(0.01)
+        Storage.BetweenChaptersClass.launchConclusion(2)()
+      }
     }
 
-    if ( this.conclusionPassed === true && this.scrollPassed != true) {
+    if ( this.conclusionPassed === true && this.scrollPassed != true && Storage.ChaptersConclusionClass.binded) {
       this.scrollPassed = true
-
       setTimeout(() => {
         document.querySelector('canvas').addEventListener('mousewheel', this.handleScroll)
       }, 1000)
     }
   }
 
-  handleScroll = () => { 
-    /*    
-    this.state.relatedCamera.updateMovementRange(0, 0)
-    this.unbind()
-    Storage.SplineClass.unbind()
-    */
+  handleScroll = () => {
     document.querySelector('canvas').removeEventListener('mousewheel', this.handleScroll)
+    Storage.BetweenChaptersClass.stopConclusion()
 
     setTimeout(() => {
       Storage.Experience1Class.animateCamera(datas.animations.toChapterThree, 900, this.state.cbAfterInteraction)

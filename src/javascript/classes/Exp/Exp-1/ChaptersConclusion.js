@@ -9,6 +9,7 @@ class ChaptersConclusion {
 		this.conclusion
     this.clicked = false
     this.binded = false
+    this.allowBind = false
 
     this.conclusionIndicator = document.querySelector('.conclusion-indicator p')
 

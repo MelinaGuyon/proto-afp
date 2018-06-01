@@ -102,11 +102,28 @@ class CursorLight {
     }
 
     updateLightIntensity = (value) => {
-      this.light.intensity = value
+      anime.remove(this.light)
+      anime({
+        targets: this.light,
+        intensity: value,
+        duration: 800,
+        easing: 'easeOutQuad'
+      })
     }
 
     updateCastingShadow = (bool) => {
       this.light.castShadow = bool
+    }
+
+    updateSphereScale = (value) => {
+      anime.remove(this.sphere.scale)
+      anime({
+        targets: this.sphere.scale,
+        x: value,
+        y: value,
+        duration: 800,
+        easing: 'easeOutQuad'
+      })
     }
 
     makeRecasterTable = () => {

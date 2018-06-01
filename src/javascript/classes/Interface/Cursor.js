@@ -134,6 +134,8 @@ class Cursor {
   }
 
   hold = () => {
+    this.cursorContainer.classList.remove('reveal', 'target', 'hold')
+    this.innerRing.style.removeProperty('border')
     this.cursorContainer.classList.add('hold')
     const x = this.inrtia.x.targetValue + 16
     const y = this.inrtia.y.targetValue + 16
@@ -149,7 +151,7 @@ class Cursor {
       this.inrtia.y.to(y)
     }
     this.cursorContainer.classList.remove('reveal', 'target', 'hold')
-    this.innerRing.style.removeProperty('border');
+    this.innerRing.style.removeProperty('border')
   }
 }
 

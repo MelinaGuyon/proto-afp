@@ -14,9 +14,9 @@ class BetweenChapters {
 
         [ this.launchText(1), this.launchVoiceOver(3), this.launchText(2), this.launchConclusion(1), this.stopConclusion ],
 
-        [ this.launchVoiceOver(4), this.launchVoiceOver(5),  this.launchText(3) ],
+        [ this.launchText(3), /* this.launchVoiceOver(4), */ this.launchVoiceOver(5) ],
 
-        [ this.launchVoiceOver(6), this.launchText(4), this.faster, this.removePeople, this.stopConclusion ],
+        [ this.launchVoiceOver(6), this.launchText(5), this.faster, this.removePeople, this.stopConclusion ],
 
         [ this.launchVoiceOver(9), this.launchVoiceOver(10), this.launchVoiceOver(11) ]
       ]
@@ -29,6 +29,7 @@ class BetweenChapters {
     launchText = (index) => () => {
       this.lauchTextDelayed(index)
       if (index == 2) Storage.SplineClass.updateStep(0.025)
+      if (index == 4) setTimeout(() => { Storage.ChaptersConclusionClass.allowBind = true }, 9000)
     }
 
     // litle safety
@@ -41,6 +42,7 @@ class BetweenChapters {
       Storage.SoundManagerClass.launchVoiceOver(datas.voiceOver[index])
       if (index == 3) Storage.SplineClass.updateStep(0.035)
       if (index == 6) Storage.SplineClass.updateStep(0.03)
+      if (index == 5) setTimeout(() => { this.launchText(4)() }, 39500)
     }
 
     launchMusic = (src) => () => {
@@ -63,7 +65,7 @@ class BetweenChapters {
     removePeople = () => {
       Storage.Chapitre3Class.removePoeple()
       this.launchVoiceOver(7)()
-      setTimeout(() => { this.launchText(5)() }, 21000)
+      setTimeout(() => { this.launchText(6)() }, 21000)
       setTimeout(() => { this.launchConclusion(3)() }, 41000)
     }
 
