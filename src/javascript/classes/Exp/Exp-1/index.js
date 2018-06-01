@@ -149,10 +149,16 @@ class Experience1 {
       this.placeOnSpline({
           spline: new THREE.CatmullRomCurve3(datas.splines.conclusion),
           relatedCamera: this.camera,
-          step: .06,
+          step: .50,
           index: this.splineIndex,
           forceRotate: true,
-          cbEnd: () => { Storage.InterfaceClass.actus.showActu() }
+          //cbEnd: () => { Storage.InterfaceClass.actus.showActu() }
+          cbEnd: () => { 
+            this.animateCamera(datas.animations.conclusionEnding, 5000)
+            this.betweenChapters.launchVoiceOver(9)()
+            Storage.ConclusionClass.conclusionEnding()
+            setTimeout(() => { Storage.InterfaceClass.actus.showActu() }, 29000)
+          }
         },
         .5
       )
