@@ -195,13 +195,13 @@ class InfosPeople {
 		} else if (intersectsPeople7[0] && intersectsPeople7[0].distance < 2000) {
       if (!this.plane.isVisible) this.showInfos(people7body, 6)
 		} else if (intersectsPeople8[0] && intersectsPeople8[0].distance < 2000) {
-      if (!this.plane.isVisible) this.showInfos(people7body, 7)
+      if (!this.plane.isVisible) this.showInfos(people8body, 7)
 		} else if (intersectsPeople9[0] && intersectsPeople9[0].distance < 2000) {
-      if (!this.plane.isVisible) this.showInfos(people7body, 8)
+      if (!this.plane.isVisible) this.showInfos(people9body, 8)
 		} else if (intersectsPeople10[0] && intersectsPeople10[0].distance < 2000) {
-      if (!this.plane.isVisible) this.showInfos(people7body, 9)
+      if (!this.plane.isVisible) this.showInfos(people10body, 9)
 		} else if (intersectsPeople11[0] && intersectsPeople11[0].distance < 2000) {
-      if (!this.plane.isVisible) this.showInfos(people7body, 10)
+      if (!this.plane.isVisible) this.showInfos(people11body, 10)
 		} else {
       if (this.plane.isVisible && !this.plane.isHidding) this.hideInfos()
     }
