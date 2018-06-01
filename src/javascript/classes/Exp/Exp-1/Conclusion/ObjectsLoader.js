@@ -12,9 +12,12 @@ class ObjectsLoader {
 
 	init = () => {
 	    this.group = new THREE.Group()
+	    this.lightsGroup = new THREE.Group()
 
 	    this.group.position.y = -790
+	    this.lightsGroup.position.y = -790
 	    this.group.position.z = -600
+	    this.lightsGroup.position.z = -600
 	}
 
 
@@ -31,6 +34,18 @@ class ObjectsLoader {
 		  					}).catch((error)=> { console.warn(error) })
 		  				}).catch((error)=> { console.warn(error) })
 		  			}).catch((error)=> { console.warn(error) })
+		  		}).catch((error)=> { console.warn(error) })
+		  	}).catch((error)=> { console.warn(error) })
+	    })
+	}
+
+
+	loadLights = () => {
+	    return new Promise((resolve, reject) => {
+	    	this.loadLightOne().then((response)=> {
+	    		this.loadLightTwo().then((response)=> {
+					console.log('Conclusion lights loaded')
+					resolve(this.lightsGroup)
 		  		}).catch((error)=> { console.warn(error) })
 		  	}).catch((error)=> { console.warn(error) })
 	    })
@@ -82,8 +97,6 @@ class ObjectsLoader {
 		        let afficheTexture = that.textureLoader.load('assets/models/beforeConclu/affiche2.png', () => {
 		            afficheMaterial.map = afficheTexture
 
-					console.log("MATERIALS AFFICHE 2", matl.materials)
-
 				    that.objLoader.load( 'assets/models/beforeConclu/affiche2.obj', function ( affiche ) {
 				        affiche.scale.set(1, 1, 1)
 				        affiche.position.z = 6800
@@ -95,7 +108,7 @@ class ObjectsLoader {
 				        that.group.add( affiche )
 
 
-				        	      	resolve()
+				        resolve()
 
 				    })
 		  		})
@@ -169,16 +182,69 @@ class ObjectsLoader {
 	loadPeople = () => {
 		return new Promise((resolve, reject) => {
 			let that = this
-			that.objLoader.load( 'assets/models/conclusion/people.obj', function ( body ) {
-	      body.scale.set(120, 120, 120)
-	      body.position.z = 300
 
-				that.group.add( body )
-				resolve()
+			this.mtlLoader.load('assets/models/conclusion/kimjongun.mtl', (matl) => {
+				matl.preload()
+				this.objLoader.setMaterials( matl )
+
+				that.objLoader.load( 'assets/models/conclusion/kimjongun.obj', function ( body ) {
+				    body.scale.set(10, 10, 10)
+				    body.position.z = 300
+
+				    console.log("body kim", body)
+
+				    body.traverse(function(o) {
+						if (o.type === 'Mesh') {
+							o.material.shininess = 10
+							o.receiveShadow = true
+							o.castShadow = true
+						}
+					})
+
+					that.group.add( body )
+					resolve()
+				})
 			})
 		})
 
 	}
+
+	loadLightOne = () => {
+		return new Promise((resolve, reject) => {
+			let that = this
+
+			// bug avec distance, à mettre à 0 pour voir la light
+			this.spotLight1 = new THREE.SpotLight( 0xff0000, 2, 200, 0.5, 0, 1 )
+	    	this.spotLight1.position.set( 150, -300, 700 )
+	    	this.spotLight1.rotation.set( -Math.PI/2, 0, 0 )
+	  /*  	this.spotLight1.rotation.x = -Math.PI/2
+	    	this.spotLight1.rotation.y = -Math.PI/4
+	    	this.spotLight1.rotation.z = Math.PI/2*/
+
+			this.spotLight1Helper = new THREE.SpotLightHelper( this.spotLight1 )
+
+	    	that.lightsGroup.add( this.spotLight1 )
+	    	that.lightsGroup.add( this.spotLight1Helper )
+
+			resolve()
+		})
+    }
+
+    loadLightTwo = () => {
+    	return new Promise((resolve, reject) => {
+    		let that = this
+
+			this.spotLight2 = new THREE.SpotLight( 0x00ff00, 2, 0, 0.7, 0, 1)
+	    	this.spotLight2.position.set( 1500, 1500, 100 )
+
+			this.spotLight2Helper = new THREE.SpotLightHelper( this.spotLight2 )
+
+	    	that.lightsGroup.add( this.spotLight2 )
+	    	that.lightsGroup.add( this.spotLight2Helper )
+
+			resolve()
+		})
+    }
 
 }
 

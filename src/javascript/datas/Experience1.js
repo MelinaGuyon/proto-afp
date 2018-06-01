@@ -22,13 +22,7 @@ const splines = {
 	],
 	conclusion: [
 		new THREE.Vector3( 0, 250, -58500),
-		new THREE.Vector3(0, 250, -64500),
-		new THREE.Vector3(0, 280, -65500),
-		new THREE.Vector3(650, 310, -66500),
-		new THREE.Vector3( 0, 340, -67000),
-		new THREE.Vector3( -650, 370, -66500),
-		new THREE.Vector3( 0, 410, -65500),
-		new THREE.Vector3( 0, 450, -68000)
+		new THREE.Vector3( 0, 250, -64500),
 	]
 }
 
@@ -56,6 +50,24 @@ const animations = {
 			new THREE.Vector3(0, Math.PI/2, 0),
 			new THREE.Vector3(0, 0, 0),
 		]
+	],
+	conclusionEnding: [
+		[
+			new THREE.Vector3(0, 800, -65000),
+			new THREE.Vector3(1000, 900, -66000),
+			new THREE.Vector3( 0, 1000, -67000),
+			new THREE.Vector3( -1000, 1100, -65000),
+			new THREE.Vector3( 0, 1300, -65000),
+			new THREE.Vector3( 0, 1800, -68000)
+		],
+		[
+			new THREE.Vector3(0, 0, 0),
+			new THREE.Vector3(0, Math.PI/2, 0),
+			new THREE.Vector3(0, Math.PI, 0),
+			new THREE.Vector3(0, Math.PI*2, 0),
+			new THREE.Vector3(0, Math.PI*2, 0),
+			new THREE.Vector3(0, Math.PI*2, 0)
+		]
 	]
 }
 
@@ -64,7 +76,7 @@ const keyPointsOnSpline = {
 	chapter1: [.15, .33, .7, .85],
 	chapter2: [.1, .6, .9],
 	chapter3: [.2, .35, .55, .7, .9],
-	conclusion: [.15, .55, .75]
+	conclusion: [/*.9,*/ /*.65, .85*/]
 }
 
 const textsPanel =  [
