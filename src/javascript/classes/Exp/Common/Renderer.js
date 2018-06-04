@@ -6,14 +6,13 @@ class Renderer {
     Storage.RendererClass = this
     this.container = options.container
 
-    this.renderer = new THREE.WebGLRenderer(window.innerWidth, window.innerHeight)
+    this.renderer = new THREE.WebGLRenderer({ antialias : true })
     this.renderer.setPixelRatio(window.devicePixelRatio)
     this.renderer.setSize( window.innerWidth, window.innerHeight )
     this.renderer.setClearColor( 0xfcfcfc, 1)
     this.renderer.shadowMap.enabled = true
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap
     this.container.appendChild( this.renderer.domElement )
-
     this.renderer.setViewport( 0, 0, window.innerWidth , window.innerHeight )
 
     this.bind()
