@@ -214,9 +214,9 @@ class ObjectsLoader {
 			let that = this
 
 			// bug avec distance, à mettre à 0 pour voir la light
-			this.spotLight1 = new THREE.SpotLight( 0xff0000, 2, 200, 0.5, 0, 1 )
-	    	this.spotLight1.position.set( 150, -300, 700 )
-	    	this.spotLight1.rotation.set( -Math.PI/2, 0, 0 )
+			this.spotLight1 = new THREE.SpotLight( 0xff0000, 2, 3000, 0.5, 0, 1 )
+	    	this.spotLight1.position.set( 150, -500, 2000 )
+	    	this.spotLight1.rotation.set( 0, 0, 0 )
 	  /*  	this.spotLight1.rotation.x = -Math.PI/2
 	    	this.spotLight1.rotation.y = -Math.PI/4
 	    	this.spotLight1.rotation.z = Math.PI/2*/
@@ -234,8 +234,8 @@ class ObjectsLoader {
     	return new Promise((resolve, reject) => {
     		let that = this
 
-			this.spotLight2 = new THREE.SpotLight( 0x00ff00, 2, 0, 0.5, 0, 1)
-	    	this.spotLight2.position.set( 1000, 1800, -1800 )
+			this.spotLight2 = new THREE.SpotLight( 0x00ff00, 2, 4000, 0.5, 0, 1)
+	    	this.spotLight2.position.set( 1000, 1800, -2500 )
 	    	this.spotLight2.rotation.set( 0, 0, 0 )
 
 			this.spotLight2Helper = new THREE.SpotLightHelper( this.spotLight2 )
