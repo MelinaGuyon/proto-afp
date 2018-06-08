@@ -38,6 +38,10 @@ class Conclusion {
   }
 
   conclusionEnding = () => {
+    console.log("ICIIIIIII", this.modelsGroup.children[0])
+    console.log("ICIIIIIII", this.lightsGroup.children[0])
+    this.lightsGroup.children[0].lookAt(this.modelsGroup.children[0].position)
+
     setTimeout(() => { this.launchLightOne() }, 1500)
     setTimeout(() => { this.launchLightTwo() }, 5000)
   }

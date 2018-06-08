@@ -234,8 +234,9 @@ class ObjectsLoader {
     	return new Promise((resolve, reject) => {
     		let that = this
 
-			this.spotLight2 = new THREE.SpotLight( 0x00ff00, 2, 0, 0.7, 0, 1)
-	    	this.spotLight2.position.set( 1500, 1500, 100 )
+			this.spotLight2 = new THREE.SpotLight( 0x00ff00, 2, 0, 0.5, 0, 1)
+	    	this.spotLight2.position.set( 1000, 1800, -1800 )
+	    	this.spotLight2.rotation.set( 0, 0, 0 )
 
 			this.spotLight2Helper = new THREE.SpotLightHelper( this.spotLight2 )
 
