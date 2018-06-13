@@ -31,13 +31,17 @@ class Conclusion {
 
   displayChapterObjects = () => {
     this.state.relatedBox.add(this.modelsGroup)
-    this.state.relatedBox.add(this.lightsGroup.children[2])
-    Storage.SceneClasses.exp1.scene.add(this.lightsGroup.children[2])
+    this.state.relatedBox.add(this.lightsGroup.children[0])
+    Storage.SceneClasses.exp1.scene.add(this.lightsGroup.children[0])
 
     console.log("LIGHTS", this.lightsGroup)
   }
 
   conclusionEnding = () => {
+    // console.log("ICIIIIIII", this.modelsGroup.children[0])
+    // console.log("ICIIIIIII", this.lightsGroup.children[0])
+    //this.lightsGroup.children[0].lookAt(this.modelsGroup.children[0].position)
+
     setTimeout(() => { this.launchLightOne() }, 1500)
     setTimeout(() => { this.launchLightTwo() }, 5000)
   }
