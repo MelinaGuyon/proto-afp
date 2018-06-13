@@ -18,23 +18,28 @@ class ObjectsLoader {
 	    this.lightsGroup.position.y = -790
 	    this.group.position.z = -600
 	    this.lightsGroup.position.z = -600
+
+	    this.peopleGroup = new THREE.Group()
+	    this.peopleGroup.position.x = -50
 	}
 
 
 	load = () => {
 
 	    return new Promise((resolve, reject) => {
-	    	this.loadPeople().then((response)=> {
-	    		this.loadAffiche1().then((response)=> {
-	    			this.loadAffiche2().then((response)=> {
-	    				this.loadAffiche3().then((response)=> {
-	    					this.loadAffiche4().then((response)=> {
-		    					console.log('Conclusion loaded')
-		    					resolve(this.group)
-		  					}).catch((error)=> { console.warn(error) })
-		  				}).catch((error)=> { console.warn(error) })
-		  			}).catch((error)=> { console.warn(error) })
-		  		}).catch((error)=> { console.warn(error) })
+	    	this.loadKim().then((response)=> {
+	    		this.loadPeople().then((response)=> {
+		    		this.loadAffiche1().then((response)=> {
+		    			this.loadAffiche2().then((response)=> {
+		    				this.loadAffiche3().then((response)=> {
+		    					this.loadAffiche4().then((response)=> {
+			    					console.log('Conclusion loaded')
+				    					resolve(this.group)
+			  					}).catch((error)=> { console.warn(error) })
+			  				}).catch((error)=> { console.warn(error) })
+			  			}).catch((error)=> { console.warn(error) })
+			  		}).catch((error)=> { console.warn(error) })
+			  	}).catch((error)=> { console.warn(error) })
 		  	}).catch((error)=> { console.warn(error) })
 	    })
 	}
@@ -179,7 +184,7 @@ class ObjectsLoader {
 	    })
   	}
 
-	loadPeople = () => {
+	loadKim = () => {
 		return new Promise((resolve, reject) => {
 			let that = this
 
@@ -202,6 +207,32 @@ class ObjectsLoader {
 					})
 
 					that.group.add( body )
+					resolve()
+				})
+			})
+		})
+
+	}
+
+	loadPeople = () => {
+		return new Promise((resolve, reject) => {
+			let that = this
+
+			this.mtlLoader.load('assets/models/conclusion/peuple.mtl', (matl) => {
+				matl.preload()
+				this.objLoader.setMaterials( matl )
+
+				that.objLoader.load( 'assets/models/conclusion/peuple.obj', function ( peuple ) {
+					for ( let i = 0; i < 4; i ++ ) {
+			        	for ( let j = 0; j < 4; j ++ ) {
+				            let bodyInstance = peuple.clone()
+				            bodyInstance.scale.set(10, 10, 10)
+				            bodyInstance.position.x = i * 50
+				            bodyInstance.position.z = j * 50
+            				that.peopleGroup.add( bodyInstance )
+			          	}
+			        }
+					that.group.add( that.peopleGroup )
 					resolve()
 				})
 			})
@@ -235,7 +266,7 @@ class ObjectsLoader {
     		let that = this
 
 			this.spotLight2 = new THREE.SpotLight( 0x00ff00, 2, 4000, 0.5, 0, 1)
-	    	this.spotLight2.position.set( 1000, 1800, -2500 )
+	    	this.spotLight2.position.set( 1000, 1500, -3000 )
 	    	this.spotLight2.rotation.set( 0, 0, 0 )
 
 			this.spotLight2Helper = new THREE.SpotLightHelper( this.spotLight2 )
