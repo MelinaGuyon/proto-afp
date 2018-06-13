@@ -20,7 +20,8 @@ class ObjectsLoader {
 	    this.lightsGroup.position.z = -600
 
 	    this.peopleGroup = new THREE.Group()
-	    this.peopleGroup.position.x = -50
+	    this.peopleGroup.position.x = -60
+	    this.peopleGroup.position.z = 100
 	}
 
 
@@ -245,12 +246,9 @@ class ObjectsLoader {
 			let that = this
 
 			// bug avec distance, à mettre à 0 pour voir la light
-			this.spotLight1 = new THREE.SpotLight( 0xff0000, 2, 3000, 0.5, 0, 1 )
-	    	this.spotLight1.position.set( 150, -500, 2000 )
-	    	this.spotLight1.rotation.set( 0, 0, 0 )
-	  /*  	this.spotLight1.rotation.x = -Math.PI/2
-	    	this.spotLight1.rotation.y = -Math.PI/4
-	    	this.spotLight1.rotation.z = Math.PI/2*/
+			this.spotLight1 = new THREE.SpotLight( 0xff0000, 2, 4000, 0.5, 0, 1 )
+	    	this.spotLight1.position.set( 3000, 0, 1500 )
+	    	this.spotLight1.rotation.set( 0, 0, Math.PI/8 )
 
 			this.spotLight1Helper = new THREE.SpotLightHelper( this.spotLight1 )
 
@@ -266,7 +264,7 @@ class ObjectsLoader {
     		let that = this
 
 			this.spotLight2 = new THREE.SpotLight( 0x00ff00, 2, 4000, 0.5, 0, 1)
-	    	this.spotLight2.position.set( 1000, 1500, -3000 )
+	    	this.spotLight2.position.set( 1000, 1800, -2500 )
 	    	this.spotLight2.rotation.set( 0, 0, 0 )
 
 			this.spotLight2Helper = new THREE.SpotLightHelper( this.spotLight2 )
