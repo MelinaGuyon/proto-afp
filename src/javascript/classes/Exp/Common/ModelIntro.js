@@ -22,13 +22,13 @@ class ModelIntro {
       that.objLoader.load( modelUrl, function ( obj ) {
 
         if (modelUrl === 'assets/models/douxpoison.obj') {
-          obj.position.x = 50
+          obj.position.x = 0
           obj.position.y = 500
           obj.position.z = 2800
-          obj.scale.set(2, 2, 2)
+          obj.scale.set(2.2, 2.2, 2.2)
         }
         else if (modelUrl === 'assets/models/homme_politique.obj') {
-          obj.position.x = 150
+          obj.position.x = 50
           obj.position.y = 250
           obj.position.z = 2700
           obj.scale.set(2.5, 2.5, 2.5)

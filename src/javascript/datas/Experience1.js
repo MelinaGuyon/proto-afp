@@ -92,7 +92,7 @@ const textsPanel =  [
 
 	'La société nord-coréenne est divisée en trois grandes classes sociales, dont l\'une comprend les individus loyaux, une autre les citoyens neutres ou suspects, et une dernière les ennemis de l’Etat. Cette classification se fait dès la naissance selon les antécédents familiaux de l’individu.',
 
-	'Les Kwanlisos sont des camps de travail forcé construits par le gouvernement, qui lui permettent d’emprisonner et exterminer les “ennemis de l’Etat”. L’ONU estime que de 80 000 à 120 000 prisonniers y sont détenus actuellement. Les conditions de vie y sont sont déplorables : la torture est courante, les viols sont tolérés, les exécutions sont quotidiennes. Les détenus sont souvent incarcérés avec les membres de leur famille, les plaçant ainsi tous sous la menace du pouvoir. Ce système de « culpabilité par association » a pour but d\'étouffer toute contestation en contrôlant la population grâce à la peur.'
+	'Les Kwanlisos sont des camps de travail forcé construits par le gouvernement, qui lui permettent d’emprisonner et exterminer les “ennemis de l’Etat”. L’ONU estime que de 80 000 à 120 000 prisonniers y sont détenus actuellement. Les détenus sont souvent incarcérés avec les membres de leur famille, les rendant ainsi plus dociles grâce à la "culpabilité par association". '
 ]
 
 const chaptersTitle =  [
