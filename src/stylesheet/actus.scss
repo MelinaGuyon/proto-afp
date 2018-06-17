@@ -21,10 +21,10 @@
 
   .intro {
     height: 100%;
-    background: #ffedd9;
+    background: #141414;
     background-image: url('../assets/interface/global/noise.gif');
     background-repeat: repeat;
-    background-blend-mode: screen;
+    background-blend-mode: saturation;
 
     .top-form {
       position: absolute;
@@ -56,6 +56,7 @@
       align-items: center;
       flex-direction: column;
 
+
       img.logo-afp {
         height: 40px;
         position: relative;
@@ -66,7 +67,7 @@
         width: 80%;
         text-align: center;
         font-size: 18px;
-        color: #000000;
+        color: #ffffff;
         padding: 10px 0;
       }
     }
@@ -78,7 +79,7 @@
     background: #0C0C0C;
     background-image: url('../assets/interface/global/noise.gif');
     background-repeat: repeat;
-    background-blend-mode: initial;
+    background-blend-mode: saturation;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -175,6 +176,19 @@
           width: 85%;
           transform: translateY(-150px);
           transition: transform .6s $quart-ease-out, opacity .9s $quart-ease-out;
+
+          button {
+            text-transform: uppercase;
+            color: #fff;
+            background: #000;
+            border: none;
+            padding: 15px;
+            position: absolute;
+            letter-spacing: 1px;
+            bottom: -100px;
+            left: 0;
+            border: 1px solid #222;
+          }
 
           &.animated {
             opacity: 1;

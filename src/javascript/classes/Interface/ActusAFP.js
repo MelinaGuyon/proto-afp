@@ -69,12 +69,17 @@ class ActusAFP {
     title.classList.add('title')
     title.innerHTML = actu.title
 
+    const button = document.createElement('button')
+    button.classList.add('button')
+    button.innerHTML = 'Lire la suite'
+
     mediaContainer.appendChild(media)
     titleContainer.appendChild(img)
     titleContainer.appendChild(title)
     item.appendChild(mediaContainer)
     item.appendChild(titleContainer)
     item.appendChild(text)
+    text.appendChild(button)
     this.contentWrapper.appendChild(item)
 
     let top = item.getBoundingClientRect().top
