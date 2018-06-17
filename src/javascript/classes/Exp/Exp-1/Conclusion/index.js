@@ -15,9 +15,9 @@ class Conclusion {
     this.loader = new ObjectsLoader()
     this.loader.load().then((response) => {
       this.modelsGroup = response
-    })
-    this.loader.loadLights().then((response) => {
-      this.lightsGroup = response
+      this.loader.loadLights().then((response) => {
+        this.lightsGroup = response
+      })
     })
   }
 
@@ -31,10 +31,8 @@ class Conclusion {
 
   displayChapterObjects = () => {
     this.state.relatedBox.add(this.modelsGroup)
-    this.state.relatedBox.add(this.lightsGroup.children[2])
-    Storage.SceneClasses.exp1.scene.add(this.lightsGroup.children[2])
-
-    console.log("LIGHTS", this.lightsGroup)
+    this.state.relatedBox.add(this.lightsGroup.children[1])
+    this.state.relatedBox.add(this.lightsGroup.children[0])
   }
 
   conclusionEnding = () => {
@@ -53,7 +51,7 @@ class Conclusion {
   launchLightTwo = () => {
     console.log("light two")
   }
- 
+
 }
 
 export default Conclusion

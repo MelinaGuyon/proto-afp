@@ -49,10 +49,8 @@ class ObjectsLoader {
 	loadLights = () => {
 	    return new Promise((resolve, reject) => {
 	    	this.loadLightOne().then((response)=> {
-	    		this.loadLightTwo().then((response)=> {
 					console.log('Conclusion lights loaded')
 					resolve(this.lightsGroup)
-		  		}).catch((error)=> { console.warn(error) })
 		  	}).catch((error)=> { console.warn(error) })
 	    })
 	}
@@ -243,38 +241,18 @@ class ObjectsLoader {
 
 	loadLightOne = () => {
 		return new Promise((resolve, reject) => {
-			let that = this
+			this.pointLight1 = new THREE.PointLight(0xff0000, 1, 500, 2)
+			this.pointLight1.position.set(250, 700, 200)
 
-			// bug avec distance, à mettre à 0 pour voir la light
-			this.spotLight1 = new THREE.SpotLight( 0xff0000, 2, 4000, 0.5, 0, 1 )
-	    	this.spotLight1.position.set( 3000, 0, 1500 )
-	    	this.spotLight1.rotation.set( 0, 0, Math.PI/8 )
+			this.pointLight2 = new THREE.PointLight(0xff0000, 1, 500, 2)
+			this.pointLight2.position.set(230, -600, 150)
 
-			this.spotLight1Helper = new THREE.SpotLightHelper( this.spotLight1 )
-
-	    	that.lightsGroup.add( this.spotLight1 )
-	    	that.lightsGroup.add( this.spotLight1Helper )
+			this.lightsGroup.add( this.pointLight1 )
+			this.lightsGroup.add( this.pointLight2 )
 
 			resolve()
 		})
-    }
-
-    loadLightTwo = () => {
-    	return new Promise((resolve, reject) => {
-    		let that = this
-
-			this.spotLight2 = new THREE.SpotLight( 0x00ff00, 2, 4000, 0.5, 0, 1)
-	    	this.spotLight2.position.set( 1000, 1800, -2500 )
-	    	this.spotLight2.rotation.set( 0, 0, 0 )
-
-			this.spotLight2Helper = new THREE.SpotLightHelper( this.spotLight2 )
-
-	    	that.lightsGroup.add( this.spotLight2 )
-	    	that.lightsGroup.add( this.spotLight2Helper )
-
-			resolve()
-		})
-    }
+  }
 
 }
 
