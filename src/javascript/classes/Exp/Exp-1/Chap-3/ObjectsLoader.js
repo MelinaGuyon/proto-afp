@@ -12,9 +12,12 @@ class ObjectsLoader {
 
 	init = () => {
 	    this.group = new THREE.Group()
+	    this.barbelesGroup1 = new THREE.Group()
+	    this.barbelesGroup2 = new THREE.Group()
+
 	    this.peopleGroup1 = new THREE.Group()
 	    this.peopleGroup2 = new THREE.Group()
-			this.peopleInfosGroup = new THREE.Group()
+		this.peopleInfosGroup = new THREE.Group()
 
 	    this.group.position.y = -790
 	    this.group.position.z = -600
@@ -26,11 +29,44 @@ class ObjectsLoader {
 
 	load = () => {
     return new Promise((resolve, reject) => {
-    	this.loadPeople().then((response)=> {
-	    	console.log('Chapter 3 objects loaded')
-	    	resolve([this.group, this.peopleInfosGroup])
-	  	}).catch((error)=> { console.warn(error) })
+    	this.loadBarbeles().then((response)=> {
+	    	this.loadPeople().then((response)=> {
+		    	console.log('Chapter 3 objects loaded')
+		    	resolve([this.group, this.peopleInfosGroup])
+		  	}).catch((error)=> { console.warn(error) })
+		}).catch((error)=> { console.warn(error) })
     })
+	}
+
+	loadBarbeles = () => {
+	    return new Promise((resolve, reject) => {
+	      let that = this
+	      that.objLoader.load( 'assets/models/beforeChap3/barbeles.obj', function ( barbeles ) {
+			for ( let i = 0; i < 3; i ++ ) {
+		        let barbelesInstance = barbeles.clone()
+		        barbelesInstance.scale.set(20, 20, 20)
+		        barbelesInstance.position.z = 6600 - (i*1400)
+		        barbelesInstance.position.y = 100
+		        barbelesInstance.position.x = -900
+		        barbelesInstance.rotation.y = Math.PI/2
+
+		        that.barbelesGroup1.add( barbelesInstance )
+			}
+			for ( let i = 0; i < 3; i ++ ) {
+		        let barbelesInstance = barbeles.clone()
+		        barbelesInstance.scale.set(20, 20, 20)
+		        barbelesInstance.position.z = 4000 - (i*1400)
+		        barbelesInstance.position.y = 100
+		        barbelesInstance.position.x = 900
+		        barbelesInstance.rotation.y = -Math.PI/2
+
+		        that.barbelesGroup2.add( barbelesInstance )
+			}
+
+	        that.group.add( that.barbelesGroup1, that.barbelesGroup2 )
+	      })
+	      resolve()
+	    })
 	}
 
 	loadPeople = () => {
