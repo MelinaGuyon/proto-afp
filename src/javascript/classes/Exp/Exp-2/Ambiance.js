@@ -16,7 +16,7 @@ class Ambiance {
     }
 
     createLight() {
-      this.light1 = new THREE.PointLight(0x8fffe7, 0.40, 0, 2)
+      this.light1 = new THREE.PointLight(0x278744, 0.40, 0, 2)
       this.light1.position.set(500, 1800, 800)
       this.light1.rotation.set(0, Math.PI, Math.PI)
 
@@ -39,7 +39,7 @@ class Ambiance {
 
       Storage.SceneClasses.exp2.scene.add(this.light2)
 
-      this.light3 = new THREE.PointLight(0xccfaff, 0.25, 0, 2)
+      this.light3 = new THREE.PointLight(0x278744, 0.25, 0, 2)
 
       this.light3.position.set(-1300, 1000, 0)
       this.light3.rotation.set(0, Math.PI, Math.PI)
@@ -57,7 +57,7 @@ class Ambiance {
       this.spotLight1.rotation.y = Math.PI / 5
       Storage.SceneClasses.exp2.scene.add( this.spotLight1 );
 
-      this.spotLight2 = new THREE.SpotLight( 0xe82857, 0, 1000, 0.5, 0.9 );
+      this.spotLight2 = new THREE.SpotLight( 0x278744, 0, 1000, 0.5, 0.9 );
       this.spotLight2.position.set( -180, 600, -250 );
       this.spotLight2.rotation.y = - Math.PI / 5
       Storage.SceneClasses.exp2.scene.add( this.spotLight2 );
@@ -79,8 +79,8 @@ class Ambiance {
             { u_time: { type: "f", value: 1.0 } },
             { u_resolution: { type: "v2", value: new THREE.Vector2(1024, 768) } },
             { u_mouse: { type: "v2", value: new THREE.Vector2() } },
-            { u_color1: { value: new THREE.Color(0x3B5D9C) } },
-            { u_color2: { value: new THREE.Color(0x3B5D9C) } }
+            { u_color1: { value: new THREE.Color(0x278744) } },
+            { u_color2: { value: new THREE.Color(0x278744) } }
           ]);
 
           let material = new THREE.ShaderMaterial( {

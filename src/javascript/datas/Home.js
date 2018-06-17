@@ -10,9 +10,9 @@ const titles = {
 }
 
 const texts = {
-	exp1: 'La Corée du Nord est une nation extrêmement isolée. Elle est gouvernée par un régime totalitaire où la liberté de la presse est inexistante. Tous les médias sont contrôlés par l’Etat. D’après le CPJ, la Corée du Nord serait le pays le plus censuré au monde.',
-	exp2: 'La Corée du Nord est une nation extrêmement isolée. Elle est gouvernée par un régime totalitaire où la liberté de la presse est inexistante. Tous les médias sont contrôlés par l’Etat. D’après le CPJ, la Corée du Nord serait le pays le plus censuré au monde.',
-	exp3: 'La Corée du Nord est une nation extrêmement isolée. Elle est gouvernée par un régime totalitaire où la liberté de la presse est inexistante. Tous les médias sont contrôlés par l’Etat. D’après le CPJ, la Corée du Nord serait le pays le plus censuré au monde.'
+	exp1: 'La Corée du Nord est une nation extrêmement isolée. Elle est gouvernée par un régime totalitaire où la liberté de la presse est inexistante, tous les médias sont contrôlés par l’Etat. D’après le CPJ, la Corée du Nord serait le pays le plus censuré au monde.',
+	exp2: 'La population mondiale croît de plus en plus rapidement, et ses besoins vitaux avec elle. La nourriture vient à manquer. Les industries agroalimentaires promettent monts et merveilles, elles sont en mesure de nous sauver. Mais à quel prix ?',
+	exp3: 'Toute nation est dirigée par un groupe d\'individus, ainsi détenteurs d\'un grand pouvoir. Sur le papier, leur objectif premier est la survie et le bonheur du peuple gouverné. Dans les faits, ce sont des êtres humains, avec les faiblesses que cela implique...'
 }
 
 export default {
