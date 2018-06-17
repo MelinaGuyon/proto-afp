@@ -4,10 +4,10 @@ import { map, delay, throttle } from 'lodash'
 
 class Intro {
   constructor() {
-    // this.init()
-    // this.writeIntro()
+    this.init()
+    this.writeIntro()
     // this.hideIntro()
-    setTimeout(() => { Storage.HomeClass.bind() }, 1500)
+    // setTimeout(() => { Storage.HomeClass.bind() }, 1500)
   }
 
   init = () => {

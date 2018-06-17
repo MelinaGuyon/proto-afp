@@ -31,6 +31,7 @@ class Carousel {
     this.title = this.paper.querySelector('.title')
     this.text = this.paper.querySelector('.text')
     this.dotsContainer = this.infos.querySelector('.dots-container')
+    this.formRight = document.querySelector('img.form-right-img')
   }
 
   bind() {
@@ -96,6 +97,7 @@ class Carousel {
     this.updatePaper(stop)
     this.updateBlack(stop)
     this.hideDots()
+    this.hideForm()
   }
 
   updateInfo = () => {
@@ -210,6 +212,10 @@ class Carousel {
 
   hideDots = () => {
     this.dotsContainer.classList.add('is-hidden')
+  }
+
+  hideForm = () => {
+    this.formRight.classList.add('is-hidden')
   }
 }
 

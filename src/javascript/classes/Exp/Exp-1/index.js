@@ -66,15 +66,15 @@ class Experience1 {
       this.betweenChapters = new BetweenChapters()
       this.chaptersConclusion = new ChaptersConclusionClass()
 
-      //this.animateCamera(datas.animations.enter, 4000, this.betweenIntroductionChapterOne)
+      this.animateCamera(datas.animations.enter, 4000, this.betweenIntroductionChapterOne)
 
       Storage.SoundManagerClass.launchBackgroundMusic("assets/sound/fondsonore.mp3")
       Storage.SoundManagerClass.launchAmbianceSound("assets/sound/intro.mp3")
 
 
       // to test
-      this.splineIndex = 3
-      this.chapter3.init().then(this.goToChapterThree)
+      // this.splineIndex = 3
+      // this.chapter3.init().then(this.goToChapterThree)
 
       Storage.TextWriting.addTitle(datas.chaptersTitle[0], 5000)
 		}
@@ -153,7 +153,7 @@ class Experience1 {
           index: this.splineIndex,
           forceRotate: true,
           //cbEnd: () => { Storage.InterfaceClass.actus.showActu() }
-          cbEnd: () => { 
+          cbEnd: () => {
             this.animateCamera(datas.animations.conclusionEnding, 5000)
             this.betweenChapters.launchVoiceOver(9)()
             Storage.ConclusionClass.conclusionEnding()
