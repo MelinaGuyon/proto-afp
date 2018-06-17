@@ -2,7 +2,7 @@ import Scene from '../Common/Scene.js'
 import Camera from '../Common/Camera.js'
 import Spline from '../Common/Spline.js'
 
-import Sphere from '../Common/Sphere.js'
+import ModelIntro from '../Common/ModelIntro.js'
 
 import Ambiance from './Ambiance.js'
 
@@ -17,7 +17,7 @@ class Experience2 {
       this.scene = new Scene({ name: 'exp2'  })
 
 			this.ambiance = new Ambiance()
-      this.sphere = new Sphere({ relatedScene: this.scene.scene, color: 0x3B5D9C })
+      this.modelIntro = new ModelIntro({ relatedScene: this.scene.scene, color: 0x3B5D9C, model: 'assets/models/douxpoison.obj' })
 		}
 
 		init = () => {

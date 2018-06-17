@@ -31,8 +31,8 @@ class Conclusion {
 
   displayChapterObjects = () => {
     this.state.relatedBox.add(this.modelsGroup)
-    this.state.relatedBox.add(this.lightsGroup.children[0])
-    Storage.SceneClasses.exp1.scene.add(this.lightsGroup.children[0])
+    this.state.relatedBox.add(this.lightsGroup.children[2])
+    Storage.SceneClasses.exp1.scene.add(this.lightsGroup.children[2])
 
     console.log("LIGHTS", this.lightsGroup)
   }

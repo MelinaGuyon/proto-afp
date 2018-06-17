@@ -12,13 +12,13 @@ const target = {
 
 const hold = {
 	exp1: '#C40202',
-	exp2: '#3B5D9C',
+	exp2: '#278744',
 	exp3: '#550F6C'
 }
 
 const backgrounds = {
 	exp1: '#C40202',
-	exp2: '#3B5D9C',
+	exp2: '#278744',
 	exp3: '#550F6C'
 }
 
