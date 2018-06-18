@@ -98,9 +98,9 @@ const textsPanel =  [
 ]
 
 const chaptersTitle =  [
-	'l\'envers du décor',
-	'l\'armée protectrice',
-	'les classes sociales'
+	'L\'envers du décor',
+	'Sombre protection',
+	'Divisés'
 ]
 
 const conclusions =  [

@@ -35,15 +35,14 @@ class Chapitre2 {
 
   initInteraction = () => {
     this.initLight()
-    document.querySelector('canvas').addEventListener('mousewheel', this.handleScroll)
-
-    //this.bind()
+    this.bind()
   }
 
   remove = () => {
     setTimeout(() => {
       this.state.relatedBox.remove(this.modelsGroup)
-      Storage.SceneClasses.exp1.scene.remove(this.light)
+      Storage.SceneClasses.exp1.scene.remove(this.light.light)
+      Storage.SceneClasses.exp1.scene.remove(this.light.sphere)
       this.unbind()
     }, 4000)
   }
