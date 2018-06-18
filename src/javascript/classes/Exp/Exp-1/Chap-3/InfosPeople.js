@@ -24,13 +24,16 @@ class InfosPeople {
     }).catch((error)=> { console.warn(error) })
 
     datas.infosPeople.forEach((obj) => {
+
       this.writeStatus(obj.status).then((response)=> {
         this.status.push(response)
       }).catch((error)=> { console.warn(error) })
+
       this.writeDesc(obj.info).then((response)=> {
         this.infos.push(response)
       }).catch((error)=> { console.warn(error) })
     })
+
   }
 
   createPlane = () => {
@@ -53,7 +56,7 @@ class InfosPeople {
           size: 12,
           height: 0,
           curveSegments: 5,
-          bevelEnabled: true,
+          bevelEnabled: false,
           bevelThickness: 1,
           bevelSize: 1,
           bevelSegments: 1
@@ -78,7 +81,7 @@ class InfosPeople {
           size: 12,
           height: 0,
           curveSegments: 5,
-          bevelEnabled: true,
+          bevelEnabled: false,
           bevelThickness: 1,
           bevelSize: 1,
           bevelSegments: 1
@@ -121,15 +124,13 @@ class InfosPeople {
         let textTable = []
         let top = -20
         for (var i = 0; i < descTab.length; i ++) {
+          console.log(descTab[i])
           const geometry = new THREE.TextGeometry(descTab[i], {
             font: font,
             size: 8,
             height: 0,
             curveSegments: 5,
-            bevelEnabled: true,
-            bevelThickness: 1,
-            bevelSize: 1,
-            bevelSegments: 1
+            bevelEnabled: false
           } );
 
           const textMaterial = new THREE.MeshBasicMaterial( { color: 0xC40202, overdraw: true, transparent: true, opacity: 0 } )
@@ -139,7 +140,9 @@ class InfosPeople {
           textTable.push(text)
           this.plane.add(text)
         }
-        resolve(textTable)
+
+        setTimeout(() => { resolve(textTable) }, 1000)
+
       })
     })
   }

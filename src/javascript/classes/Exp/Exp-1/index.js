@@ -47,7 +47,8 @@ class Experience1 {
         relatedBox: this.chaptersContainer.chapterBoxes[2],
         relatedCamera: this.camera,
         lightOpt: [this.ambiance],
-        cbAfterInteraction: () => { this.chapter3.init().then(this.goToChapterThree) }
+        cbAfterInteraction: () => { this.chapter3.init() },
+        cbAfterInteraction2: () => { this.goToChapterThree() }
       })
       this.chapter3 = new Chapitre3({
         relatedBox: this.chaptersContainer.chapterBoxes[3],
@@ -170,7 +171,6 @@ class Experience1 {
           step: .20,
           index: this.splineIndex,
           cbEnd: () => {
-            //this.animateCamera(datas.animations.conclusionEnding, 5000)
             this.betweenChapters.launchVoiceOver(9)()
             Storage.ConclusionClass.conclusionEnding()
             setTimeout(() => { Storage.InterfaceClass.actus.showActu() }, 17500)

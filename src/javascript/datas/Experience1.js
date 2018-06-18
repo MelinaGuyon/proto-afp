@@ -15,7 +15,7 @@ const splines = {
 		new THREE.Vector3(0, 250, -46000),
 	],
 	chapter3: [
-		new THREE.Vector3(0, 600, -50000),
+		new THREE.Vector3(0, 250, -52000),
 		new THREE.Vector3(0, 200, -54000),
 		new THREE.Vector3( 0, 250, -56900),
 		new THREE.Vector3( 5, 250, -56850)
@@ -38,41 +38,7 @@ const animations = {
 		[
 			new THREE.Vector3(0, 0, Math.PI/3*6)
 		]
-	],
-	toChapterThree: [
-		[
-			new THREE.Vector3(600, 250, -46500),
-			new THREE.Vector3(2000, 250, -47375),
-			new THREE.Vector3(2000, 250, -48250),
-			new THREE.Vector3(600, 250, -49125),
-			new THREE.Vector3(0, 250, -50000),
-		],
-		[
-			new THREE.Vector3(0, -Math.PI/2, -Math.PI/10),
-			new THREE.Vector3(0, 0, 0),
-			new THREE.Vector3(0, Math.PI/4, Math.PI/10),
-			new THREE.Vector3(0, Math.PI/2, 0),
-			new THREE.Vector3(0, 0, 0),
-		]
-	],
-	// conclusionEnding: [
-	// 	[
-	// 		new THREE.Vector3(0, 800, -65000),
-	// 		new THREE.Vector3(1000, 900, -66000),
-	// 		new THREE.Vector3( 0, 1000, -67000),
-	// 		new THREE.Vector3( -1000, 1100, -65000),
-	// 		new THREE.Vector3( 0, 1300, -65000),
-	// 		new THREE.Vector3( 0, 1800, -68000)
-	// 	],
-	// 	[
-	// 		new THREE.Vector3(0, 0, 0),
-	// 		new THREE.Vector3(0, Math.PI/2, 0),
-	// 		new THREE.Vector3(0, Math.PI, 0),
-	// 		new THREE.Vector3(0, Math.PI*2, 0),
-	// 		new THREE.Vector3(0, Math.PI*2, 0),
-	// 		new THREE.Vector3(0, Math.PI*2, 0)
-	// 	]
-	// ]
+	]
 }
 
 const keyPointsOnSpline = {
@@ -250,11 +216,11 @@ const infosPeople = [
 	},
 	{
 		status: 'HOSTILE',
-		info: 'Sa mère a fui le pays il y a 10 ans'
+		info: 'Sa mère a fui le pays il y a dix ans'
 	},
 	{
 		status: 'HOSTILE',
-		info: 'Il ne lui est interdit de fréquenter de bonnes écoles'
+		info: 'Il lui est interdit de fréquenter de bonnes écoles'
 	},
 	{
 		status: 'HOSTILE',
@@ -262,7 +228,7 @@ const infosPeople = [
 	},
 	{
 		status: 'HOSTILE',
-		info: 'Il lui est interdit de vivre à Pyongyang'
+		info: 'Il ne pourra jamais vivre à Pyongyang'
 	},
 	{
 		status: 'HOSTILE',
@@ -274,11 +240,11 @@ const infosPeople = [
 	},
 	{
 		status: 'HOSTILE',
-		info: 'Sa mère a fui le pays il y a 10 ans'
+		info: 'Sa mère a fui le pays il y a dix ans'
 	},
 	{
 		status: 'HOSTILE',
-		info: 'Il ne lui est interdit de fréquenter de bonnes écoles'
+		info: 'Il lui est interdit de fréquenter de bonnes écoles'
 	},
 	{
 		status: 'HOSTILE',
@@ -286,7 +252,7 @@ const infosPeople = [
 	},
 	{
 		status: 'HOSTILE',
-		info: 'Il lui est interdit de vivre à Pyongyang'
+		info: 'Il ne pourra jamais vivre à Pyongyang'
 	}
 ]
 

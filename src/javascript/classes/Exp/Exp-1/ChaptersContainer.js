@@ -1,3 +1,5 @@
+import anime from 'animejs'
+
 class ChaptersContainer {
     constructor(options) {
       this.chapterBoxes = []
@@ -41,6 +43,15 @@ class ChaptersContainer {
 
         this.chapterBoxes.push(cube)
         Storage.SceneClasses.exp1.scene.add(cube)
+      })
+    }
+
+    hideSoldiers = () => {
+      anime({
+        targets: this.chapterBoxes[2].position,
+        y: -1000,
+        duration: 2000,
+        easing: 'easeOutQuad'
       })
     }
 }

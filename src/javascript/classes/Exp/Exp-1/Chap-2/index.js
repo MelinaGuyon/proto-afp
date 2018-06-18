@@ -119,10 +119,14 @@ class Chapitre2 {
   handleScroll = () => {
     document.querySelector('canvas').removeEventListener('mousewheel', this.handleScroll)
     Storage.BetweenChaptersClass.stopConclusion()
+    this.state.cbAfterInteraction()
 
     setTimeout(() => {
-      Storage.Experience1Class.animateCamera(datas.animations.toChapterThree, 900, this.state.cbAfterInteraction)
-    }, 500)
+      Storage.Experience1Class.chaptersContainer.hideSoldiers()
+    }, 1000)
+    setTimeout(() => {
+      this.state.cbAfterInteraction2()
+    }, 2400)
   }
 
 }
