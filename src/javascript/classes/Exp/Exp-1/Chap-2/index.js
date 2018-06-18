@@ -35,7 +35,9 @@ class Chapitre2 {
 
   initInteraction = () => {
     this.initLight()
-    this.bind()
+    document.querySelector('canvas').addEventListener('mousewheel', this.handleScroll)
+
+    //this.bind()
   }
 
   remove = () => {

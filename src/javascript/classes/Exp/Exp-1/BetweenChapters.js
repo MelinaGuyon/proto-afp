@@ -77,7 +77,7 @@ class BetweenChapters {
     }
 
     faster = () => {
-      Storage.SplineClass.updateStep(0.06)
+      Storage.SplineClass.updateStep(0.2)
     }
 }
 

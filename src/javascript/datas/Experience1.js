@@ -92,7 +92,7 @@ const textsPanel =  [
 
 	'L’armée nord-coréenne est l’un des sujets phares de la propagande du gouvernement, qui la présente comme la plus puissante au monde. Elle compte en effet le plus grand pourcentage au monde de militaires actifs par rapport au nombre d’habitants (5% de la population).',
 
-	'La société nord-coréenne est divisée en trois grandes classes sociales, dont l\'une comprend les individus loyaux, une autre les citoyens neutres ou suspects, et une dernière les ennemis de l’Etat. Cette classification se fait dès la naissance selon les antécédents familiaux de l’individu.',
+	'La société nord-coréenne est divisée en trois grandes classes sociales : l\'une comprend les individus loyaux, une autre les citoyens neutres ou suspects, et une dernière les ennemis de l’Etat. Cette classification se fait dès la naissance selon les antécédents familiaux de l’individu.',
 
 	'Les Kwanlisos sont des camps de travail forcé construits par le gouvernement, où sont emprisonnés et exterminés les ennemis de l’Etat. L’ONU estime que de 80 000 à 120 000 prisonniers y sont détenus actuellement.'
 ]

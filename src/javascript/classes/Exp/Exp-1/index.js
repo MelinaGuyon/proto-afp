@@ -74,8 +74,8 @@ class Experience1 {
 
 
       //to test
-      this.splineIndex = 3
-      this.chapter3.init().then(this.goToChapterThree)
+      this.splineIndex = 2
+      this.chapter2.init().then(this.goToChapterTwo)
 
       Storage.TextWriting.addTitle(datas.chaptersTitle[0], 5000)
 		}
@@ -134,7 +134,8 @@ class Experience1 {
         .5
       )
       this.chaptersConclusion.updateMedia(datas.conclusions[1][0], datas.conclusions[1][1])
-      Storage.TextWriting.addTitle(datas.chaptersTitle[1], 5000)
+      Storage.TextWriting.addTitle(datas.chaptersTitle[1], 3000)
+      setTimeout(() => { Storage.InterfaceClass.title.animeTitle(datas.chaptersTitle[1]) }, 3000)
       this.chapter1.remove()
     }
 
@@ -152,7 +153,8 @@ class Experience1 {
       )
       setTimeout(() => { Storage.InterfaceClass.instructions.showInstruction() }, 7000)
       this.chaptersConclusion.updateMedia(datas.conclusions[2][0], datas.conclusions[2][1])
-      Storage.TextWriting.addTitle(datas.chaptersTitle[2], 5000)
+      Storage.TextWriting.addTitle(datas.chaptersTitle[2], 3000)
+      setTimeout(() => { Storage.InterfaceClass.title.animeTitle(datas.chaptersTitle[2]) }, 3000)
       this.chapter2.remove()
     }
 
