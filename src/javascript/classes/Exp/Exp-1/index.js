@@ -158,19 +158,21 @@ class Experience1 {
 
     goToConclusion = () => {
       console.log("entre dans conclusion")
-      setTimeout(() => { this.betweenChapters.launchVoiceOver(8)() }, 2000)
+      Storage.SoundManagerClass.launchAmbianceSound("assets/sound/vraieville_NorthKorea.mp3")
+
+      setTimeout(() => { this.betweenChapters.launchVoiceOver(8)() }, 1000)
 
       this.placeOnSpline({
           spline: new THREE.CatmullRomCurve3(datas.splines.conclusion),
           relatedCamera: this.camera,
-          step: .50,
+          step: .20,
           index: this.splineIndex,
           forceRotate: true,
           cbEnd: () => {
-            this.animateCamera(datas.animations.conclusionEnding, 5000)
+            //this.animateCamera(datas.animations.conclusionEnding, 5000)
             this.betweenChapters.launchVoiceOver(9)()
             Storage.ConclusionClass.conclusionEnding()
-            setTimeout(() => { Storage.InterfaceClass.actus.showActu() }, 29000)
+            setTimeout(() => { Storage.InterfaceClass.actus.showActu() }, 17500)
           }
         },
         .5

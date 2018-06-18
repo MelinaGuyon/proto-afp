@@ -20,9 +20,13 @@ const splines = {
 		new THREE.Vector3( 0, 250, -56900),
 		new THREE.Vector3( 5, 250, -56850)
 	],
+	// conclusion: [
+	// 	new THREE.Vector3( 0, 250, -58500),
+	// 	new THREE.Vector3( 0, 250, -64500),
+	// ]
 	conclusion: [
 		new THREE.Vector3( 0, 250, -58500),
-		new THREE.Vector3( 0, 250, -64500),
+		new THREE.Vector3( 0, 900, -62500),
 	]
 }
 
@@ -51,24 +55,24 @@ const animations = {
 			new THREE.Vector3(0, 0, 0),
 		]
 	],
-	conclusionEnding: [
-		[
-			new THREE.Vector3(0, 800, -65000),
-			new THREE.Vector3(1000, 900, -66000),
-			new THREE.Vector3( 0, 1000, -67000),
-			new THREE.Vector3( -1000, 1100, -65000),
-			new THREE.Vector3( 0, 1300, -65000),
-			new THREE.Vector3( 0, 1800, -68000)
-		],
-		[
-			new THREE.Vector3(0, 0, 0),
-			new THREE.Vector3(0, 0, 0),
-			new THREE.Vector3(0, 0, 0),
-			new THREE.Vector3(0, 0, 0),
-			new THREE.Vector3(0, 0, 0),
-			new THREE.Vector3(0, 0, 0)
-		]
-	]
+	// conclusionEnding: [
+	// 	[
+	// 		new THREE.Vector3(0, 800, -65000),
+	// 		new THREE.Vector3(1000, 900, -66000),
+	// 		new THREE.Vector3( 0, 1000, -67000),
+	// 		new THREE.Vector3( -1000, 1100, -65000),
+	// 		new THREE.Vector3( 0, 1300, -65000),
+	// 		new THREE.Vector3( 0, 1800, -68000)
+	// 	],
+	// 	[
+	// 		new THREE.Vector3(0, 0, 0),
+	// 		new THREE.Vector3(0, Math.PI/2, 0),
+	// 		new THREE.Vector3(0, Math.PI, 0),
+	// 		new THREE.Vector3(0, Math.PI*2, 0),
+	// 		new THREE.Vector3(0, Math.PI*2, 0),
+	// 		new THREE.Vector3(0, Math.PI*2, 0)
+	// 	]
+	// ]
 }
 
 const keyPointsOnSpline = {
@@ -182,14 +186,11 @@ const subtitles = [
 		['Notre chef nous ment.', 0],
 		['Notre chef nous menace.', 1500],
 		['C’est grâce à ces mirages', 3500],
-		['qu’il détient les pleins pouvoirs sur le destin de notre nation.', 4800]
-	],
-	[
-		['Et cela pourrait largement dépasser nos frontières…', 0]
-	],
-	[
-		['Ce pays que j’ai aimé m’a traité en criminel', 0],
-		['je l’ai fui pour survivre.', 2500]
+		['qu’il détient les pleins pouvoirs sur le destin de notre nation.', 4800],
+		['Et cela pourrait largement dépasser nos frontières…', 9000],
+		['Ce pays que j’ai aimé m’a traité en criminel', 12500],
+		['je l’ai fui pour survivre.', 15000],
+		['', 17500]
 	]
 ]
 
