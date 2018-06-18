@@ -29,6 +29,16 @@ class Interface {
       // this.actus.makeActu()
       // this.actus.showActu()
     }
+
+    updateLogo = () => {
+      const logo = document.querySelector('.logo-website')
+      logo.classList.add('hidden')
+      setTimeout(() => {
+        logo.setAttribute('src', 'assets/interface/global/logo_noir.svg')
+        logo.classList.remove('hidden')
+      }, 600)
+
+    }
 }
 
 export default Interface

@@ -64,6 +64,7 @@ class Experience1 {
 
 		init = () => {
       Storage.InterfaceClass.displayExpInterface()
+      Storage.InterfaceClass.updateLogo()
 
       this.betweenChapters = new BetweenChapters()
       this.chaptersConclusion = new ChaptersConclusionClass()
