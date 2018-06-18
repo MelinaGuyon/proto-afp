@@ -14,7 +14,7 @@ class BetweenChapters {
 
         [ this.launchText(1), this.launchVoiceOver(3), this.launchText(2), this.launchConclusion(1), this.stopConclusion ],
 
-        [ this.launchText(3), this.lowAmbiance(3500), this.launchVoiceOver(5) ],
+        [ this.launchText(3), this.lowAmbiance(3500, 0.2), this.launchVoiceOver(5) ],
 
         [ this.launchVoiceOver(6), this.launchText(5), this.faster, this.removePeople, this.stopConclusion ],
 
@@ -42,12 +42,13 @@ class BetweenChapters {
       Storage.SoundManagerClass.launchVoiceOver(datas.voiceOver[index])
       if (index == 3) Storage.SplineClass.updateStep(0.035)
       if (index == 6) Storage.SplineClass.updateStep(0.03)
-      if (index == 5) setTimeout(() => { this.launchText(4)() }, 39500)
+      if (index == 5) setTimeout(() => { Storage.ChaptersConclusionClass.allowBind = true }, 39500)
+      if (index == 5) setTimeout(() => { Storage.SoundManagerClass.lowAmbiance(3000, 0) }, 4000)
     }
 
-    lowAmbiance = (duration) => () => {
+    lowAmbiance = (duration, level) => () => {
       console.log("LOW AMBIANCE", duration)
-      Storage.SoundManagerClass.lowAmbiance(duration)
+      Storage.SoundManagerClass.lowAmbiance(duration, level)
     }
 
     launchMusic = (src) => () => {

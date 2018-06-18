@@ -74,7 +74,7 @@ const animations = {
 const keyPointsOnSpline = {
 	betweenIntroductionChapterOne: [.6, .9],
 	chapter1: [.15, .33, .7, .85, .9],
-	chapter2: [.1, .65, .8],
+	chapter2: [.1, .45, .7],
 	chapter3: [.2, .35, .55, .7, .9],
 	conclusion: [/*.9,*/ /*.65, .85*/]
 }
@@ -88,15 +88,15 @@ const textsPanel =  [
 
 	'L’armée nord-coréenne est l’un des sujets phares de la propagande du gouvernement, qui la présente comme la plus puissante au monde. Elle compte en effet le plus grand pourcentage au monde de militaires actifs par rapport au nombre d’habitants (5% de la population).',
 
-	'Après 12 ans, les Nord-Coréens ont l\'obligation d’assister aux exécutions publiques. C\'est une technique d’intimidation utilisée par le gouvernement pour obtenir l’obéissance du peuple. Ces exécutions ont lieu dans des lieux publics comme des marchés, voire des écoles.',
-
 	'La société nord-coréenne est divisée en trois grandes classes sociales, dont l\'une comprend les individus loyaux, une autre les citoyens neutres ou suspects, et une dernière les ennemis de l’Etat. Cette classification se fait dès la naissance selon les antécédents familiaux de l’individu.',
 
 	'Les Kwanlisos sont des camps de travail forcé construits par le gouvernement, qui lui permettent d’emprisonner et exterminer les “ennemis de l’Etat”. L’ONU estime que de 80 000 à 120 000 prisonniers y sont détenus actuellement. Les détenus sont souvent incarcérés avec les membres de leur famille, les rendant ainsi plus dociles grâce à la "culpabilité par association". '
 ]
 
 const chaptersTitle =  [
-	'l\'envers du décor'
+	'l\'envers du décor',
+	'l\'armée protectrice',
+	'les classes sociales'
 ]
 
 const conclusions =  [

@@ -55,11 +55,11 @@ class SoundManager {
       })
     }
 
-    lowAmbiance = (duration) => {
-      console.log("sound manager low", duration)
+    lowAmbiance = (duration, level) => {
+      const newLevel = level || 0
       anime({
         targets: this.ambianceSound.gain.gain,
-        value: [.7, 0],
+        value: [this.ambianceSound.gain.gain.value, newLevel],
         duration: duration,
         easing: 'linear'
       })
@@ -68,7 +68,7 @@ class SoundManager {
     upAmbiance = () => {
       anime({
         targets: this.ambianceSound.gain.gain,
-        value: [0, .7],
+        value: [this.ambianceSound.gain.gain.value, .7],
         duration: 600,
         easing: 'linear'
       })

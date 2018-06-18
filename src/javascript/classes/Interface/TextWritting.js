@@ -77,8 +77,11 @@ class TextWriting {
 	}
 
   addTitle = (text, duration) => {
-    this.titleContainer.innerText = text
-    setTimeout(() => { this.titleContainer.classList.add('is-visible') }, duration)
+    this.titleContainer.classList.remove('is-visible')
+    setTimeout(() => {
+      this.titleContainer.innerText = text
+      this.titleContainer.classList.add('is-visible')
+    }, duration)
   }
 
   updateIndex = () => {
@@ -96,7 +99,7 @@ class TextWriting {
       this.bindScroll()
       return
     }
-    
+
     if (moduloIndex%24 === 23) this.state.pass = true
     if (this.state.pass && (current[tabIndex] === ' ' || current[tabIndex] === '') ) {
       moduloIndex = -1
