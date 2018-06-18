@@ -42,7 +42,7 @@ class BetweenChapters {
       Storage.SoundManagerClass.launchVoiceOver(datas.voiceOver[index])
       if (index == 3) Storage.SplineClass.updateStep(0.035)
       if (index == 6) Storage.SplineClass.updateStep(0.03)
-      if (index == 5) setTimeout(() => { Storage.ChaptersConclusionClass.allowBind = true }, 39500)
+      if (index == 5) setTimeout(() => { Storage.ChaptersConclusionClass.allowBind = true }, 31000)
       if (index == 5) setTimeout(() => { Storage.SoundManagerClass.lowAmbiance(3000, 0) }, 4000)
     }
 
