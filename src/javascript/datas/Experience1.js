@@ -246,15 +246,39 @@ const actus = [
 const infosPeople = [
 	{
 		status: 'HOSTILE',
-		info: 'Son grand père était partisan pour la Corée du Sud durant la guerre'
+		info: 'Son grand père était un partisan de la Corée du Sud durant la guerre'
 	},
 	{
 		status: 'HOSTILE',
-		info: 'Sa mère a fui le pays avec son frère il y a 10 ans'
+		info: 'Sa mère a fui le pays il y a 10 ans'
+	},
+	{
+		status: 'HOSTILE',
+		info: 'Il ne lui est interdit de fréquenter de bonnes écoles'
 	},
 	{
 		status: 'HOSTILE',
 		info: 'Son cousin est emprisonné dans le camps de travail de Yeko'
+	},
+	{
+		status: 'HOSTILE',
+		info: 'Il lui est interdit de vivre à Pyongyang'
+	},
+	{
+		status: 'HOSTILE',
+		info: 'Son père a été executé pour avoir volé une propriété de l\'état'
+	},
+	{
+		status: 'HOSTILE',
+		info: 'Son grand père était un partisan de la Corée du Sud durant la guerre'
+	},
+	{
+		status: 'HOSTILE',
+		info: 'Sa mère a fui le pays il y a 10 ans'
+	},
+	{
+		status: 'HOSTILE',
+		info: 'Il ne lui est interdit de fréquenter de bonnes écoles'
 	},
 	{
 		status: 'HOSTILE',
@@ -262,31 +286,7 @@ const infosPeople = [
 	},
 	{
 		status: 'HOSTILE',
-		info: 'Sa mère a fui le pays avec son frère il y a 10 ans'
-	},
-	{
-		status: 'HOSTILE',
-		info: 'Son cousin est emprisonné dans le camps de travail de Yeko'
-	},
-	{
-		status: 'HOSTILE',
-		info: 'Sa mère a été executée pour avoir volé une propriété de l\'état'
-	},
-	{
-		status: 'HOSTILE',
-		info: 'Sa mère a été executée pour avoir volé une propriété de l\'état'
-	},
-	{
-		status: 'HOSTILE',
-		info: 'Sa mère a été executée pour avoir volé une propriété de l\'état'
-	},
-	{
-		status: 'HOSTILE',
-		info: 'Sa mère a été executée pour avoir volé une propriété de l\'état'
-	},
-	{
-		status: 'HOSTILE',
-		info: 'Sa mère a été executée pour avoir volé une propriété de l\'état'
+		info: 'Il lui est interdit de vivre à Pyongyang'
 	}
 ]
 
