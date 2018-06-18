@@ -78,8 +78,8 @@ const conclusions =  [
 // number of spline, spline index begining
 const timelineIndicators = [
 	['CH 1  &nbsp/', 'L\'envers du décors', 2],
-	['CH 2  &nbsp/', 'L\'armée protectrice', 1],
-	['CH 3  &nbsp/', 'Les classes sociales', 1],
+	['CH 2  &nbsp/', 'Sombre protection', 1],
+	['CH 3  &nbsp/', 'Divisés', 1],
 	['END  &nbsp&nbsp/', '', 1]
 ]
 
