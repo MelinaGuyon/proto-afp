@@ -31,20 +31,20 @@ class Conclusion {
 
   displayChapterObjects = () => {
     this.state.relatedBox.add(this.modelsGroup)
-    this.state.relatedBox.add(this.lightsGroup.children[1])
-    this.state.relatedBox.add(this.lightsGroup.children[0])
   }
 
   conclusionEnding = () => {
-    setTimeout(() => { this.launchLightOne() }, 1500)
-    setTimeout(() => { this.launchLightTwo() }, 5000)
+    this.launchLightOne()
+    setTimeout(() => { this.launchLightTwo() }, 9000)
   }
 
   launchLightOne = () => {
+    this.state.relatedBox.add(this.lightsGroup.children[1])
     console.log("light one")
   }
 
   launchLightTwo = () => {
+    this.state.relatedBox.add(this.lightsGroup.children[0])
     console.log("light two")
   }
 

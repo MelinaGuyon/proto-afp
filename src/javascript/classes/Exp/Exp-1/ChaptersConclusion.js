@@ -122,7 +122,7 @@ class ChaptersConclusion {
       Storage.InterfaceClass.timelineExp.hideTimeline()
       Storage.InterfaceClass.textWriting.hidePanel()
       Storage.InterfaceClass.subtitles.hideSubtitles()
-      Storage.SoundManagerClass.lowAmbiance()
+      Storage.SoundManagerClass.lowAmbiance(600)
       Storage.SoundManagerClass.lowBackground()
     }
   }

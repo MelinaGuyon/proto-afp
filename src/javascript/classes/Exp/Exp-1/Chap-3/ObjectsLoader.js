@@ -45,7 +45,7 @@ class ObjectsLoader {
 			for ( let i = 0; i < 3; i ++ ) {
 		        let barbelesInstance = barbeles.clone()
 		        barbelesInstance.scale.set(20, 20, 20)
-		        barbelesInstance.position.z = 6600 - (i*1400)
+		        barbelesInstance.position.z = 6800 - (i*1400)
 		        barbelesInstance.position.y = 100
 		        barbelesInstance.position.x = -900
 		        barbelesInstance.rotation.y = Math.PI/2
@@ -55,7 +55,7 @@ class ObjectsLoader {
 			for ( let i = 0; i < 3; i ++ ) {
 		        let barbelesInstance = barbeles.clone()
 		        barbelesInstance.scale.set(20, 20, 20)
-		        barbelesInstance.position.z = 4000 - (i*1400)
+		        barbelesInstance.position.z = 4200 - (i*1400)
 		        barbelesInstance.position.y = 100
 		        barbelesInstance.position.x = 900
 		        barbelesInstance.rotation.y = -Math.PI/2

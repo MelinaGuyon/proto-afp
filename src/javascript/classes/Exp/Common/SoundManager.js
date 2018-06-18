@@ -39,6 +39,10 @@ class SoundManager {
     }
 
     createNewAmbiance = (track) => {
+      if (this.ambianceSound.isPlaying === true) {
+        this.ambianceSound.stop()
+      }
+
       this.audioLoader.load( track, (buffer) => {
       	this.ambianceSound.setBuffer( buffer )
         this.ambianceSound.play()
@@ -51,11 +55,12 @@ class SoundManager {
       })
     }
 
-    lowAmbiance = () => {
+    lowAmbiance = (duration) => {
+      console.log("sound manager low", duration)
       anime({
         targets: this.ambianceSound.gain.gain,
         value: [.7, 0],
-        duration: 600,
+        duration: duration,
         easing: 'linear'
       })
     }
