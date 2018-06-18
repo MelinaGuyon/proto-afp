@@ -62,11 +62,11 @@ const animations = {
 		],
 		[
 			new THREE.Vector3(0, 0, 0),
-			new THREE.Vector3(0, Math.PI/2, 0),
-			new THREE.Vector3(0, Math.PI, 0),
-			new THREE.Vector3(0, Math.PI*2, 0),
-			new THREE.Vector3(0, Math.PI*2, 0),
-			new THREE.Vector3(0, Math.PI*2, 0)
+			new THREE.Vector3(0, 0, 0),
+			new THREE.Vector3(0, 0, 0),
+			new THREE.Vector3(0, 0, 0),
+			new THREE.Vector3(0, 0, 0),
+			new THREE.Vector3(0, 0, 0)
 		]
 	]
 }
@@ -74,7 +74,7 @@ const animations = {
 const keyPointsOnSpline = {
 	betweenIntroductionChapterOne: [.6, .9],
 	chapter1: [.15, .33, .7, .85],
-	chapter2: [.1, .8],
+	chapter2: [.1, .65, .8],
 	chapter3: [.2, .35, .55, .7, .9],
 	conclusion: [/*.9,*/ /*.65, .85*/]
 }

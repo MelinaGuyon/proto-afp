@@ -24,8 +24,8 @@ class Interface {
       this.subtitles = new Subtitles()
       this.actus = new ActusAFP()
 
-      this.actus.makeActu()
-      this.actus.showActu()
+      // this.actus.makeActu()
+      // this.actus.showActu()
     }
 }
 
