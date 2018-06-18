@@ -73,7 +73,7 @@ const animations = {
 
 const keyPointsOnSpline = {
 	betweenIntroductionChapterOne: [.6, .9],
-	chapter1: [.15, .33, .7, .85],
+	chapter1: [.15, .33, .7, .85, .9],
 	chapter2: [.1, .8],
 	chapter3: [.2, .35, .55, .7, .9],
 	conclusion: [/*.9,*/ /*.65, .85*/]
@@ -289,6 +289,14 @@ const infosPeople = [
 	}
 ]
 
+const instructions = [
+	'assets/interface/instructions/scroll.svg',
+	'assets/interface/instructions/chapter1.svg',
+	'assets/interface/instructions/chapter2.svg',
+	'assets/interface/instructions/chapter3.svg',
+	'assets/interface/instructions/conclusion.svg'
+]
+
 
 export default {
   splines,
@@ -301,5 +309,6 @@ export default {
 	chaptersTitle,
 	conclusions,
 	timelineIndicators,
-	actus
+	actus,
+	instructions
 }

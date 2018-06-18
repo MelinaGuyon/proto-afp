@@ -86,12 +86,16 @@ class Experience1 {
           relatedCamera: this.camera,
           step: 0,
           index: this.splineIndex,
-          cbEnd: () => { this.chapter1.initInteraction() }
+          cbEnd: () => {
+            this.chapter1.initInteraction()
+            Storage.InterfaceClass.instructions.showInstruction()
+          }
         },
         .5
       )
       this.introduction.remove()
       setTimeout(() => { this.betweenChapters.launchVoiceOver(0)() }, 2500)
+      setTimeout(() => { Storage.InterfaceClass.instructions.showInstruction() }, 5000)
       setTimeout(() => { this.spline.updateStep(0.1) }, 7000)
     }
 
@@ -119,7 +123,10 @@ class Experience1 {
           relatedCamera: this.camera,
           step: .06,
           index: this.splineIndex,
-          cbEnd: () => { this.chapter2.initInteraction() }
+          cbEnd: () => {
+            this.chapter2.initInteraction()
+            Storage.InterfaceClass.instructions.showInstruction()
+          }
   			},
         .5
       )
@@ -138,6 +145,7 @@ class Experience1 {
         },
         .5
       )
+      setTimeout(() => { Storage.InterfaceClass.instructions.showInstruction() }, 7000)
       this.chaptersConclusion.updateMedia(datas.conclusions[2][0], datas.conclusions[2][1])
       this.chapter2.remove()
     }
@@ -152,7 +160,6 @@ class Experience1 {
           step: .50,
           index: this.splineIndex,
           forceRotate: true,
-          //cbEnd: () => { Storage.InterfaceClass.actus.showActu() }
           cbEnd: () => {
             this.animateCamera(datas.animations.conclusionEnding, 5000)
             this.betweenChapters.launchVoiceOver(9)()

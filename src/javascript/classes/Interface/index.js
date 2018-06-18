@@ -4,6 +4,7 @@ import TimelineExp from './TimelineExp.js'
 import Subtitles from './Subtitles.js'
 import Cursor from './Cursor.js'
 import Intro from './Intro.js'
+import Instructions from './Instructions.js'
 import ActusAFP from './ActusAFP.js'
 
 class Interface {
@@ -19,13 +20,14 @@ class Interface {
 
     displayExpInterface = () => {
       this.title = new Title()
+      this.instructions = new Instructions()
       this.textWriting = new TextWritting()
       this.timelineExp = new TimelineExp()
       this.subtitles = new Subtitles()
       this.actus = new ActusAFP()
 
-      this.actus.makeActu()
-      this.actus.showActu()
+      // this.actus.makeActu()
+      // this.actus.showActu()
     }
 }
 
