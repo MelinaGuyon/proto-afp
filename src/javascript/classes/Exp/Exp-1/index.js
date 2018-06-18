@@ -51,7 +51,8 @@ class Experience1 {
       })
       this.chapter3 = new Chapitre3({
         relatedBox: this.chaptersContainer.chapterBoxes[3],
-        relatedCamera: this.camera
+        relatedCamera: this.camera,
+        cbAfterInteraction: () => { this.conclusion.init().then(this.goToConclusion) }
       })
       this.conclusion = new Conclusion({
         relatedBox: this.chaptersContainer.chapterBoxes[4],
@@ -145,8 +146,7 @@ class Experience1 {
           spline: new THREE.CatmullRomCurve3(datas.splines.chapter3),
           relatedCamera: this.camera,
           step: .045,
-          index: this.splineIndex,
-          //cbEnd: () => { this.conclusion.init().then(this.goToConclusion) }
+          index: this.splineIndex
         },
         .5
       )
@@ -167,7 +167,6 @@ class Experience1 {
           relatedCamera: this.camera,
           step: .20,
           index: this.splineIndex,
-          forceRotate: true,
           cbEnd: () => {
             //this.animateCamera(datas.animations.conclusionEnding, 5000)
             this.betweenChapters.launchVoiceOver(9)()

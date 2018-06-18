@@ -12,10 +12,6 @@ class ChaptersConclusion {
     this.allowBind = false
 
     this.conclusionIndicator = document.querySelector('.conclusion-indicator p')
-
-    // to test
-    // this.makePhotoTex('assets/01.jpg')
-    // this.bindConclu()
   }
 
   makeVideoTex = (url) => {

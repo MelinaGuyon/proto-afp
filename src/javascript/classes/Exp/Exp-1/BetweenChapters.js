@@ -16,7 +16,7 @@ class BetweenChapters {
 
         [ this.launchText(3), this.lowAmbiance(3500, 0.2), this.launchVoiceOver(5) ],
 
-        [ this.launchVoiceOver(6), this.launchText(5), this.faster, this.removePeople, this.stopConclusion ],
+        [ this.launchVoiceOver(6), this.launchText(4), this.faster, this.removePeople ],
 
         [ /*this.launchVoiceOver(9),*//* this.launchVoiceOver(10), this.launchVoiceOver(11)*/ ]
       ]
@@ -71,8 +71,9 @@ class BetweenChapters {
     removePeople = () => {
       Storage.Chapitre3Class.removePoeple()
       this.launchVoiceOver(7)()
-      setTimeout(() => { this.launchText(6)() }, 21000)
-      setTimeout(() => { this.launchConclusion(3)() }, 41000)
+      setTimeout(() => { this.launchText(5)() }, 21000)
+      setTimeout(() => { this.launchConclusion(3)() }, 29000)
+      setTimeout(() => { Storage.Chapitre3Class.allowPass() }, 32000)
     }
 
     faster = () => {

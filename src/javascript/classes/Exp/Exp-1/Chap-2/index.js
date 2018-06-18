@@ -95,7 +95,6 @@ class Chapitre2 {
       if (intersectsWarrior[0] && this.warrior[0].passed != true ) {
         this.warriorsNumber ++
         this.warrior[0].passed = true
-        console.log(this.warriorsNumber)
       }
     }
 

@@ -3,6 +3,7 @@ import InfosPeople from './InfosPeople'
 import raf from 'raf'
 import anime from 'animejs'
 
+import datas from '../../../../datas/Experience1.js'
 
 class Chapitre3 {
     constructor(options) {
@@ -20,6 +21,8 @@ class Chapitre3 {
 
     this.raycaster = new THREE.Raycaster()
     this.mouse = new THREE.Vector2()
+
+    this.conclusionPassed = false
 
     this.loadChapter()
     }
@@ -127,6 +130,24 @@ class Chapitre3 {
           easing: 'easeOutQuart'
         })
       }, test * 1800)
+    })
+  }
+
+  allowPass = () => {
+    document.querySelector('canvas').addEventListener('mousewheel', this.handleScroll)
+  }
+
+  handleScroll = () => {
+    document.querySelector('canvas').removeEventListener('mousewheel', this.handleScroll)
+    Storage.BetweenChaptersClass.stopConclusion()
+
+    anime({
+      targets: Storage.Experience1Class.camera.camera.rotation,
+      y: 0,
+      duration: 1700,
+      easing: 'easeInOutQuad',
+      delay: 500,
+      complete: this.state.cbAfterInteraction
     })
   }
 }
