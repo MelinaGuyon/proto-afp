@@ -16,8 +16,7 @@ class ObjectsLoader {
 
 	    this.group.position.y = -790
 	    this.lightsGroup.position.y = -790
-	    this.group.position.z = -600
-	    this.lightsGroup.position.z = -600
+	    this.group.position.z = 1000
 
 	    this.peopleGroup = new THREE.Group()
 	    this.peopleGroup.position.x = -60
@@ -30,16 +29,16 @@ class ObjectsLoader {
 	    return new Promise((resolve, reject) => {
 	    	this.loadKim().then((response)=> {
 	    		this.loadPeople().then((response)=> {
-		    		this.loadAffiche1().then((response)=> {
-		    			this.loadAffiche2().then((response)=> {
-		    				this.loadAffiche3().then((response)=> {
-		    					this.loadAffiche4().then((response)=> {
+		    		// this.loadAffiche1().then((response)=> {
+		    		// 	this.loadAffiche2().then((response)=> {
+		    		// 		this.loadAffiche3().then((response)=> {
+		    		// 			this.loadAffiche4().then((response)=> {
 			    					console.log('Conclusion loaded')
 				    					resolve(this.group)
-			  					}).catch((error)=> { console.warn(error) })
-			  				}).catch((error)=> { console.warn(error) })
-			  			}).catch((error)=> { console.warn(error) })
-			  		}).catch((error)=> { console.warn(error) })
+			  		// 			}).catch((error)=> { console.warn(error) })
+			  		// 		}).catch((error)=> { console.warn(error) })
+			  		// 	}).catch((error)=> { console.warn(error) })
+			  		// }).catch((error)=> { console.warn(error) })
 			  	}).catch((error)=> { console.warn(error) })
 		  	}).catch((error)=> { console.warn(error) })
 	    })
@@ -48,7 +47,7 @@ class ObjectsLoader {
 
 	loadLights = () => {
 	    return new Promise((resolve, reject) => {
-	    	this.loadLightOne().then((response)=> {
+	    	this.loadLight().then((response)=> {
 					console.log('Conclusion lights loaded')
 					resolve(this.lightsGroup)
 		  	}).catch((error)=> { console.warn(error) })
@@ -194,6 +193,7 @@ class ObjectsLoader {
 				that.objLoader.load( 'assets/models/conclusion/kimjongun.obj', function ( body ) {
 				    body.scale.set(10, 10, 10)
 				    body.position.z = 300
+				    body.position.y = 200
 
 				    console.log("body kim", body)
 
@@ -228,6 +228,7 @@ class ObjectsLoader {
 				            bodyInstance.scale.set(10, 10, 10)
 				            bodyInstance.position.x = i * 50
 				            bodyInstance.position.z = j * 50
+				            bodyInstance.position.y = 200
             				that.peopleGroup.add( bodyInstance )
 			          	}
 			        }
@@ -239,16 +240,22 @@ class ObjectsLoader {
 
 	}
 
-	loadLightOne = () => {
+	loadLight = () => {
 		return new Promise((resolve, reject) => {
-			this.pointLight1 = new THREE.PointLight(0xff0000, 1, 500, 2)
-			this.pointLight1.position.set(250, 700, 200)
+			this.pointLight1 = new THREE.PointLight(0xff0000, 0, 200, 2)
+			this.pointLight1.position.set(250, 800, 1760)
 
-			this.pointLight2 = new THREE.PointLight(0xff0000, 1, 500, 2)
-			this.pointLight2.position.set(230, -600, 150)
+			this.pointLight2 = new THREE.PointLight(0xff0000, 0, 300, 2)
+			this.pointLight2.position.set(150, -500, 1700)
+
+			let sphereSize = 100
+			this.pointLightHelper1 = new THREE.PointLightHelper( this.pointLight1, sphereSize )
+			this.pointLightHelper2 = new THREE.PointLightHelper( this.pointLight2, sphereSize )
 
 			this.lightsGroup.add( this.pointLight1 )
+			//this.lightsGroup.add( this.pointLightHelper1 )
 			this.lightsGroup.add( this.pointLight2 )
+			//this.lightsGroup.add( this.pointLightHelper2 )
 
 			resolve()
 		})

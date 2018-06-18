@@ -31,21 +31,37 @@ class Conclusion {
 
   displayChapterObjects = () => {
     this.state.relatedBox.add(this.modelsGroup)
+    this.state.relatedBox.add(this.lightsGroup.children[1])
+    this.state.relatedBox.add(this.lightsGroup.children[0])
+
+    // this.state.relatedBox.add(this.lightsGroup.children[0])
+    // Storage.SceneClasses.exp1.scene.add(this.lightsGroup.children[0])
+    // this.state.relatedBox.add(this.lightsGroup.children[2])
+    // Storage.SceneClasses.exp1.scene.add(this.lightsGroup.children[2])
   }
 
   conclusionEnding = () => {
+    console.log("conclusionEnding")
     this.launchLightOne()
     setTimeout(() => { this.launchLightTwo() }, 9000)
   }
 
   launchLightOne = () => {
-    this.state.relatedBox.add(this.lightsGroup.children[1])
-    console.log("light one")
+    anime({
+      targets: this.state.relatedBox.children[1],
+      intensity: [0, 5],
+      duration: 700,
+      easing: 'linear'
+    })
   }
 
   launchLightTwo = () => {
-    this.state.relatedBox.add(this.lightsGroup.children[0])
-    console.log("light two")
+    anime({
+      targets: this.state.relatedBox.children[2],
+      intensity: [0, 5],
+      duration: 900,
+      easing: 'linear'
+    })
   }
 
 }
