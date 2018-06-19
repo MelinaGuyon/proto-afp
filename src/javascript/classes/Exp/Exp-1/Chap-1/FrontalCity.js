@@ -48,7 +48,8 @@ class FrontalCity {
 			Storage.InterfaceClass.cursor.reset()
 		}, 2000)
 		setTimeout(() => {
-			Storage.InterfaceClass.title.animeTitle(datas.chaptersTitle[0])
+			//Storage.InterfaceClass.title.animeTitle(datas.chaptersTitle[0])
+			Storage.InterfaceClass.title.animeTitle(datas.chaptersTitleSrc[0])
 		}, 5000)
 	}
 
