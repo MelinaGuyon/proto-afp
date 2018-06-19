@@ -67,8 +67,6 @@ class ObjectsLoader {
 		        let afficheTexture = that.textureLoader.load('assets/models/beforeConclu/affiche1.png', () => {
 		            afficheMaterial.map = afficheTexture
 
-					console.log("MATERIALS AFFICHE 1", matl.materials)
-
 				    that.objLoader.load( 'assets/models/beforeConclu/affiche1.obj', function ( affiche ) {
 				        affiche.scale.set(1, 1, 1)
 				        affiche.position.z = 7200
@@ -131,7 +129,6 @@ class ObjectsLoader {
 
 		        let afficheTexture = that.textureLoader.load('assets/models/beforeConclu/affiche3.png', () => {
 		            afficheMaterial.map = afficheTexture
-					console.log("MATERIALS AFFICHE 3", matl.materials)
 
 				    that.objLoader.load( 'assets/models/beforeConclu/affiche3.obj', function ( affiche ) {
 				        affiche.scale.set(1, 1, 1)
@@ -161,8 +158,6 @@ class ObjectsLoader {
 
 		        let afficheTexture = that.textureLoader.load('assets/models/beforeConclu/affiche4.png', () => {
 		            afficheMaterial.map = afficheTexture
-
-					console.log("MATERIALS AFFICHE 4", matl.materials)
 
 				    that.objLoader.load( 'assets/models/beforeConclu/affiche4.obj', function ( affiche ) {
 				        affiche.scale.set(1, 1, 1)
@@ -194,8 +189,6 @@ class ObjectsLoader {
 				    body.scale.set(10, 10, 10)
 				    body.position.z = 300
 				    body.position.y = 200
-
-				    console.log("body kim", body)
 
 				    body.traverse(function(o) {
 						if (o.type === 'Mesh') {

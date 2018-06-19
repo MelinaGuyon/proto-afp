@@ -96,6 +96,12 @@ class ChaptersConclusion {
     document.removeEventListener('mouseup', this.onMouseUp, false )
     Storage.InterfaceClass.cursor.reset()
     this.binded = false
+
+    if (this.clicked) {
+      this.clicked = false
+      setTimeout(() => { Storage.InterfaceClass.cursor.animateUnhold(this.afterUnholdAnime) }, 200)
+      setTimeout(() => { Storage.InterfaceClass.cursor.reset() }, 800)
+    }
   }
 
   onMouseDown = () => {

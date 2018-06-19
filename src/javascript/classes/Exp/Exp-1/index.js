@@ -74,7 +74,6 @@ class Experience1 {
       Storage.SoundManagerClass.launchBackgroundMusic("assets/sound/fondsonore.mp3")
       Storage.SoundManagerClass.launchAmbianceSound("assets/sound/intro.mp3")
 
-
       //to test
       // this.splineIndex = 2
       // this.chapter2.init().then(this.goToChapterTwo)

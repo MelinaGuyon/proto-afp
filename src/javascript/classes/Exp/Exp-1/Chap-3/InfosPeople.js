@@ -124,7 +124,6 @@ class InfosPeople {
         let textTable = []
         let top = -20
         for (var i = 0; i < descTab.length; i ++) {
-          console.log(descTab[i])
           const geometry = new THREE.TextGeometry(descTab[i], {
             font: font,
             size: 8,
@@ -219,7 +218,6 @@ class InfosPeople {
 	}
 
   showInfos = (people, index) => {
-    console.log('SHOWWW')
     this.plane.isVisible = true
 
     this.plane.position.x = people.position.x

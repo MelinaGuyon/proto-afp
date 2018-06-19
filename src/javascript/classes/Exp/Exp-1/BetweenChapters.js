@@ -47,7 +47,6 @@ class BetweenChapters {
     }
 
     lowAmbiance = (duration, level) => () => {
-      console.log("LOW AMBIANCE", duration)
       Storage.SoundManagerClass.lowAmbiance(duration, level)
     }
 

@@ -36,7 +36,6 @@ class Spline {
 		placeCameraAtFirstPoint = () => {
       this.unbind()
 			const point = this.state.spline.points[0]
-      console.log('test')
 			anime({
 				targets: this.state.relatedCamera.camera.position,
 				x: point.x,

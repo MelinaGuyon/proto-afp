@@ -6,8 +6,6 @@ class Titles {
   }
 
   animeTitle = (title) => {
-    // this.title.innerText = title
-    console.log(title)
     this.title.setAttribute('src', title)
 
     let timeline = anime.timeline();
