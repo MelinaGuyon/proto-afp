@@ -18,16 +18,16 @@ class Titles {
         targets: this.title,
         opacity: 1,
         scale: [0.2, 0.3],
-        duration: 300,
-        easing: 'easeOutQuad'
+        duration: 500,
+        easing: 'easeInOutQuad'
       })
       .add({
         targets: this.title,
         opacity: 0,
         scale: [0.3, 0.4],
-        duration: 300,
-        delay: 1000,
-        easing: 'easeInQuad'
+        duration: 500,
+        delay: 1300,
+        easing: 'easeInOutQuad'
       })
       .add({
         targets: this.title,

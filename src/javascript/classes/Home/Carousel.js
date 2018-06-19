@@ -57,7 +57,7 @@ class Carousel {
 	}
 
 	onRealScroll = throttle((event) => {
-		const update = event.deltaY < 0 ? -1 : 1
+		const update = event.deltaY > 0 ? -1 : 1
     const oldIndex = this.index
     this.index = Math.max(Math.min(this.index + update, this.numberItems - 1), 0)
 
