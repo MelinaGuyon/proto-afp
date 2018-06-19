@@ -69,6 +69,12 @@ const chaptersTitle =  [
 	'Divisés'
 ]
 
+const chaptersTitleSrc =  [
+	'assets/interface/chapters/title_chapter1.svg',
+	'assets/interface/chapters/title_chapter2.svg',
+	'assets/interface/chapters/title_chapter3.svg',
+]
+
 const conclusions =  [
 	['assets/shaders/conclusion/conclusion1.mp4', 'video'],
 	['assets/shaders/conclusion/conclusion2.mp4', 'video'],
@@ -271,6 +277,7 @@ export default {
 	voiceOver,
 	infosPeople,
 	chaptersTitle,
+	chaptersTitleSrc,
 	conclusions,
 	timelineIndicators,
 	actus,
