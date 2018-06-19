@@ -76,8 +76,8 @@ class Experience1 {
 
 
       //to test
-      this.splineIndex = 4
-      this.conclusion.init().then(this.goToConclusion)
+      this.splineIndex = 2
+      this.chapter2.init().then(this.goToChapterTwo)
 
       Storage.TextWriting.addTitle(datas.chaptersTitle[0], 5000)
 		}

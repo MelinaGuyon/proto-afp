@@ -8,7 +8,8 @@ class Titles {
 
   animeTitle = (title) => {
     // this.title.innerText = title
-    this.title.src = title
+    console.log(title)
+    this.title.setAttribute('src', title)
 
     let timeline = anime.timeline();
 
@@ -16,25 +17,23 @@ class Titles {
       .add({
         targets: this.title,
         opacity: 1,
-        scale: 0.4,
-        duration: 600,
+        scale: [0.2, 0.3],
+        duration: 300,
         easing: 'easeOutQuad'
       })
       .add({
         targets: this.title,
         opacity: 0,
-        scale: 0.6,
+        scale: [0.3, 0.4],
         duration: 300,
-        delay: 800,
+        delay: 1000,
         easing: 'easeInQuad'
       })
       .add({
         targets: this.title,
-        scale: .1,
+        scale: 0.2,
         duration: 0,
-        delay: 1500, 
-        //complete: () => { this.title.innerText = '' }
-        complete: () => { this.title.src = '' }
+        delay: 1500
       })
   }
 }
