@@ -2,7 +2,6 @@ import anime from 'animejs'
 
 class Titles {
   constructor() {
-    //this.title = document.querySelector('.chapters-title span')
     this.title = document.querySelector('.chapters-title img')
   }
 
