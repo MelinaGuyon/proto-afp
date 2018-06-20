@@ -75,8 +75,8 @@ class Experience1 {
       Storage.SoundManagerClass.launchAmbianceSound("assets/sound/intro.mp3")
 
       //to test
-      // this.splineIndex = 2
-      // this.chapter2.init().then(this.goToChapterTwo)
+      // this.splineIndex = 3
+      // this.chapter3.init().then(this.goToChapterThree)
 
       Storage.TextWriting.addTitle(datas.chaptersTitle[0], 5000)
 		}

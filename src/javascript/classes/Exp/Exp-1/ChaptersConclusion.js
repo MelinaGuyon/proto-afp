@@ -49,8 +49,16 @@ class ChaptersConclusion {
   }
 
   stopConclusion = () => {
-    this.video && this.video.pause()
-    Storage.ComposerClass.unactivate()
+    anime({
+      targets: this.video,
+      volume: 0,
+      duration: 500,
+      easing: 'easeOutQuad',
+      complete: () => { 
+        this.video && this.video.pause()
+        Storage.ComposerClass.unactivate()
+      }
+    })
   }
 
   indicateConclusion = () => {
