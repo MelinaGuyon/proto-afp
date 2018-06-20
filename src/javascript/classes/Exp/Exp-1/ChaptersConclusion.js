@@ -44,6 +44,7 @@ class ChaptersConclusion {
   }
 
   playConclusion = () => {
+    this.video.volume = 1
     this.video && this.video.play()
     Storage.ComposerClass.activate()
   }
@@ -54,7 +55,7 @@ class ChaptersConclusion {
       volume: 0,
       duration: 500,
       easing: 'easeOutQuad',
-      complete: () => { 
+      complete: () => {
         this.video && this.video.pause()
         Storage.ComposerClass.unactivate()
       }

@@ -69,38 +69,11 @@
 		}
 	}
 
-	.forms-right {
-		display: none;
-		pointer-events: none;
+	.form-right {
 		position: absolute;
-		top: 0;
-		right: 0;
-		height: 100%;
-		min-width: 1000px;
-
-		.form-black {
-			position: absolute;
-			height: 100%;
-			width: 100%;
-			background-image: url('../assets/interface/introduction/right-black.png');
-      background-repeat: no-repeat;
-      background-size: auto 100%;
-      background-position-x: 105%;
-			right: -100px;
-		}
-
-		.form-paper {
-			position: absolute;
-			height: 130%;
-			width: 100%;
-			background-image: url('../assets/interface/introduction/right-paper.svg');
-      background-repeat: no-repeat;
-      background-size: auto 100%;
-      background-position-x: 100%;
-			top: 50%;
-			right: -520px;
-			transform: translateY(-50%);
-		}
+		right: -2px;
+		bottom: 0;
+		width: 70px;
 	}
 
 	.content {
