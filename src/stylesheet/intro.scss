@@ -23,6 +23,9 @@
 	background: #141414;
 	width: 100%;
 	height: 100%;
+	background-image: url('../assets/interface/global/noise.gif');
+	background-repeat: repeat;
+	background-blend-mode: darken;
 	transition: transform .6s $quad-ease-in-out;
 
 	.is-hide & {
