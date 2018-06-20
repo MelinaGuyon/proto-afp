@@ -11,6 +11,8 @@ class Interface {
     constructor(options) {
 			Storage.InterfaceClass = this
 			this.init()
+
+      this.menu = document.querySelector('.menu-wrapper')
     }
 
     init() {
@@ -30,14 +32,21 @@ class Interface {
       // this.actus.showActu()
     }
 
-    updateLogo = () => {
+    updateLogo = (src) => {
       const logo = document.querySelector('.logo-website')
       logo.classList.add('hidden')
       setTimeout(() => {
-        logo.setAttribute('src', 'assets/interface/global/logo_noir.svg')
+        logo.setAttribute('src', src)
         logo.classList.remove('hidden')
       }, 600)
+    }
 
+    showMenu = () => {
+      this.menu.classList.remove('is-hidden')
+    }
+
+    hideMenu = () => {
+      this.menu.classList.add('is-hidden')
     }
 }
 

@@ -134,6 +134,7 @@ class ChaptersConclusion {
       Storage.InterfaceClass.subtitles.hideSubtitles()
       Storage.SoundManagerClass.lowAmbiance(600)
       Storage.SoundManagerClass.lowBackground()
+      Storage.InterfaceClass.hideMenu()
     }
   }
 
@@ -146,6 +147,7 @@ class ChaptersConclusion {
         Storage.InterfaceClass.subtitles.showSubtitles()
         Storage.InterfaceClass.timelineExp.showTimeline()
         Storage.InterfaceClass.textWriting.showPanel()
+        Storage.InterfaceClass.showMenu()
       }, 800)
     }
   }
