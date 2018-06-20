@@ -64,7 +64,7 @@ class Experience1 {
 
 		init = () => {
       Storage.InterfaceClass.displayExpInterface()
-      Storage.InterfaceClass.updateLogo()
+      Storage.InterfaceClass.updateLogo('assets/interface/global/logo_noir.svg')
 
       this.betweenChapters = new BetweenChapters()
       this.chaptersConclusion = new ChaptersConclusionClass()
@@ -75,8 +75,8 @@ class Experience1 {
       Storage.SoundManagerClass.launchAmbianceSound("assets/sound/intro.mp3")
 
       //to test
-      // this.splineIndex = 2
-      // this.chapter2.init().then(this.goToChapterTwo)
+      // this.splineIndex = 4
+      // this.conclusion.init().then(this.goToConclusion)
 
       Storage.TextWriting.addTitle(datas.chaptersTitle[0], 5000)
 		}
@@ -175,7 +175,10 @@ class Experience1 {
           cbEnd: () => {
             this.betweenChapters.launchVoiceOver(9)()
             Storage.ConclusionClass.conclusionEnding()
-            setTimeout(() => { Storage.InterfaceClass.actus.showActu() }, 17500)
+            setTimeout(() => {
+              Storage.InterfaceClass.actus.showActu()
+              Storage.InterfaceClass.updateLogo('assets/interface/global/logo_blanc.svg')
+            }, 17500)
           }
         },
         .5
